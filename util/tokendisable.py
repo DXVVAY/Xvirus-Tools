@@ -16,8 +16,6 @@ def TokenDisable(token):
             print(f'\n{Fore.RED}Token successfully disabled!{Fore.RESET}\n')
         elif res_message == "You cannot update your date of birth.":
             print('Account can\'t be disabled')
-        else:
-            print(f'Unknown response: {res_message}')
     else:
         print('Failed to disable account')
     input(f'{Fore.GREEN}[{Fore.YELLOW}>>>{Fore.GREEN}] {Fore.RESET}Enter anything to continue. . . {Fore.RED}')

