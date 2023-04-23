@@ -51,7 +51,7 @@ def GcSpammer(token):
     {Fore.RESET}[{Fore.RED}2{Fore.RESET}] randomize the users
                         ''')
     secondchoice = int(input(
-        f'{Fore.GREEN}[{Fore.CYAN}>>>{Fore.GREEN}] {Fore.RESET}Second Choice: {Fore.RED}'))
+        f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Second Choice: {Fore.RED}'))
 
     if secondchoice not in [1, 2]:
         print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Second Choice')
@@ -63,7 +63,7 @@ def GcSpammer(token):
         setTitle(f"Creating groupchats")
         #if they choose specific users
         recipients = input(
-            f'{Fore.GREEN}[{Fore.CYAN}>>>{Fore.GREEN}] {Fore.RESET}Input the users you want to create a groupchat with (separate by , id,id2,id3): {Fore.RED}')
+            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Input the users you want to create a groupchat with (separate by , id,id2,id3): {Fore.RED}')
         user = recipients.split(',')
         if "," not in recipients:
             print(f"\n{Fore.RED}You didn't have any commas (,) format is id,id2,id3")
