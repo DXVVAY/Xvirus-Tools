@@ -81,12 +81,12 @@ def search_for_updates():
                 new_version_source = requests.get(
                     "https://github.com/Xvirus0/Xvirus-Tools/archive/refs/heads/main.zip"
                 )
-                with open("Xvirus-Tools-master.zip", "wb") as zipfile:
+                with open("Xvirus-Tools-main.zip", "wb") as zipfile:
                     zipfile.write(new_version_source.content)
-                with ZipFile("Xvirus-Tools-master.zip", "r") as filezip:
+                with ZipFile("Xvirus-Tools-main.zip", "r") as filezip:
                     filezip.extractall()
-                os.remove("Xvirus-Tools-master.zip")
-                cwd = os.getcwd() + "\\Xvirus-Tools-master"
+                os.remove("Xvirus-Tools-main.zip")
+                cwd = os.getcwd() + "\\Xvirus-Tools-main"
                 shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
                 shutil.rmtree(cwd)
                 setTitle("Xvirus Update Complete!")
