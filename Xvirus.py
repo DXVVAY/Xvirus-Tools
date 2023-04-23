@@ -305,10 +305,7 @@ def main():
 
 
     elif choice == '14':
-        WebHook = input(
-            f'{Fore.GREEN}[{Fore.CYAN}>>>{Fore.GREEN}] {Fore.RESET}Webhook Url: {Fore.RED}')
-        validateWebhook(WebHook)
-        util.QR_Grabber.QR_Grabber(WebHook)
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
 
 
     elif choice == '15':
