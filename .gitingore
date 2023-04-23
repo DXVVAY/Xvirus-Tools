@@ -1,0 +1,8 @@
+icon.ico
+test.py
+chromedriver.exe
+
+
+**/__pycache__/
+dist
+QR-Code
