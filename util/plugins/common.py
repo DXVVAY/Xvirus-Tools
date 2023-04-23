@@ -18,7 +18,7 @@ from bs4 import BeautifulSoup
 from colorama import Fore
 from time import sleep
 
-THIS_VERSION = "1.4.8"
+THIS_VERSION = "1.5.0"
 TARGET_VERSION = 0
 
 class Chrome_Installer(object):
