@@ -1,13 +1,3 @@
-import multiprocessing
-import threading
-import requests
-import keyboard
-import base64
-import os
-
-from time import sleep
-from colorama import Fore
-
 from util.plugins.common import *
 from util.plugins.update import *
 import util.accountNuke
@@ -24,6 +14,8 @@ import util.friend_blocker
 import util.unfriender
 import util.webhookspammer
 import util.massdm
+
+System.Size(120, 30)
 
 threads = 3
 cancel_key = "ctrl+x"
@@ -289,9 +281,7 @@ def main():
 
 
     elif choice == '12':
-        print(f"{Fore.RED}COMING SOON. . .\n{Fore.RESET}Join the discord (https://cheataway.com) to see what will be here!")
-        sleep(4)
-        main()
+        exec(open('util/tokenbrute.py').read())
 
 
     elif choice == '13':
@@ -374,7 +364,34 @@ def main():
                 f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Message: {Fore.RED}'))
             util.webhookspammer.WebhookSpammer(WebHook, Message)
 
+    elif choice == '19':
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
 
+    elif choice == '20':
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+
+    elif choice == '21':
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+    
+    elif choice == '22':
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+
+    elif choice == '23':
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+
+    elif choice == '24':
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+
+    elif choice == '25':
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+
+    elif choice == '26':
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+
+    elif choice == '27':
+        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+
+# this is end settings
     elif choice == '18':
         print(f'''
     {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Theme changer
@@ -473,6 +490,10 @@ ctrl, shift, enter, esc, windows, left shift, right shift, left ctrl, right ctrl
 
 if __name__ == "__main__":
     import sys
+    setTitle("Xvirus Loading...")
+    
+    System.Size(120, 30)
+    Anime.Fade(Center.Center(logo), Colors.purple_to_blue, Colorate.Vertical, time=3)
     if os.path.basename(sys.argv[0]).endswith("exe"):
         search_for_updates()
         with open(os.getenv("temp")+"\\xvirus_proxies", 'w'): pass

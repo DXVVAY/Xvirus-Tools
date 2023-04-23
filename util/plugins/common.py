@@ -11,6 +11,20 @@ import requests
 import pkg_resources
 import subprocess
 import threading
+import multiprocessing
+import threading
+import requests
+import keyboard
+import base64
+import os
+import sys
+from time import sleep
+from colorama import Fore
+
+import requests, os, sys, re, time, random, os.path, string, subprocess, random, threading, ctypes, shutil
+from pystyle import Add, Center, Anime, Colors, Colorate, Write, System
+from colorama import Fore
+from time import sleep
 
 from distutils.version import LooseVersion
 from urllib.request import urlopen, urlretrieve
@@ -18,7 +32,7 @@ from bs4 import BeautifulSoup
 from colorama import Fore
 from time import sleep
 
-THIS_VERSION = "1.5.0"
+THIS_VERSION = "1.5.1"
 TARGET_VERSION = 0
 
 class Chrome_Installer(object):
@@ -559,51 +573,61 @@ def banner(theme=None):
 
 
     
-                            ,.   (   .      )        .      "
-                           ("     )  )'     ,'        )  . (`     '`
-                         .; )  ' (( (" )    ;(,     ((  (  ;)  "  )"
-                         _"., ,._'_.,)_(..,( . )_  _' )_') (. _..( '..
-                        ██╗  ██╗██╗   ██╗██╗██████╗ ██╗   ██╗ ██████╗   
-                        ╚██╗██╔╝██║   ██║██║██╔══██╗██║   ██║██╔════╝
-                         ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
-                         ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
-                        ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> Created by Xvirus     ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  '''.replace('█', f'{Fore.WHITE}█{Fore.GREEN}') + f'''   
-{Fore.WHITE}──────────────────────────────────────────────────────────────────────────────{Fore.RESET}
-{Fore.RESET}[{Fore.GREEN}1{Fore.RESET}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RESET}[{Fore.GREEN}10{Fore.RESET}]{Fore.LIGHTBLACK_EX} Block Friends
-{Fore.RESET}[{Fore.GREEN}2{Fore.RESET}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RESET}[{Fore.GREEN}11{Fore.RESET}]{Fore.LIGHTBLACK_EX} Profile Changer
-{Fore.RESET}[{Fore.GREEN}3{Fore.RESET}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RESET}[{Fore.GREEN}12{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon] 
-{Fore.RESET}[{Fore.GREEN}4{Fore.RESET}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RESET}[{Fore.GREEN}13{Fore.RESET}]{Fore.LIGHTBLACK_EX} Create Token Grabber 
-{Fore.RESET}[{Fore.GREEN}5{Fore.RESET}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RESET}[{Fore.GREEN}14{Fore.RESET}]{Fore.LIGHTBLACK_EX} QR Code grabber
-{Fore.RESET}[{Fore.GREEN}6{Fore.RESET}]{Fore.LIGHTBLACK_EX} Mass Dm                                     |{Fore.RESET}[{Fore.GREEN}15{Fore.RESET}]{Fore.LIGHTBLACK_EX} Mass Report
-{Fore.RESET}[{Fore.GREEN}7{Fore.RESET}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode                         |{Fore.RESET}[{Fore.GREEN}16{Fore.RESET}]{Fore.LIGHTBLACK_EX} GroupChat Spammer
-{Fore.RESET}[{Fore.GREEN}8{Fore.RESET}]{Fore.LIGHTBLACK_EX} Get information from a targetted account    |{Fore.RESET}[{Fore.GREEN}17{Fore.RESET}]{Fore.LIGHTBLACK_EX} Webhook Destroyer
-{Fore.RESET}[{Fore.GREEN}9{Fore.RESET}]{Fore.LIGHTBLACK_EX} Log into an account                         |{Fore.RESET}[{Fore.GREEN}18{Fore.RESET}]{Fore.RED} Settings
-{Fore.WHITE}──────────────────────────────────────────────────────────────────────────────''')
+                                        ,.   (   .      )        .      "
+                                       ("     )  )'     ,'        )  . (`     '`
+                                     .; )  ' (( (" )    ;(,     ((  (  ;)  "  )"
+                                     _"., ,._'_.,)_(..,( . )_  _' )_') (. _..( '..
+                                    ██╗  ██╗██╗   ██╗██╗██████╗ ██╗   ██╗ ██████╗   
+                                    ╚██╗██╔╝██║   ██║██║██╔══██╗██║   ██║██╔════╝
+                                     ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
+                                     ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
+                                    ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
+> Created by Xvirus                 ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  '''.replace('█', f'{Fore.WHITE}█{Fore.GREEN}') + f'''   
+{Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RESET}
+{Fore.RESET}[{Fore.GREEN}1{Fore.RESET}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RESET}[{Fore.GREEN}10{Fore.RESET}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RESET}[{Fore.GREEN}19{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RESET}[{Fore.GREEN}2{Fore.RESET}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RESET}[{Fore.GREEN}11{Fore.RESET}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RESET}[{Fore.GREEN}20{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RESET}[{Fore.GREEN}3{Fore.RESET}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RESET}[{Fore.GREEN}12{Fore.RESET}]{Fore.LIGHTBLACK_EX} Token Brute-Force      |{Fore.RESET}[{Fore.GREEN}21{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RESET}[{Fore.GREEN}4{Fore.RESET}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RESET}[{Fore.GREEN}13{Fore.RESET}]{Fore.LIGHTBLACK_EX} Token Grabber (WIP)    |{Fore.RESET}[{Fore.GREEN}22{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RESET}[{Fore.GREEN}5{Fore.RESET}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RESET}[{Fore.GREEN}14{Fore.RESET}]{Fore.LIGHTBLACK_EX} QR Code grabber (WIP)  |{Fore.RESET}[{Fore.GREEN}23{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RESET}[{Fore.GREEN}6{Fore.RESET}]{Fore.LIGHTBLACK_EX} Mass Dm                                     |{Fore.RESET}[{Fore.GREEN}15{Fore.RESET}]{Fore.LIGHTBLACK_EX} Mass Report            |{Fore.RESET}[{Fore.GREEN}24{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RESET}[{Fore.GREEN}7{Fore.RESET}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode                         |{Fore.RESET}[{Fore.GREEN}16{Fore.RESET}]{Fore.LIGHTBLACK_EX} GroupChat Spammer      |{Fore.RESET}[{Fore.GREEN}25{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RESET}[{Fore.GREEN}8{Fore.RESET}]{Fore.LIGHTBLACK_EX} Get information from a targetted account    |{Fore.RESET}[{Fore.GREEN}17{Fore.RESET}]{Fore.LIGHTBLACK_EX} Webhook Destroyer      |{Fore.RESET}[{Fore.GREEN}26{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RESET}[{Fore.GREEN}9{Fore.RESET}]{Fore.LIGHTBLACK_EX} Log into an account                         |{Fore.RESET}[{Fore.GREEN}18{Fore.RESET}]{Fore.RED} Settings                         |{Fore.RESET}[{Fore.GREEN}27{Fore.RESET}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────''')
 
 def bannerTheme(type1, type2):
     return type1(f'''
 
 
     
-                            ,.   (   .      )        .      "
-                           ("     )  )'     ,'        )  . (`     '`
-                         .; )  ' (( (" )    ;(,     ((  (  ;)  "  )"
-                         _"., ,._'_.,)_(..,( . )_  _' )_') (. _..( '..
-                        ██╗  ██╗██╗   ██╗██╗██████╗ ██╗   ██╗ ██████╗   
-                        ╚██╗██╔╝██║   ██║██║██╔══██╗██║   ██║██╔════╝
-                         ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
-                         ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
-                        ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> Created by Xvirus     ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ''')+type2('''  
-──────────────────────────────────────────────────────────────────────────────
-[1] Nuke Account                                |[10] Block Friends
-[2] Unfriend all friends                        |[11] Profile Changer
-[3] Delete and leave all servers                |[12] [Coming Soon]
-[4] Spam Create New servers                     |[13] Create Token Grabber 
-[5] Dm Deleter                                  |[14] QR Code grabber
-[6] Mass Dm                                     |[15] Mass Report
-[7] Enable Seizure Mode                         |[16] GroupChat Spammer
-[8] Get information from a targetted account    |[17] Webhook Destroyer
-[9] Log into an account                         |[18] Settings
-──────────────────────────────────────────────────────────────────────────────''')
+                                        ,.   (   .      )        .      "
+                                       ("     )  )'     ,'        )  . (`     '`
+                                     .; )  ' (( (" )    ;(,     ((  (  ;)  "  )"
+                                     _"., ,._'_.,)_(..,( . )_  _' )_') (. _..( '..
+                                    ██╗  ██╗██╗   ██╗██╗██████╗ ██╗   ██╗ ██████╗   
+                                    ╚██╗██╔╝██║   ██║██║██╔══██╗██║   ██║██╔════╝
+                                     ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
+                                     ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
+                                    ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
+> Created by Xvirus                 ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ''')+type2('''  
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+[1] Nuke Account                                |[10] Block Friends                 |[19] [Coming Soon]
+[2] Unfriend all friends                        |[11] Profile Changer               |[20] [Coming Soon]
+[3] Delete and leave all servers                |[12] Token Brute-Force             |[21] [Coming Soon]
+[4] Spam Create New servers                     |[13] Token Grabber (WIP)           |[22] [Coming Soon]
+[5] Dm Deleter                                  |[14] QR Code grabber (WIP)         |[23] [Coming Soon]
+[6] Mass Dm                                     |[15] Mass Report                   |[24] [Coming Soon]
+[7] Enable Seizure Mode                         |[16] GroupChat Spammer             |[25] [Coming Soon]
+[8] Get information from a targetted account    |[17] Webhook Destroyer             |[26] [Coming Soon]
+[9] Log into an account                         |[18] Settings                      |[27] [Coming Soon]
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────''')
+
+logo = r"""
+
+██╗  ██╗
+╚██╗██╔╝
+ ╚███╔╝ 
+ ██╔██╗ 
+██╔╝╚██╗
+╚═╝  ╚═╝
+"""[1:]
