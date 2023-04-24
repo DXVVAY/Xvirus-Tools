@@ -24,7 +24,7 @@ def search_for_updates():
     result_string = soup[s1.end() : s2.start()]
 
     if THIS_VERSION not in result_string:
-        setTitle("Xvirus New Update Found!")
+        setTitle("New Update Found!")
         print(
             f"""{Fore.YELLOW}
                 ███╗   ██╗███████╗██╗    ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗  ██╗
@@ -33,7 +33,7 @@ def search_for_updates():
                 ██║╚██╗██║██╔══╝  ██║███╗██║    ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝    ╚═╝
                 ██║ ╚████║███████╗╚███╔███╔╝    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗  ██╗
                 ╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝      ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝  ╚═╝
-                              {Fore.RED}Looks like this Xvirus {THIS_VERSION} is outdated """.replace(
+                              {Fore.RED}Looks like Xvirus {THIS_VERSION} is outdated """.replace(
                 "█", f"{Fore.WHITE}█{Fore.RED}"
             ),
             end="\n\n",
@@ -51,7 +51,7 @@ def search_for_updates():
             f"{Fore.GREEN}[{Fore.YELLOW}>>>{Fore.GREEN}] {Fore.RESET}Do you want to update to the latest version? (Y to update N to continue): {Fore.RED}"
         )
 
-        if choice.lower() == "y" or choice.lower() == "yes":
+        if choice.lower() == "y" or choice.lower() == "yes": or coice.lower() == "Y"
             print(f"{Fore.WHITE}\nUpdating. . .")
             setTitle(f"Xvirus Updating...")
             # if they are running xvirus.exe
