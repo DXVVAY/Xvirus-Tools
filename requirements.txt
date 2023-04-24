@@ -9,3 +9,4 @@ pyinstaller
 psutil
 keyboard
 cairosvg
+cairocffi
