@@ -51,7 +51,7 @@ def search_for_updates():
             f"{Fore.GREEN}[{Fore.YELLOW}>>>{Fore.GREEN}] {Fore.RESET}Do you want to update to the latest version? (Y to update N to continue): {Fore.RED}"
         )
 
-        if choice.lower() == "y" or choice.lower() == "yes": or coice.lower() == "Y"
+        if choice.lower() == "y" or choice.lower() == "yes":
             print(f"{Fore.WHITE}\nUpdating. . .")
             setTitle(f"Xvirus Updating...")
             # if they are running xvirus.exe
