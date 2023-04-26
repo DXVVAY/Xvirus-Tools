@@ -10,3 +10,4 @@ psutil
 keyboard
 cairosvg
 cairocffi
+pystyle
