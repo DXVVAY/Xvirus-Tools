@@ -15,6 +15,7 @@ import util.unfriender
 import util.webhookspammer
 import util.massdm
 import util.tokendisable
+import util.vanitysniper
 
 System.Size(120, 30)
 
@@ -375,9 +376,8 @@ def main():
         exec(open('util/rat.py').read())
 
     elif choice == '21':
-        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
-        main()
-    
+        exec(open('util/vanitysniper.py').read())
+        
     elif choice == '22':
         input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
         main()
