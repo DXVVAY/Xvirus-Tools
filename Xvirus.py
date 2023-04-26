@@ -379,8 +379,7 @@ def main():
         exec(open('util/vanitysniper.py').read())
         
     elif choice == '22':
-        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
-        main()
+        exec(open('util/webhookdeleter.py').read())
 
     elif choice == '23':
         input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
