@@ -1,8 +1,10 @@
 import datetime
 import time
 import requests
+import os
 from colorama import Fore
 
+os.system('cls')
 
 def change_vanity(code: str, server_id: str, token: str) -> bool:
     response = requests.patch(
