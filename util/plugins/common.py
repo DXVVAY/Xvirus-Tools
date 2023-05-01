@@ -32,7 +32,7 @@ from bs4 import BeautifulSoup
 from colorama import Fore
 from time import sleep
 
-THIS_VERSION = "1.5.4"
+THIS_VERSION = "1.5.5"
 TARGET_VERSION = 0
 
 class Chrome_Installer(object):
@@ -582,7 +582,7 @@ def banner(theme=None):
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> Made by Xvirus                 ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  '''.replace('█', f'{Fore.WHITE}█{Fore.GREEN}') + f'''   
+> Made by Xvirus                    ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  '''.replace('█', f'{Fore.WHITE}█{Fore.GREEN}') + f'''   
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RESET}
 {Fore.RESET}[{Fore.GREEN}1{Fore.RESET}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RESET}[{Fore.GREEN}10{Fore.RESET}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RESET}[{Fore.GREEN}19{Fore.RESET}]{Fore.LIGHTBLACK_EX} Token Disabler (WIP)
 {Fore.RESET}[{Fore.GREEN}2{Fore.RESET}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RESET}[{Fore.GREEN}11{Fore.RESET}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RESET}[{Fore.GREEN}20{Fore.RESET}]{Fore.LIGHTBLACK_EX} Discord Bot Rat (WIP)
@@ -609,7 +609,7 @@ def bannerTheme(type1, type2):
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> Made by Xvirus                 ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ''')+type2('''  
+> Made by Xvirus                    ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ''')+type2('''  
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler (WIP)
 [2] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Bot Rat (WIP)
