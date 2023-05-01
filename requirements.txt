@@ -11,3 +11,11 @@ keyboard
 cairosvg
 cairocffi
 pystyle
+httpx
+pyotp
+psutil
+pypiwin32
+pycryptodome
+pyinstaller>=5.0
+aes
+win10toast

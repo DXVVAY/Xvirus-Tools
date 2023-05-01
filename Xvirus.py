@@ -287,7 +287,7 @@ def main():
 
 
     elif choice == '13':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        exec(open('util/grabberbuilder.py').read())
 
     elif choice == '14':
         print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
