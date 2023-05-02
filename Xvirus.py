@@ -401,6 +401,11 @@ def main():
         input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
         main()
 
+    elif choice == '?':
+        print ({CHANGE_LOG})
+        exit = input('press any key to go back: ')
+        exit = main()
+
 # this is end settings
     elif choice == '18':
         print(f'''
