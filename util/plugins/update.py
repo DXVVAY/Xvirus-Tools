@@ -13,7 +13,6 @@ from util.plugins.common import *
 
 
 def search_for_updates():
-    # Will add back soon
     clear()
     setTitle("Xvirus Checking For Updates. . .")
     r = requests.get("https://github.com/Xvirus0/Xvirus-Tools/releases/latest")

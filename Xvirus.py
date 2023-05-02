@@ -402,9 +402,8 @@ def main():
         main()
 
     elif choice == '?':
-        print ({CHANGE_LOG})
-        exit = input('press any key to go back: ')
-        exit = main()
+        input ({CHANGE_LOG})
+        main()
 
 # this is end settings
     elif choice == '18':

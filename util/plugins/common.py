@@ -583,7 +583,7 @@ def banner(theme=None):
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> Made by Xvirus                    ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
+> Made by Xvirus™                   ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog'''.replace('█', f'{Fore.WHITE}█{Fore.GREEN}') + f'''   
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RESET}
 {Fore.RESET}[{Fore.GREEN}1{Fore.RESET}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RESET}[{Fore.GREEN}10{Fore.RESET}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RESET}[{Fore.GREEN}19{Fore.RESET}]{Fore.LIGHTBLACK_EX} Token Disabler (WIP)
@@ -611,7 +611,7 @@ def bannerTheme(type1, type2):
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> Made by Xvirus                    ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
+> Made by Xvirus™                   ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog''')+type2('''  
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler (WIP)
