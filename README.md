@@ -19,9 +19,6 @@
   </a>
     <a href="https://github.com/Xvirus0/">
     <img src="https://img.shields.io/tokei/lines/github/Xvirus0/Xvirus-Tools">
-  </a>
-     <a href="https://github.com/Xvirus0/">
-    <img src="https://img.shields.io/badge/version-{THIS_VERSION}-blue">
 </p>
 
 Welcome to Xvirus's repo!
