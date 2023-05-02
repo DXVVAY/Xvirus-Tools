@@ -1,8 +1,7 @@
 import discord
 import asyncio
 
-client = discord.Client()
-token = "DISCORD_TOKEN" 
+client = discord.Client() 
 prefix = "#"
 command = "gl"
 leaveMessage = "Bye!"
