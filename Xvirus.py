@@ -383,8 +383,10 @@ def main():
         exec(open('util/webhookdeleter.py').read())
 
     elif choice == '23':
-        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
-        main()
+        token = input(
+        f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+        validateToken(token)
+        util.groupleaver(token)
 
     elif choice == '24':
         input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
