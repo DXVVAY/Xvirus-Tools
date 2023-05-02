@@ -16,7 +16,6 @@ import util.webhookspammer
 import util.massdm
 import util.tokendisable
 import util.vanitysniper
-import util.groupleaver
 
 System.Size(120, 30)
 
@@ -383,10 +382,8 @@ def main():
         exec(open('util/webhookdeleter.py').read())
 
     elif choice == '23':
-        token = input(
-        f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
-        validateToken(token)
-        util.groupleaver(token)
+        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        main()
 
     elif choice == '24':
         input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
