@@ -19,3 +19,5 @@ pycryptodome
 pyinstaller>=5.0
 aes
 win10toast
+discord
+asyncio
