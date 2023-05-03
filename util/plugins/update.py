@@ -61,14 +61,13 @@ def search_for_updates():
                     filezip.extractall()
                 os.remove("Xvirus-Tools.zip")
                 cwd = os.getcwd() + "\\Xvirus-Tools\\"
-                shutil.copyfile(cwd + "Changelog.md", "Changelog.md")
+                shutil.copyfile(cwd + "README.md", "README.md")
                 try:
                     shutil.copyfile(
                         cwd + os.path.basename(sys.argv[0]), "Xvirus-Tools.exe"
                     )
                 except Exception:
                     pass
-                shutil.copyfile(cwd + "README.md", "README.md")
                 shutil.rmtree("Xvirus-Tools")
                 setTitle("Xvirus Update Complete!")
                 print(f"{Fore.GREEN}Update Successfully Finished!")

