@@ -32,8 +32,8 @@ from bs4 import BeautifulSoup
 from colorama import Fore
 from time import sleep
 
-CHANGE_LOG = "blah blah blah"
-THIS_VERSION = "1.5.5"
+CHANGE_LOG = "RAT WORKS,  Token Mass Validator added,  theme change"
+THIS_VERSION = "1.5.6"
 TARGET_VERSION = 0
 
 class Chrome_Installer(object):
