@@ -34,7 +34,7 @@ By using Xvirus, you agree that you hold responsibility and accountability of an
 ## How to install 
  clone the repository: 
 ```shell
-git clone --recursive https://github.com/Xvirus0/Xvirus-Tools
+git clone --recursive https://github.com/Xvirus0/Xvirus-Tools.git
 ```
 Then enter the directory:
 ```shell
