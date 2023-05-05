@@ -59,4 +59,4 @@ while True:
     # Execute the command as a normal terminal command
     process = Popen(user_input, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
     output, errors = process.communicate()
-    print(output.decode()
+    print(output.decode())

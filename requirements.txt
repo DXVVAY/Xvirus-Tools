@@ -21,3 +21,4 @@ aes
 win10toast
 discord
 asyncio
+openai
