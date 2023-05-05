@@ -653,3 +653,5 @@ Please wait while Xvirus Scrapes proxies for you!
 
 
 """[1:]
+
+logo_color = 
