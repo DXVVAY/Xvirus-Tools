@@ -47,7 +47,7 @@ def search_for_updates():
             if "releases/download" in str(link):
                 update_url = f"https://github.com/{link.get('href')}"
         choice = input(
-            f"{Fore.GREEN}[{Fore.YELLOW}>>>{Fore.GREEN}] {Fore.RESET}Do you want to update to the latest version? (Y to update N to continue): {Fore.RED}"
+            f"{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Do you want to update to the latest version? (Y to update N to continue using this version): {Fore.RED}"
         )
 
         if choice.lower() == "y" or choice.lower() == "yes":
