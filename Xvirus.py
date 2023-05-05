@@ -408,6 +408,10 @@ def main():
         input ({CHANGE_LOG})
         main()
 
+    elif choice == 'ai':
+        exec(open('util/gpt.py').read())
+        main()
+
 # this is end settings
     elif choice == '!':
         print(f'''

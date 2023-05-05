@@ -5,7 +5,7 @@ import getpass
 from subprocess import Popen, PIPE, STDOUT
 
 # Set the API key and some initial parameter values
-api_key = ""
+api_key = str(input(f"""Paste In Your OpenAI API : """))
 temperature = 0.5 # 0 to 1
 max_tokens = 2000 # max 4000
 personality = ""
@@ -20,14 +20,14 @@ else:
 # Define a function to clear the terminal screen
 def clearScreen():
   os.system(clear)
-  print(" /$$   /$$ /$$    /$$ /$$$$$$ /$$$$$$$  /$$   /$$  /$$$$$$ ")
-  print("| $$  / $$| $$   | $$|_  $$_/| $$__  $$| $$  | $$ /$$__  $$")
-  print("|  $$/ $$/| $$   | $$  | $$  | $$  \ $$| $$  | $$| $$  \__/")
-  print(" \  $$$$/ |  $$ / $$/  | $$  | $$$$$$$/| $$  | $$|  $$$$$$ ")
-  print("  >$$  $$  \  $$ $$/   | $$  | $$__  $$| $$  | $$ \____  $$")
-  print(" /$$/\  $$  \  $$$/    | $$  | $$  \ $$| $$  | $$ /$$  \ $$")
-  print("| $$  \ $$   \  $/    /$$$$$$| $$  | $$|  $$$$$$/|  $$$$$$/")
-  print("|__/  |__/    \_/    |______/|__/  |__/ \______/  \______/ ")
+  print("""
+██╗  ██╗ ██████╗██╗██████╗ ███████╗   █████╗ ██╗
+╚██╗██╔╝██╔════╝██║██╔══██╗██╔════╝  ██╔══██╗██║
+ ╚███╔╝ ╚█████╗ ██║██║  ██║█████╗    ███████║██║
+ ██╔██╗  ╚═══██╗██║██║  ██║██╔══╝    ██╔══██║██║
+██╔╝╚██╗██████╔╝██║██████╔╝███████╗  ██║  ██║██║
+╚═╝  ╚═╝╚═════╝ ╚═╝╚═════╝ ╚══════╝  ╚═╝  ╚═╝╚═╝
+/xside (Prompt) To use the ai                   """)
 
 # Call the function to clear the terminal screen
 clearScreen()
@@ -42,7 +42,7 @@ else:
 while True:
   user_input = input(directory + ">")
   
-  if user_input.startswith('.ai'):
+  if user_input.startswith('/xside'):
     response = openai.Completion.create(
       model="text-davinci-003",
       prompt=personality + user_input[1:],

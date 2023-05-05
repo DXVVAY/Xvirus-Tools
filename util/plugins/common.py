@@ -585,8 +585,8 @@ def banner(theme=None):
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > Made by Xvirus™                   ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
-> [?] {THIS_VERSION} Changelog
-> [!] Settings '''.replace('█', f'{Fore.WHITE}█{Fore.RED}') + f'''   
+> [?] {THIS_VERSION} Changelog                                                                    
+> [!] Settings                                                                                   (WIP) Xside gpt [ai] <'''.replace('█', f'{Fore.WHITE}█{Fore.RED}') + f'''   
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RED}
 {Fore.RED}[{Fore.RED}1{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler (WIP)
 {Fore.RED}[{Fore.RED}2{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Bot Rat 
@@ -615,7 +615,7 @@ def bannerTheme(type1, type2):
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > Made by Xvirus™                   ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog
-> [!] Settings ''')+type2('''  
+> [!] Settings                                                                                   (WIP) Xside gpt [ai] <''')+type2('''  
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [1] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler (WIP)
 [2] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Bot Rat 
@@ -654,4 +654,3 @@ Please wait while Xvirus Scrapes proxies for you!
 
 """[1:]
 
-logo_color = 
