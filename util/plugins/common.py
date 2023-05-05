@@ -32,7 +32,7 @@ from bs4 import BeautifulSoup
 from colorama import Fore
 from time import sleep
 
-CHANGE_LOG = "RAT WORKS,  Token Mass Validator added,  theme change"
+CHANGE_LOG = """RAT WORKS,  Token Mass Validator added,  theme change"""
 THIS_VERSION = "1.5.6"
 TARGET_VERSION = 0
 
