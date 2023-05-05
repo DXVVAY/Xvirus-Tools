@@ -418,11 +418,12 @@ def main():
     {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Theme changer
     {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Amount of threads
     {Fore.RESET}[{Fore.RED}3{Fore.RESET}] Cancel key
-    {Fore.RESET}[{Fore.RED}4{Fore.RESET}] {Fore.RED}Exit...    
+    {Fore.RESET}[{Fore.RED}4{Fore.RESET}] Startup Logo Color
+    {Fore.RESET}[{Fore.RED}5{Fore.RESET}] {Fore.RED}Exit...    
                         ''')
         secondchoice = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Setting: {Fore.RED}')
-        if secondchoice not in ["1", "2", "3", "4"]:
+        if secondchoice not in ["1", "2", "3", "4", "5"]:
             print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Setting')
             sleep(1)
             main()
@@ -496,7 +497,14 @@ ctrl, shift, enter, esc, windows, left shift, right shift, left ctrl, right ctrl
             sleep(0.5)
             main()
 
-        elif secondchoice == "4":
+        elif secondchoice == "4" :
+            logocolorchanger()
+            main()
+
+
+            
+
+        elif secondchoice == "5":
             setTitle("Exiting. . .")
             choice = input(
                 f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Are you sure you want to exit? (Y to confirm): {Fore.RED}')

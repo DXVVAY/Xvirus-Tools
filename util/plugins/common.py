@@ -349,8 +349,8 @@ def proxy_scrape():
     #create temp dir
     temp = os.getenv("temp")+"\\xvirus_proxies"
     #banner
-    Anime.Fade((logo), Colors.red_to_black, Colorate.Vertical, time=5)
-
+    Anime.Fade((logo), (COLOR_FADE), Colorate.Vertical, time=5)
+    
     def fetchProxies(url, custom_regex):
         global proxylist
         try:
@@ -653,4 +653,30 @@ Please wait while Xvirus Scrapes proxies for you!
 
 
 """[1:]
+def colorlogo():
+    print (f'''       
+██╗  ██╗ All Colors:
+╚██╗██╔╝ blue, black, cyan,
+ ╚███╔╝  green, purple, red and white
+ ██╔██╗
+██╔╝╚██╗    
+╚═╝  ╚═╝ Template: Colors.COLOR_to_COLOR
 
+
+         Example: Colors.black_to_red''')
+
+
+
+def logocolorchanger():
+            colorlogo()
+            try:
+                logocolor = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Input The Color You Desire: {Fore.RED}')
+                sleep(1.5)
+                colorlogo()
+            finally:
+                COLOR_FADE = logocolor
+            print_slow(f"{Fore.RED}Color set to {Fore.RED}{COLOR_FADE}")
+            sleep(0.5)
+
+
+COLOR_FADE = Colors.red_to_black
