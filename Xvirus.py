@@ -21,6 +21,77 @@ System.Size(120, 30)
 
 threads = 3
 cancel_key = "ctrl+x"
+current_dir = os.path.dirname(os.path.abspath(__file__))
+XCOLOR_FADE = Colors.blue_to_purple
+                                                                            #Xproxy define
+###############################################################################################################################################################################################################
+def xproxy_scrape(): 
+    proxieslog = []
+    setTitle("Scraping Proxies")
+    #start timer
+    startTime = time.time()
+    #save in same file
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    temp = current_dir + "\\xproxy_proxies"
+    #banner
+    Anime.Fade((Xlogo), (XCOLOR_FADE), Colorate.Vertical, time=5)
+    
+    def fetchXproxies(url, custom_regex):
+        global proxylist
+        try:
+            proxylist = requests.get(url, timeout=5).text
+        except Exception:
+            pass
+        finally:
+            proxylist = proxylist.replace('null', '')
+        #get the proxies from all the sites with the custom regex
+        custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
+        custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
+        for proxy in re.findall(re.compile(custom_regex), proxylist):
+            proxieslog.append(f"{proxy[0]}:{proxy[1]}")
+
+    #all urls
+    proxysources = [
+        ["http://spys.me/proxy.txt","%ip%:%port% "],
+        ["http://www.httptunnel.ge/ProxyListForFree.aspx"," target=\"_new\">%ip%:%port%</a>"],
+        ["https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.json", "\"ip\":\"%ip%\",\"port\":\"%port%\","],
+        ["https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list", '"host": "%ip%".*?"country": "(.*?){2}",.*?"port": %port%'],
+        ["https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list.txt", '%ip%:%port% (.*?){2}-.-S \\+'],
+        ["https://raw.githubusercontent.com/opsxcq/proxy-list/master/list.txt", '%ip%", "type": "http", "port": %port%'],
+        ["https://www.us-proxy.org/", "<tr><td>%ip%<\\/td><td>%port%<\\/td><td>(.*?){2}<\\/td><td class='hm'>.*?<\\/td><td>.*?<\\/td><td class='hm'>.*?<\\/td><td class='hx'>(.*?)<\\/td><td class='hm'>.*?<\\/td><\\/tr>"],
+        ["https://free-proxy-list.net/", "<tr><td>%ip%<\\/td><td>%port%<\\/td><td>(.*?){2}<\\/td><td class='hm'>.*?<\\/td><td>.*?<\\/td><td class='hm'>.*?<\\/td><td class='hx'>(.*?)<\\/td><td class='hm'>.*?<\\/td><\\/tr>"],
+        ["https://www.sslproxies.org/", "<tr><td>%ip%<\\/td><td>%port%<\\/td><td>(.*?){2}<\\/td><td class='hm'>.*?<\\/td><td>.*?<\\/td><td class='hm'>.*?<\\/td><td class='hx'>(.*?)<\\/td><td class='hm'>.*?<\\/td><\\/tr>"],
+        ["https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=6000&country=all&ssl=yes&anonymity=all", "%ip%:%port%"],
+        ["https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt", "%ip%:%port%"],
+        ["https://raw.githubusercontent.com/shiftytr/proxy-list/master/proxy.txt", "%ip%:%port%"],
+        ["https://proxylist.icu/proxy/", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/1", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/2", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/3", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/4", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/5", "<td>%ip%:%port%</td><td>http<"],
+        ["https://www.hide-my-ip.com/proxylist.shtml", '"i":"%ip%","p":"%port%",'],
+        ["https://raw.githubusercontent.com/scidam/proxy-list/master/proxy.json", '"ip": "%ip%",\n.*?"port": "%port%",']
+    ]
+    threads = [] 
+    for url in proxysources:
+        #send them out in threads
+        t = threading.Thread(target=fetchXproxies, args=(url[0], url[1]))
+        threads.append(t)
+        t.start()
+    for t in threads:
+        t.join()
+
+    proxies = list(set(proxieslog))
+    with open(temp + ".json", "w") as f:
+        json.dump(proxies, f, indent=4)
+    #get the time it took to scrape
+    execution_time = (time.time() - startTime)
+    print_slow(f"{Fore.GREEN}Done! Scraped And Saved As A JSON File.{Fore.MAGENTA}{len(proxies): >5}{Fore.GREEN} in total => {Fore.RED}{temp}{Fore.RESET} | {execution_time}ms")
+    print_slow(f"\nExiting in 6 seconds...")
+    time.sleep(6)
+    main()
+################################################################################################################################################################################################################
 
 def main():
     setTitle(f"Xvirus {THIS_VERSION}")
@@ -264,9 +335,9 @@ def main():
 
         if secondchoice == "3":
             print(f'''
-{Fore.RESET}[{Fore.MAGENTA}1{Fore.RESET}]{Fore.MAGENTA} HypeSquad Bravery
-{Fore.RESET}[{Fore.RED}2{Fore.RESET}]{Fore.LIGHTRED_EX} HypeSquad Brilliance
-{Fore.RESET}[{Fore.LIGHTGREEN_EX}3{Fore.RESET}]{Fore.LIGHTGREEN_EX} HypeSquad Balance
+        {Fore.RESET}[{Fore.MAGENTA}1{Fore.RESET}]{Fore.MAGENTA} HypeSquad Bravery
+        {Fore.RESET}[{Fore.RED}2{Fore.RESET}]{Fore.LIGHTRED_EX} HypeSquad Brilliance
+        {Fore.RESET}[{Fore.LIGHTGREEN_EX}3{Fore.RESET}]{Fore.LIGHTGREEN_EX} HypeSquad Balance
                         ''')
             thirdchoice = input(
                 f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Hypesquad: {Fore.RED}')
@@ -385,8 +456,7 @@ def main():
         exec(open('util/webhookdeleter.py').read())
 
     elif choice == '23':
-        input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
-        main()
+        xproxy_scrape()
 
     elif choice == '24':
         input(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
@@ -412,7 +482,7 @@ def main():
         exec(open('util/gpt.py').read())
         main()
 
-# this is end settings
+    # this is end settings
     elif choice == '!':
         print(f'''
     {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Theme changer
@@ -429,12 +499,12 @@ def main():
             main()
         if secondchoice == "1":
             print(f"""
-{Fore.GREEN}Xeme: 1
-{Fore.LIGHTBLACK_EX}Dark: 2
-{Fore.RED}Fire: 3
-{Fore.BLUE}Water: 4
-{Fore.CYAN}N{Fore.MAGENTA}e{Fore.CYAN}o{Fore.MAGENTA}n{Fore.CYAN}:{Fore.MAGENTA} 5
-""")
+    {Fore.GREEN}Xeme: 1
+    {Fore.LIGHTBLACK_EX}Dark: 2
+    {Fore.RED}Fire: 3
+    {Fore.BLUE}Water: 4
+    {Fore.CYAN}N{Fore.MAGENTA}e{Fore.CYAN}o{Fore.MAGENTA}n{Fore.CYAN}:{Fore.MAGENTA} 5
+    """)
             themechoice = input(
                 f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}theme: {Fore.RED}')
             if themechoice == "1":
@@ -484,12 +554,12 @@ def main():
             print("\n","Info".center(30, "-"))
             print(f"{Fore.CYAN}Current cancel key: {cancel_key}")
             print(f"""{Fore.BLUE}If you want to have ctrl + <key> you need to type out ctrl+<key> | DON'T literally press ctrl + <key>
-{Fore.GREEN}Example: shift+Q
+    {Fore.GREEN}Example: shift+Q
 
-{Fore.RED}You can have other modifiers instead of ctrl ⇣
-{Fore.YELLOW}All keyboard modifiers:{Fore.RESET}
-ctrl, shift, enter, esc, windows, left shift, right shift, left ctrl, right ctrl, alt gr, left alt, right alt
-""")
+    {Fore.RED}You can have other modifiers instead of ctrl ⇣
+    {Fore.YELLOW}All keyboard modifiers:{Fore.RESET}
+    ctrl, shift, enter, esc, windows, left shift, right shift, left ctrl, right ctrl, alt gr, left alt, right alt
+    """)
             sleep(1.5)
             key = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Key: {Fore.RED}')
             cancel_key = key

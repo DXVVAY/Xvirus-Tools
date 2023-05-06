@@ -592,7 +592,7 @@ def banner(theme=None):
 {Fore.RED}[{Fore.RED}2{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Bot Rat 
 {Fore.RED}[{Fore.RED}3{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RED}[{Fore.RED}12{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force      |{Fore.RED}[{Fore.RED}21{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper (WIP)
 {Fore.RED}[{Fore.RED}4{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RED}[{Fore.RED}13{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber          |{Fore.RED}[{Fore.RED}22{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Deleter
-{Fore.RED}[{Fore.RED}5{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber (WIP)  |{Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}5{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber (WIP)  |{Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Proxy Scraper
 {Fore.RED}[{Fore.RED}6{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                                     |{Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report            |{Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
 {Fore.RED}[{Fore.RED}7{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode                         |{Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer      |{Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
 {Fore.RED}[{Fore.RED}8{Fore.RED}]{Fore.LIGHTBLACK_EX} Get information from a targetted account    |{Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer      |{Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
@@ -621,7 +621,7 @@ def bannerTheme(type1, type2):
 [2] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Bot Rat 
 [3] Delete and leave all servers                |[12] Token Brute-Force             |[21] Vanity Sniper (WIP)
 [4] Spam Create New servers                     |[13] Token Grabber                 |[22] Webhook Deleter
-[5] Dm Deleter                                  |[14] QR Code grabber (WIP)         |[23] [Coming Soon]
+[5] Dm Deleter                                  |[14] QR Code grabber (WIP)         |[23] Proxy Scraper
 [6] Mass Dm                                     |[15] Mass Report                   |[24] [Coming Soon]
 [7] Enable Seizure Mode                         |[16] GroupChat Spammer             |[25] [Coming Soon]
 [8] Get information from a targetted account    |[17] Webhook Destroyer             |[26] [Coming Soon]
@@ -665,7 +665,38 @@ def colorlogo():
 
          Example: Colors.black_to_red''')
 
+Xlogo = r"""
+Please wait while Xvirus Scrapes proxies for you!
 
+
+
+
+
+
+
+
+
+
+
+                                                        ██╗  ██╗
+                                                        ╚██╗██╔╝
+                                                         ╚███╔╝ 
+                                                         ██╔██╗ 
+                                                        ██╔╝╚██╗
+                                                        ╚═╝  ╚═╝
+
+
+
+
+
+
+
+
+
+
+
+All the scraped proxies will be saved in xproxy_proxies.json
+"""[1:]
 
 def logocolorchanger():
             colorlogo()
