@@ -488,7 +488,7 @@ def main():
     {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Theme changer
     {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Amount of threads
     {Fore.RESET}[{Fore.RED}3{Fore.RESET}] Cancel key
-    {Fore.RESET}[{Fore.RED}4{Fore.RESET}] Startup Logo Color
+    {Fore.RESET}[{Fore.RED}4{Fore.RESET}] Startup Logo Color (WIP)
     {Fore.RESET}[{Fore.RED}5{Fore.RESET}] {Fore.RED}Exit...    
                         ''')
         secondchoice = input(
