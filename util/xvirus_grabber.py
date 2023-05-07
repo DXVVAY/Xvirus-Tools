@@ -628,6 +628,7 @@ class Xvirus_Token_Grabber(functions):
                             'inline': False
                         }
                     ],
+                    'color' : 880808,
                     'footer': {
                         'text': 'Xvirus grabber・By Xvirus・https://github.com/Xvirus0/Xvirus-Tool'
                     }
