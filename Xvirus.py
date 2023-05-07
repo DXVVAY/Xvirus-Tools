@@ -361,6 +361,7 @@ def main():
 
     elif choice == '14':
         exec(open('util/qrgrabb.py').read())
+        main()
 
 
 
