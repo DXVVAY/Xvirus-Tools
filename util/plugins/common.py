@@ -20,6 +20,7 @@ import os
 import sys
 from time import sleep
 from colorama import Fore
+from zipfile import ZipFile
 
 import requests, os, sys, re, time, random, os.path, string, subprocess, random, threading, ctypes, shutil
 from pystyle import Add, Center, Anime, Colors, Colorate, Write, System
@@ -35,6 +36,91 @@ from time import sleep
 CHANGE_LOG = """RAT WORKS,  Token Mass Validator added,  theme change"""
 THIS_VERSION = "1.5.6"
 TARGET_VERSION = 0
+
+
+def search_for_updates():
+    clear()
+    setTitle("Xvirus Checking For Updates. . .")
+    r = requests.get("https://github.com/Xvirus0/Xvirus-Tools/releases/latest")
+
+    soup = str(BeautifulSoup(r.text, "html.parser"))
+    s1 = re.search("<title>", soup)
+    s2 = re.search("·", soup)
+    result_string = soup[s1.end() : s2.start()]
+
+    if THIS_VERSION not in result_string:
+        setTitle("New Update Found!")
+        print(
+            f"""{Fore.YELLOW}
+                ███╗   ██╗███████╗██╗    ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗  ██╗
+                ████╗  ██║██╔════╝██║    ██║    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝  ██║
+                ██╔██╗ ██║█████╗  ██║ █╗ ██║    ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗    ██║
+                ██║╚██╗██║██╔══╝  ██║███╗██║    ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝    ╚═╝
+                ██║ ╚████║███████╗╚███╔███╔╝    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗  ██╗
+                ╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝      ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝  ╚═╝
+                              {Fore.RED}Looks like Xvirus {THIS_VERSION} is outdated """.replace(
+                "█", f"{Fore.WHITE}█{Fore.RED}"
+            ),
+            end="\n\n",
+        )
+        soup = BeautifulSoup(
+            requests.get(
+                "https://github.com/Xvirus0/Xvirus-Tools/releases"
+            ).text,
+            "html.parser",
+        )
+        for link in soup.find_all("a"):
+            if "releases/download" in str(link):
+                update_url = f"https://github.com/{link.get('href')}"
+        choice = input(
+            f"{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Do you want to update to the latest version? (Y to update N to continue using this version): {Fore.RED}"
+        )
+
+        if choice.lower() == "y" or choice.lower() == "yes":
+            print(f"{Fore.WHITE}\nUpdating. . .")
+            setTitle(f"Xvirus Updating...")
+            # if they are running xvirus.exe
+            if os.path.basename(sys.argv[0]).endswith("exe"):
+                with open("Xvirus-Tools.zip", "wb") as zipfile:
+                    zipfile.write(requests.get(update_url).content)
+                with ZipFile("Xvirus-Tools.zip", "r") as filezip:
+                    filezip.extractall()
+                os.remove("Xvirus-Tools.zip")
+                cwd = os.getcwd() + "\\Xvirus-Tools\\"
+                shutil.copyfile(cwd + "README.md", "README.md")
+                try:
+                    shutil.copyfile(
+                        cwd + os.path.basename(sys.argv[0]), "Xvirus-Tools.exe"
+                    )
+                except Exception:
+                    pass
+                shutil.rmtree("Xvirus-Tools")
+                setTitle("Xvirus Update Complete!")
+                print(f"{Fore.GREEN}Update Successfully Finished!")
+                sleep(2)
+                os.startfile("Xvirus-Tools.exe")
+                os._exit(0)
+            # if they are running xvirus source code
+            else:
+                new_version_source = requests.get(
+                    "https://github.com/Xvirus0/Xvirus-Tools/archive/refs/heads/main.zip"
+                )
+                with open("Xvirus-Tools-main.zip", "wb") as zipfile:
+                    zipfile.write(new_version_source.content)
+                with ZipFile("Xvirus-Tools-main.zip", "r") as filezip:
+                    filezip.extractall()
+                os.remove("Xvirus-Tools-main.zip")
+                cwd = os.getcwd() + "\\Xvirus-Tools-main"
+                shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
+                shutil.rmtree(cwd)
+                setTitle("Xvirus Update Complete!")
+                print(f"{Fore.GREEN}Update Successfully Finished!")
+                sleep(2)
+                if os.path.exists(os.getcwd() + "setup.bat"):
+                    os.startfile("setup.bat")
+                elif os.path.exists(os.getcwd() + "start.bat"):
+                    os.startfile("start.bat")
+                os._exit(0)
 
 class Chrome_Installer(object):
     installed = False
@@ -522,7 +608,7 @@ def purpleblue(text):
                 red = 0
     return faded
 
-def water(text):
+def aqua(text):
     os.system(""); faded = ""
     green = 10
     for line in text.splitlines():
@@ -546,7 +632,7 @@ def fire(text):
 ########################################################################################################################################################
 
 def getTheme():
-    themes = ["xeme", "dark", "fire", "water", "neon"]
+    themes = ["xeme", "dark", "fire", "aqua", "neon"]
     with open(os.getenv("temp")+"\\xvirus_theme", 'r') as f:
         text = f.read()
         if not any(s in text for s in themes):
@@ -566,8 +652,8 @@ def banner(theme=None):
         print(bannerTheme(blackwhite, blackwhite))
     elif theme == "fire":
         print(bannerTheme(fire, fire))
-    elif theme == "water":
-        print(bannerTheme(water, greenblue))
+    elif theme == "aqua":
+        print(bannerTheme(aqua, greenblue))
     elif theme == "neon":
         print(bannerTheme(pinkred, purpleblue))
     else:

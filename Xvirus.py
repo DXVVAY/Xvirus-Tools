@@ -104,8 +104,8 @@ def main():
         banner("dark")
     elif getTheme() == "fire":
         banner("fire")
-    elif getTheme() == "water":
-        banner("water")
+    elif getTheme() == "aqua":
+        banner("aqua")
     elif getTheme() == "neon":
         banner("neon")
 
@@ -489,11 +489,11 @@ def main():
     # this is end settings
     elif choice == '!':
         print(f'''
-    {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Theme changer
-    {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Amount of threads
-    {Fore.RESET}[{Fore.RED}3{Fore.RESET}] Cancel key
-    {Fore.RESET}[{Fore.RED}4{Fore.RESET}] Startup Logo Color (WIP)
-    {Fore.RESET}[{Fore.RED}5{Fore.RESET}] {Fore.RED}Exit...    
+    {Fore.BLUE}[{Fore.RED}1{Fore.BLUE}] Theme changer
+    {Fore.BLUE}[{Fore.RED}2{Fore.BLUE}] Amount of threads
+    {Fore.BLUE}[{Fore.RED}3{Fore.BLUE}] Cancel key
+    {Fore.BLUE}[{Fore.RED}4{Fore.BLUE}] Startup Logo Color (WIP)
+    {Fore.BLUE}[{Fore.RED}5{Fore.BLUE}] {Fore.RED}Exit...    
                         ''')
         secondchoice = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Setting: {Fore.RED}')
@@ -503,10 +503,10 @@ def main():
             main()
         if secondchoice == "1":
             print(f"""
-    {Fore.GREEN}Xeme: 1
+    {Fore.RED}Xeme: 1
     {Fore.LIGHTBLACK_EX}Dark: 2
-    {Fore.RED}Fire: 3
-    {Fore.BLUE}Water: 4
+    {Fore.YELLOW}Fire: 3
+    {Fore.BLUE}Aqua: 4
     {Fore.CYAN}N{Fore.MAGENTA}e{Fore.CYAN}o{Fore.MAGENTA}n{Fore.CYAN}:{Fore.MAGENTA} 5
     """)
             themechoice = input(
@@ -518,7 +518,7 @@ def main():
             elif themechoice == "3":
                 setTheme('fire')
             elif themechoice == "4":
-                setTheme('water')
+                setTheme('aqua')
             elif themechoice == "5":
                 setTheme('neon')
             else:
