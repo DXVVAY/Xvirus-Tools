@@ -33,7 +33,17 @@ from bs4 import BeautifulSoup
 from colorama import Fore
 from time import sleep
 
-CHANGE_LOG = """RAT WORKS,  Token Mass Validator added,  theme change"""
+CHANGE_LOG = """
+
+1. Fixed some spelling stuff
+2. Added a gpt option (ai) to use (Thanks to Benajamin)
+3. Startup logo color changer (WIP)
+4. Extrenal proxy scraper that saved porxies as a JSON file
+5. Chnaged water theme to Aqua
+6. Fixed Qr code grabber
+7. 
+
+"""
 THIS_VERSION = "1.5.6"
 TARGET_VERSION = 0
 
