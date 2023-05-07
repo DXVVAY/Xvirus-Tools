@@ -41,7 +41,7 @@ CHANGE_LOG = """
 4. Extrenal proxy scraper that saved porxies as a JSON file
 5. Chnaged water theme to Aqua
 6. Fixed Qr code grabber
-7. 
+7. Moving auto update for a smoother performance
 
 """
 THIS_VERSION = "1.5.6"
