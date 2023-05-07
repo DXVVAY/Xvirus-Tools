@@ -480,7 +480,7 @@ def main():
         main()
 
     elif choice == '?':
-        input ({CHANGE_LOG})
+        CHANGE_LOG()
         main()
 
     elif choice == 'ai':

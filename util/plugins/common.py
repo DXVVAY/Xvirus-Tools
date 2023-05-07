@@ -33,17 +33,18 @@ from bs4 import BeautifulSoup
 from colorama import Fore
 from time import sleep
 
-CHANGE_LOG = """
+def CHANGE_LOG():
+    input(f'''
+    1. Fixed some spelling stuff
+    2. Added a gpt option (ai) to use (Thanks to Benajamin)
+    3. Startup logo color changer (WIP)
+    4. Extrenal proxy scraper that saved porxies as a JSON file
+    5. Chnaged water theme to Aqua
+    6. Fixed Qr code grabber
+    7. Moving auto update for a smoother performance''')
 
-1. Fixed some spelling stuff
-2. Added a gpt option (ai) to use (Thanks to Benajamin)
-3. Startup logo color changer (WIP)
-4. Extrenal proxy scraper that saved porxies as a JSON file
-5. Chnaged water theme to Aqua
-6. Fixed Qr code grabber
-7. Moving auto update for a smoother performance
 
-"""
+
 THIS_VERSION = "1.5.7"
 TARGET_VERSION = 0
 
