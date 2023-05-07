@@ -44,7 +44,7 @@ CHANGE_LOG = """
 7. Moving auto update for a smoother performance
 
 """
-THIS_VERSION = "1.5.6"
+THIS_VERSION = "1.5.7"
 TARGET_VERSION = 0
 
 
