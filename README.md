@@ -12,7 +12,7 @@
     <img src="https://img.shields.io/badge/covarage-70%25-yellow">
   </a>
   <a href="https://github.com/Xvirus0/">
-    <img src="https://img.shields.io/github/repo-size/Xvirus0/Xvirus_Tools.svg?label=Repo%20size&style=flat-square">
+    <img src="https://img.shields.io/github/repo-size/Xvirus0/Xvirus-Tools.svg?label=Repo%20size&style=flat-square">
   </a>
   <a href="https://github.com/Xvirus0/">
     <img src="https://gpvc.arturio.dev/xvirus0">
