@@ -24,6 +24,8 @@
 Welcome to Xvirus's repo!
 My goal is to show how fragile and insecure the Discord API is, and some other cool tools.
 
+**NOTE:** Xvirus is not finished yet! You can expect bugs, crashes, and non-working functions. Please make an issue if you find a bug!
+ㅤ
 ## Disclaimer
 
 |Xvirus was made for Educational purposes|
