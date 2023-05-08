@@ -792,7 +792,7 @@ Please wait while Xvirus Scrapes proxies for you!
 All the scraped proxies will be saved in xproxy_proxies.json
 """[1:]
 
-COLOR_FADE = Colors.red_to_black
+COLOR_FADE = Colors.rainbow
 def logocolorchanger():
             colorlogo()
             try:
