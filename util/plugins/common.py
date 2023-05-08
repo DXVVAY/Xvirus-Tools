@@ -35,16 +35,13 @@ from time import sleep
 
 def CHANGE_LOG():
     input(f'''
-    1. Fixed some spelling stuff
-    2. Added a gpt option (ai) to use (Thanks to Benajamin)
-    3. Startup logo color changer (WIP)
-    4. Extrenal proxy scraper that saved porxies as a JSON file
-    5. Chnaged water theme to Aqua
-    6. Fixed Qr code grabber
-    7. Moving auto update for a smoother performance''')
-
-
-
+    1. Token Disabler works
+    2. Added credits toggle by using "TM"
+    3. Xside GPT fully working now
+    4. Changed title numbers to 01, 02.... for a better look
+    5. Check for Wifi in start (WIP)
+    6. Better change log view''')
+    
 THIS_VERSION = "1.5.7"
 TARGET_VERSION = 0
 
