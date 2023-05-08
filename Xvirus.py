@@ -487,6 +487,11 @@ def main():
         exec(open('util/gpt.py').read())
         main()
 
+    elif choice == 'TM':
+            print(f"""                                            Development Networks:\n\n                                                GitHub:    @DXVVAY, @Xvirus0, @Cwackz(Benjamin)\n\n\n                                            Other Networks\n\n                                                Twitter:   @dexvisnotgay\n                                                Discord:   DEXV#6969, benjamin#6666\n\n\n\n""")
+            input("Press Enter To Exit!")
+            main()
+
     # this is end settings
     elif choice == '!':
         print(f'''
@@ -559,12 +564,12 @@ def main():
             print("\n","Info".center(30, "-"))
             print(f"{Fore.CYAN}Current cancel key: {cancel_key}")
             print(f"""{Fore.BLUE}If you want to have ctrl + <key> you need to type out ctrl+<key> | DON'T literally press ctrl + <key>
-    {Fore.GREEN}Example: shift+Q
+        {Fore.GREEN}Example: shift+Q
 
-    {Fore.RED}You can have other modifiers instead of ctrl ⇣
-    {Fore.YELLOW}All keyboard modifiers:{Fore.RESET}
-    ctrl, shift, enter, esc, windows, left shift, right shift, left ctrl, right ctrl, alt gr, left alt, right alt
-    """)
+        {Fore.RED}You can have other modifiers instead of ctrl ⇣
+        {Fore.YELLOW}All keyboard modifiers:{Fore.RESET}
+        ctrl, shift, enter, esc, windows, left shift, right shift, left ctrl, right ctrl, alt gr, left alt, right alt
+        """)
             sleep(1.5)
             key = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Key: {Fore.RED}')
             cancel_key = key
