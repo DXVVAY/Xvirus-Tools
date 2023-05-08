@@ -454,7 +454,7 @@ def main():
         exec(open('util/vanitysniper.py').read())
         
     elif choice == '22':
-        exec(open('util/webhookdeleter.py').read())
+        exec(open('util/dmclear.py').read())
 
     elif choice == '23':
         xproxy_scrape()
