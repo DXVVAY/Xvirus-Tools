@@ -685,15 +685,15 @@ def banner(theme=None):
 > [?] {THIS_VERSION} Changelog                                                                    
 > [!] Settings                                                                                   (WIP) Xside gpt [ai] <'''.replace('█', f'{Fore.WHITE}█{Fore.RED}') + f'''   
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RED}
-{Fore.RED}[{Fore.RED}1{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler (WIP)
-{Fore.RED}[{Fore.RED}2{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Bot Rat 
-{Fore.RED}[{Fore.RED}3{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RED}[{Fore.RED}12{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force      |{Fore.RED}[{Fore.RED}21{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper (WIP)
-{Fore.RED}[{Fore.RED}4{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RED}[{Fore.RED}13{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber          |{Fore.RED}[{Fore.RED}22{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Deleter
-{Fore.RED}[{Fore.RED}5{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber        |{Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Proxy Scraper
-{Fore.RED}[{Fore.RED}6{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                                     |{Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report            |{Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
-{Fore.RED}[{Fore.RED}7{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode                         |{Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer      |{Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
-{Fore.RED}[{Fore.RED}8{Fore.RED}]{Fore.LIGHTBLACK_EX} Get information from a targetted account    |{Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer      |{Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
-{Fore.RED}[{Fore.RED}9{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account                         |{Fore.RED}[{Fore.RED}18{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Validator   |{Fore.RED}[{Fore.RED}27{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler (WIP)
+{Fore.RED}[{Fore.RED}02{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Bot Rat 
+{Fore.RED}[{Fore.RED}03{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RED}[{Fore.RED}12{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force      |{Fore.RED}[{Fore.RED}21{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper (WIP)
+{Fore.RED}[{Fore.RED}04{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RED}[{Fore.RED}13{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber          |{Fore.RED}[{Fore.RED}22{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Deleter
+{Fore.RED}[{Fore.RED}05{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber        |{Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Proxy Scraper
+{Fore.RED}[{Fore.RED}06{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                                     |{Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report            |{Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}07{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode                         |{Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer      |{Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}08{Fore.RED}]{Fore.LIGHTBLACK_EX} Get information from a targetted account    |{Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer      |{Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}09{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account                         |{Fore.RED}[{Fore.RED}18{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Validator   |{Fore.RED}[{Fore.RED}27{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────''')
 
 def bannerTheme(type1, type2):
@@ -714,15 +714,15 @@ def bannerTheme(type1, type2):
 > [?] {THIS_VERSION} Changelog
 > [!] Settings                                                                                   (WIP) Xside gpt [ai] <''')+type2('''  
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-[1] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler (WIP)
-[2] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Bot Rat 
-[3] Delete and leave all servers                |[12] Token Brute-Force             |[21] Vanity Sniper (WIP)
-[4] Spam Create New servers                     |[13] Token Grabber                 |[22] Webhook Deleter
-[5] Dm Deleter                                  |[14] QR Code grabber               |[23] Proxy Scraper
-[6] Mass Dm                                     |[15] Mass Report                   |[24] [Coming Soon]
-[7] Enable Seizure Mode                         |[16] GroupChat Spammer             |[25] [Coming Soon]
-[8] Get information from a targetted account    |[17] Webhook Destroyer             |[26] [Coming Soon]
-[9] Log into an account                         |[18] Token Mass Validator          |[27] [Coming Soon]
+[01] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler (WIP)
+[02] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Bot Rat 
+[03] Delete and leave all servers                |[12] Token Brute-Force             |[21] Vanity Sniper (WIP)
+[04] Spam Create New servers                     |[13] Token Grabber                 |[22] Webhook Deleter
+[05] Dm Deleter                                  |[14] QR Code grabber               |[23] Proxy Scraper
+[06] Mass Dm                                     |[15] Mass Report                   |[24] [Coming Soon]
+[07] Enable Seizure Mode                         |[16] GroupChat Spammer             |[25] [Coming Soon]
+[08] Get information from a targetted account    |[17] Webhook Destroyer             |[26] [Coming Soon]
+[09] Log into an account                         |[18] Token Mass Validator          |[27] [Coming Soon]
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────''')
 
 logo = r"""
@@ -795,6 +795,7 @@ Please wait while Xvirus Scrapes proxies for you!
 All the scraped proxies will be saved in xproxy_proxies.json
 """[1:]
 
+COLOR_FADE = Colors.red_to_black
 def logocolorchanger():
             colorlogo()
             try:
@@ -805,6 +806,3 @@ def logocolorchanger():
                 COLOR_FADE = logocolor
             print_slow(f"{Fore.RED}Color set to {Fore.RED}{COLOR_FADE}")
             sleep(0.5)
-
-
-COLOR_FADE = Colors.red_to_black

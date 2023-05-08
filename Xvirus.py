@@ -109,7 +109,7 @@ def main():
         banner("neon")
 
     choice = input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Choice: {Fore.RED}')
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Choice: {Fore.RED}').lstrip("0")# so if stupid users use 01 it removed the 0
     #all options
     if choice == "1":
         token = input(
