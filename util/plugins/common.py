@@ -683,7 +683,7 @@ def banner(theme=None):
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™                   ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog                                                                    
-> [!] Settings                                                                                   (WIP) Xside gpt [ai] <'''.replace('█', f'{Fore.WHITE}█{Fore.RED}') + f'''   
+> [!] Settings                                                                                         Xside gpt [ai] <'''.replace('█', f'{Fore.WHITE}█{Fore.RED}') + f'''   
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RED}
 {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler
 {Fore.RED}[{Fore.RED}02{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot 
@@ -712,7 +712,7 @@ def bannerTheme(type1, type2):
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™                   ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog
-> [!] Settings                                                                                   (WIP) Xside gpt [ai] <''')+type2('''  
+> [!] Settings                                                                                         Xside gpt [ai] <''')+type2('''  
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [01] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler
 [02] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Rat Bot 
