@@ -680,18 +680,18 @@ def banner(theme=None):
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
-> [?] {THIS_VERSION} Changelog                                                                    
-> [!] Settings                                                                                         Xside gpt [ai] <'''.replace('█', f'{Fore.WHITE}█{Fore.RED}') + f'''   
+> [?] {THIS_VERSION} Changelog                                                                             See your ping [PING] <
+> [!] Settings                                                                                          Xside gpt [ai] <
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RED}
-{Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends          |{Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler
-{Fore.RED}[{Fore.RED}02{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer        |{Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot 
-{Fore.RED}[{Fore.RED}03{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RED}[{Fore.RED}12{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force      |{Fore.RED}[{Fore.RED}21{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper
-{Fore.RED}[{Fore.RED}04{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RED}[{Fore.RED}13{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber          |{Fore.RED}[{Fore.RED}22{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Clearer
-{Fore.RED}[{Fore.RED}05{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber        |{Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Proxy Scraper
-{Fore.RED}[{Fore.RED}06{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                                     |{Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report            |{Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
-{Fore.RED}[{Fore.RED}07{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode                         |{Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer      |{Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
-{Fore.RED}[{Fore.RED}08{Fore.RED}]{Fore.LIGHTBLACK_EX} Get information from a targetted account    |{Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer      |{Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
-{Fore.RED}[{Fore.RED}09{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account                         |{Fore.RED}[{Fore.RED}18{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Validator   |{Fore.RED}[{Fore.RED}27{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                 |{Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler
+{Fore.RED}[{Fore.RED}02{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer               |{Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot 
+{Fore.RED}[{Fore.RED}03{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RED}[{Fore.RED}12{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force             |{Fore.RED}[{Fore.RED}21{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper
+{Fore.RED}[{Fore.RED}04{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RED}[{Fore.RED}13{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber                 |{Fore.RED}[{Fore.RED}22{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Clearer
+{Fore.RED}[{Fore.RED}05{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber               |{Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Proxy Scraper
+{Fore.RED}[{Fore.RED}06{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                                     |{Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                   |{Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}07{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode                         |{Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer             |{Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}08{Fore.RED}]{Fore.LIGHTBLACK_EX} Get information from a targetted account    |{Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer             |{Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}09{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account                         |{Fore.RED}[{Fore.RED}18{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Validator          |{Fore.RED}[{Fore.RED}27{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────''')
 
 def bannerTheme(type1, type2):
@@ -709,7 +709,7 @@ def bannerTheme(type1, type2):
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
-> [?] {THIS_VERSION} Changelog
+> [?] {THIS_VERSION} Changelog                                                                             See your ping [PING] <
 > [!] Settings                                                                                         Xside gpt [ai] <''')+type2('''  
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [01] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler

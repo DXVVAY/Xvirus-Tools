@@ -91,7 +91,14 @@ def xproxy_scrape():
     time.sleep(6)
     main()
 ################################################################################################################################################################################################################
-
+def ping(host):
+    while True:
+        if keyboard.is_pressed(cancel_key):
+            os.system("cls" if os.name == "nt" else "clear")
+            output = subprocess.check_output(["ping", host]).decode("utf-8")
+            print(output)
+            time.sleep(0.5)
+            
 def main():
     setTitle(f"Xvirus {THIS_VERSION}")
     clear()
@@ -489,6 +496,11 @@ def main():
             print(f"""                                            Development Networks:\n\n                                                GitHub:    @DXVVAY, @Xvirus0, @Cwackz(Benjamin)\n\n\n                                            Other Networks\n\n                                                Twitter:   @dexvisnotgay\n                                                Discord:   DEXV#6969, benjamin#6666\n\n\n\n""")
             input("Press Enter To Exit!")
             main()
+    
+    elif choice == 'PING':
+        ping()
+        input("Press ENTER to continue")
+        main()
 
     # this is end settings
     elif choice == '!':
