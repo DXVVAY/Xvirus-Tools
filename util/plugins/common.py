@@ -32,6 +32,7 @@ from urllib.request import urlopen, urlretrieve
 from bs4 import BeautifulSoup
 from colorama import Fore
 from time import sleep
+import urllib.request
 
 def CHANGE_LOG():
     input(f'''
@@ -803,3 +804,26 @@ def logocolorchanger():
                 COLOR_FADE = logocolor
             print_slow(f"{Fore.RED}Color set to {Fore.RED}{COLOR_FADE}")
             sleep(0.5)
+
+
+def check_wifi_connection():
+    while True:
+        try:
+            urllib.request.urlopen('https://www.google.com')
+            break
+        except:
+            print("""
+██╗   ██╗ █████╗ ██╗   ██╗██████╗    █████╗ ██████╗ ███████╗
+╚██╗ ██╔╝██╔══██╗██║   ██║██╔══██╗  ██╔══██╗██╔══██╗██╔════╝
+ ╚████╔╝ ██║  ██║██║   ██║██████╔╝  ███████║██████╔╝█████╗  
+  ╚██╔╝  ██║  ██║██║   ██║██╔══██╗  ██╔══██║██╔══██╗██╔══╝  
+   ██║   ╚█████╔╝╚██████╔╝██║  ██║  ██║  ██║██║  ██║███████╗
+   ╚═╝    ╚════╝  ╚═════╝ ╚═╝  ╚═╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+ █████╗ ███████╗███████╗██╗     ██╗███╗  ██╗███████╗
+██╔══██╗██╔════╝██╔════╝██║     ██║████╗ ██║██╔════╝
+██║  ██║█████╗  █████╗  ██║     ██║██╔██╗██║█████╗
+██║  ██║██╔══╝  ██╔══╝  ██║     ██║██║╚████║██╔══╝
+╚█████╔╝██║     ██║     ███████╗██║██║ ╚███║███████╗
+ ╚════╝ ╚═╝     ╚═╝     ╚══════╝╚═╝╚═╝  ╚══╝╚══════╝
+Retrying In 5 Seconds!""")
+            time.sleep(5) 

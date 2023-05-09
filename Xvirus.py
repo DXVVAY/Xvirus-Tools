@@ -603,6 +603,7 @@ if __name__ == "__main__":
     
     System.Size(120, 30)
     if os.path.basename(sys.argv[0]).endswith("exe"):
+        check_wifi_connection()
         search_for_updates()
         with open(os.getenv("temp")+"\\xvirus_proxies", 'w'): pass
         if not os.path.exists(os.getenv("temp")+"\\xvirus_theme"):
@@ -619,6 +620,7 @@ if __name__ == "__main__":
         sleep(1.5)
         os._exit(0)
     else:
+        check_wifi_connection()
         search_for_updates()
         with open(os.getenv("temp")+"\\xvirus_proxies", 'w'): pass
         if not os.path.exists(os.getenv("temp")+"\\xvirus_theme"):
