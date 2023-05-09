@@ -442,10 +442,8 @@ def main():
         exec(open('util/tokenchecker.py').read())
 
     elif choice == '19':
-        token = input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
-        validateToken(token)
-        util.tokendisable.TokenDisable(token)
+        TokenDisable
+
         
     elif choice == '20':
         exec(open('util/rat.py').read())

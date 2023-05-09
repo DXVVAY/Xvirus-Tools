@@ -679,7 +679,7 @@ def banner(theme=None):
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> [TM] Made by Xvirus™                   ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
+> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog                                                                    
 > [!] Settings                                                                                         Xside gpt [ai] <'''.replace('█', f'{Fore.WHITE}█{Fore.RED}') + f'''   
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RED}
@@ -708,7 +708,7 @@ def bannerTheme(type1, type2):
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> [TM] Made by Xvirus™                   ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
+> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog
 > [!] Settings                                                                                         Xside gpt [ai] <''')+type2('''  
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -748,17 +748,6 @@ Please wait while Xvirus Scrapes proxies for you!
 
 
 """[1:]
-def colorlogo():
-    print (f'''       
-██╗  ██╗ All Colors:
-╚██╗██╔╝ blue, black, cyan,
- ╚███╔╝  green, purple, red and white
- ██╔██╗
-██╔╝╚██╗    
-╚═╝  ╚═╝ Template: Colors.COLOR_to_COLOR
-
-
-         Example: Colors.black_to_red''')
 
 Xlogo = r"""
 Please wait while Xvirus Scrapes proxies for you!
@@ -793,26 +782,40 @@ Please wait while Xvirus Scrapes proxies for you!
 All the scraped proxies will be saved in xproxy_proxies.json
 """[1:]
 
+def colorlogo():
+    print(f'''       
+██╗  ██╗ All Colors:
+╚██╗██╔╝ blue, black, cyan,
+ ╚███╔╝  green, purple, red and white
+ ██╔██╗
+██╔╝╚██╗    
+╚═╝  ╚═╝ Template: Colors.COLOR_to_COLOR
+
+
+         Example: Colors.black_to_red''')
+
+
 COLOR_FADE = Colors.rainbow
+
+dynamic_colors = ['Colors.black_to_white', 'Colors.black_to_red', 'Colors.black_to_green', 'Colors.black_to_blue', 'Colors.white_to_black', 'Colors.white_to_red', 'Colors.white_to_green', 'Colors.white_to_blue', 'Colors.red_to_black', 'Colors.red_to_white', 'Colors.red_to_yellow', 'Colors.red_to_purple', 'Colors.green_to_black', 'Colors.green_to_white', 'Colors.green_to_yellow', 'Colors.green_to_cyan', 'Colors.blue_to_black', 'Colors.blue_to_white', 'Colors.blue_to_cyan', 'Colors.blue_to_purple', 'Colors.yellow_to_red', 'Colors.yellow_to_green', 'Colors.purple_to_red', 'Colors.purple_to_blue', 'Colors.cyan_to_green', 'Colors.cyan_to_blue']
+
+
 def logocolorchanger():
-            colorlogo()
-            try:
-                logocolor = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Input The Color You Desire: {Fore.RED}')
-                sleep(1.5)
-                colorlogo()
-            finally:
-                COLOR_FADE = logocolor
-            print_slow(f"{Fore.RED}Color set to {Fore.RED}{COLOR_FADE}")
-            sleep(0.5)
-
-
-def check_wifi_connection():
+    colorlogo()
     while True:
-        try:
-            urllib.request.urlopen('https://www.google.com')
+        logocolor = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Input The Color You Desire: {Fore.RESET}')
+        if logocolor.lower() not in dynamic_colors:
+            print(f"{Fore.RED}Invalid color. Please enter a valid color")
+        else:
+            COLOR_FADE = getattr(Colors, f"{COLOR_FADE}_to_{logocolor.lower()}")
+            print_slow(f"{Fore.RED}Color set to {Fore.RESET}{logocolor}")
+            sleep(0.5)
             break
-        except:
-            print(f"""
+
+
+
+def offline():
+                print(f"""{Fore.RED}
 ██╗   ██╗ █████╗ ██╗   ██╗██████╗    █████╗ ██████╗ ███████╗
 ╚██╗ ██╔╝██╔══██╗██║   ██║██╔══██╗  ██╔══██╗██╔══██╗██╔════╝
  ╚████╔╝ ██║  ██║██║   ██║██████╔╝  ███████║██████╔╝█████╗  
@@ -824,6 +827,19 @@ def check_wifi_connection():
 ██║  ██║█████╗  █████╗  ██║     ██║██╔██╗██║█████╗    ██║
 ██║  ██║██╔══╝  ██╔══╝  ██║     ██║██║╚████║██╔══╝    ╚═╝
 ╚█████╔╝██║     ██║     ███████╗██║██║ ╚███║███████╗  ██╗
- ╚════╝ ╚═╝     ╚═╝     ╚══════╝╚═╝╚═╝  ╚══╝╚══════╝  ╚═╝
-Retrying In 5 Seconds!""")
-            time.sleep(5) 
+ ╚════╝ ╚═╝     ╚═╝     ╚══════╝╚═╝╚═╝  ╚══╝╚══════╝  ╚═╝{Fore.RED}""")
+
+
+
+def check_wifi_connection():
+    while True:
+        try:
+            urllib.request.urlopen('https://www.google.com')
+            break
+        except:
+            offline()
+            for i in range(5, 0, -1):
+                print(f"{Fore.RED}Retrying in {Fore.BLUE}{i} {Fore.RED}seconds")
+                time.sleep(1)
+            os.system('cls' if os.name == 'nt' else 'clear')
+    print("{Fore.RED}Connection established!")

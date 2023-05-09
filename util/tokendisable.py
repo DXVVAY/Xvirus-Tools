@@ -24,5 +24,3 @@ def TokenDisable():
     print(f"\n\nAccount successfully disabled")
     input(f"""\nPress enter to exit""")
     main()
-
-TokenDisable()
