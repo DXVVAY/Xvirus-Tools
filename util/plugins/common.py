@@ -41,7 +41,8 @@ def CHANGE_LOG():
     3. Xside GPT fully working now
     4. Changed title numbers to 01, 02.... for a better look
     5. Check for Wifi in start (WIP)
-    6. Better change log view''')
+    6. Better change log view
+    7. Dm Clearer''')
     
 THIS_VERSION = "1.5.7"
 TARGET_VERSION = 0

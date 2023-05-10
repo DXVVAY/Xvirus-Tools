@@ -498,7 +498,7 @@ def main():
             main()
     
     elif choice == 'PING':
-        ping()
+        ping("google.com")
         input("Press ENTER to continue")
         main()
 
