@@ -13,8 +13,8 @@ def HouseChanger(token, _type):
     #change hypesquad
     hypesqad_req = {'house_id': _type}
     requests.post('https://discord.com/api/v9/hypesquad/online', headers=getheaders(token), json=hypesqad_req)
-    print_slow(f"\n{Fore.GREEN}Hypesquad changed to {Fore.WHITE}{house[_type]}{Fore.GREEN} ")
-    print("Enter anything to continue. . . ", end="")
+    print_slow(f"\n{Fore.GREEN}Hypesquad changed to {Fore.WHITE}{house[_type]}{Fore.GREEN}\n")
+    print("\nEnter anything to continue. . . ", end="")
     input()
     Xvirus.main()
 
