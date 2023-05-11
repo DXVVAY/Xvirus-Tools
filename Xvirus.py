@@ -94,10 +94,12 @@ def xproxy_scrape():
 def ping(host):
     while True:
         if keyboard.is_pressed(cancel_key):
+            print(f"Press {cancel_key} to stop")
             os.system("cls" if os.name == "nt" else "clear")
             output = subprocess.check_output(["ping", host]).decode("utf-8")
             print(output)
             time.sleep(0.5)
+        main()
             
 def main():
     setTitle(f"Xvirus {THIS_VERSION}")
