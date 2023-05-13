@@ -845,4 +845,4 @@ def check_wifi_connection():
                 print(f"{Fore.RED}Retrying in {Fore.BLUE}{i} {Fore.RED}seconds")
                 time.sleep(1)
             os.system('cls' if os.name == 'nt' else 'clear')
-    print("{Fore.RED}Connection established!")
+    print({Fore.RED}"Connection established!")
