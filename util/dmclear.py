@@ -3,13 +3,13 @@ from discord.ext import commands
 from util.plugins.common import * 
 
 setTitle("Clear DM")
-clear()
 print(f"""Enter your token""")
 token = input(f"""Token: """)
 print(f"""\nWrite "!clear" in one of your DMs to delete your messages""")
 
 global bot
-bot = commands.Bot(command_prefix="!", self_bot=True)
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix="!", self_bot=True, intents=intents)
 bot.remove_command("help")
 
 @bot.command()
