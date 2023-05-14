@@ -22,3 +22,4 @@ win10toast
 discord
 asyncio
 openai
+GPUtil
