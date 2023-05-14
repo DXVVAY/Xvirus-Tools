@@ -35,19 +35,25 @@ def xproxy_scrape():
     #banner
     Anime.Fade((Xlogo), (XCOLOR_FADE), Colorate.Vertical, time=5)
     
-    def fetchXproxies(url, custom_regex):
-        global proxylist
+    def fetchProxies(url, custom_regex):
+        proxieslog = []
         try:
-            proxylist = requests.get(url, timeout=5).text
-        except Exception:
-            pass
-        finally:
-            proxylist = proxylist.replace('null', '')
-        #get the proxies from all the sites with the custom regex
-        custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
-        custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
-        for proxy in re.findall(re.compile(custom_regex), proxylist):
-            proxieslog.append(f"{proxy[0]}:{proxy[1]}")
+            response = requests.head(url, timeout=5)
+            response.raise_for_status()
+
+            print('Scraping proxies...')
+            response = requests.get(url, timeout=5)
+            response.raise_for_status()
+            proxylist = response.text
+            if proxylist is not None:
+                proxylist = proxylist.replace('null', '')
+                custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
+                custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
+                proxieslog = [f"{proxy[0]}:{proxy[1]}" for proxy in re.findall(re.compile(custom_regex), proxylist)]
+                print(f"Found {len(proxieslog)} proxies.")
+        except requests.exceptions.RequestException as e:
+            print(f"Error: {e}")
+        return proxieslog
 
     #all urls
     proxysources = [
@@ -451,9 +457,8 @@ def main():
         exec(open('util/tokenchecker.py').read())
 
     elif choice == '19':
-        TokenDisable
+        TokenDisable()
 
-        
     elif choice == '20':
         exec(open('util/rat.py').read())
 
