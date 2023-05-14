@@ -454,11 +454,16 @@ def proxy_scrape():
     def fetchProxies(url, custom_regex):
         proxieslog = []
         try:
-            response = requests.head(url, timeout=5)
+            retries = Retry(total=5, backoff_factor=0.1, status_forcelist=[ 500, 502, 503, 504 ])
+            session = requests.Session()
+            session.mount('http://', HTTPAdapter(max_retries=retries))
+            session.mount('https://', HTTPAdapter(max_retries=retries))
+
+            response = session.head(url, timeout=5)
             response.raise_for_status()
 
             print('Scraping proxies...')
-            response = requests.get(url, timeout=5)
+            response = session.get(url, timeout=5)
             response.raise_for_status()
             proxylist = response.text
             if proxylist is not None:
@@ -470,6 +475,7 @@ def proxy_scrape():
         except requests.exceptions.RequestException as e:
             print(f"Error: {e}")
         return proxieslog
+    
     #all urls
     proxysources = [
         ["http://spys.me/proxy.txt","%ip%:%port% "],
