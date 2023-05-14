@@ -46,8 +46,7 @@ def CHANGE_LOG():
     6. Better change log view
     7. Dm Clearer (WIP)
     8. Making setup.bat auto install python
-    9. Fixing proxy scraper getting stuck
-    10. ''')
+    9. Fixing proxy scraper getting stuck''')
     
 THIS_VERSION = "1.5.8"
 TARGET_VERSION = 0
