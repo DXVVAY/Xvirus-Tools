@@ -496,7 +496,7 @@ def main():
         main()
 
     elif choice == 'ai':
-        exec(open('util/gpt.py').read())
+        exec(open('util/gpt.py', encoding='utf-8').read())
         main()
 
     elif choice == 'TM':
