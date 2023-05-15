@@ -13,13 +13,13 @@ directory = os.getcwd()
 
 # Check the operating system and set the appropriate command to clear the terminal screen
 if os.name == 'nt':
-    clear = 'cls'
+    clear = lambda: os.system('cls')
 else:
-    clear = 'clear'
+    clear = lambda: os.system('clear')
 
 # Define a function to clear the terminal screen
 def clearScreen():
-  os.system(clear)
+  clear()
   print("""
 ██╗  ██╗ ██████╗██╗██████╗ ███████╗   █████╗ ██╗
 ╚██╗██╔╝██╔════╝██║██╔══██╗██╔════╝  ██╔══██╗██║
