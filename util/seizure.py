@@ -1,6 +1,5 @@
 import requests
 import random
-
 from util.plugins.common import getheaders
 
 def StartSeizure(token):
