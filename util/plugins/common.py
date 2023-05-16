@@ -23,6 +23,9 @@ import GPUtil
 from time import sleep
 from colorama import Fore
 from zipfile import ZipFile
+from urllib3.util.retry import Retry
+from requests.adapters import HTTPAdapter
+
 
 import requests, os, sys, re, time, random, os.path, string, subprocess, random, threading, ctypes, shutil
 from pystyle import Add, Center, Anime, Colors, Colorate, Write, System
@@ -448,34 +451,22 @@ def proxy_scrape():
     startTime = time.time()
     #create temp dir
     temp = os.getenv("temp")+"\\xvirus_proxies"
-    #banner
-    Anime.Fade((logo), (COLOR_FADE), Colorate.Vertical, time=5)
-    
+    print(f"{Fore.BLUE}Please wait while {Fore.RED}Xvirus{Fore.BLUE} Scrapes proxies for you!\n(This might take some time)")
+
     def fetchProxies(url, custom_regex):
-        proxieslog = []
+        global proxylist
         try:
-            retries = Retry(total=5, backoff_factor=0.1, status_forcelist=[ 500, 502, 503, 504 ])
-            session = requests.Session()
-            session.mount('http://', HTTPAdapter(max_retries=retries))
-            session.mount('https://', HTTPAdapter(max_retries=retries))
+            proxylist = requests.get(url, timeout=5).text
+        except Exception:
+            pass
+        finally:
+            proxylist = proxylist.replace('null', '')
+        #get the proxies from all the sites with the custom regex
+        custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
+        custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
+        for proxy in re.findall(re.compile(custom_regex), proxylist):
+            proxieslog.append(f"{proxy[0]}:{proxy[1]}")
 
-            response = session.head(url, timeout=5)
-            response.raise_for_status()
-
-            print('Scraping proxies...')
-            response = session.get(url, timeout=5)
-            response.raise_for_status()
-            proxylist = response.text
-            if proxylist is not None:
-                proxylist = proxylist.replace('null', '')
-                custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
-                custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
-                proxieslog = [f"{proxy[0]}:{proxy[1]}" for proxy in re.findall(re.compile(custom_regex), proxylist)]
-                print(f"Found {len(proxieslog)} proxies.")
-        except requests.exceptions.RequestException as e:
-            print(f"Error: {e}")
-        return proxieslog
-    
     #all urls
     proxysources = [
         ["http://spys.me/proxy.txt","%ip%:%port% "],
