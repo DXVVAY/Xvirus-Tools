@@ -21,82 +21,7 @@ System.Size(120, 30)
 threads = 3
 cancel_key = "ctrl+x"
 current_dir = os.path.dirname(os.path.abspath(__file__))
-XCOLOR_FADE = Colors.blue_to_purple
-                                                                            #Xproxy define
-###############################################################################################################################################################################################################
-def xproxy_scrape(): 
-    proxieslog = []
-    setTitle("Scraping Proxies")
-    #start timer
-    startTime = time.time()
-    #save in same file
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    temp = current_dir + "\\xproxy_proxies"
-    #banner
-    Anime.Fade((Xlogo), (XCOLOR_FADE), Colorate.Vertical, time=5)
-    
-    def fetchProxies(url, custom_regex):
-        proxieslog = []
-        try:
-            response = requests.head(url, timeout=5)
-            response.raise_for_status()
 
-            print('Scraping proxies...')
-            response = requests.get(url, timeout=5)
-            response.raise_for_status()
-            proxylist = response.text
-            if proxylist is not None:
-                proxylist = proxylist.replace('null', '')
-                custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
-                custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
-                proxieslog = [f"{proxy[0]}:{proxy[1]}" for proxy in re.findall(re.compile(custom_regex), proxylist)]
-                print(f"Found {len(proxieslog)} proxies.")
-        except requests.exceptions.RequestException as e:
-            print(f"Error: {e}")
-        return proxieslog
-
-    #all urls
-    proxysources = [
-        ["http://spys.me/proxy.txt","%ip%:%port% "],
-        ["http://www.httptunnel.ge/ProxyListForFree.aspx"," target=\"_new\">%ip%:%port%</a>"],
-        ["https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.json", "\"ip\":\"%ip%\",\"port\":\"%port%\","],
-        ["https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list", '"host": "%ip%".*?"country": "(.*?){2}",.*?"port": %port%'],
-        ["https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list.txt", '%ip%:%port% (.*?){2}-.-S \\+'],
-        ["https://raw.githubusercontent.com/opsxcq/proxy-list/master/list.txt", '%ip%", "type": "http", "port": %port%'],
-        ["https://www.us-proxy.org/", "<tr><td>%ip%<\\/td><td>%port%<\\/td><td>(.*?){2}<\\/td><td class='hm'>.*?<\\/td><td>.*?<\\/td><td class='hm'>.*?<\\/td><td class='hx'>(.*?)<\\/td><td class='hm'>.*?<\\/td><\\/tr>"],
-        ["https://free-proxy-list.net/", "<tr><td>%ip%<\\/td><td>%port%<\\/td><td>(.*?){2}<\\/td><td class='hm'>.*?<\\/td><td>.*?<\\/td><td class='hm'>.*?<\\/td><td class='hx'>(.*?)<\\/td><td class='hm'>.*?<\\/td><\\/tr>"],
-        ["https://www.sslproxies.org/", "<tr><td>%ip%<\\/td><td>%port%<\\/td><td>(.*?){2}<\\/td><td class='hm'>.*?<\\/td><td>.*?<\\/td><td class='hm'>.*?<\\/td><td class='hx'>(.*?)<\\/td><td class='hm'>.*?<\\/td><\\/tr>"],
-        ["https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=6000&country=all&ssl=yes&anonymity=all", "%ip%:%port%"],
-        ["https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt", "%ip%:%port%"],
-        ["https://raw.githubusercontent.com/shiftytr/proxy-list/master/proxy.txt", "%ip%:%port%"],
-        ["https://proxylist.icu/proxy/", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/1", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/2", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/3", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/4", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/5", "<td>%ip%:%port%</td><td>http<"],
-        ["https://www.hide-my-ip.com/proxylist.shtml", '"i":"%ip%","p":"%port%",'],
-        ["https://raw.githubusercontent.com/scidam/proxy-list/master/proxy.json", '"ip": "%ip%",\n.*?"port": "%port%",']
-    ]
-    threads = [] 
-    for url in proxysources:
-        #send them out in threads
-        t = threading.Thread(target=fetchXproxies, args=(url[0], url[1]))
-        threads.append(t)
-        t.start()
-    for t in threads:
-        t.join()
-
-    proxies = list(set(proxieslog))
-    with open(temp + ".json", "w") as f:
-        json.dump(proxies, f, indent=4)
-    #get the time it took to scrape
-    execution_time = (time.time() - startTime)
-    print_slow(f"{Fore.GREEN}Done! Scraped And Saved As A JSON File.{Fore.MAGENTA}{len(proxies): >5}{Fore.GREEN} in total => {Fore.RED}{temp}{Fore.RESET} | {execution_time}ms")
-    print_slow(f"\nExiting in 6 seconds...")
-    time.sleep(6)
-    main()
-################################################################################################################################################################################################################
 def ping(host):
     while True:
         if keyboard.is_pressed(cancel_key):
@@ -469,7 +394,9 @@ def main():
         exec(open('util/dmclear.py').read())
 
     elif choice == '23':
-        xproxy_scrape()
+        print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        sleep(1)
+        main()
 
     elif choice == '24':
         print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
