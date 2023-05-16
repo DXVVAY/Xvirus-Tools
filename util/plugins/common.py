@@ -730,37 +730,6 @@ def bannerTheme(type1, type2):
 [09] Log into an account                         |[18] Token Mass Validator          |[27] [Coming Soon]
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────''')
 
-def colorlogo():
-    print(f'''       
-██╗  ██╗ All Colors:
-╚██╗██╔╝ blue, black, cyan,
- ╚███╔╝  green, purple, red and white
- ██╔██╗
-██╔╝╚██╗    
-╚═╝  ╚═╝ Template: Colors.COLOR_to_COLOR
-
-
-         Example: Colors.black_to_red''')
-
-
-COLOR_FADE = Colors.rainbow
-
-dynamic_colors = ['Colors.black_to_white', 'Colors.black_to_red', 'Colors.black_to_green', 'Colors.black_to_blue', 'Colors.white_to_black', 'Colors.white_to_red', 'Colors.white_to_green', 'Colors.white_to_blue', 'Colors.red_to_black', 'Colors.red_to_white', 'Colors.red_to_yellow', 'Colors.red_to_purple', 'Colors.green_to_black', 'Colors.green_to_white', 'Colors.green_to_yellow', 'Colors.green_to_cyan', 'Colors.blue_to_black', 'Colors.blue_to_white', 'Colors.blue_to_cyan', 'Colors.blue_to_purple', 'Colors.yellow_to_red', 'Colors.yellow_to_green', 'Colors.purple_to_red', 'Colors.purple_to_blue', 'Colors.cyan_to_green', 'Colors.cyan_to_blue']
-
-
-def logocolorchanger():
-    colorlogo()
-    while True:
-        logocolor = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Input The Color You Desire: {Fore.RESET}')
-        if logocolor.lower() not in dynamic_colors:
-            print(f"{Fore.RED}Invalid color. Please enter a valid color")
-        else:
-            COLOR_FADE = getattr(Colors, f"{COLOR_FADE}_to_{logocolor.lower()}")
-            print_slow(f"{Fore.RED}Color set to {Fore.RESET}{logocolor}")
-            sleep(0.5)
-            break
-
-
 
 def offline():
                 print(f"""{Fore.RED}
