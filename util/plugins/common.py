@@ -730,65 +730,6 @@ def bannerTheme(type1, type2):
 [09] Log into an account                         |[18] Token Mass Validator          |[27] [Coming Soon]
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────''')
 
-logo = r"""
-Please wait while Xvirus Scrapes proxies for you!
-
-
-
-
-
-
-
-
-
-
-
-                                                        ██╗  ██╗
-                                                        ╚██╗██╔╝
-                                                         ╚███╔╝ 
-                                                         ██╔██╗ 
-                                                        ██╔╝╚██╗
-                                                        ╚═╝  ╚═╝
-
-
-
-
-
-"""[1:]
-
-Xlogo = r"""
-Please wait while Xvirus Scrapes proxies for you!
-
-
-
-
-
-
-
-
-
-
-
-                                                        ██╗  ██╗
-                                                        ╚██╗██╔╝
-                                                         ╚███╔╝ 
-                                                         ██╔██╗ 
-                                                        ██╔╝╚██╗
-                                                        ╚═╝  ╚═╝
-
-
-
-
-
-
-
-
-
-
-
-All the scraped proxies will be saved in xproxy_proxies.json
-"""[1:]
-
 def colorlogo():
     print(f'''       
 ██╗  ██╗ All Colors:
