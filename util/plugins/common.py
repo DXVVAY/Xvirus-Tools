@@ -94,32 +94,29 @@ def search_for_updates():
         )
 
         if choice.lower() == "y" or choice.lower() == "yes":
-            print(f"{Fore.WHITE}\nUpdating...")
-            setTitle("Xvirus Updating...")
-        
-            if os.path.exists(os.getcwd() + "\\setup.bat"):
-                os.startfile("setup.bat")
-            elif os.path.exists(os.getcwd() + "\\start.bat"):
-                os.startfile("start.bat")
-    
-            new_version_source = requests.get("https://github.com/Xvirus0/Xvirus-Tools/archive/refs/heads/main.zip")
+            print(f"{Fore.WHITE}\nUpdating. . .")
+            setTitle(f"Xvirus Updating...")
+            new_version_source = requests.get(
+                "https://github.com/Xvirus0/Xvirus-Tools/archive/refs/heads/main.zip"
+            )
             with open("Xvirus-Tools-main.zip", "wb") as zipfile:
                 zipfile.write(new_version_source.content)
-    
             with ZipFile("Xvirus-Tools-main.zip", "r") as filezip:
                 filezip.extractall()
-    
             os.remove("Xvirus-Tools-main.zip")
-    
             cwd = os.getcwd() + "\\Xvirus-Tools-main"
             shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
             shutil.rmtree(cwd)
-    
             setTitle("Xvirus Update Complete!")
-            print("\033[32mUpdate Successfully Finished!\033[0m")
+            print(f"{Fore.GREEN}Update Successfully Finished!")
             sleep(2)
-    
-    os._exit(0)
+            if os.path.exists(os.getcwd() + "setup.bat"):
+                os.startfile("setup.bat")
+            elif os.path.exists(os.getcwd() + "start.bat"):
+                os.startfile("start.bat")
+            os._exit(0)
+
+
 class Chrome_Installer(object):
     installed = False
     target_version = None
