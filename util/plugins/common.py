@@ -526,7 +526,7 @@ def proxy():
         #remove the proxy
         fp.truncate()
         fp.writelines(lines[1:])
-    return proxy
+    return ({'http://': f'http://{proxy}', 'https://': f'https://{proxy}'})
 
 #headers for optimazation
 heads = [
