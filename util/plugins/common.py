@@ -94,51 +94,32 @@ def search_for_updates():
         )
 
         if choice.lower() == "y" or choice.lower() == "yes":
-            print(f"{Fore.WHITE}\nUpdating. . .")
-            setTitle(f"Xvirus Updating...")
-            # if they are running xvirus.exe
-            if os.path.basename(sys.argv[0]).endswith("exe"):
-                with open("Xvirus-Tools.zip", "wb") as zipfile:
-                    zipfile.write(requests.get(update_url).content)
-                with ZipFile("Xvirus-Tools.zip", "r") as filezip:
-                    filezip.extractall()
-                os.remove("Xvirus-Tools.zip")
-                cwd = os.getcwd() + "\\Xvirus-Tools\\"
-                shutil.copyfile(cwd + "README.md", "README.md")
-                try:
-                    shutil.copyfile(
-                        cwd + os.path.basename(sys.argv[0]), "Xvirus-Tools.exe"
-                    )
-                except Exception:
-                    pass
-                shutil.rmtree("Xvirus-Tools")
-                setTitle("Xvirus Update Complete!")
-                print(f"{Fore.GREEN}Update Successfully Finished!")
-                sleep(2)
-                os.startfile("Xvirus-Tools.exe")
-                os._exit(0)
-            # if they are running xvirus source code
-            else:
-                new_version_source = requests.get(
-                    "https://github.com/Xvirus0/Xvirus-Tools/archive/refs/heads/main.zip"
-                )
-                with open("Xvirus-Tools-main.zip", "wb") as zipfile:
-                    zipfile.write(new_version_source.content)
-                with ZipFile("Xvirus-Tools-main.zip", "r") as filezip:
-                    filezip.extractall()
-                os.remove("Xvirus-Tools-main.zip")
-                cwd = os.getcwd() + "\\Xvirus-Tools-main"
-                shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
-                shutil.rmtree(cwd)
-                setTitle("Xvirus Update Complete!")
-                print(f"{Fore.GREEN}Update Successfully Finished!")
-                sleep(2)
-                if os.path.exists(os.getcwd() + "setup.bat"):
-                    os.startfile("setup.bat")
-                elif os.path.exists(os.getcwd() + "start.bat"):
-                    os.startfile("start.bat")
-                os._exit(0)
-
+            print(f"{Fore.WHITE}\nUpdating...")
+            setTitle("Xvirus Updating...")
+        
+            if os.path.exists(os.getcwd() + "\\setup.bat"):
+                os.startfile("setup.bat")
+            elif os.path.exists(os.getcwd() + "\\start.bat"):
+                os.startfile("start.bat")
+    
+            new_version_source = requests.get("https://github.com/Xvirus0/Xvirus-Tools/archive/refs/heads/main.zip")
+            with open("Xvirus-Tools-main.zip", "wb") as zipfile:
+                zipfile.write(new_version_source.content)
+    
+            with ZipFile("Xvirus-Tools-main.zip", "r") as filezip:
+                filezip.extractall()
+    
+            os.remove("Xvirus-Tools-main.zip")
+    
+            cwd = os.getcwd() + "\\Xvirus-Tools-main"
+            shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
+            shutil.rmtree(cwd)
+    
+            setTitle("Xvirus Update Complete!")
+            print("\033[32mUpdate Successfully Finished!\033[0m")
+            sleep(2)
+    
+    os._exit(0)
 class Chrome_Installer(object):
     installed = False
     target_version = None
@@ -330,7 +311,7 @@ class Opera_Installer(object):
 
 def get_driver():
     #supported drivers
-    drivers = ["chromedriver.exe", "msedgedriver.exe"] #"operadriver.exe",
+    drivers = ["chromedriver.exe", "msedgedriver.exe", "operadriver.exe"]
 
     print(f"\n{Fore.BLUE}Checking Driver. . .")
     sleep(0.5)
@@ -348,10 +329,10 @@ def get_driver():
             Chrome_Installer()
             print(f"{Fore.GREEN}chromedriver.exe Installed!{Fore.RESET}")
             return "chromedriver.exe"
-        # elif os.path.exists(os.getenv('appdata') + '\\Opera Software\\Opera Stable'):
-            # Opera_Installer()
-            #print(f"{Fore.GREEN}operadriver.exe Installed!{Fore.RESET}")
-            # return "operadriver.exe"
+        elif os.path.exists(os.getenv('appdata') + '\\Opera Software\\Opera Stable'):
+            Opera_Installer()
+            print(f"{Fore.GREEN}operadriver.exe Installed!{Fore.RESET}")
+            return "operadriver.exe"
         elif os.path.exists(os.getenv('localappdata') + '\\Microsoft\\Edge'):
             Edge_Installer()
             print(f"{Fore.GREEN}msedgedriver.exe Installed!{Fore.RESET}")
@@ -397,21 +378,6 @@ def print_slow(_str):
         #slowly print out the words 
         sys.stdout.write(letter);sys.stdout.flush();sleep(0.04)
 
-def install_lib(dependencies):
-    #check for missing libs
-    installed_packages = sorted([i.key for i in pkg_resources.working_set])
-    for lib in dependencies:
-        if lib not in installed_packages:
-            #install the lib if it wasn't found
-            print(f"{Fore.BLUE}{lib}{Fore.RED} not found! Installing it for you. . .{Fore.RESET}")
-            try:
-                subprocess.check_call([sys.executable, '-m', 'pip', 'install', lib])
-            #incase something goes wrong we notify the user that something happend
-            except Exception as e:
-                print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : {e}')
-                sleep(0.5)
-                pass
-
 def validateToken(token):
     #contact discord api and see if you can get a valid response with the given token
     r = requests.get('https://discord.com/api/v9/users/@me', headers=getheaders(token))
@@ -451,7 +417,8 @@ def proxy_scrape():
     startTime = time.time()
     #create temp dir
     temp = os.getenv("temp")+"\\xvirus_proxies"
-    print(f"{Fore.BLUE}Please wait while {Fore.RED}Xvirus{Fore.BLUE} Scrapes proxies for you!\n(This might take some time)")
+    print(f"""{Fore.BLUE}Please wait while {Fore.RED}Xvirus{Fore.BLUE} Scrapes proxies for you!\n(This might take some time)""")
+    
 
     def fetchProxies(url, custom_regex):
         global proxylist

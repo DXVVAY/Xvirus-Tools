@@ -21,11 +21,11 @@ def TokenLogin(token):
         opts.add_experimental_option('excludeSwitches', ['enable-logging'])
         opts.add_experimental_option("detach", True)
         driver = webdriver.Chrome(options=opts)
-    # elif type_ == "operadriver.exe":
-    #     opts = webdriver.opera.options.ChromeOptions()
-    #     opts.add_experimental_option('excludeSwitches', ['enable-logging'])
-    #     opts.add_experimental_option("detach", True)
-    #     driver = webdriver.Opera(options=opts)
+    elif type_ == "operadriver.exe":
+        opts = webdriver.opera.options.ChromeOptions()
+        opts.add_experimental_option('excludeSwitches', ['enable-logging'])
+        opts.add_experimental_option("detach", True)
+        driver = webdriver.Opera(options=opts)
     elif type_ == "msedgedriver.exe":
         opts = webdriver.EdgeOptions()
         opts.add_experimental_option('excludeSwitches', ['enable-logging'])
