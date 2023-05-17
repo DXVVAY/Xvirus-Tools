@@ -18,8 +18,6 @@ import keyboard
 import base64
 import os
 import sys
-import psutil
-import GPUtil
 from time import sleep
 from colorama import Fore
 from zipfile import ZipFile

