@@ -80,7 +80,7 @@ def main():
     log_file = downloads_dir / 'discord_log.xml'
 
     os.system("pause")
-    ctypes.windll.kernel32.SetConsoleTitleW("Discord Token message sender")
+    ctypes.windll.kernel32.SetConsoleTitleW("Console Based Discord Client")
     os.system("cls")
     send_and_receive_messages(token, channel_id, log_file)
 
