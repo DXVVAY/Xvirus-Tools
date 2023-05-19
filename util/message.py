@@ -2,7 +2,6 @@ import requests
 import os
 import ctypes
 import threading
-import xml.etree.ElementTree as ET
 from datetime import datetime
 from pathlib import Path
 
@@ -20,7 +19,7 @@ def send_message(token, channel_id, message):
     else:
         print(f"Error sending message: {r.status_code} {r.text}")
 
-def read_messages(token, channel_id, log_file):
+def read_messages(token, channel_id):
     headers = {
         'Authorization': token,
         'Content-Type': 'application/json'
@@ -39,7 +38,6 @@ def read_messages(token, channel_id, log_file):
                         content = message['content']
                         formatted_timestamp = format_timestamp(timestamp)
                         print(f"[{formatted_timestamp}] {content}")
-                        write_to_xml(log_file, formatted_timestamp, content)
                     last_message_id = message['id']
         else:
             print(f"Error reading messages: {r.status_code} {r.text}")
@@ -48,19 +46,9 @@ def format_timestamp(timestamp):
     dt = datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f%z')
     return dt.strftime('%Y-%m-%d %H:%M:%S')
 
-def write_to_xml(file_path, timestamp, content):
-    root = ET.Element("messages")
-    tree = ET.ElementTree(root)
-    message_element = ET.SubElement(root, "message")
-    timestamp_element = ET.SubElement(message_element, "timestamp")
-    timestamp_element.text = timestamp
-    content_element = ET.SubElement(message_element, "content")
-    content_element.text = content
-    tree.write(file_path, encoding="utf-8", xml_declaration=True)
-
-def send_and_receive_messages(token, channel_id, log_file):
+def send_and_receive_messages(token, channel_id):
     send_thread = threading.Thread(target=send_messages, args=(token, channel_id))
-    receive_thread = threading.Thread(target=read_messages, args=(token, channel_id, log_file))
+    receive_thread = threading.Thread(target=read_messages, args=(token, channel_id))
     receive_thread.start()
     send_thread.start()
     receive_thread.join()
@@ -74,15 +62,10 @@ def send_messages(token, channel_id):
 def main():
     token = input("Enter token: ")
     channel_id = input("Enter channel id: ")
-
-    # Create XML log file in Downloads directory
-    downloads_dir = Path.home() / 'Downloads'
-    log_file = downloads_dir / 'discord_log.xml'
-
     os.system("pause")
     ctypes.windll.kernel32.SetConsoleTitleW("Console Based Discord Client")
     os.system("cls")
-    send_and_receive_messages(token, channel_id, log_file)
+    send_and_receive_messages(token, channel_id)
 
 if __name__ == "__main__":
     main()
