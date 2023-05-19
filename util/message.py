@@ -7,7 +7,7 @@ from pathlib import Path
 
 def send_message(token, channel_id, message):
     headers = {
-        'Authorization': token,
+        'Authorization': f'Bot {token}',  # Add 'Bot' prefix for bot tokens
         'Content-Type': 'application/json'
     }
     payload = {
@@ -21,7 +21,7 @@ def send_message(token, channel_id, message):
 
 def read_messages(token, channel_id):
     headers = {
-        'Authorization': token,
+        'Authorization': f'Bot {token}',  # Add 'Bot' prefix for bot tokens
         'Content-Type': 'application/json'
     }
     last_message_id = None
@@ -46,8 +46,11 @@ def format_timestamp(timestamp):
     dt = datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f%z')
     return dt.strftime('%Y-%m-%d %H:%M:%S')
 
-def send_and_receive_messages(token, channel_id):
-    send_thread = threading.Thread(target=send_messages, args=(token, channel_id))
+def send_and_receive_messages(token, channel_id, is_bot=False):
+    if is_bot:
+        send_thread = threading.Thread(target=send_messages, args=(token, channel_id))
+    else:
+        send_thread = threading.Thread(target=send_user_messages, args=(token, channel_id))
     receive_thread = threading.Thread(target=read_messages, args=(token, channel_id))
     receive_thread.start()
     send_thread.start()
@@ -59,13 +62,30 @@ def send_messages(token, channel_id):
         message = input("Enter message: ")
         send_message(token, channel_id, message)
 
+def send_user_messages(token, channel_id):
+    while True:
+        message = input("Enter message: ")
+        headers = {
+            'Authorization': f'Bearer {token}',  # Use 'Bearer' prefix for user tokens
+            'Content-Type': 'application/json'
+        }
+        payload = {
+            'content': message
+        }
+        r = requests.post(f'https://discord.com/api/v9/channels/{channel_id}/messages', headers=headers, json=payload)
+        if r.status_code == 200:
+            print(f"Message sent: {message}")
+        else:
+            print(f"Error sending message: {r.status_code} {r.text}")
+
 def main():
     token = input("Enter token: ")
+    is_bot = input("Is it a bot token? (y/n): ").lower() == "y"
     channel_id = input("Enter channel id: ")
     os.system("pause")
     ctypes.windll.kernel32.SetConsoleTitleW("Console Based Discord Client")
     os.system("cls")
-    send_and_receive_messages(token, channel_id)
+    send_and_receive_messages(token, channel_id, is_bot)
 
 if __name__ == "__main__":
     main()
