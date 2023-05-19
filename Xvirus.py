@@ -440,12 +440,11 @@ def main():
     {Fore.BLUE}[{Fore.RED}1{Fore.BLUE}] Theme changer
     {Fore.BLUE}[{Fore.RED}2{Fore.BLUE}] Amount of threads
     {Fore.BLUE}[{Fore.RED}3{Fore.BLUE}] Cancel key
-    {Fore.BLUE}[{Fore.RED}4{Fore.BLUE}] Startup Logo Color (WIP)
-    {Fore.BLUE}[{Fore.RED}5{Fore.BLUE}] {Fore.RED}Exit...    
+    {Fore.BLUE}[{Fore.RED}4{Fore.BLUE}] {Fore.RED}Exit...    
                         ''')
         secondchoice = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Setting: {Fore.RED}')
-        if secondchoice not in ["1", "2", "3", "4", "5"]:
+        if secondchoice not in ["1", "2", "3", "4"]:
             print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Setting')
             sleep(1)
             main()
@@ -456,6 +455,7 @@ def main():
     {Fore.YELLOW}Fire: 3
     {Fore.BLUE}Aqua: 4
     {Fore.CYAN}N{Fore.MAGENTA}e{Fore.CYAN}o{Fore.MAGENTA}n{Fore.CYAN}:{Fore.MAGENTA} 5
+  {Fore.LIGHTYELLOW_EX}desert: 6
     """)
             themechoice = input(
                 f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}theme: {Fore.RED}')
@@ -473,7 +473,7 @@ def main():
                 print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Theme')
                 sleep(1.5)
                 main()
-            print_slow(f"{Fore.GREEN}Theme set to {Fore.CYAN}{getTheme()}")
+            print_slow(f"{Fore.RED}Theme set to {Fore.BLUE}{getTheme()}")
             sleep(0.5)
             main()
 
@@ -519,14 +519,7 @@ def main():
             sleep(0.5)
             main()
 
-        elif secondchoice == "4" :
-            logocolorchanger()
-            main()
-
-
-            
-
-        elif secondchoice == "5":
+        elif secondchoice == "4":
             setTitle("Exiting. . .")
             choice = input(
                 f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Are you sure you want to exit? (Y to confirm): {Fore.RED}')
@@ -544,19 +537,11 @@ if __name__ == "__main__":
     setTitle("Xvirus Loading...")
     
     System.Size(120, 30)
-    if os.path.basename(sys.argv[0]).endswith("exe"):
-        check_wifi_connection()
-        search_for_updates()
-        with open(os.getenv("temp")+"\\xvirus_proxies", 'w'): pass
-        if not os.path.exists(os.getenv("temp")+"\\xvirus_theme"):
-            setTheme('xeme')
-        proxy_scrape()
-        sleep(1.5)
-        main()
+    
     try:
         assert sys.version_info >= (3,7)
     except AssertionError:
-        print(f"{Fore.RED}Woopsie daisy, your python version ({sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]}) is not compatible with xvirus nuker, please download python 3.7+")
+        print(f"{Fore.RED}Woopsie daisy, your Python version ({sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]}) is not compatible with xvirus, please download Python 3.7+")
         sleep(5)
         print("exiting. . .")
         sleep(1.5)
@@ -564,11 +549,15 @@ if __name__ == "__main__":
     else:
         check_wifi_connection()
         search_for_updates()
-        with open(os.getenv("temp")+"\\xvirus_proxies", 'w'): pass
-        if not os.path.exists(os.getenv("temp")+"\\xvirus_theme"):
+        proxy_file = os.getenv("temp") + "\\xvirus_proxies"
+        if not os.path.exists(proxy_file):
+            proxy_scrape()
+        with open(os.getenv("temp") + "\\xvirus_proxies", 'w'):
+            pass
+        if not os.path.exists(os.getenv("temp") + "\\xvirus_theme"):
             setTheme('xeme')
-        proxy_scrape()
         sleep(1.5)
         main()
+    
     finally:
         Fore.RESET

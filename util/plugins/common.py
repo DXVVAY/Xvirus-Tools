@@ -537,80 +537,124 @@ def getheaders(token=None):
                                                             #FADE TYPES#
 ########################################################################################################################################################
 def blackwhite(text):
-    os.system(""); faded = ""
-    red = 0; green = 0; blue = 0
+    os.system("")
+    faded = ""
+    gradient_steps = 10  # Number of gradient steps
+    step_size = 255 // gradient_steps  # Calculate step size for each color channel
+
+    red = 0
+    green = 0
+    blue = 0
+
     for line in text.splitlines():
-        faded += (f"\033[38;2;{red};{green};{blue}m{line}\033[0m\n")
-        if not red == 255 and not green == 255 and not blue == 255:
-            red += 20; green += 20; blue += 20
-            if red > 255 and green > 255 and blue > 255:
-                red = 255; green = 255; blue = 255
+        faded += f"\033[38;2;{red};{green};{blue}m{line}\033[0m\n"
+        
+        red += step_size
+        green += step_size
+        blue += step_size
+
+        if red > 255:
+            red = 255
+        if green > 255:
+            green = 255
+        if blue > 255:
+            blue = 255
+
     return faded
 
 def purplepink(text):
-    os.system(""); faded = ""
+    os.system("")
+    faded = ""
     red = 40
+    gradient_steps = 10
+    step_size = (255 - red) // gradient_steps
+
     for line in text.splitlines():
-        faded += (f"\033[38;2;{red};0;220m{line}\033[0m\n")
-        if not red == 255:
-            red += 15
-            if red > 255:
-                red = 255
+        faded += f"\033[38;2;{red};0;220m{line}\033[0m\n"
+        red += step_size
+        if red > 255:
+            red = 255
+
     return faded
+
 
 def greenblue(text):
-    os.system(""); faded = ""
+    os.system("")
+    faded = ""
     blue = 100
+    gradient_steps = 10
+    step_size = (255 - blue) // gradient_steps
+
     for line in text.splitlines():
-        faded += (f"\033[38;2;0;255;{blue}m{line}\033[0m\n")
-        if not blue == 255:
-            blue += 15
-            if blue > 255:
-                blue = 255
+        faded += f"\033[38;2;0;255;{blue}m{line}\033[0m\n"
+        blue += step_size
+        if blue > 255:
+            blue = 255
+
     return faded
+
 
 def pinkred(text):
-    os.system(""); faded = ""
+    os.system("")
+    faded = ""
     blue = 255
+    gradient_steps = 10
+    step_size = blue // gradient_steps
+
     for line in text.splitlines():
-        faded += (f"\033[38;2;255;0;{blue}m{line}\033[0m\n")
-        if not blue == 0:
-            blue -= 20
-            if blue < 0:
-                blue = 0
+        faded += f"\033[38;2;255;0;{blue}m{line}\033[0m\n"
+        blue -= step_size
+        if blue < 0:
+            blue = 0
+
     return faded
+
 
 def purpleblue(text):
-    os.system(""); faded = ""
+    os.system("")
+    faded = ""
     red = 110
+    gradient_steps = 10
+    step_size = red // gradient_steps
+
     for line in text.splitlines():
-        faded += (f"\033[38;2;{red};0;255m{line}\033[0m\n")
-        if not red == 0:
-            red -= 15
-            if red < 0:
-                red = 0
+        faded += f"\033[38;2;{red};0;255m{line}\033[0m\n"
+        red -= step_size
+        if red < 0:
+            red = 0
+
     return faded
+
 
 def aqua(text):
-    os.system(""); faded = ""
+    os.system("")
+    faded = ""
     green = 10
+    gradient_steps = 10
+    step_size = (255 - green) // gradient_steps
+
     for line in text.splitlines():
-        faded += (f"\033[38;2;0;{green};255m{line}\033[0m\n")
-        if not green == 255:
-            green += 15
-            if green > 255:
-                green = 255
+        faded += f"\033[38;2;0;{green};255m{line}\033[0m\n"
+        green += step_size
+        if green > 255:
+            green = 255
+
     return faded
 
+
 def fire(text):
-    os.system(""); faded = ""
+    os.system("")
+    faded = ""
     green = 250
+    gradient_steps = 10
+    step_size = green // gradient_steps
+
     for line in text.splitlines():
-        faded += (f"\033[38;2;255;{green};0m{line}\033[0m\n")
-        if not green == 0:
-            green -= 25
-            if green < 0:
-                green = 0
+        faded += f"\033[38;2;255;{green};0m{line}\033[0m\n"
+        green -= step_size
+        if green < 0:
+            green = 0
+
     return faded
 ########################################################################################################################################################
 
