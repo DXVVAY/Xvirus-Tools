@@ -10,7 +10,7 @@ def SpamServers(token, icon, name=None):
             try:
                 #Create all the servers named whatever you want
                 payload = {'name': f'{name}', 'region': 'europe', 'icon': icon, 'channels': None}
-                requests.post('https://discord.com/api/v7/guilds', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json=payload)
+                requests.post('https://discord.com/api/v10/guilds', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json=payload)
                 print(f"{Fore.BLUE}Created {name}.{Fore.RESET}")
             except Exception as e:
                 print(f"The following exception has been encountered and is being ignored: {e}")
@@ -19,7 +19,7 @@ def SpamServers(token, icon, name=None):
         try:
             #Create all the servers named whatever you want
             payload = {'name': f'{server_name}', 'region': 'europe', 'icon': icon , 'channels': None}
-            requests.post('https://discord.com/api/v7/guilds', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json=payload)
+            requests.post('https://discord.com/api/v10/guilds', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json=payload)
             print(f"{Fore.BLUE}Created {server_name}.{Fore.RESET}")
         except Exception as e:
             print(f"The following exception has been encountered and is being ignored: {e}")

@@ -39,7 +39,7 @@ def checkvalidity():
     clear()
     for token in donetokenlist:
         while True:
-            r1 = requests.get('https://discord.com/api/v6/auth/login', headers={"Authorization": token})
+            r1 = requests.get('https://discord.com/api/v10/auth/login', headers={"Authorization": token})
             r1 = str(r1)
             if "429" not in r1:
                 break
@@ -55,7 +55,7 @@ def checkvalidity():
     
         if "200" in r1:
             while True:
-                r = requests.get(f'https://discord.com/api/v6/invite/{invite_code}', headers={"Authorization": token})
+                r = requests.get(f'https://discord.com/api/v10/invite/{invite_code}', headers={"Authorization": token})
                 r = str(r)
                 if "429" not in r:
                     break

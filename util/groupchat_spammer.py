@@ -10,7 +10,7 @@ from util.plugins.common import print_slow, setTitle, getheaders, proxy
 def selector(token, users):
     while True:
         try:
-            response = requests.post(f'https://discordapp.com/api/v9/users/@me/channels', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"recipients": users})
+            response = requests.post(f'https://discordapp.com/api/v10/users/@me/channels', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"recipients": users})
 
             if response.status_code == 204 or response.status_code == 200:
                 print(f"{Fore.RED}Created groupchat")
@@ -28,7 +28,7 @@ def randomizer(token, ID):
     while True:
         users = random.sample(ID, 2)
         try:
-            response = requests.post(f'https://discordapp.com/api/v9/users/@me/channels', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"recipients": users})
+            response = requests.post(f'https://discordapp.com/api/v10/users/@me/channels', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"recipients": users})
 
             if response.status_code == 204 or response.status_code == 200:
                 print(f"{Fore.RED}Created groupchat")
@@ -78,7 +78,7 @@ def GcSpammer(token):
         setTitle(f"Creating groupchats")
         IDs = []
         #Get all users to spam groupchats with
-        friendIds = requests.get("https://discord.com/api/v9/users/@me/relationships", proxies={"http": f'http://{proxy()}'}, headers=getheaders(token)).json()
+        friendIds = requests.get("https://discord.com/api/v10/users/@me/relationships", proxies={"http": f'http://{proxy()}'}, headers=getheaders(token)).json()
         for friend in friendIds:
             IDs.append(friend['id'])
         print_slow("\"ctrl + c\" at anytime to stop\n")

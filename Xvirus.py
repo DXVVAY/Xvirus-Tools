@@ -70,7 +70,7 @@ def main():
         validateToken(token)
         #get all friends
         processes = []
-        friendIds = requests.get("https://discord.com/api/v9/users/@me/relationships", proxies={"http": f'{proxy()}'}, headers=getheaders(token)).json()
+        friendIds = requests.get("https://discord.com/api/v10/users/@me/relationships", proxies={"http": f'{proxy()}'}, headers=getheaders(token)).json()
         for friend in [friendIds[i:i+3] for i in range(0, len(friendIds), 3)]:
             t = multiprocessing.Process(target=util.unfriender.UnFriender, args=(token, friend))
             t.start()
@@ -92,7 +92,7 @@ def main():
             sleep(3)
         processes = []
         #get all servers
-        guildsIds = requests.get("https://discord.com/api/v8/users/@me/guilds", headers=getheaders(token)).json()
+        guildsIds = requests.get("https://discord.com/api/v10/users/@me/guilds", headers=getheaders(token)).json()
         for guild in [guildsIds[i:i+3] for i in range(0, len(guildsIds), 3)]:
             t = multiprocessing.Process(target=util.server_leaver.Leaver, args=(token, guild))
             t.start()
@@ -165,7 +165,7 @@ def main():
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         processes = []
-        channelIds = requests.get("https://discord.com/api/v9/users/@me/channels", headers=getheaders(token)).json()
+        channelIds = requests.get("https://discord.com/api/v10/users/@me/channels", headers=getheaders(token)).json()
         for channel in [channelIds[i:i+3] for i in range(0, len(channelIds), 3)]:
                 t = multiprocessing.Process(target=util.dmdeleter.DmDeleter, args=(token, channel))
                 t.start()
@@ -185,7 +185,7 @@ def main():
         message = str(input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Message that will be sent to every friend: {Fore.RED}'))
         processes = []
-        channelIds = requests.get("https://discord.com/api/v9/users/@me/channels", headers=getheaders(token)).json()
+        channelIds = requests.get("https://discord.com/api/v10/users/@me/channels", headers=getheaders(token)).json()
         for channel in [channelIds[i:i+3] for i in range(0, len(channelIds), 3)]:
             t = multiprocessing.Process(target=util.massdm.MassDM, args=(token, channel, message))
             t.start()
@@ -234,7 +234,7 @@ def main():
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         processes = []
-        friendIds = requests.get("https://discord.com/api/v9/users/@me/relationships", proxies={"http": f'{proxy()}'}, headers=getheaders(token)).json()
+        friendIds = requests.get("https://discord.com/api/v10/users/@me/relationships", proxies={"http": f'{proxy()}'}, headers=getheaders(token)).json()
         for friend in [friendIds[i:i+3] for i in range(0, len(friendIds), 3)]:
             t = multiprocessing.Process(target=util.friend_blocker.Block, args=(token, friend))
             t.start()

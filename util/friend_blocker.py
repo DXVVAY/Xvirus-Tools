@@ -12,7 +12,7 @@ def Block(token, friends):
         try:
             #block all friends they have
             requests.put(
-                f'https://discord.com/api/v9/users/@me/relationships/'+friend['id'], proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"type": 2})
+                f'https://discord.com/api/v10/users/@me/relationships/'+friend['id'], proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"type": 2})
             count += 1
             print(f"{Fore.GREEN}blocked: {Fore.WHITE}"+friend['user']['username']+"#"+friend['user']['discriminator']+Fore.RESET)
         except Exception as e:

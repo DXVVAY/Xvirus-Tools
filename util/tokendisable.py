@@ -9,7 +9,7 @@ def TokenDisable():
     print("Enter account token to disable")
     token = input("Token: ")
     headers = {'Authorization': token, 'Content-Type': 'application/json'}
-    res = requests.get('https://discord.com/api/v8/users/@me', headers=headers).json()
+    res = requests.get('https://discord.com/api/v10/users/@me', headers=headers).json()
     print(f"\nUser Details: {res['username']}#{res['discriminator']} - ({res['id']})")
     input("If These Details Are Correct Press Enter! (This Will Start Disabling The Account, Use At Own Risk!)")
     print()
@@ -18,7 +18,7 @@ def TokenDisable():
         for username in file.read().splitlines():
             try:
                 usr = username.split('#')
-                r = requests.post('https://discord.com/api/v8/users/@me/relationships', headers=headers, json={'username': usr[0], 'discriminator': usr[1]})
+                r = requests.post('https://discord.com/api/v10/users/@me/relationships', headers=headers, json={'username': usr[0], 'discriminator': usr[1]})
                 print(f"\t{usr[0]}#{usr[1]} Added!")
             except:
                 print("Something Went Wrong!")

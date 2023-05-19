@@ -8,7 +8,7 @@ from colorama import Fore, Back
 from util.plugins.common import get_driver, getheaders
 
 def TokenLogin(token):
-    j = requests.get("https://discord.com/api/v9/users/@me", headers=getheaders(token)).json()
+    j = requests.get("https://discord.com/api/v10/users/@me", headers=getheaders(token)).json()
     user = j["username"] + "#" + str(j["discriminator"])
     script = """
             document.body.appendChild(document.createElement `iframe`).contentWindow.localStorage.token = `"%s"`

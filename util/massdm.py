@@ -9,7 +9,7 @@ def MassDM(token, channels, Message):
         for user in [x["username"]+"#"+x["discriminator"] for x in channel["recipients"]]:
             try:
                 setTitle(f"Messaging "+user)
-                requests.post(f'https://discord.com/api/v9/channels/'+channel['id']+'/messages',
+                requests.post(f'https://discord.com/api/v10/channels/'+channel['id']+'/messages',
                     proxies={"http": f'{proxy()}'},
                     headers={'Authorization': token},
                     data={"content": f"{Message}"})

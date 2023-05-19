@@ -30,7 +30,7 @@ def Report(token, guild_id, channel_id, message_id, reason):
         'Authorization': token
     }
 
-    report = requests.post('https://discordapp.com/api/v8/report', json=report_data, headers=headers)
+    report = requests.post('https://discordapp.com/api/v10/report', json=report_data, headers=headers)
     
     status = report.status_code
     if status == 201:

@@ -375,7 +375,7 @@ def print_slow(_str):
 
 def validateToken(token):
     #contact discord api and see if you can get a valid response with the given token
-    r = requests.get('https://discord.com/api/v9/users/@me', headers=getheaders(token))
+    r = requests.get('https://discord.com/api/v10/users/@me', headers=getheaders(token))
     if r.status_code == 200:
         #it is a valid token
         pass
@@ -405,10 +405,15 @@ def validateWebhook(hook):
     #webhook is valid
     print(f"{Fore.GREEN}Valid webhook! ({j})")
 
-def proxy_scrape(): 
+def proxy_scrape():
+    temp = os.getenv("temp") + "\\xvirus_proxies"
+    
+    if os.path.isfile(temp) and os.stat(temp).st_size > 0:
+        # Proxies have already been scraped, so return
+        return
+    
     proxieslog = []
     setTitle("Scraping Proxies")
-    #start timer
     startTime = time.time()
     #create temp dir
     temp = os.getenv("temp")+"\\xvirus_proxies"
@@ -473,9 +478,9 @@ def proxy_scrape():
     setTitle(f"Xvirus {THIS_VERSION}")
 
 def proxy():
-    temp = os.getenv("temp")+"\\xvirus_proxies"
-    #if the file size is empty
-    if os.stat(temp).st_size == 0:
+    temp = os.getenv("temp") + "\\xvirus_proxies"
+    
+    if not os.path.isfile(temp) or os.stat(temp).st_size == 0:
         proxy_scrape()
     proxies = open(temp).read().split('\n')
     proxy = proxies[0]

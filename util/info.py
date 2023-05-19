@@ -7,7 +7,7 @@ from colorama import Fore
 from util.plugins.common import getheaders
 
 def Info(token):
-    r = requests.get('https://discord.com/api/v9/users/@me', headers=getheaders(token))
+    r = requests.get('https://discord.com/api/v10/users/@me', headers=getheaders(token))
     cc_digits = {
     'american express': '3',
     'visa': '4',
@@ -58,7 +58,7 @@ def Info(token):
     mfa = r.json()['mfa_enabled']
     avatar_id = r.json()['avatar']
     has_nitro = False
-    res = requests.get('https://discordapp.com/api/v9/users/@me/billing/subscriptions', headers=getheaders(token))
+    res = requests.get('https://discordapp.com/api/v10/users/@me/billing/subscriptions', headers=getheaders(token))
     nitro_data = res.json()
     has_nitro = bool(len(nitro_data) > 0)
     avatar_url = f'https://cdn.discordapp.com/avatars/{userID}/{avatar_id}.webp'
@@ -70,7 +70,7 @@ def Info(token):
         days_left = abs((d2 - d1).days)
 
     billing_info = []
-    for x in requests.get('https://discordapp.com/api/v9/users/@me/billing/payment-sources', headers=getheaders(token)).json():
+    for x in requests.get('https://discordapp.com/api/v10/users/@me/billing/payment-sources', headers=getheaders(token)).json():
         y = x['billing_address']
         name = y['name']
         address_1 = y['line_1']
