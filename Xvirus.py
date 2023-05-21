@@ -1,4 +1,5 @@
 from util.plugins.common import *
+from util.plugins.themes import *
 import util.accountNuke
 import util.dmdeleter
 import util.info
@@ -437,10 +438,10 @@ def main():
     # this is end settings
     elif choice == '!':
         print(f'''
-    {Fore.BLUE}[{Fore.RED}1{Fore.BLUE}] Theme changer
-    {Fore.BLUE}[{Fore.RED}2{Fore.BLUE}] Amount of threads
-    {Fore.BLUE}[{Fore.RED}3{Fore.BLUE}] Cancel key
-    {Fore.BLUE}[{Fore.RED}4{Fore.BLUE}] {Fore.RED}Exit...    
+        {Fore.BLUE}[{Fore.RED}1{Fore.BLUE}] Theme changer
+        {Fore.BLUE}[{Fore.RED}2{Fore.BLUE}] Amount of threads
+        {Fore.BLUE}[{Fore.RED}3{Fore.BLUE}] Cancel key
+        {Fore.BLUE}[{Fore.RED}4{Fore.BLUE}] {Fore.RED}Exit...    
                         ''')
         secondchoice = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Setting: {Fore.RED}')
@@ -450,13 +451,11 @@ def main():
             main()
         if secondchoice == "1":
             print(f"""
-    {Fore.RED}Xeme: 1
-    {Fore.LIGHTBLACK_EX}Dark: 2
-    {Fore.YELLOW}Fire: 3
-    {Fore.BLUE}Aqua: 4
-    {Fore.CYAN}N{Fore.MAGENTA}e{Fore.CYAN}o{Fore.MAGENTA}n{Fore.CYAN}:{Fore.MAGENTA} 5
-  {Fore.LIGHTYELLOW_EX}desert: 6
-    """)
+        {Fore.RED}Xeme: 1
+        {Fore.LIGHTBLACK_EX}Dark: 2
+        {Fore.YELLOW}Fire: 3
+        {Fore.BLUE}Aqua: 4
+        {Fore.CYAN}N{Fore.MAGENTA}e{Fore.CYAN}o{Fore.MAGENTA}n{Fore.CYAN}:{Fore.MAGENTA} 5""")
             themechoice = input(
                 f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}theme: {Fore.RED}')
             if themechoice == "1":
@@ -537,7 +536,7 @@ if __name__ == "__main__":
     setTitle("Xvirus Loading...")
     
     System.Size(120, 30)
-    
+    check_wifi_connection()
     try:
         assert sys.version_info >= (3,7)
     except AssertionError:
@@ -547,7 +546,6 @@ if __name__ == "__main__":
         sleep(1.5)
         os._exit(0)
     else:
-        check_wifi_connection()
         search_for_updates()
         proxy_file = os.getenv("temp") + "\\xvirus_proxies"
         if not os.path.exists(proxy_file):
