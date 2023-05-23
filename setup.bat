@@ -1,5 +1,12 @@
-python -m pip install -r requirements.txt
+@echo off
+
+for /f "delims=" %%i in (requirements.txt) do (
+    echo Installing %%i
+    python -m pip install "%%i"
+)
+
 cls
+
 echo python Xvirus.py >> start.bat
+
 start start.bat
-start /b "" cmd /c del "%~f0"&exit /b

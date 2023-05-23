@@ -59,3 +59,4 @@ commands
 cycle
 itertools
 pyinstaller>=5.0
+webbrowser
