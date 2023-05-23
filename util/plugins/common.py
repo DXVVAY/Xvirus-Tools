@@ -381,74 +381,70 @@ def validateWebhook(hook):
         sleep(1)
 
 
+def fetch_proxies(url, custom_regex, proxies_log):
+    try:
+        proxy_list = requests.get(url, timeout=5).text
+        proxy_list = proxy_list.replace('null', '')
+    except requests.exceptions.RequestException:
+        return
+
+    custom_regex = custom_regex.replace('%ip%', r'([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})')
+    custom_regex = custom_regex.replace('%port%', r'([0-9]{1,5})')
+
+    for proxy in re.findall(re.compile(custom_regex), proxy_list):
+        proxies_log.append(f"{proxy[0]}:{proxy[1]}")
+
+
 def proxy_scrape():
     temp_path = os.path.join(os.getenv("temp"), "xvirus_proxies")
 
     if os.path.isfile(temp_path) and os.stat(temp_path).st_size > 0:
-        # Proxies have already been scraped, so return
         return
 
-    proxieslog = []
+    proxies_log = []
     setTitle("Scraping Proxies")
     start_time = time.time()
-    
-    print(f"""{Fore.BLUE}Please wait while {Fore.RED}Xvirus{Fore.BLUE} Scrapes proxies for you!\n(This might take some time)\nIf you have been in this page for too long restart the program!""")
 
-    def fetch_proxies(url, custom_regex):
-        try:
-            proxylist = requests.get(url, timeout=5).text
-        except requests.exceptions.RequestException:
-            return
-        finally:
-            proxylist = proxylist.replace('null', '')
+    while True:
+        Anime.Fade((logo), Colors.rainbow, Colorate.Vertical, time=5)
+        proxy_sources = [
+            ["http://spys.me/proxy.txt","%ip%:%port% "],
+            ["http://www.httptunnel.ge/ProxyListForFree.aspx"," target=\"_new\">%ip%:%port%</a>"],
+            ["https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.json", "\"ip\":\"%ip%\",\"port\":\"%port%\","],
+            ["https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list", '"host": "%ip%".*?"country": "(.*?){2}",.*?"port": %port%'],
+            ["https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list.txt", '%ip%:%port% (.*?){2}-.-S \\+'],
+            ["https://raw.githubusercontent.com/opsxcq/proxy-list/master/list.txt", '%ip%", "type": "http", "port": %port%'],
+            ["https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt", "%ip%:%port%"],
+            ["https://raw.githubusercontent.com/shiftytr/proxy-list/master/proxy.txt", "%ip%:%port%"],
+            ["https://proxylist.icu/proxy/", "<td>%ip%:%port%</td><td>http<"],
+            ["https://proxylist.icu/proxy/1", "<td>%ip%:%port%</td><td>http<"],
+            ["https://proxylist.icu/proxy/2", "<td>%ip%:%port%</td><td>http<"],
+            ["https://proxylist.icu/proxy/3", "<td>%ip%:%port%</td><td>http<"],
+            ["https://proxylist.icu/proxy/4", "<td>%ip%:%port%</td><td>http<"],
+            ["https://proxylist.icu/proxy/5", "<td>%ip%:%port%</td><td>http<"],
+            ["https://raw.githubusercontent.com/scidam/proxy-list/master/proxy.json", '"ip": "%ip%",\n.*?"port": "%port%",']
+        ]
 
-        custom_regex = custom_regex.replace('%ip%', r'([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})')
-        custom_regex = custom_regex.replace('%port%', r'([0-9]{1,5})')
-        
-        for proxy in re.findall(re.compile(custom_regex), proxylist):
-            proxieslog.append(f"{proxy[0]}:{proxy[1]}")
+        threads = []
+        for url, custom_regex in proxy_sources:
+            t = threading.Thread(target=fetch_proxies, args=(url, custom_regex, proxies_log))
+            threads.append(t)
+            t.start()
 
-    proxysources = [
-        ["http://spys.me/proxy.txt","%ip%:%port% "],
-        ["http://www.httptunnel.ge/ProxyListForFree.aspx"," target=\"_new\">%ip%:%port%</a>"],
-        ["https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.json", "\"ip\":\"%ip%\",\"port\":\"%port%\","],
-        ["https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list", '"host": "%ip%".*?"country": "(.*?){2}",.*?"port": %port%'],
-        ["https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list.txt", '%ip%:%port% (.*?){2}-.-S \\+'],
-        ["https://raw.githubusercontent.com/opsxcq/proxy-list/master/list.txt", '%ip%", "type": "http", "port": %port%'],
-        ["https://www.us-proxy.org/", "<tr><td>%ip%<\\/td><td>%port%<\\/td><td>(.*?){2}<\\/td><td class='hm'>.*?<\\/td><td>.*?<\\/td><td class='hm'>.*?<\\/td><td class='hx'>(.*?)<\\/td><td class='hm'>.*?<\\/td><\\/tr>"],
-        ["https://free-proxy-list.net/", "<tr><td>%ip%<\\/td><td>%port%<\\/td><td>(.*?){2}<\\/td><td class='hm'>.*?<\\/td><td>.*?<\\/td><td class='hm'>.*?<\\/td><td class='hx'>(.*?)<\\/td><td class='hm'>.*?<\\/td><\\/tr>"],
-        ["https://www.sslproxies.org/", "<tr><td>%ip%<\\/td><td>%port%<\\/td><td>(.*?){2}<\\/td><td class='hm'>.*?<\\/td><td>.*?<\\/td><td class='hm'>.*?<\\/td><td class='hx'>(.*?)<\\/td><td class='hm'>.*?<\\/td><\\/tr>"],
-        ["https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=6000&country=all&ssl=yes&anonymity=all", "%ip%:%port%"],
-        ["https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt", "%ip%:%port%"],
-        ["https://raw.githubusercontent.com/shiftytr/proxy-list/master/proxy.txt", "%ip%:%port%"],
-        ["https://proxylist.icu/proxy/", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/1", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/2", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/3", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/4", "<td>%ip%:%port%</td><td>http<"],
-        ["https://proxylist.icu/proxy/5", "<td>%ip%:%port%</td><td>http<"],
-        ["https://www.hide-my-ip.com/proxylist.shtml", '"i":"%ip%","p":"%port%",'],
-        ["https://raw.githubusercontent.com/scidam/proxy-list/master/proxy.json", '"ip": "%ip%",\n.*?"port": "%port%",']
-    ]
-    
-    threads = [] 
-    for url, custom_regex in proxysources:
-        t = threading.Thread(target=fetch_proxies, args=(url, custom_regex))
-        threads.append(t)
-        t.start()
-    
-    for t in threads:
-        t.join()
+        for t in threads:
+            t.join()
 
-    proxies = list(set(proxieslog))
-    with open(temp_path, "w") as f:
-        for proxy in proxies:
-            # create the same proxy 7-10 times to avoid ratelimit when using other options
-            for _ in range(random.randint(7, 10)):
-                f.write(f"{proxy}\n")
-    
-    execution_time = (time.time() - start_time)
-    print(f"{Fore.GREEN}Done! Scraped{Fore.MAGENTA}{len(proxies): >5}{Fore.GREEN} in total => {Fore.RED}{temp_path}{Fore.RESET} | {execution_time}ms")
+        unique_proxies = list(set(proxies_log))
+        with open(temp_path, "w") as f:
+            for proxy in unique_proxies:
+                for _ in range(random.randint(7, 10)):
+                    f.write(f"{proxy}\n")
+
+        execution_time = (time.time() - start_time)
+        if len(unique_proxies) > 0:
+            break
+
+    print(f"{Fore.GREEN}Done! Scraped{Fore.MAGENTA}{len(unique_proxies): >5}{Fore.GREEN} in total => {Fore.RED}{temp_path}{Fore.RESET} | {execution_time}ms")
     setTitle(f"Xvirus {THIS_VERSION}")
 
 def proxy():
@@ -517,3 +513,30 @@ def check_wifi_connection():
                 print(f"{Fore.RED}                                Retrying in {Fore.BLUE}{i} {Fore.RED}seconds", end='\r')
                 time.sleep(1)
             clear()
+
+
+logo = r"""
+Please wait while Xvirus Scrapes proxies for you!
+
+
+
+
+
+
+
+
+
+
+
+                                                        ██╗  ██╗
+                                                        ╚██╗██╔╝
+                                                         ╚███╔╝ 
+                                                         ██╔██╗ 
+                                                        ██╔╝╚██╗
+                                                        ╚═╝  ╚═╝
+
+
+
+
+
+"""[1:]
