@@ -47,7 +47,7 @@ def CHANGE_LOG():
     12. Cloud for auto update!!
     13. Moving all themes to util/plugins/themes.py for smoother code''')
     
-THIS_VERSION = "1.5.9"
+THIS_VERSION = "1.6.0"
 TARGET_VERSION = 0
 
 def search_for_updates():
