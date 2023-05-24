@@ -45,7 +45,7 @@ def checkvalidity():
                 break
             if "429" in r1:
                 print(f'Rate limited...')
-                time.sleep(.3)
+                time.sleep(3)  # Add a delay of 1 second between requests
         r1 = str(r1)
         totaltoken = int(totaltoken) + 1
     
@@ -61,6 +61,7 @@ def checkvalidity():
                     break
                 if "429" in r:
                     print(f'Rate limited...')
+                    time.sleep(3)  # Add a delay of 1 second between requests
             r = str(r)
     
             if "200" in r:
