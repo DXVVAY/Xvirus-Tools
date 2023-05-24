@@ -534,7 +534,7 @@ if __name__ == "__main__":
     
     System.Size(120, 30)
     check_wifi_connection()
-    Anime.Fade((logo), Colors.rainbow, Colorate.Vertical, time=3)
+    Anime.Fade(Center.Center(startuplogo), Colors.rainbow, Colorate.Vertical, time=3)
     try:
         assert sys.version_info >= (3,7)
     except AssertionError:
