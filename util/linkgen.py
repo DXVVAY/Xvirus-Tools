@@ -5,17 +5,17 @@ import string
 import ctypes
 import requests
 from discord_webhook import DiscordWebhook
-from colorama import Fore
+from colorama import *
 
 
-class NitroGen:
+class ServerLinkGen:
     def __init__(self):
-        self.fileName = "temp/NitroCodes.txt"
+        self.fileName = "temp/ServerLinks.txt"
 
     def main(self):
         print("Input How Many Codes to Generate and Check")
-        num = int(input("Number of generation: "))
-        print("\nDo you wish to use a discord webhook? - [If so type it here or press enter to ignore]")
+        num = int(input("Number of generations: "))
+        print("\nDo you wish to use a discord webhook? - [If so, type it here or press enter to ignore]")
         url = input("WebHook: ")
         time.sleep(1)
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -27,9 +27,9 @@ class NitroGen:
             try:
                 code = "".join(random.choices(
                     string.ascii_uppercase + string.digits + string.ascii_lowercase,
-                    k=16
+                    k=7
                 ))
-                url = f"https://discord.gift/{code}"
+                url = f"https://discord.gg/{code}"
 
                 result = self.quickChecker(url, webhook)
 
@@ -38,11 +38,11 @@ class NitroGen:
                 else:
                     invalid += 1
             except Exception as e:
-                print(f"Error : {url} ")
+                print(f"Error: {url}")
 
             if os.name == "nt":
                 ctypes.windll.kernel32.SetConsoleTitleW(
-                    f"Nitro Generator and Checker - {len(valid)} Valid | {invalid} Invalid - Made by Xvirus"
+                    f"Server Link Generator and Checker - {len(valid)} Valid | {invalid} Invalid - Made by Xvirus"
                 )
                 print("")
 
@@ -50,7 +50,7 @@ class NitroGen:
 Results:
     Valid: {len(valid)}
     Invalid: {invalid}
-    Valid Codes: {', '.join(valid)}
+    Valid Server Links: {', '.join(valid)}
         """)
 
         input("Press ENTER to exit")
@@ -65,62 +65,62 @@ Results:
             for i in range(amount):
                 code = "".join(random.choices(
                     string.ascii_uppercase + string.digits + string.ascii_lowercase,
-                    k=16
+                    k=7
                 ))
 
-                file.write(f"https://discord.gift/{code}\n")
+                file.write(f"https://discord.gg/{code}\n")
 
-            print(f"Genned {amount} codes | Time taken: {round(time.time() - start, 5)}s\n")
+            print(f"Genned {amount} server links | Time taken: {round(time.time() - start, 5)}s\n")
 
     def fileChecker(self, notify=None):
         valid = []
         invalid = 0
         with open(self.fileName, "r", encoding="utf-8") as file:
             for line in file.readlines():
-                nitro = line.strip("\n")
+                server_link = line.strip("\n")
 
-                url = f"https://discordapp.com/api/v10/entitlements/gift-codes/{nitro}?with_application=false&with_subscription_plan=true"
+                url = f"https://discordapp.com/api/v9/invites/{server_link}"
 
                 response = requests.get(url)
 
                 if response.status_code == 200:
-                    print(f"{Fore.BLUE}VALID NITRO:{Fore.GREEN} {nitro}")
-                    valid.append(nitro)
+                    print(f"{Fore.BLUE}VALID SERVER LINK:{Fore.GREEN} {server_link}")
+                    valid.append(server_link)
 
                     if notify is not None:
                         DiscordWebhook(
                             url=notify,
-                            content=f"@everyone | A valid Nitro has been found => {nitro}"
+                            content=f"@everyone | A valid server link has been found => {server_link}"
                         ).execute()
                     else:
                         break
                 else:
-                    print(f"{Fore.BLUE}INVALID NITRO:{Fore.RED} {nitro}")
+                    print(f"{Fore.BLUE}INVALID SERVER LINK:{Fore.RED} {server_link}")
                     invalid += 1
 
         return {"valid": valid, "invalid": invalid}
 
-    def quickChecker(self, nitro, notify=None):
-        url = f"https://discordapp.com/api/v10/entitlements/gift-codes/{nitro}?with_application=false&with_subscription_plan=true"
+    def quickChecker(self, server_link, notify=None):
+        url = f"https://discordapp.com/api/v9/invites/{server_link}"
         response = requests.get(url)
 
         if response.status_code == 200:
-            print(f"{Fore.BLUE}VALID NITRO:{Fore.GREEN} {nitro}", flush=True, end="" if os.name == 'nt' else "\n")
-            with open("temp/NitroCodes.txt", "w") as file:
-                file.write(nitro)
+            print(f"{Fore.BLUE}VALID SERVER LINK:{Fore.GREEN} {server_link}", flush=True, end="" if os.name == 'nt' else "\n")
+            with open("temp/ServerLinks.txt", "w") as file:
+                file.write(server_link)
 
             if notify is not None:
                 DiscordWebhook(
                     url=notify,
-                    content=f"@everyone | A valid Nitro has been found => {nitro}"
+                    content=f"@everyone | A valid server link has been found => {server_link}"
                 ).execute()
 
             return True
         else:
-            print(f"{Fore.BLUE}INVALID NITRO{Fore.RED} {nitro}", flush=True, end="" if os.name == 'nt' else "\n")
+            print(f"{Fore.BLUE}INVALID SERVER LINK:{Fore.RED} {server_link}", flush=True, end="" if os.name == 'nt' else "\n")
             return False
 
 
 if __name__ == '__main__':
-    Gen = NitroGen()
+    Gen = ServerLinkGen()
     Gen.main()

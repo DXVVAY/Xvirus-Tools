@@ -397,9 +397,7 @@ def main():
         exec(open('util/nitrogen.py').read())
 
     elif choice == '24':
-        print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
-        sleep(1)
-        main()
+        exec(open('util/linkgen.py').read())
 
     elif choice == '25':
         print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
