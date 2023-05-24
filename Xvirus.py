@@ -16,8 +16,6 @@ import util.massdm
 import util.tokendisable
 import util.vanitysniper
 
-System.Size(120, 30)
-
 threads = 3
 cancel_key = "ctrl+x"
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -534,6 +532,7 @@ if __name__ == "__main__":
     
     System.Size(120, 30)
     check_wifi_connection()
+    get_username()
     Anime.Fade(Center.Center(startuplogo), Colors.rainbow, Colorate.Vertical, time=3)
     try:
         assert sys.version_info >= (3,7)

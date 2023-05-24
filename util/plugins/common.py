@@ -18,6 +18,7 @@ import colorama
 import shutil
 import os.path
 import string
+import tempfile
 from zipfile import ZipFile
 from time import sleep
 from colorama import Fore
@@ -498,11 +499,11 @@ def getheaders(token=None):
     headers = random.choice(heads)
     if token:
         headers.update({"Authorization": token})
-    return headers
+    return header
+
 def check_wifi_connection():
     try:
         urllib.request.urlopen('https://www.google.com')
-        # If there is a WiFi connection, pass
         pass
     except:
         while True:
@@ -675,7 +676,7 @@ def banner(theme=None):
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog
-> [!] Settings                                                                                          Xside gpt [ai] <
+> [!] Settings                                      Welcome {username}                                        Xside gpt [ai] <
 {Fore.WHITE}───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────{Fore.RED}
 {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                 |{Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler
 {Fore.RED}[{Fore.RED}02{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends                        |{Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer               |{Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot 
@@ -704,7 +705,7 @@ def bannerTheme(type1, type2):
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog
-> [!] Settings                                                                                         Xside gpt [ai] <''')+type2('''  
+> [!] Settings                                      Welcome {username}                                        Xside gpt [ai] <''')+type2('''
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 [01] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler
 [02] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Rat Bot 
@@ -716,6 +717,7 @@ def bannerTheme(type1, type2):
 [08] Token Info                                  |[17] Webhook Destroyer             |[26] [Coming Soon]
 [09] Log into an account                         |[18] Token Mass Validator          |[27] [Coming Soon]
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────''')
+
 
 
 def offline():
@@ -740,6 +742,30 @@ def offline():
                               ╚█████╔╝██║     ██║     ███████╗██║██║ ╚███║███████╗  ██╗
                                ╚════╝ ╚═╝     ╚═╝     ╚══════╝╚═╝╚═╝  ╚══╝╚══════╝  ╚═╝{Fore.RED}""")
 
+
+def usernamelogo():
+                print(f"""
+
+
+
+
+
+
+
+                    {Fore.RED}███████╗{Fore.BLUE}███╗  ██╗{Fore.RED}████████╗{Fore.BLUE}███████╗{Fore.RED}██████╗   {Fore.BLUE}██╗   ██╗{Fore.RED} █████╗ {Fore.BLUE}██╗   ██╗{Fore.RED}██████╗   
+                    {Fore.RED}██╔════╝{Fore.BLUE}████╗ ██║{Fore.RED}╚══██╔══╝{Fore.BLUE}██╔════╝{Fore.RED}██╔══██╗  {Fore.BLUE}╚██╗ ██╔╝{Fore.RED}██╔══██╗{Fore.BLUE}██║   ██║{Fore.RED}██╔══██╗  
+                    {Fore.RED}█████╗  {Fore.BLUE}██╔██╗██║{Fore.RED}   ██║   {Fore.BLUE}█████╗  {Fore.RED}██████╔╝  {Fore.BLUE} ╚████╔╝ {Fore.RED}██║  ██║{Fore.BLUE}██║   ██║{Fore.RED}██████╔╝  
+                    {Fore.RED}██╔══╝  {Fore.BLUE}██║╚████║{Fore.RED}   ██║   {Fore.BLUE}██╔══╝  {Fore.RED}██╔══██╗  {Fore.BLUE}  ╚██╔╝  {Fore.RED}██║  ██║{Fore.BLUE}██║   ██║{Fore.RED}██╔══██╗  
+                    {Fore.RED}███████╗{Fore.BLUE}██║ ╚███║{Fore.RED}   ██║   {Fore.BLUE}███████╗{Fore.RED}██║  ██║  {Fore.BLUE}   ██║   {Fore.RED}╚█████╔╝{Fore.BLUE}╚██████╔╝{Fore.RED}██║  ██║  
+                    {Fore.RED}╚══════╝{Fore.BLUE}╚═╝  ╚══╝{Fore.RED}   ╚═╝   {Fore.BLUE}╚══════╝{Fore.RED}╚═╝  ╚═╝  {Fore.BLUE}   ╚═╝   {Fore.RED} ╚════╝ {Fore.BLUE} ╚═════╝ {Fore.RED}╚═╝  ╚═╝  
+
+                          {Fore.BLUE}██╗   ██╗{Fore.RED} ██████╗{Fore.BLUE}███████╗{Fore.RED}██████╗ {Fore.BLUE}███╗  ██╗{Fore.RED} █████╗ {Fore.BLUE}███╗   ███╗{Fore.RED}███████╗
+                          {Fore.BLUE}██║   ██║{Fore.RED}██╔════╝{Fore.BLUE}██╔════╝{Fore.RED}██╔══██╗{Fore.BLUE}████╗ ██║{Fore.RED}██╔══██╗{Fore.BLUE}████╗ ████║{Fore.RED}██╔════╝
+                          {Fore.BLUE}██║   ██║{Fore.RED}╚█████╗ {Fore.BLUE}█████╗  {Fore.RED}██████╔╝{Fore.BLUE}██╔██╗██║{Fore.RED}███████║{Fore.BLUE}██╔████╔██║{Fore.RED}█████╗  
+                          {Fore.BLUE}██║   ██║{Fore.RED} ╚═══██╗{Fore.BLUE}██╔══╝  {Fore.RED}██╔══██╗{Fore.BLUE}██║╚████║{Fore.RED}██╔══██║{Fore.BLUE}██║╚██╔╝██║{Fore.RED}██╔══╝  
+                          {Fore.BLUE}╚██████╔╝{Fore.RED}██████╔╝{Fore.BLUE}███████╗{Fore.RED}██║  ██║{Fore.BLUE}██║ ╚███║{Fore.RED}██║  ██║{Fore.BLUE}██║ ╚═╝ ██║{Fore.RED}███████╗
+                          {Fore.BLUE} ╚═════╝ {Fore.RED}╚═════╝ {Fore.BLUE}╚══════╝{Fore.RED}╚═╝  ╚═╝{Fore.BLUE}╚═╝  ╚══╝{Fore.RED}╚═╝  ╚═╝{Fore.BLUE}╚═╝     ╚═╝{Fore.RED}╚══════╝
+                                                                                                 """)
 
 logo = r"""
 Please wait while Xvirus Scrapes proxies for you!
@@ -778,3 +804,24 @@ startuplogo = r"""
 """[1:]
 
 #################################################################################################################################################################################
+
+
+def get_username():
+    temp_dir = tempfile.gettempdir()
+    
+    username_file = os.path.join(temp_dir, 'xvirus_username')
+
+    if os.path.isfile(username_file):
+        with open(username_file, 'r') as f:
+            username = f.read().strip()
+    else:
+        clear()
+        usernamelogo()
+        username = input(f"""                            {Fore.BLUE}Your Username: """)
+        
+        with open(username_file, 'w') as f:
+            f.write(username)
+    
+    return username
+
+username = get_username()
