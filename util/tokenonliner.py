@@ -55,7 +55,6 @@ def tokenonliner():
                     }
                 )
             )
-            b = Fore.BLUE
             print(f"{Fore.RED}[ONLINE] Token {Fore.BLUE}{self.token} {Fore.RED}is online.")
 
             while True:
