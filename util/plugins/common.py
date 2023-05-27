@@ -593,45 +593,46 @@ def banner(theme=None):
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog
 > [!] Settings                                      Welcome {username}                                        Xside gpt [ai] <
- {Fore.WHITE}┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
- {Fore.WHITE}│{Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                                |{Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                 |{Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler           {Fore.WHITE}│
- {Fore.WHITE}│{Fore.RED}[{Fore.RED}03{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers                |{Fore.RED}[{Fore.RED}12{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force             |{Fore.RED}[{Fore.RED}21{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper            {Fore.WHITE}│
- {Fore.WHITE}│{Fore.RED}[{Fore.RED}04{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers                     |{Fore.RED}[{Fore.RED}13{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber                 |{Fore.RED}[{Fore.RED}22{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Clearer (WIP)         {Fore.WHITE}│
- {Fore.WHITE}│{Fore.RED}[{Fore.RED}05{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                                  |{Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber               |{Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator          {Fore.WHITE}│
- {Fore.WHITE}│{Fore.RED}[{Fore.RED}06{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                                     |{Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                   |{Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator    {Fore.WHITE}│
- {Fore.WHITE}│{Fore.RED}[{Fore.RED}07{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode                         |{Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer             |{Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Onliner            {Fore.WHITE}│
- {Fore.WHITE}│{Fore.RED}[{Fore.RED}08{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                                  |{Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer             |{Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]            {Fore.WHITE}│
- {Fore.WHITE}│{Fore.RED}[{Fore.RED}09{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account                         |{Fore.RED}[{Fore.RED}18{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Validator          |{Fore.RED}[{Fore.RED}27{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]            {Fore.WHITE}│
- {Fore.WHITE}└────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘''')
+{Fore.WHITE} ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler                {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends         {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot               {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper                 {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Clearer (WIP)              {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator               {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                      {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator         {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Onliner                 {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Validator             {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
+{Fore.WHITE} └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
                                                                                                                     
 
 
 
 bannerTheme = f"""
+                                                                                                                       
                                         ,.   (   .      )        .      "
                                        ("     )  )'     ,'        )  . (`     '`
                                      .; )  ' (( (" )    ;(,     ((  (  ;)  "  )"
                                      _"., ,._'_.,)_(..,( . )_  _' )_') (. _..( '..
-                                    ██╗  ██╗██╗   ██╗██╗██████╗ ██╗   ██╗ ██████╗   
+                                    ██╗  ██╗██╗   ██╗██╗██████╗ ██╗   ██╗ ██████╗
                                     ╚██╗██╔╝██║   ██║██║██╔══██╗██║   ██║██╔════╝
-                                     ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
+                                     ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
-> [?] {THIS_VERSION} Changelog
-> [!] Settings                                      Welcome {username}                                        Xside gpt [ai] <
- ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
- │  [01] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler         │
- │  [02] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Rat Bot        │
- │  [03] Delete and leave all servers                |[12] Token Brute-Force             |[21] Vanity Sniper          │
- │  [04] Spam Create New servers                     |[13] Token Grabber                 |[22] Dm Clearer (WIP)       │
- │  [05] Dm Deleter                                  |[14] QR Code grabber               |[23] Nitro Generator        │
- │  [06] Mass Dm                                     |[15] Mass Report                   |[24] Server Link Generator  │
- │  [07] Enable Seizure Mode                         |[16] GroupChat Spammer             |[25] Token Onliner          │
- │  [08] Token Info                                  |[17] Webhook Destroyer             |[26] [Coming Soon]          │
- │  [09] Log into an account                         |[18] Token Mass Validator          |[27] [Coming Soon]          │
- └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-"""
+> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
+> [?] {THIS_VERSION} Changelog                                                                                         
+> [!] Settings                                      Welcome {username}                                       Xside gpt [ai] <
+ ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
+ │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
+ │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
+ │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
+ │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer (WIP)              │
+ │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
+ │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
+ │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Token Onliner                 │
+ │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
+ │  [09] Log into an account           │  [18] Token Mass Validator             │  [27] [Coming Soon]                 │
+ └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘"""
 
 def bennerTheme(type1, type2):
     return type1(f'''
@@ -642,25 +643,25 @@ def bennerTheme(type1, type2):
                                        ("     )  )'     ,'        )  . (`     '`
                                      .; )  ' (( (" )    ;(,     ((  (  ;)  "  )"
                                      _"., ,._'_.,)_(..,( . )_  _' )_') (. _..( '..
-                                    ██╗  ██╗██╗   ██╗██╗██████╗ ██╗   ██╗ ██████╗   
+                                    ██╗  ██╗██╗   ██╗██╗██████╗ ██╗   ██╗ ██████╗
                                     ╚██╗██╔╝██║   ██║██║██╔══██╗██║   ██║██╔════╝
-                                     ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗ 
+                                     ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  
 > [?] {THIS_VERSION} Changelog
 > [!] Settings                                      Welcome {username}                                        Xside gpt [ai] <''')+type2('''
- ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
- │  [01] Nuke Account                                |[10] Block Friends                 |[19] Token Disabler         │
- │  [02] Unfriend all friends                        |[11] Profile Changer               |[20] Discord Rat Bot        │
- │  [03] Delete and leave all servers                |[12] Token Brute-Force             |[21] Vanity Sniper          │
- │  [04] Spam Create New servers                     |[13] Token Grabber                 |[22] Dm Clearer (WIP)       │
- │  [05] Dm Deleter                                  |[14] QR Code grabber               |[23] Nitro Generator        │
- │  [06] Mass Dm                                     |[15] Mass Report                   |[24] Server Link Generator  │
- │  [07] Enable Seizure Mode                         |[16] GroupChat Spammer             |[25] Token Onliner          │
- │  [08] Token Info                                  |[17] Webhook Destroyer             |[26] [Coming Soon]          │
- │  [09] Log into an account                         |[18] Token Mass Validator          |[27] [Coming Soon]          │
- └────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘''')
+ ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
+ │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
+ │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
+ │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
+ │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer (WIP)              │
+ │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
+ │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
+ │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Token Onliner                 │
+ │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
+ │  [09] Log into an account           │  [18] Token Mass Validator             │  [27] [Coming Soon]                 │
+ └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
 
 def offline():
                 print(f"""{Fore.RED}
