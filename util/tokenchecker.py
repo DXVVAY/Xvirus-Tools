@@ -1,91 +1,56 @@
-import requests, time
+import requests
+import threading
+import time
 from colorama import Fore
-from util.plugins.common import * 
 
-setTitle("Mass Tokens Checker")
+def tokenchecker():
 
-print(f" Enter the file path (It must be in .txt and it must contain 1 token per line): ")
-global filePath, tokens, donetokenlist
-filePath = input(f" File path: ")
-sort = "\""
-for sort in sort:
-    filePath = filePath.replace(sort, '')
-donetokenlist = []
+    def check_token(token, valid_tokens, invalid_tokens, locked_tokens):
+        try:
+            response = requests.get('https://discord.com/api/v9/users/@me/library', headers={"authorization": token,"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36","x-discord-locale": "de-DE"})
+            if response.status_code == 200:
+                with lock:
+                    valid_tokens.append(token)
+                print(f"({Fore.GREEN}+{Fore.RESET}){Fore.LIGHTGREEN_EX} [VALID] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
+            elif response.status_code == 401 or response.status_code == 403:
+                with lock:
+                    locked_tokens.append(token)
+                print(f"({Fore.YELLOW}~{Fore.RESET}){Fore.LIGHTYELLOW_EX} [LOCKED] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
+            elif response.status_code == 404:
+                with lock:
+                    invalid_tokens.append(token)
+                print(f"({Fore.RED}-{Fore.RESET}){Fore.LIGHTRED_EX} [INVALID] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
+            else:
+                print(f"({Fore.RED}-{Fore.RESET}){Fore.LIGHTRED_EX} [ERROR] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
+        except:
+            with lock:
+                locked_tokens.append(token)
+            print(f"({Fore.YELLOW}~{Fore.RESET}){Fore.LIGHTYELLOW_EX} [LOCKED] {Fore.LIGHTBLACK_EX}{token}{Fore.RESET} (Error)")
+        time.sleep(1)
 
-def load_token():
-    loaded_amount = 0
-    try:
-        checklist = open(f"{filePath}", "r")
-        tokenlist = checklist.readlines()
-        checklist.close()
-        for token in tokenlist:
-            donetokenlist.append(token[:-1])
-            loaded_amount += 1
-        print(f"\n{loaded_amount} Tokens Loaded")
-        input(f"""\n Press ENTER to start""")
-    except:
-        print(f"          File not found")
-        input(f"""\n Press ENTER to exit""")
-        main()
+    path = input("Enter the path to the tokens file: ")
+    with open(path, 'r') as f:
+        tokens = [line.strip() for line in f.readlines()]
 
+    valid_tokens = []
+    invalid_tokens = []
+    locked_tokens = []
+    lock = threading.Lock()
+    threads = []
 
-def checkvalidity():
-    valid = 0
-    locked = 0
-    invalid = 0
-    totaltoken = 0
-    validtokens = []
-    invite_code = "cQ7xRv3S5x"
-    clear()
-    for token in donetokenlist:
-        while True:
-            r1 = requests.get('https://discord.com/api/v10/auth/login', headers={"Authorization": token})
-            r1 = str(r1)
-            if "429" not in r1:
-                break
-            if "429" in r1:
-                print(f'Rate limited...')
-                time.sleep(3)  # Add a delay of 1 second between requests
-        r1 = str(r1)
-        totaltoken = int(totaltoken) + 1
-    
-        if "400" in r1:
-            print(f'{Fore.RED} Invalid: '+token)
-            invalid += 1
-    
-        if "200" in r1:
-            while True:
-                r = requests.get(f'https://discord.com/api/v10/invite/{invite_code}', headers={"Authorization": token})
-                r = str(r)
-                if "429" not in r:
-                    break
-                if "429" in r:
-                    print(f'Rate limited...')
-                    time.sleep(3)  # Add a delay of 1 second between requests
-            r = str(r)
-    
-            if "200" in r:
-                print(f'{Fore.LIGHTGREEN_EX}[!] Valid: {w}'+token)
-                validtokens.append(token)
-                validfile = open("output/valids.txt", "a")
-                validfile.writelines(token+"\n")
-                validfile.close()
-                valid += 1
-    
-            if "403" in r:
-                print(f'{Fore.LIGHTRED_EX}[!] Verification required: {w}'+ token)
-                locked += 1
+    for token in tokens:
+        t = threading.Thread(target=check_token, args=(token, valid_tokens, invalid_tokens, locked_tokens))
+        threads.append(t)
+        t.start()
 
-    print(f"""\n
-     Results:\n
-          Valid: {valid}""")
-    if valid >=1:
-        print("               You can find the list of valid tokens in output/valids.txt")
-    print(f"""          Verification required: {locked}
-          Invalid: {invalid}""")
+    for t in threads:
+        t.join()
 
-    input(f"""\n\n Press ENTER to exit""")
-    main()
+    print("\n")
+    input(f"        {Fore.LIGHTGREEN_EX}Valid: {len(valid_tokens)}{Fore.RESET}    |   {Fore.LIGHTRED_EX}Invalid: {len(invalid_tokens)}{Fore.RESET}   |   {Fore.YELLOW}Locked: {len(locked_tokens)}{Fore.RESET} "+ "\n" * 3)
 
-load_token()
-checkvalidity()
+    with open(path, 'w') as f:
+        for token in valid_tokens:
+            f.write(token + "\n")
+
+tokenchecker()           
