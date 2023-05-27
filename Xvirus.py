@@ -421,7 +421,7 @@ def main():
         main()
 
     elif choice == 'TM':
-            print(f"""                                            Development Networks:\n\n                                                GitHub:    @DXVVAY, @Xvirus0, @Cwackz(Benjamin)\n\n\n                                            Other Networks\n\n                                                Twitter:   @dexvisnotgay\n                                                Discord:   DEXV#6969, benjamin#6666\n\n\n\n""")
+            print(f"""                                            Development Networks:\n\n                                                GitHub:    @DXVVAY, @Xvirus0, @Cwackz(Benjamin)\n\n\n                                            Other Networks\n\n                                                Twitter:   @DXVVAY\n                                                Discord:   DEXV#6969, benjamin#6666\n\n\n\n""")
             input("Press Enter To Exit!")
             main()
     
