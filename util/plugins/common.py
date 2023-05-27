@@ -602,7 +602,7 @@ def banner(theme=None):
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                      {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator         {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Onliner                 {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Validator             {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Checker               {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
 {Fore.WHITE} └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
                                                                                                                     
 
@@ -631,7 +631,7 @@ bannerTheme = f"""
  │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Token Onliner                 │
  │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
- │  [09] Log into an account           │  [18] Token Mass Validator             │  [27] [Coming Soon]                 │
+ │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
  └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘"""
 
 def bennerTheme(type1, type2):
@@ -660,7 +660,7 @@ def bennerTheme(type1, type2):
  │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Token Onliner                 │
  │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
- │  [09] Log into an account           │  [18] Token Mass Validator             │  [27] [Coming Soon]                 │
+ │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
  └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
 
 def offline():
