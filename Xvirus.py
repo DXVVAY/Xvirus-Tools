@@ -530,7 +530,7 @@ if __name__ == "__main__":
     import sys
     setTitle("Xvirus Loading...")
     
-    System.Size(120, 30)
+    System.Size(120, 28)
     check_wifi_connection()
     get_username()
     Anime.Fade(Center.Center(startuplogo), Colors.rainbow, Colorate.Vertical, time=3)
