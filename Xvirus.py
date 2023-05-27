@@ -432,13 +432,14 @@ def main():
     elif choice == '!':
         print(f'''
         {Fore.BLUE}[{Fore.RED}1{Fore.BLUE}] Theme changer
-        {Fore.BLUE}[{Fore.RED}2{Fore.BLUE}] Amount of threads
-        {Fore.BLUE}[{Fore.RED}3{Fore.BLUE}] Cancel key
-        {Fore.BLUE}[{Fore.RED}4{Fore.BLUE}] {Fore.RED}Exit...    
+        {Fore.BLUE}[{Fore.RED}2{Fore.BLUE}] Change Username
+        {Fore.BLUE}[{Fore.RED}3{Fore.BLUE}] Amount of threads
+        {Fore.BLUE}[{Fore.RED}4{Fore.BLUE}] Cancel key
+        {Fore.BLUE}[{Fore.RED}5{Fore.BLUE}] {Fore.RED}Exit...    
                         ''')
         secondchoice = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Setting: {Fore.RED}')
-        if secondchoice not in ["1", "2", "3", "4"]:
+        if secondchoice not in ["1", "2", "3", "4", "5"]:
             print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Setting')
             sleep(1)
             main()
@@ -470,6 +471,15 @@ def main():
             main()
 
         elif secondchoice == "2":
+            new_username = input(f'{Fore.BLUE}Enter your new username: ')
+            setUsername(new_username)
+            print_slow(f"{Fore.RED}Username set to {Fore.BLUE}{new_username}\n{Fore.RED}Restarting tool")
+            sleep(2)
+            subprocess.run("start.bat", shell=True)
+            exit()
+
+
+        elif secondchoice == "3":
             print(f"{Fore.BLUE}Current amount of threads: {threads}")
             try:
                 amount = int(
@@ -494,7 +504,7 @@ def main():
             sleep(0.5)
             main()
         
-        elif secondchoice == "3":
+        elif secondchoice == "4":
             print("\n","Info".center(30, "-"))
             print(f"{Fore.CYAN}Current cancel key: {cancel_key}")
             print(f"""{Fore.BLUE}If you want to have ctrl + <key> you need to type out ctrl+<key> | DON'T literally press ctrl + <key>
@@ -511,7 +521,7 @@ def main():
             sleep(0.5)
             main()
 
-        elif secondchoice == "4":
+        elif secondchoice == "5":
             setTitle("Exiting. . .")
             choice = input(
                 f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Are you sure you want to exit? (Y to confirm): {Fore.RED}')
