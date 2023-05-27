@@ -398,9 +398,7 @@ def main():
         exec(open('util/linkgen.py').read())
 
     elif choice == '25':
-        print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
-        sleep(1)
-        main()
+        exec(open('util/tokenonliner.py').read())
 
     elif choice == '26':
         print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
