@@ -1,19 +1,22 @@
-import os, os.path, discord
+import discord
 from discord.ext import commands
-from util.plugins.common import * 
 
-setTitle("Clear DM")
-print(f"""Enter your token""")
-token = input(f"""Token: """)
-print(f"""\nWrite "!clear" in one of your DMs to delete your messages""")
+print("Enter your token:")
+token = input("Token: ")
+print("\nWrite '!clear' in one of your DMs to delete your messages")
 
-global bot
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", self_bot=True, intents=intents)
 bot.remove_command("help")
 
+
+@bot.event
+async def on_ready():
+    print("Bot is ready")
+
+
 @bot.command()
-async def clear(ctx, limit: int=None):
+async def clear(ctx, limit: int = None):
     passed = 0
     failed = 0
     async for msg in ctx.message.channel.history(limit=limit):
@@ -24,7 +27,7 @@ async def clear(ctx, limit: int=None):
             except:
                 failed += 1
     print(f"\nRemoved {passed} messages with {failed} fails")
-    input(f"""\nPress ENTER to exit""")
-    main()
+    input("\nPress ENTER to exit")
+
 
 bot.run(token, bot=False)
