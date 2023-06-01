@@ -20,15 +20,6 @@ threads = 3
 cancel_key = "ctrl+x"
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-def ping(host):
-    while True:
-        if keyboard.is_pressed(cancel_key):
-            print(f"Press {cancel_key} to stop")
-            os.system("cls" if os.name == "nt" else "clear")
-            output = subprocess.check_output(["ping", host]).decode("utf-8")
-            print(output)
-            time.sleep(0.5)
-        main()
             
 def main():
     setTitle(f"Xvirus {THIS_VERSION}")
@@ -424,6 +415,8 @@ def main():
             main()
     
     elif choice == 'PING':
+        if keyboard.is_pressed(cancel_key):
+            print(f"Press {cancel_key} to stop")
         ping("google.com")
         input("Press ENTER to continue")
         main()
@@ -537,30 +530,19 @@ def main():
 if __name__ == "__main__":
     import sys
     setTitle("Xvirus Loading...")
-    
     System.Size(120, 28)
     check_wifi_connection()
     get_username()
-    Anime.Fade(Center.Center(startuplogo), Colors.rainbow, Colorate.Vertical, time=3)
-    try:
-        assert sys.version_info >= (3,7)
-    except AssertionError:
-        print(f"{Fore.RED}Woopsie daisy, your Python version ({sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]}) is not compatible with xvirus, please download Python 3.7+")
-        sleep(5)
-        print("exiting. . .")
-        sleep(1.5)
-        os._exit(0)
-    else:
-        search_for_updates()
-        proxy_file = os.getenv("temp") + "\\xvirus_proxies"
-        if not os.path.exists(proxy_file):
-            proxy_scrape()
-        with open(os.getenv("temp") + "\\xvirus_proxies", 'w'):
-            pass
-        if not os.path.exists(os.getenv("temp") + "\\xvirus_theme"):
-            setTheme('xeme')
-        sleep(1.5)
-        main()
-    
-    finally:
-        Fore.RESET
+    Anime.Fade(Center.Center(startuplogo), Colors.rainbow, Colorate.Vertical, time=2)
+    check_version()
+    search_for_updates()
+    proxy_file = os.getenv("temp") + "\\xvirus_proxies"
+    if not os.path.exists(proxy_file):
+        proxy_scrape()
+    with open(os.getenv("temp") + "\\xvirus_proxies", 'w'):
+        pass
+    if not os.path.exists(os.getenv("temp") + "\\xvirus_theme"):
+        setTheme('xeme')
+    sleep(1.5)
+    main()
+

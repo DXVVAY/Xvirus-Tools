@@ -532,6 +532,21 @@ def setUsername(new: str):
 
     with open(username_file, 'w') as f:
         f.write(new)
+
+def check_version():
+        try:
+            assert sys.version_info >= (3,7)
+        except AssertionError:
+            print(f"{Fore.RED}Woopsie daisy, your Python version ({sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]}) is not compatible with xvirus, please download Python 3.7+")
+            sleep(5)
+            print("exiting. . .")
+            sleep(1.5)
+            os._exit(0)
+
+def ping(host):
+    while True:
+        output = subprocess.check_output(["ping", host]).decode("utf-8")
+        p(output)
 #########################################################################################################################################################################
 def blackwhite(text):
     os.system("")
