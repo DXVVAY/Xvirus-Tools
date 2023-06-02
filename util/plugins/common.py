@@ -505,34 +505,6 @@ def check_wifi_connection():
                 time.sleep(1)
             clear()
 
-def get_username():
-    temp_dir = tempfile.gettempdir()
-    
-    username_file = os.path.join(temp_dir, 'xvirus_username')
-
-    if os.path.isfile(username_file):
-        with open(username_file, 'r') as f:
-            username = f.read().strip()
-    else:
-        clear()
-        usernamelogo()
-        username = input(f"""                            {Fore.BLUE}Your Username: """)
-        
-        with open(username_file, 'w') as f:
-            f.write(username)
-    
-    return username
-
-username = get_username()
-
-
-def setUsername(new: str):
-    temp_dir = tempfile.gettempdir()
-    username_file = os.path.join(temp_dir, 'xvirus_username')
-
-    with open(username_file, 'w') as f:
-        f.write(new)
-
 def check_version():
         try:
             assert sys.version_info >= (3,7)
@@ -768,3 +740,32 @@ startuplogo = r"""
 """[1:]
 
 #################################################################################################################################################################################
+
+
+def get_username():
+    temp_dir = tempfile.gettempdir()
+    
+    username_file = os.path.join(temp_dir, 'xvirus_username')
+
+    if os.path.isfile(username_file):
+        with open(username_file, 'r') as f:
+            username = f.read().strip()
+    else:
+        clear()
+        usernamelogo()
+        username = input(f"""                            {Fore.BLUE}Your Username: """)
+        
+        with open(username_file, 'w') as f:
+            f.write(username)
+    
+    return username
+
+username = get_username()
+
+
+def setUsername(new: str):
+    temp_dir = tempfile.gettempdir()
+    username_file = os.path.join(temp_dir, 'xvirus_username')
+
+    with open(username_file, 'w') as f:
+        f.write(new)
