@@ -91,6 +91,53 @@ def search_for_updates():
                 os.startfile("start.bat")
             os._exit(0)
 
+
+def update():
+    clear()
+    setTitle("Xvirus Checking For Updates. . .")
+
+    setTitle("New Update Found!")
+    print(
+        f"""{Fore.YELLOW}
+        ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗  ██╗
+        ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝  ██║
+        ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗    ██║
+        ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝    ╚═╝
+        ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗  ██╗
+         ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝  ╚═╝
+        {Fore.RED}Looks like your Xvirus is outdated """.replace(
+            "█", f"{Fore.WHITE}█{Fore.RED}"
+        ),
+        end="\n\n",
+    )
+
+    update_url = f"https://github.com/Xvirus0/Xvirus-Tools/archive/refs/heads/main.zip"
+    choice = input(
+        f"{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Do you want to update to the latest dev branch (Remember the dev branch might be unstable)? (Y to update N to continue using this version): {Fore.RED}"
+    )
+
+    if choice.lower() == "y" or choice.lower() == "yes":
+        print(f"{Fore.WHITE}\nUpdating. . .")
+        setTitle(f"Xvirus Updating...")
+        new_version_source = requests.get(update_url)
+        with open("Xvirus-Tools-main.zip", "wb") as zipfile:
+            zipfile.write(new_version_source.content)
+        with ZipFile("Xvirus-Tools-main.zip", "r") as filezip:
+            filezip.extractall()
+        os.remove("Xvirus-Tools-main.zip")
+        cwd = os.getcwd() + "\\Xvirus-Tools-main"
+        shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
+        shutil.rmtree(cwd)
+        setTitle("Xvirus Update Complete!")
+        print(f"{Fore.GREEN}Update Successfully Finished!")
+        sleep(2)
+        if os.path.exists(os.getcwd() + "setup.bat"):
+            os.startfile("setup.bat")
+        elif os.path.exists(os.getcwd() + "start.bat"):
+            os.startfile("start.bat")
+        os._exit(0)
+
+
 class Chrome_Installer(object):
     installed = False
     target_version = None
@@ -639,7 +686,7 @@ def banner(theme=None):
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
-> [?] {THIS_VERSION} Changelog                                                                                         
+> [?] {THIS_VERSION} Changelog                                                                           Update [UPD] <
 > [!] Settings                                                                                         Xside gpt [ai] <
 {Fore.WHITE} ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler                {Fore.WHITE}│
@@ -669,7 +716,7 @@ bannerTheme = f"""
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
-> [?] {THIS_VERSION} Changelog                                                                                         
+> [?] {THIS_VERSION} Changelog                                                                           Update [UPD] <
 > [!] Settings                                                                                         Xside gpt [ai] <
  ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
  │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
@@ -697,7 +744,7 @@ def bennerTheme(type1, type2):
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
-> [?] {THIS_VERSION} Changelog                                                                                         
+> [?] {THIS_VERSION} Changelog                                                                           Update [UPD] <
 > [!] Settings                                                                                         Xside gpt [ai] <''')+type2(f'''
  ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
  │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │

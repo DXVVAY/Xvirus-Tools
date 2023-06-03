@@ -420,6 +420,9 @@ def main():
         ping("google.com")
         input("Press ENTER to continue")
         main()
+    
+    elif choice == 'UPD':
+        update()
 
     # this is end settings
     elif choice == '!':
