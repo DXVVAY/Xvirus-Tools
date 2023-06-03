@@ -124,13 +124,9 @@ def update():
             zipfile.write(new_version_source.content)
         with ZipFile("Xvirus-Tools-main.zip", "r") as filezip:
             filezip.extractall()
-
-        for root, dirs, files in os.walk(os.getcwd()):
-            for file in files:
-                os.remove(os.path.join(root, file))
-
+        os.remove("Xvirus-Tools-main.zip")
         cwd = os.getcwd() + "\\Xvirus-Tools-main"
-        shutil.copytree(cwd, os.getcwd())
+        shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
         shutil.rmtree(cwd)
         setTitle("Xvirus Update Complete!")
         print(f"{Fore.GREEN}Update Successfully Finished!")
