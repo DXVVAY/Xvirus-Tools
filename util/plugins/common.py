@@ -113,7 +113,7 @@ def update():
 
     update_url = f"https://github.com/Xvirus0/Xvirus-Tools/archive/refs/heads/main.zip"
     choice = input(
-        f"{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Do you want to update to the latest dev branch (Remember that the dev branch might be unstable)? (Y to update N to continue using this version): {Fore.RED}"
+        f"{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Do you want to update to the latest dev branch (Remember that the dev branch might be unstable)?\n(Y to update N to continue using this version): {Fore.RED}"
     )
 
     if choice.lower() == "y" or choice.lower() == "yes":
