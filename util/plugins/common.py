@@ -686,8 +686,8 @@ def banner(theme=None):
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
-> [?] {THIS_VERSION} Changelog                                                                           Update [UPD] <
-> [!] Settings                                                                                         Xside gpt [ai] <
+> [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
+> [!] Settings                                                                                          Xside gpt [ai] <
 {Fore.WHITE} ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler                {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends         {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot               {Fore.WHITE}│
@@ -716,8 +716,8 @@ bannerTheme = f"""
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
-> [?] {THIS_VERSION} Changelog                                                                           Update [UPD] <
-> [!] Settings                                                                                         Xside gpt [ai] <
+> [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
+> [!] Settings                                                                                          Xside gpt [ai] <
  ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
  │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
  │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
@@ -744,8 +744,8 @@ def bennerTheme(type1, type2):
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
-> [?] {THIS_VERSION} Changelog                                                                           Update [UPD] <
-> [!] Settings                                                                                         Xside gpt [ai] <''')+type2(f'''
+> [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
+> [!] Settings                                                                                          Xside gpt [ai] <''')+type2(f'''
  ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
  │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
  │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
