@@ -96,7 +96,7 @@ def main():
 
     elif choice == '4':
         token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RESET}')
-        validate_token(token)
+        validateToken(token)
 
         print(f'{Fore.BLUE}Do you want to have an icon for the servers that will be created?')
         yes_no = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}yes/no: {Fore.RESET}')
