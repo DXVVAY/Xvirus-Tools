@@ -95,58 +95,55 @@ def main():
                 
 
     elif choice == '4':
-        token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
-        validateToken(token)
-        print(f'{Fore.BLUE}Do you want to have a icon for the servers that will be created?')
-        yesno = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}yes/no: {Fore.RED}')
-        if yesno.lower() == "yes":
-            image = input(f'Example: (C:\\Users\\myName\\Desktop\\Xvirus\\ShitOn.png):\n{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Please input the icon location: {Fore.RED}')
-            if not os.path.exists(image):
-                print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Couldn\'t find "{image}" on your pc')
-                sleep(3)
-                main()
-            with open(image, "rb") as f: _image = f.read()
-            b64Bytes = base64.b64encode(_image)
-            icon = f"data:image/x-icon;base64,{b64Bytes.decode()}"
-        else:
-            icon = None
-        print(f'''
-    {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Random server names
-    {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Custom server names  
-                        ''')
-        secondchoice = input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RED}')
-        if secondchoice not in ["1", "2"]:
-            print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Second Choice')
-            sleep(1)
-            main()
-        if secondchoice == "1":
-            processes = []
-            for i in range(25):
-                t = multiprocessing.Process(target=util.spamservers.SpamServers, args=(token, icon))
-                t.start()
-                processes.append(t)
-            while True:
-                if keyboard.is_pressed(cancel_key):
-                    for process in processes:
-                        process.terminate()
-                    main()
-                    break
+        token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RESET}')
+        validate_token(token)
 
-        if secondchoice == "2":
-            name = str(input(
-                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Name of the servers that will be created: {Fore.RED}'))
-            processes = []
-            for i in range(25):
-                t = multiprocessing.Process(target=util.spamservers.SpamServers, args=(token, icon, name))
-                t.start()
-                processes.append(t)
-            while True:
-                if keyboard.is_pressed(cancel_key):
-                    for process in processes:
-                        process.terminate()
-                    main()
-                    break
+        print(f'{Fore.BLUE}Do you want to have an icon for the servers that will be created?')
+        yes_no = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}yes/no: {Fore.RESET}')
+
+        icon = None
+        if yes_no.lower() == 'yes':
+            image = input(f'Example: (C:\\Users\\myName\\Desktop\\Xvirus\\ShitOn.png):\n'
+                        f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Please input the icon location: {Fore.RESET}')
+            if not os.path.exists(image):
+                print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Couldn\'t find "{image}" on your PC')
+                return
+
+            with open(image, 'rb') as f:
+                image_data = f.read()
+                icon = f'data:image/x-icon;base64,{base64.b64encode(image_data).decode()}'
+
+        print(f'''
+        {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Random server names
+        {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Custom server names
+        ''')
+
+        second_choice = input(
+            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RESET}'
+        )
+
+        if second_choice not in ['1', '2']:
+            print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Second Choice')
+            return
+
+        num_processes = 25
+        name = None
+        if second_choice == '2':
+            name = input(
+                f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Name of the servers that will be created: {Fore.RESET}'
+            )
+
+        processes = []
+        for _ in range(num_processes):
+            process = multiprocessing.Process(target=create_servers, args=(token, icon, name))
+            process.start()
+            processes.append(process)
+
+        while True:
+            if keyboard.is_pressed(cancel_key):
+                for process in processes:
+                    process.terminate()
+                break
 
 
     elif choice == '5':
@@ -389,7 +386,9 @@ def main():
         exec(open('util/linkgen.py').read())
 
     elif choice == '25':
-        exec(open('util/tokenonliner.py').read())
+        print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        sleep(1)
+        main()
 
     elif choice == '26':
         print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")

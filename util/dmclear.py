@@ -20,7 +20,7 @@ async def clear(ctx, limit: int = None):
     passed = 0
     failed = 0
     async for msg in ctx.message.channel.history(limit=limit):
-        if msg.author.id == bot.user.id:
+        if msg.author.id == ctx.bot.user.id:
             try:
                 await msg.delete()
                 passed += 1
@@ -28,6 +28,7 @@ async def clear(ctx, limit: int = None):
                 failed += 1
     print(f"\nRemoved {passed} messages with {failed} fails")
     input("\nPress ENTER to exit")
+    main()
 
 
 bot.run(token, bot=False)
