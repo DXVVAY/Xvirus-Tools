@@ -41,9 +41,10 @@ def CHANGE_LOG():
     7. Fixed many grammer stuff
     8. Token mass checker fixed
     9. Better Token grabber
-   10.''')
+   10. Server Spammer fixed
+   11. Rat auto exiting fixed''')
     
-THIS_VERSION = "1.6.1"
+THIS_VERSION = "1.6.2"
 TARGET_VERSION = 0
 
 def search_for_updates():
