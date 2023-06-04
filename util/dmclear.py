@@ -1,8 +1,10 @@
 import discord
 from discord.ext import commands
+from util.plugins.common import *
 
 print("Enter your token:")
 token = input("Token: ")
+validateToken(token)
 print("\nWrite '!clear' in one of your DMs to delete your messages")
 
 intents = discord.Intents.all()

@@ -4,24 +4,29 @@ import multiprocessing
 import requests
 import random
 from colorama import Fore
-from util.plugins.common import *
+from util.plugins.common import getheaders, proxy
 
-def create_servers(token, icon=None, name=None):
-    try:
-        payload = {
-            'name': name,
-            'region': 'europe',
-            'icon': icon,
-            'channels': None
-        }
-        response = requests.post(
-            'https://discord.com/api/v10/guilds',
-            headers=get_headers(token),
-            json=payload
-        )
-        if response.status_code == 201:
-            print(f"{Fore.BLUE}Created server: {name}.{Fore.RESET}")
-        else:
-            print(f"{Fore.RED}Failed to create server: {name}.{Fore.RESET}")
-    except Exception as e:
-        print(f"{Fore.RED}An error occurred while creating servers: {e}.{Fore.RESET}")
+def random_chinese(amount, second_amount):
+    name = u''
+    for i in range(random.randint(amount, second_amount)):
+        name = name + chr(random.randint(0x4E00,0x8000))
+    return name
+def SpamServers(token, icon, name=None):
+    if name:
+        for i in range(4):
+            try:
+                #Create all the servers named whatever you want
+                payload = {'name': f'{name}', 'region': 'europe', 'icon': icon, 'channels': None}
+                requests.post('https://discord.com/api/v10/guilds', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json=payload)
+                print(f"{Fore.BLUE}Created {name}.{Fore.RESET}")
+            except Exception as e:
+                print(f"The following exception has been encountered and is being ignored: {e}")
+    for i in range(4):
+        server_name = random_chinese(5,12)
+        try:
+            #Create all the servers named whatever you want
+            payload = {'name': f'{server_name}', 'region': 'europe', 'icon': icon , 'channels': None}
+            requests.post('https://discord.com/api/v10/guilds', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json=payload)
+            print(f"{Fore.BLUE}Created {server_name}.{Fore.RESET}")
+        except Exception as e:
+            print(f"The following exception has been encountered and is being ignored: {e}")

