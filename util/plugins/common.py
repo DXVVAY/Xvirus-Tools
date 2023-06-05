@@ -400,7 +400,7 @@ def validateToken(token):
     url = 'https://discord.com/api/v10/users/@me'
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
-        print(f"{Fore.GREEN}Valid Token.{Fore.RESET}")
+        print(f"{Fore.BLUE}Valid Token.{Fore.RESET}")
         # Token is valid
     else:
         print(f"\n{Fore.RED}Invalid Token.{Fore.RESET}")
@@ -423,20 +423,6 @@ def validateWebhook(hook):
     except (KeyError, json.decoder.JSONDecodeError):
         print(f"\n{Fore.RED}Invalid Webhook.{Fore.RESET}")
         sleep(1)
-
-
-def fetch_proxies(url, custom_regex, proxies_log):
-    try:
-        proxy_list = requests.get(url, timeout=5).text
-        proxy_list = proxy_list.replace('null', '')
-    except requests.exceptions.RequestException:
-        return
-
-    custom_regex = custom_regex.replace('%ip%', r'([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})')
-    custom_regex = custom_regex.replace('%port%', r'([0-9]{1,5})')
-
-    for proxy in re.findall(re.compile(custom_regex), proxy_list):
-        proxies_log.append(f"{proxy[0]}:{proxy[1]}")
 
 
 def proxy_scrape(): 
