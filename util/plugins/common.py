@@ -419,7 +419,7 @@ def validateWebhook(hook):
     try:
         json_data = response.json()
         j = json_data["name"]
-        print(f"{Fore.GREEN}Valid webhook! ({j})")
+        print(f"{Fore.BLUE}Valid webhook! ({j})")
     except (KeyError, json.decoder.JSONDecodeError):
         print(f"\n{Fore.RED}Invalid Webhook.{Fore.RESET}")
         sleep(1)
