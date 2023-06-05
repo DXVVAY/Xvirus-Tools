@@ -39,8 +39,8 @@ def main():
     elif getTheme() == "neon":
         banner("neon")
 
-    choice = input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Choice: {Fore.RED}').lstrip("0")# so if stupid users use 01 it removed the 0
+    choice = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Choice: {Fore.RED}').lstrip("0")
+    choice = choice.upper()
     #all options
     if choice == "1":
         token = input(
