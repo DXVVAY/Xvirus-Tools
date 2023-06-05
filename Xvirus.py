@@ -15,6 +15,7 @@ import util.webhookspammer
 import util.massdm
 import util.tokendisable
 import util.vanitysniper
+from util.webhookgen import *
 
 threads = 3
 cancel_key = "ctrl+x"
@@ -384,9 +385,7 @@ def main():
         exec(open('util/linkgen.py').read())
 
     elif choice == '25':
-        print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
-        sleep(1)
-        main()
+        generate_and_save_valid_webhook()
 
     elif choice == '26':
         print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
