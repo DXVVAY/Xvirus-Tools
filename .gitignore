@@ -8,3 +8,4 @@ setup.bat
 *.spec
 /Xvirus-Tools-main
 /output
+/dist

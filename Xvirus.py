@@ -536,6 +536,7 @@ if __name__ == "__main__":
     System.Size(120, 28)
     check_wifi_connection()
     get_username()
+    Anime.Fade(Center.Center(startuplogo), Colors.rainbow, Colorate.Vertical, time=2)
     check_version()
     search_for_updates()
     proxy_file = os.getenv("temp") + "\\xvirus_proxies"
