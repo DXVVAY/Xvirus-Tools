@@ -297,37 +297,36 @@ def main():
 
     elif choice == '15':
         print(f"\n{Fore.RED}(the token you input is the account that will send the reports)")
-        token = input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
+        token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
-        guild_id1 = str(input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Server ID: {Fore.RED}'))
-        channel_id1 = str(input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Channel ID: {Fore.RED}'))
-        message_id1 = str(input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Message ID: {Fore.RED}'))
-        reason1 = str(input(
-            '\n[1] Illegal content\n'
-            '[2] Harassment\n'
-            '[3] Spam or phishing links\n'
-            '[4] Self-harm\n'
-            '[5] NSFW content\n\n'
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Reason: {Fore.RED}'))
-        if reason1.upper() in ('1', 'ILLEGAL CONTENT'):
-            reason1 = 0
-        elif reason1.upper() in ('2', 'HARASSMENT'):
-            reason1 = 1
-        elif reason1.upper() in ('3', 'SPAM OR PHISHING LINKS'):
-            reason1 = 2
-        elif reason1.upper() in ('4', 'SELF-HARM'):
-            reason1 = 3
-        elif reason1.upper() in ('5', 'NSFW CONTENT'):
-            reason1 = 4
+    
+        guild_id = str(input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Server ID: {Fore.RED}'))
+        channel_id = str(input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Channel ID: {Fore.RED}'))
+        message_id = str(input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Message ID: {Fore.RED}'))
+    
+        print('\n[1] Illegal content')
+        print('[2] Harassment')
+        print('[3] Spam or phishing links')
+        print('[4] Self-harm')
+        print('[5] NSFW content\n')
+    
+        reason = str(input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Reason: {Fore.RED}'))
+    
+        if reason.upper() in ('1', 'ILLEGAL CONTENT'):
+            reason = 0
+        elif reason.upper() in ('2', 'HARASSMENT'):
+            reason = 1
+        elif reason.upper() in ('3', 'SPAM OR PHISHING LINKS'):
+            reason = 2
+        elif reason.upper() in ('4', 'SELF-HARM'):
+            reason = 3
+        elif reason.upper() in ('5', 'NSFW CONTENT'):
+            reason = 4
         else:
             print(f"\nInvalid reason")
             sleep(1)
             main()
-        util.massreport.MassReport(token, guild_id1, channel_id1, message_id1, reason1)
+            util.massreport.MassReport(token, guild_id1, channel_id1, message_id1, reason1)
 
 
     elif choice == "16":
