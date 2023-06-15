@@ -501,8 +501,8 @@ def banner(theme=None):
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends         {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot               {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper                 {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Clearer                    {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator               {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                      {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator         {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber (WIP)            {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator               {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report (WIP)                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator         {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Generator             {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Checker               {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
@@ -531,8 +531,8 @@ bannerTheme = f"""
  │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
  │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
  │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer                    │
- │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
- │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
+ │  [05] Dm Deleter                    │  [14] QR Code grabber (WIP)            │  [23] Nitro Generator               │
+ │  [06] Mass Dm                       │  [15] Mass Report (WIP)                │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
  │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
  │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
@@ -559,8 +559,8 @@ def bennerTheme(type1, type2):
  │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
  │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
  │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer                    │
- │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
- │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
+ │  [05] Dm Deleter                    │  [14] QR Code grabber (WIP)            │  [23] Nitro Generator               │
+ │  [06] Mass Dm                       │  [15] Mass Report (WIP)                │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
  │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
  │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
