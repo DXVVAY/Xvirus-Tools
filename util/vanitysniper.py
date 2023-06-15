@@ -12,10 +12,10 @@ def change_vanity(code: str, server_id: str, token: str) -> bool:
         json={"code": code},
     )
     if response.ok:
-        print(f"{Fore.GREEN}Updated invite successfully, your server can now be accessed by 'discord.gg/{code}'. {Fore.RESET}")
+        print(f"{Fore.GREEN}Updated invite successfully, your server can now be accessed by 'discord.gg/{code}'. ")
         return True
     else:
-        print(f"{Fore.LIGHTRED_EX}Failed to update vanity url. Status code: {response.status_code}{Fore.RESET}")
+        print(f"{Fore.LIGHTRED_EX}Failed to update vanity url. Status code: {response.status_code}")
         return False
 
 
@@ -24,21 +24,21 @@ def check_vanity(code: str) -> bool:
     if response.status_code == 404:
         return True
     else:
-        print(f"{Fore.LIGHTRED_EX}Vanity is still in use.{Fore.RESET}")
+        print(f"{Fore.LIGHTRED_EX}Vanity is still in use.")
         return False
 
 
 def snipe() -> None:
-    token = input(f"{Fore.WHITE}Token: {Fore.RESET}")
-    code = input(f"{Fore.WHITE}Vanity code to snipe: {Fore.RESET}")
-    server_id = input(f"{Fore.WHITE}Server ID to apply vanity to: {Fore.RESET}")
-    delay = int(input(f"{Fore.WHITE}Delay between checks (seconds): {Fore.RESET}"))
+    token = input(f"{Fore.WHITE}Token: ")
+    code = input(f"{Fore.WHITE}Vanity code to snipe: ")
+    server_id = input(f"{Fore.WHITE}Server ID to apply vanity to: ")
+    delay = int(input(f"{Fore.WHITE}Delay between checks (seconds): "))
 
     try:
         while not check_vanity(code):
             time.sleep(delay)
             cur_time = datetime.datetime.now().strftime("%X")
-            print(f"{Fore.WHITE}[] Last checked at {cur_time} {Fore.RESET}", end="", flush=True)
+            print(f"{Fore.WHITE}[] Last checked at {cur_time} ", end="", flush=True)
 
         change_vanity(code, server_id, token)
 

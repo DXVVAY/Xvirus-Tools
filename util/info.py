@@ -3,143 +3,151 @@ from datetime import datetime
 from colorama import Fore
 from util.plugins.common import *
 
-def Info(token):
-    r = requests.get('https://discord.com/api/v10/users/@me', headers=getheaders(token))
-    cc_digits = {
+def get_cc_digits():
+    return {
         'american express': '3',
         'visa': '4',
         'mastercard': '5'
     }
-    badges = ""
 
-    Discord_Employee = 1
-    Partnered_Server_Owner = 2
-    HypeSquad_Events = 4
-    Bug_Hunter_Level_1 = 8
-    House_Bravery = 64
-    House_Brilliance = 128
-    House_Balance = 256
-    Early_Supporter = 512
-    Bug_Hunter_Level_2 = 16384
-    Early_Verified_Bot_Developer = 131072
+def get_badges(flags):
+    badge_flags = {
+        1: "Staff",
+        2: "Partner",
+        4: "Hypesquad Events",
+        8: "Bug Hunter Level 1",
+        16: "House Bravery",
+        32: "House Brilliance",
+        64: "House Balance",
+        128: "Early Supporter",
+        256: "Team User",
+        512: "System",
+        1024: "Bug Hunter Level 2",
+        4096: "Verified Bot",
+        16384: "Early Verified Bot Developer",
+        65536: "Discord Certified Moderator"
+    }
 
-    flags = r.json().get('flags', 0)
-    if flags & Discord_Employee:
-        badges += "Staff, "
-    if flags & Partnered_Server_Owner:
-        badges += "Partner, "
-    if flags & HypeSquad_Events:
-        badges += "Hypesquad Event, "
-    if flags & Bug_Hunter_Level_1:
-        badges += "Green Bughunter, "
-    if flags & House_Bravery:
-        badges += "Hypesquad Bravery, "
-    if flags & House_Brilliance:
-        badges += "HypeSquad Brillance, "
-    if flags & House_Balance:
-        badges += "HypeSquad Balance, "
-    if flags & Early_Supporter:
-        badges += "Early Supporter, "
-    if flags & Bug_Hunter_Level_2:
-        badges += "Gold BugHunter, "
-    if flags & Early_Verified_Bot_Developer:
-        badges += "Verified Bot Developer, "
-    if not badges:
-        badges = "None"
+    badges = [badge_flags[flag] for flag in badge_flags if flag & flags]
+    return ', '.join(badges) if badges else "None"
 
-    userName = r.json().get('username') + '#' + r.json().get('discriminator')
-    userID = r.json().get('id')
-    phone = r.json().get('phone')
-    email = r.json().get('email')
-    language = r.json().get('locale')
-    mfa = r.json().get('mfa_enabled')
-    avatar_id = r.json().get('avatar')
-    has_nitro = False
-    res = requests.get('https://discordapp.com/api/v10/users/@me/billing/subscriptions', headers=getheaders(token))
-    nitro_data = res.json()
-    has_nitro = bool(nitro_data)
-    avatar_url = f'https://cdn.discordapp.com/avatars/{userID}/{avatar_id}.webp'
-    creation_date = datetime.utcfromtimestamp(((int(userID) >> 22) + 1420070400000) / 1000).strftime('%d-%m-%Y %H:%M:%S UTC')
+def get_creation_date(userID):
+    timestamp = ((int(userID) >> 22) + 1420070400000) / 1000
+    return datetime.utcfromtimestamp(timestamp).strftime('%d-%m-%Y %H:%M:%S UTC')
 
-    if has_nitro:
-        d1 = datetime.strptime(nitro_data[0]["current_period_end"].split('.')[0], "%Y-%m-%dT%H:%M:%S")
-        d2 = datetime.strptime(nitro_data[0]["current_period_start"].split('.')[0], "%Y-%m-%dT%H:%M:%S")
-        days_left = abs((d2 - d1).days)
+def get_avatar_url(userID, avatar_id):
+    return f'https://cdn.discordapp.com/avatars/{userID}/{avatar_id}.webp' if avatar_id else ""
 
-    billing_info = []
-    for x in requests.get('https://discordapp.com/api/v10/users/@me/billing/payment-sources', headers=getheaders(token)).json():
-        y = x.get('billing_address', {})
-        name = y.get('name')
-        address_1 = y.get('line_1')
-        address_2 = y.get('line_2')
-        city = y.get('city')
-        postal_code = y.get('postal_code')
-        state = y.get('state')
-        country = y.get('country')
-        if x['type'] == 1:
-            cc_brand = x['brand']
+def get_payment_info(token):
+    payment_info = []
+    headers = getheaders(token)
+    billing_sources_url = 'https://discord.com/api/v10/users/@me/billing/payment-sources'
+    billing_sources = requests.get(billing_sources_url, headers=headers).json()
+
+    cc_digits = get_cc_digits()
+    for source in billing_sources:
+        billing_address = source.get('billing_address', {})
+        payment_type = ""
+        data = {
+            'Valid': not source['invalid'],
+            'Default Payment': source['default'],
+            'Address 1': billing_address.get('line_1', ""),
+            'Address 2': billing_address.get('line_2', ""),
+            'City': billing_address.get('city', ""),
+            'Postal Code': billing_address.get('postal_code', ""),
+            'State': billing_address.get('state', ""),
+            'Country': billing_address.get('country', "")
+        }
+
+        if source['type'] == 1:  # Credit Card
+            cc_brand = source['brand']
             cc_first = cc_digits.get(cc_brand)
-            cc_last = x['last_4']
-            cc_month = str(x['expires_month'])
-            cc_year = str(x['expires_year'])
-            data = {
-                'Payment Type': 'Credit Card',
-                'Valid': not x['invalid'],
-                'CC Holder Name': name,
+            cc_last = source['last_4']
+            cc_month = str(source['expires_month'])
+            cc_year = str(source['expires_year'])
+            payment_type = 'Credit Card'
+            data.update({
+                'Payment Type': payment_type,
+                'CC Holder Name': billing_address.get('name', ""),
                 'CC Brand': cc_brand.title(),
                 'CC Number': ''.join(z if (i + 1) % 2 else z + ' ' for i, z in enumerate((cc_first if cc_first else '*') + ('*' * 11) + cc_last)),
                 'CC Exp. Date': ('0' + cc_month if len(cc_month) < 2 else cc_month) + '/' + cc_year[2:4],
-                'Address 1': address_1,
-                'Address 2': address_2 if address_2 else '',
-                'City': city,
-                'Postal Code': postal_code,
-                'State': state if state else '',
-                'Country': country,
-                'Default Payment': x['default']
-            }
-        elif x['type'] == 2:
-            data = {
-                'Payment Type': 'PayPal',
-                'Valid': not x['invalid'],
-                'PayPal Name': name,
-                'PayPal Email': x['email'],
-                'Address 1': address_1,
-                'Address 2': address_2 if address_2 else '',
-                'City': city,
-                'Postal Code': postal_code,
-                'State': state if state else '',
-                'Country': country,
-                'Default Payment': x['default']
-            }
-        billing_info.append(data)
+            })
+        elif source['type'] == 2:  # PayPal
+            payment_type = 'PayPal'
+            data.update({
+                'Payment Type': payment_type,
+                'PayPal Name': billing_address.get('name', ""),
+                'PayPal Email': source['email']
+            })
+        payment_info.append(data)
+
+    return payment_info
+
+def Info(token):
+    user_info_url = 'https://discord.com/api/v10/users/@me'
+    user_info = requests.get(user_info_url, headers=getheaders(token)).json()
+
+    flags = user_info.get('flags', 0)
+    badges = get_badges(flags)
+
+    userID = user_info.get('id')
+    userName = user_info.get('username')
+    if 'discriminator' in user_info:
+        discriminator = user_info['discriminator']
+        f"@{userName}"
+    language = user_info.get('locale')
+    mfa_enabled = user_info.get('mfa_enabled')
+    avatar_id = user_info.get('avatar')
+    email = user_info.get('email')
+    phone = user_info.get('phone')
+
+
+    has_nitro = False
+    nitro_subscriptions_url = 'https://discord.com/api/v10/users/@me/billing/subscriptions'
+    nitro_data = requests.get(nitro_subscriptions_url, headers=getheaders(token)).json()
+    if nitro_data:
+        has_nitro = True
+        d1 = datetime.strptime(nitro_data[0]["current_period_end"].split('.')[0], "%Y-%m-%dT%H:%M:%S")
+        d2 = datetime.strptime(nitro_data[0]["current_period_start"].split('.')[0], "%Y-%m-%dT%H:%M:%S")
+        days_left = abs((d2 - d1).days)
+    else:
+        days_left = ""
+
+    avatar_url = get_avatar_url(userID, avatar_id)
+    creation_date = get_creation_date(userID)
+
+    billing_info = get_payment_info(token)
 
     print(f'''
-    {Fore.RESET}{Fore.GREEN}<<────────────{userName}────────────>>{Fore.RESET}
-    [{Fore.RED}User ID{Fore.RESET}]         {userID}
-    [{Fore.RED}Created at{Fore.RESET}]      {creation_date}
-    [{Fore.RED}Language{Fore.RESET}]        {language}
-    [{Fore.RED}Badges{Fore.RESET}]          {badges}
-    [{Fore.RED}Avatar URL{Fore.RESET}]      {avatar_url if avatar_id else ""}
-    [{Fore.RED}Token{Fore.RESET}]           {token}
-    {Fore.RESET}{Fore.GREEN}<───────────Security Info───────────>{Fore.RESET}
-    [{Fore.RED}2 Factor{Fore.RESET}]        {mfa}
-    [{Fore.RED}Email{Fore.RESET}]           {email}
-    [{Fore.RED}Phone number{Fore.RESET}]    {phone if phone else ""}
-    {Fore.RESET}{Fore.GREEN}<────────────Nitro Info─────────────>{Fore.RESET}
-    [{Fore.RED}Nitro Status{Fore.RESET}]    {has_nitro}
-    [{Fore.RED}Expires in{Fore.RESET}]      {days_left if has_nitro else ""}
-    {Fore.RESET}{Fore.GREEN}<───────Billing Information──────->{Fore.RESET}''')
+    {Fore.BLUE}<<────────────{userName}────────────>>
+    {Fore.RED}[Discriminator]   #{discriminator}
+    {Fore.RED}[User ID]         {userID}
+    {Fore.RED}[Created at]      {creation_date}
+    {Fore.RED}[Language]        {language}
+    {Fore.RED}[Badges]          {badges}
+    {Fore.RED}[Avatar URL]      {avatar_url}
+    {Fore.RED}[Token]           {token}
+    {Fore.BLUE}<───────────Security Info───────────>
+    {Fore.RED}[2 Factor]        {mfa_enabled}
+    {Fore.RED}[Email]           {email}
+    {Fore.RED}[Phone number]    {phone if phone else ""}
+    {Fore.BLUE}<────────────Nitro Info─────────────>
+    {Fore.RED}[Nitro Status]    {has_nitro}
+    {Fore.RED}[Expires in]      {days_left if has_nitro else ""}
+    {Fore.BLUE}<───────Billing Information───────>''')
 
     for info in billing_info:
         print(f'''
-        {Fore.RESET}{Fore.GREEN}<<───────{info['Payment Type']}──────->>{Fore.RESET}
-        [{Fore.RED}Valid{Fore.RESET}]               {info['Valid']}
-        [{Fore.RED}Default Payment{Fore.RESET}]    {info['Default Payment']}
-        [{Fore.RED}Address 1{Fore.RESET}]          {info['Address 1']}
-        [{Fore.RED}Address 2{Fore.RESET}]          {info['Address 2']}
-        [{Fore.RED}City{Fore.RESET}]                {info['City']}
-        [{Fore.RED}Postal Code{Fore.RESET}]         {info['Postal Code']}
-        [{Fore.RED}State{Fore.RESET}]               {info['State']}
-        [{Fore.RED}Country{Fore.RESET}]             {info['Country']}''')
-
-    print(f'{Fore.RESET}{Fore.GREEN}<<───────────────End──────────────->>{Fore.RESET}')
+        {Fore.BLUE}<<───────{info['Payment Type']}──────->>
+        {Fore.RED}[Valid]               {info['Valid']}
+        {Fore.RED}[Default Payment]    {info['Default Payment']}
+        {Fore.RED}[Address 1]          {info['Address 1']}
+        {Fore.RED}[Address 2]          {info['Address 2']}
+        {Fore.RED}[City]                {info['City']}
+        {Fore.RED}[Postal Code]         {info['Postal Code']}
+        {Fore.RED}[State]               {info['State']}
+        {Fore.RED}[Country]             {info['Country']}
+        ''')
+        input("Press Enter To Exit!")
+        main()

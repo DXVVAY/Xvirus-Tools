@@ -20,19 +20,19 @@ def WebhookSpammer(WebHook, Message):
         try:
             #check if the status got sent or if it got rate limited
             if response.status_code == 204 or response.status_code == 200:
-                print(f"{Fore.GREEN}Message sent{Fore.RESET}")
+                print(f"{Fore.GREEN}Message sent")
             elif response.status_code == 429:
-                print(f"{Fore.YELLOW}Rate limited ({response.json()['retry_after']}ms){Fore.RESET}")
+                print(f"{Fore.YELLOW}Rate limited ({response.json()['retry_after']}ms)")
                 #if we got ratelimited, pause untill the rate limit is over
                 sleep(response.json()["retry_after"] / 1000)
             else:
-                print(f"{Fore.RED}Error : {response.status_code}{Fore.RESET}")
+                print(f"{Fore.RED}Error : {response.status_code}")
 
             sleep(.01)
         except KeyboardInterrupt:
             break
 
-    print_slow(f'{Fore.RED}Spammed Webhook Successfully!{Fore.RESET} ')
+    print_slow(f'{Fore.RED}Spammed Webhook Successfully! ')
     print("Enter anything to continue. . . ", end="")
     input()
     Xvirus.main()

@@ -53,7 +53,7 @@ Results:
     Valid Codes: {', '.join(valid)}
         """)
 
-        input("Press ENTER to exit")
+        input("Press Enter To Exit!")
         self.main()
 
     def generator(self, amount):

@@ -11,21 +11,21 @@ def tokenchecker():
             if response.status_code == 200:
                 with lock:
                     valid_tokens.append(token)
-                print(f"({Fore.GREEN}+{Fore.RESET}){Fore.LIGHTGREEN_EX} [VALID] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
+                print(f"({Fore.GREEN}+){Fore.LIGHTGREEN_EX} [VALID] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
             elif response.status_code == 401 or response.status_code == 403:
                 with lock:
                     locked_tokens.append(token)
-                print(f"({Fore.YELLOW}~{Fore.RESET}){Fore.LIGHTYELLOW_EX} [LOCKED] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
+                print(f"({Fore.YELLOW}~){Fore.LIGHTYELLOW_EX} [LOCKED] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
             elif response.status_code == 404:
                 with lock:
                     invalid_tokens.append(token)
-                print(f"({Fore.RED}-{Fore.RESET}){Fore.LIGHTRED_EX} [INVALID] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
+                print(f"({Fore.RED}-){Fore.LIGHTRED_EX} [INVALID] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
             else:
-                print(f"({Fore.RED}-{Fore.RESET}){Fore.LIGHTRED_EX} [ERROR] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
+                print(f"({Fore.RED}-){Fore.LIGHTRED_EX} [ERROR] {Fore.LIGHTBLACK_EX}{token}{Fore.LIGHTBLACK_EX} ({response.status_code})")
         except:
             with lock:
                 locked_tokens.append(token)
-            print(f"({Fore.YELLOW}~{Fore.RESET}){Fore.LIGHTYELLOW_EX} [LOCKED] {Fore.LIGHTBLACK_EX}{token}{Fore.RESET} (Error)")
+            print(f"({Fore.YELLOW}~){Fore.LIGHTYELLOW_EX} [LOCKED] {Fore.LIGHTBLACK_EX}{token} (Error)")
         time.sleep(1)
 
     path = input("Enter the path to the tokens file: ")
@@ -47,7 +47,7 @@ def tokenchecker():
         t.join()
 
     print("\n")
-    input(f"        {Fore.LIGHTGREEN_EX}Valid: {len(valid_tokens)}{Fore.RESET}    |   {Fore.LIGHTRED_EX}Invalid: {len(invalid_tokens)}{Fore.RESET}   |   {Fore.YELLOW}Locked: {len(locked_tokens)}{Fore.RESET} "+ "\n" * 3)
+    input(f"        {Fore.LIGHTGREEN_EX}Valid: {len(valid_tokens)}    |   {Fore.LIGHTRED_EX}Invalid: {len(invalid_tokens)}   |   {Fore.YELLOW}Locked: {len(locked_tokens)} "+ "\n" * 3)
 
     with open(path, 'w') as f:
         for token in valid_tokens:

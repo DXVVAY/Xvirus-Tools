@@ -33,7 +33,8 @@ from urllib.request import urlopen, urlretrieve
 def CHANGE_LOG():
     input(f'''
     1. Webhook Generator
-    2. ''')
+    2. Fixed token info
+    3. ''')
     
 THIS_VERSION = "1.6.2"
 TARGET_VERSION = 0
@@ -139,10 +140,10 @@ def get_driver():
     driver_path = os.path.join('assets', 'msedgedriver.exe')
 
     if os.path.exists(driver_path):
-        print(f"{Fore.GREEN}msedgedriver.exe found in assets folder, continuing. . .{Fore.RESET}")
+        print(f"{Fore.GREEN}msedgedriver.exe found in assets folder, continuing. . .")
         return driver_path
     else:
-        print(f"{Fore.RED}msedgedriver.exe not found in assets folder! Please make sure it is placed correctly.{Fore.RESET}")
+        print(f"{Fore.RED}msedgedriver.exe not found in assets folder! Please make sure it is placed correctly.")
         return None
 
 
@@ -180,10 +181,10 @@ def validateToken(token):
     url = 'https://discord.com/api/v10/users/@me'
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
-        print(f"{Fore.BLUE}Valid Token.{Fore.RESET}")
+        print(f"{Fore.BLUE}Valid Token.")
         # Token is valid
     else:
-        print(f"\n{Fore.RED}Invalid Token.{Fore.RESET}")
+        print(f"\n{Fore.RED}Invalid Token.")
         sleep(1)
         __import__("Xvirus").main()
 
@@ -192,7 +193,7 @@ def validateWebhook(hook):
         response = requests.get(hook)
         response.raise_for_status()
     except requests.exceptions.RequestException:
-        print(f"\n{Fore.RED}Invalid Webhook.{Fore.RESET}")
+        print(f"\n{Fore.RED}Invalid Webhook.")
         sleep(1)
         __import__("Xvirus").main()
 
@@ -201,7 +202,7 @@ def validateWebhook(hook):
         j = json_data["name"]
         print(f"{Fore.BLUE}Valid webhook! ({j})")
     except (KeyError, json.decoder.JSONDecodeError):
-        print(f"\n{Fore.RED}Invalid Webhook.{Fore.RESET}")
+        print(f"\n{Fore.RED}Invalid Webhook.")
         sleep(1)
 
 
@@ -212,7 +213,7 @@ def proxy_scrape():
     startTime = time.time()
     #create temp dir
     temp = os.getenv("temp")+"\\xvirus_proxies"
-    print(f"{Fore.YELLOW}Please wait while Xvirus Scrapes proxies for you!{Fore.RESET}")
+    print(f"{Fore.YELLOW}Please wait while Xvirus Scrapes proxies for you!")
 
     def fetchProxies(url, custom_regex):
         global proxylist
@@ -289,7 +290,7 @@ def proxy_scrape():
                 f.write(f"{proxy}\n")
     #get the time it took to scrape
     execution_time = (time.time() - startTime)
-    print(f"{Fore.BLUE}Done! Scraped{Fore.MAGENTA}{len(proxies): >5}{Fore.RED} in total => {Fore.RED}{temp}{Fore.RESET} | {execution_time}ms")
+    print(f"{Fore.BLUE}Done! Scraped{Fore.MAGENTA}{len(proxies): >5}{Fore.RED} in total => {Fore.RED}{temp} | {execution_time}ms")
     setTitle(f"Xvirus {THIS_VERSION}")
 
 def proxy():
@@ -460,7 +461,7 @@ def getTheme():
     with open(os.getenv("temp")+"\\xvirus_theme", 'r') as f:
         text = f.read()
         if not any(s in text for s in themes):
-            print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid theme was given, Switching to default. . .')
+            print(f'[{Fore.RED}Error] : Invalid theme was given, Switching to default. . .')
             setTheme('xeme')
             sleep(2.5)
             __import__("Xvirus").main()
@@ -503,7 +504,7 @@ def banner(theme=None):
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator               {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                      {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator         {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Generator             {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info (WIP)             {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Checker               {Fore.WHITE}│  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
 {Fore.WHITE} └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘
 Welcome {username}!''')
@@ -533,7 +534,7 @@ bannerTheme = f"""
  │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
  │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
- │  [08] Token Info (WIP)              │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
+ │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
  │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
  └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘
 Welcome {username}!"""
@@ -561,7 +562,7 @@ def bennerTheme(type1, type2):
  │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
  │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
- │  [08] Token Info (WIP)              │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
+ │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
  │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
  └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘
 Welcome {username}!''')

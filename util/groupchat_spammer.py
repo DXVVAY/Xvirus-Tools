@@ -15,9 +15,9 @@ def selector(token, users):
             if response.status_code == 204 or response.status_code == 200:
                 print(f"{Fore.RED}Created groupchat")
             elif response.status_code == 429:
-                print(f"{Fore.YELLOW}Rate limited ({response.json()['retry_after']}ms){Fore.RESET}")
+                print(f"{Fore.YELLOW}Rate limited ({response.json()['retry_after']}ms)")
             else:
-                print(f"{Fore.RED}Error: {response.status_code}{Fore.RESET}")
+                print(f"{Fore.RED}Error: {response.status_code}")
         except Exception:
             pass
         except KeyboardInterrupt:
@@ -33,9 +33,9 @@ def randomizer(token, ID):
             if response.status_code == 204 or response.status_code == 200:
                 print(f"{Fore.RED}Created groupchat")
             elif response.status_code == 429:
-                print(f"{Fore.YELLOW}Rate limited ({response.json()['retry_after']}ms){Fore.RESET}")
+                print(f"{Fore.YELLOW}Rate limited ({response.json()['retry_after']}ms)")
             else:
-                print(f"{Fore.RED}Error: {response.status_code}{Fore.RESET}")
+                print(f"{Fore.RED}Error: {response.status_code}")
         except Exception:
             pass
         except KeyboardInterrupt:
@@ -44,17 +44,17 @@ def randomizer(token, ID):
 
 
 def GcSpammer(token):
-    print(f'{Fore.GREEN}[{Fore.YELLOW}>>>{Fore.GREEN}] {Fore.RESET}Do you want to choose user(s) yourself to groupchat spam or do you want to select randoms?')
+    print(f'{Fore.GREEN}[{Fore.YELLOW}>>>{Fore.GREEN}] Do you want to choose user(s) yourself to groupchat spam or do you want to select randoms?')
     sleep(1)
     print(f'''
-    {Fore.RESET}[{Fore.RED}1{Fore.RESET}] choose user(s) yourself
-    {Fore.RESET}[{Fore.RED}2{Fore.RESET}] randomize the users
+    [{Fore.RED}1] choose user(s) yourself
+    [{Fore.RED}2] randomize the users
                         ''')
     secondchoice = int(input(
         f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RED}'))
 
     if secondchoice not in [1, 2]:
-        print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Second Choice')
+        print(f'[{Fore.RED}Error] : Invalid Second Choice')
         sleep(1)
         Xvirus.main()
 

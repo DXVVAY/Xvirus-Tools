@@ -38,7 +38,7 @@ def TokenDisable():
             time.sleep(1)  # Wait for a second before retrying
         else:
             print("\n\nAccount successfully disabled")
-            input("Press enter to exit")
+            input("Press Enter To Exit!")
             return
 
     print(f"Unable to connect to the Discord API after {retry_attempts} attempts. Exiting.")
