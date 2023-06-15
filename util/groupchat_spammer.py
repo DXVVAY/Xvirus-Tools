@@ -10,7 +10,7 @@ from util.plugins.common import print_slow, setTitle, getheaders, proxy
 def selector(token, users):
     while True:
         try:
-            response = requests.post(f'https://discordapp.com/api/v10/users/@me/channels', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"recipients": users})
+            response = requests.post(f'https://discord.com/api/v10/users/@me/channels', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"recipients": users})
 
             if response.status_code == 204 or response.status_code == 200:
                 print(f"{Fore.RED}Created groupchat")
@@ -28,7 +28,7 @@ def randomizer(token, ID):
     while True:
         users = random.sample(ID, 2)
         try:
-            response = requests.post(f'https://discordapp.com/api/v10/users/@me/channels', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"recipients": users})
+            response = requests.post(f'https://discord.com/api/v10/users/@me/channels', proxies={"http": f'{proxy()}'}, headers=getheaders(token), json={"recipients": users})
 
             if response.status_code == 204 or response.status_code == 200:
                 print(f"{Fore.RED}Created groupchat")
@@ -44,11 +44,11 @@ def randomizer(token, ID):
 
 
 def GcSpammer(token):
-    print(f'{Fore.GREEN}[{Fore.YELLOW}>>>{Fore.GREEN}] Do you want to choose user(s) yourself to groupchat spam or do you want to select randoms?')
+    print(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] Do you want to choose users yourself to groupchat spam or do you want to select randoms?')
     sleep(1)
     print(f'''
-    [{Fore.RED}1] choose user(s) yourself
-    [{Fore.RED}2] randomize the users
+    {Fore.RED}[1] choose users yourself
+    {Fore.RED}[2] randomize the users
                         ''')
     secondchoice = int(input(
         f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RED}'))

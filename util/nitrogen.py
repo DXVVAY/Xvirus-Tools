@@ -79,7 +79,7 @@ Results:
             for line in file.readlines():
                 nitro = line.strip("\n")
 
-                url = f"https://discordapp.com/api/v10/entitlements/gift-codes/{nitro}?with_application=false&with_subscription_plan=true"
+                url = f"https://discord.com/api/v10/entitlements/gift-codes/{nitro}?with_application=false&with_subscription_plan=true"
 
                 response = requests.get(url)
 
@@ -101,7 +101,7 @@ Results:
         return {"valid": valid, "invalid": invalid}
 
     def quickChecker(self, nitro, notify=None):
-        url = f"https://discordapp.com/api/v10/entitlements/gift-codes/{nitro}?with_application=false&with_subscription_plan=true"
+        url = f"https://discord.com/api/v10/entitlements/gift-codes/{nitro}?with_application=false&with_subscription_plan=true"
         response = requests.get(url)
 
         if response.status_code == 200:

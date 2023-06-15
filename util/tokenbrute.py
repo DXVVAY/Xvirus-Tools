@@ -46,7 +46,7 @@ def spammer():
 
             headers = {'Authorization': token}
 
-            login = requests.get('https://discordapp.com/api/v10/auth/login', headers=headers)
+            login = requests.get('https://discord.com/api/v10/auth/login', headers=headers)
             try:
                 if login.status_code == 200:
                     print('[+] VALID' + ' ' + token)

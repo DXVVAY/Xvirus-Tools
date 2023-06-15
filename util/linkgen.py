@@ -79,7 +79,7 @@ Results:
             for line in file.readlines():
                 server_link = line.strip("\n")
 
-                url = f"https://discordapp.com/api/v9/invites/{server_link}"
+                url = f"https://discord.com/api/v9/invites/{server_link}"
 
                 response = requests.get(url)
 
@@ -101,7 +101,7 @@ Results:
         return {"valid": valid, "invalid": invalid}
 
     def quickChecker(self, server_link, notify=None):
-        url = f"https://discordapp.com/api/v9/invites/{server_link}"
+        url = f"https://discord.com/api/v9/invites/{server_link}"
         response = requests.get(url)
 
         if response.status_code == 200:
