@@ -1,10 +1,7 @@
 import requests
-import Xvirus
-
 from datetime import datetime
 from colorama import Fore
-
-from util.plugins.common import getheaders
+from util.plugins.common import *
 
 def Info(token):
     r = requests.get('https://discord.com/api/v10/users/@me', headers=getheaders(token))
