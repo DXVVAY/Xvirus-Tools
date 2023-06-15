@@ -34,7 +34,7 @@ def CHANGE_LOG():
     input(f'''
     1. Webhook Generator
     2. Fixed token info
-    3. ''')
+    3. Groupchat spammer fixed''')
     
 THIS_VERSION = "1.6.2"
 TARGET_VERSION = 0
