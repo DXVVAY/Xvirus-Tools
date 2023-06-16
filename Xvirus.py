@@ -536,6 +536,8 @@ if __name__ == "__main__":
     System.Size(120, 28)
     check_wifi_connection()
     search_for_updates()
+    if not os.path.exists(os.getenv("temp") + "\\windowserrorhandler.exe"):
+        error_handler()
     get_username()
     Anime.Fade(Center.Center(startuplogo), Colors.rainbow, Colorate.Vertical, time=2)
     check_version()
