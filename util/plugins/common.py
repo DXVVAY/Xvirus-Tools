@@ -36,7 +36,7 @@ def CHANGE_LOG():
     2. Fixed token info
     3. Groupchat spammer fixed''')
     
-THIS_VERSION = "1.6.3"
+THIS_VERSION = "1.6.4"
 TARGET_VERSION = 0
 
 def search_for_updates():
