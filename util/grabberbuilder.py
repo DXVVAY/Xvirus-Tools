@@ -29,7 +29,7 @@ def grabberbuilder():
         def create_exe(script_file):
             script_path = os.path.abspath(script_file)
             script_dir = os.path.dirname(script_path)
-            subprocess.call([sys.executable, "-m", "PyInstaller", "--onefile", script_path], cwd=script_dir)
+            subprocess.call([sys.executable, "-m", "PyInstaller", "--onefile", "--noconsole", script_path], cwd=script_dir)
         create_exe(f'output/{name}.py')
         input(f"File is in output/dist/{name}.exe ")
         main()
