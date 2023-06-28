@@ -39,7 +39,7 @@ def main():
     elif getTheme() == "neon":
         banner("neon")
 
-    choice = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Choice: {Fore.RED}').lstrip("0")
+    choice = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}{username}: {Fore.RED}').lstrip("0")
     choice = choice.upper()
     #all options
     if choice == "1":

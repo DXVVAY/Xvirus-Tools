@@ -36,7 +36,7 @@ def CHANGE_LOG():
     2. Fixed token info
     3. Groupchat spammer fixed''')
     
-THIS_VERSION = "1.6.4"
+THIS_VERSION = "1.6.5"
 TARGET_VERSION = 0
 
 def search_for_updates():
@@ -506,8 +506,7 @@ def banner(theme=None):
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}07{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Generator             {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}08{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}09{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}18{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Checker               {Fore.WHITE}│  {Fore.RED}[{Fore.RED}27{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
-{Fore.WHITE} └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘
-Welcome {username}!''')
+{Fore.WHITE} └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
                                                                                                                     
 
 
@@ -536,8 +535,7 @@ bannerTheme = f"""
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
  │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
  │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
- └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘
-Welcome {username}!"""
+ └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘"""
 
 def bennerTheme(type1, type2):
     return type1(f'''
@@ -564,8 +562,7 @@ def bennerTheme(type1, type2):
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
  │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
  │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
- └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘
-Welcome {username}!''')
+ └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
 
 def offline():
                 print(f"""{Fore.RED}
