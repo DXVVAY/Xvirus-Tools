@@ -19,3 +19,4 @@ itertools
 pyinstaller>=5.0
 tempfile
 msedge-selenium-tools
+keyboard
