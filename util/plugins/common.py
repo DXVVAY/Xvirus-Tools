@@ -349,16 +349,20 @@ def getheaders(token=None):
     return headers
 
 def check_wifi_connection():
-    try:
-        urllib.request.urlopen('https://www.google.com')
-        pass
-    except:
-        while True:
-            offline()
-            for i in range(5, 0, -1):
-                print(f"{Fore.RED}                                Retrying in {Fore.BLUE}{i} {Fore.RED}seconds", end='\r')
-                time.sleep(1)
-            clear()
+    domains = ['https://www.google.com', 'https://www.facebook.com', 'https://www.apple.com']
+    for domain in domains:
+        try:
+            urllib.request.urlopen(domain)
+            return
+        except urllib.error.URLError:
+            pass
+
+    while True:
+        offline()
+        for i in range(5, 0, -1):
+            print(f"{Fore.RED}                                Retrying in {Fore.BLUE}{i} {Fore.RED}seconds", end='\r')
+            time.sleep(1)
+        clear()
 
 def check_version():
         try:
