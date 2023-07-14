@@ -1,9 +1,6 @@
 @echo off
 
-for /f "delims=" %%i in (requirements.txt) do (
-    echo Installing %%i
-    python -m pip install "%%i"
-)
+pip install -r requirements.txt
 
 cls
 
