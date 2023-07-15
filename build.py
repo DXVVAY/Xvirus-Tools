@@ -1,8 +1,24 @@
+import os
+import subprocess
+
 import PyInstaller.__main__
 
+os.makedirs('dist/util', exist_ok=True)
+
+subprocess.run(['pyarmor', 'obfuscate', 'Xvirus.py'])
+
+subprocess.run(['pyarmor', 'obfuscate', '--recursive', '-O', 'dist/util', 'util'])
+
 PyInstaller.__main__.run([
-    'xvirus.py',
+    'Xvirus.py',
     '--onefile',
-    '--add-data', 'util;util',
-    '--icon', 'D:/xvirus-tools/assets/icons/xvirusicon.png'  # Replace 'path/to/icon' with the path to your image file
+    '--add-data', 'dist/util;util',
+    '--icon', 'D:/xvirus/xvirus/assets/icons/xicon.png',
+    '--name', 'Xvirus-Tools',
+    '--key', 'XvirusOnTopAndBBD',
+    '--clean',
+    '--upx-dir', 'path/to/upx',
+    '--distpath', 'dist',
+    '--workpath', 'build',
+    '--noconfirm'
 ])
