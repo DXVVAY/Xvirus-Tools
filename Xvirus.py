@@ -11,7 +11,6 @@ import util.profilechanger
 import util.qrgrabb
 import util.seizure
 import util.server_leaver
-import util.servernuker
 import util.spamservers
 import util.tokendisable
 import util.unfriender
