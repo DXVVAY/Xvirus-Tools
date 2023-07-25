@@ -633,13 +633,14 @@ startuplogo = r"""
 #################################################################################################################################################################################
 
 def notfree():
-    print_slow("This feature is not availabe on the free version of Xvirus\n check https://xvirus.xyz to but the premium version!")
+    print_slow("This feature is not availabe on the free version of Xvirus\n check https://xvirus.xyz and or https://discord.gg/xvirus to buy the premium version!")
     sleep(1.5)
 
 def redirect(): 
-    redirect = input("Do you want to redirect to https://xvirus.xyz? (y/n): ")
+    redirect = input("Do you want to redirect to https://xvirus.xyz and https://discord.gg/xvirus? (y/n): ")
     if redirect.lower() == 'y':
         webbrowser.open("https://xvirus.xyz")
+        webbrowser.open("https://discord.gg/xvirus")
     elif redirect.lower() == 'n':
         print("Redirect not requested.")
     else:
