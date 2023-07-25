@@ -29,14 +29,17 @@ from distutils.version import LooseVersion
 from bs4 import BeautifulSoup
 import urllib.request
 from urllib.request import urlopen, urlretrieve
+import time
+import webbrowser
 
 def CHANGE_LOG():
     input(f'''
     1. Webhook Generator
     2. Fixed token info
-    3. Groupchat spammer fixed''')
+    3. Groupchat spammer fixed
+    4. Fixed all none-working features''')
     
-THIS_VERSION = "1.6.5"
+THIS_VERSION = "1.6.6"
 TARGET_VERSION = 0
 
 def search_for_updates():
@@ -465,7 +468,7 @@ def getTheme():
     with open(os.getenv("temp")+"\\xvirus_theme", 'r') as f:
         text = f.read()
         if not any(s in text for s in themes):
-            print(f'[{Fore.RED}Error] : Invalid theme was given, Switching to default. . .')
+            print(f'{Fore.RED}[Error] : Invalid theme was given, Switching to default. . .')
             setTheme('xeme')
             sleep(2.5)
             __import__("Xvirus").main()
@@ -497,19 +500,19 @@ def banner(theme=None):
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
+> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝                     Buy Premium [BUY] <
 > [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
 > [!] Settings                                                                                          Xside gpt [ai] <
 {Fore.WHITE} ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler (WIP)          {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler                {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}02{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends         {Fore.WHITE} │  {Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot               {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}03{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers {Fore.WHITE} │  {Fore.RED}[{Fore.RED}12{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}21{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper                 {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}04{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}13{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}22{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Clearer                    {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}05{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber (WIP)            {Fore.WHITE}│  {Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator               {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}06{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report (WIP)                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator         {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}05{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator               {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}06{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                      {Fore.WHITE}│  {Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator         {Fore.WHITE}│
 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}07{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Generator             {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}08{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}09{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}18{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Checker               {Fore.WHITE}│  {Fore.RED}[{Fore.RED}27{Fore.RED}]{Fore.LIGHTBLACK_EX} [Coming Soon]                 {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}08{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Bot Nuker              {Fore.WHITE}│
+{Fore.WHITE} │  {Fore.RED}[{Fore.RED}09{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}18{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Checker               {Fore.WHITE}│  {Fore.RED}[{Fore.RED}27{Fore.RED}]{Fore.LIGHTBLACK_EX} Selfbot Spammer               {Fore.WHITE}│
 {Fore.WHITE} └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
                                                                                                                     
 
@@ -526,19 +529,19 @@ bannerTheme = f"""
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
+> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝                     Buy Premium [BUY] <
 > [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
 > [!] Settings                                                                                          Xside gpt [ai] <
  ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
- │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler (WIP)          │
+ │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
  │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
  │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
  │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer                    │
- │  [05] Dm Deleter                    │  [14] QR Code grabber (WIP)            │  [23] Nitro Generator               │
- │  [06] Mass Dm                       │  [15] Mass Report (WIP)                │  [24] Server Link Generator         │
+ │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
+ │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
- │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
- │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
+ │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] Server Bot Nuker              │
+ │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] Selfbot Spammer               │
  └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘"""
 
 def bennerTheme(type1, type2):
@@ -553,19 +556,19 @@ def bennerTheme(type1, type2):
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
-> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝
+> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝                     Buy Premium [BUY] <
 > [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
 > [!] Settings                                                                                          Xside gpt [ai] <''')+type2(f'''
  ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
- │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler (WIP)          │
+ │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
  │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
  │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
  │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer                    │
- │  [05] Dm Deleter                    │  [14] QR Code grabber (WIP)            │  [23] Nitro Generator               │
- │  [06] Mass Dm                       │  [15] Mass Report (WIP)                │  [24] Server Link Generator         │
+ │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
+ │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
  │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
- │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] [Coming Soon]                 │
- │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] [Coming Soon]                 │
+ │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] Server Bot Nuker              │
+ │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] Selfbot Spammer               │
  └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
 
 def offline():
@@ -628,3 +631,21 @@ startuplogo = r"""
 """[1:]
 
 #################################################################################################################################################################################
+
+def notfree():
+    print_slow("This feature is not availabe on the free version of Xvirus\n check https://xvirus.xyz to but the premium version!")
+    sleep(1.5)
+
+def count_and_redirect():
+    for i in range(1, 6):
+        print(f"\rCounting: {i}", end="")
+        time.sleep(0.5)
+    print()
+    
+    redirect = input("Do you want to redirect to https://xvirus.xyz? (y/n): ")
+    if redirect.lower() == 'y':
+        webbrowser.open("https://xvirus.xyz")
+    elif redirect.lower() == 'n':
+        print("Redirect not requested.")
+    else:
+        print("Invalid input. Redirect not requested.")

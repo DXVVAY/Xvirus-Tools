@@ -1,11 +1,11 @@
-import requests
 import random
-import Xvirus
-
 from time import sleep
+
+import requests
 from colorama import Fore
 
-from util.plugins.common import print_slow, setTitle, getheaders, proxy
+from util.plugins.common import *
+
 
 def selector(token, users):
     while True:
@@ -22,7 +22,6 @@ def selector(token, users):
             pass
         except KeyboardInterrupt:
             break
-    Xvirus.main()
 
 def randomizer(token, ID):
     while True:
@@ -40,7 +39,6 @@ def randomizer(token, ID):
             pass
         except KeyboardInterrupt:
             break
-    Xvirus.main()
 
 
 def GcSpammer(token):
@@ -50,25 +48,21 @@ def GcSpammer(token):
     {Fore.RED}[1] choose users yourself
     {Fore.RED}[2] randomize the users
                         ''')
-    secondchoice = int(input(
-        f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RED}'))
+    secondchoice = int(input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RED}'))
 
     if secondchoice not in [1, 2]:
         print(f'[{Fore.RED}Error] : Invalid Second Choice')
         sleep(1)
-        Xvirus.main()
 
     #if they choose to import the users manually
     if secondchoice == 1:
         setTitle(f"Creating groupchats")
         #if they choose specific users
-        recipients = input(
-            f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Input the users you want to create a groupchat with (separate by , id,id2,id3): {Fore.RED}')
+        recipients = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Input the users you want to create a groupchat with (separate by , id,id2,id3): {Fore.RED}')
         user = recipients.split(',')
         if "," not in recipients:
             print(f"\n{Fore.RED}You didn't have any commas (,) format is id,id2,id3")
             sleep(3)
-            Xvirus.main()
         print_slow("\"ctrl + c\" at anytime to stop\n")
         sleep(1.5)
         selector(token, user)
@@ -84,3 +78,8 @@ def GcSpammer(token):
         print_slow("\"ctrl + c\" at anytime to stop\n")
         sleep(1.5)
         randomizer(token, IDs)
+
+def groupspammer():
+    token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
+    validateToken(token)
+    GcSpammer(token)

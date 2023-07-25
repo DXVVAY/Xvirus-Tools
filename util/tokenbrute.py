@@ -12,7 +12,7 @@ def randstr(lenn):
         text += alpha[random.randint(0, len(alpha) - 1)]
     return text
 
-def spammer():
+def tokenbrute():
     if not os.path.exists('token-brute.txt'):
         with open('token-brute.txt', 'w') as f:
             pass
@@ -47,4 +47,3 @@ def spammer():
 
     start_threads()
 
-spammer()

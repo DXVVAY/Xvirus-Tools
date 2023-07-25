@@ -1,15 +1,15 @@
 import discord
 from discord.ext import commands
-from colorama import Fore
 
 from util.plugins.common import *
 
-def dmclearer():
-    token = input(f"{Fore.GREEN}[>>>] Token: ")
+def selfbotspammer():
+    token = input("[>>>] Token: ")
     validateToken(token)
-    print("\nWrite '!clear' in one of your DMs to delete your messages")
+    print("\nWrite '!spam (message) (Number)' in one of your DMs to delete your messages")
 
     intents = discord.Intents.all()
+
     bot = commands.Bot(command_prefix="!", self_bot=True, intents=intents)
     bot.remove_command("help")
 
@@ -30,5 +30,15 @@ def dmclearer():
                     failed += 1
         print(f"\nRemoved {passed} messages with {failed} fails")
         input("\nPress ENTER to exit")
+
+    @bot.command()
+    async def spam(ctx, text: str, times: int):
+        await ctx.message.delete()  # Delete the invoking message
+        for _ in range(times):
+            try:
+                await ctx.send(text)
+            except discord.HTTPException:
+                print("Rate limited.")
+                pass
 
     bot.run(token, bot=False)

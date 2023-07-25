@@ -1,8 +1,10 @@
 import datetime
-import time
-import requests
 import os
+import time
+
+import requests
 from colorama import Fore
+
 os.system('cls')
 
 def change_vanity(code: str, server_id: str, token: str) -> bool:
@@ -45,6 +47,3 @@ def snipe() -> None:
     except KeyboardInterrupt:
         pass
 
-
-if __name__ == "__main__":
-    snipe()

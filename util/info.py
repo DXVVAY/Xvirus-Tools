@@ -1,7 +1,10 @@
-import requests
 from datetime import datetime
+
+import requests
 from colorama import Fore
+
 from util.plugins.common import *
+
 
 def get_cc_digits():
     return {
@@ -93,9 +96,18 @@ def Info(token):
 
     userID = user_info.get('id')
     userName = user_info.get('username')
-    if 'discriminator' in user_info:
-        discriminator = user_info['discriminator']
-        f"@{userName}"
+    discriminator = user_info.get('discriminator')
+
+
+    if discriminator == "0":
+        discriminator = "N/A (New Username System)"
+    else:
+        discriminator = discriminator.lstrip('#')
+
+    if discriminator:
+        full_username = f"{userName}#{discriminator}"
+    else:
+        full_username = userName
     language = user_info.get('locale')
     mfa_enabled = user_info.get('mfa_enabled')
     avatar_id = user_info.get('avatar')
@@ -121,7 +133,7 @@ def Info(token):
 
     print(f'''
     {Fore.BLUE}<<────────────{userName}────────────>>
-    {Fore.RED}[Discriminator]   #{discriminator}
+    {Fore.RED}[Discriminator]   {discriminator}
     {Fore.RED}[User ID]         {userID}
     {Fore.RED}[Created at]      {creation_date}
     {Fore.RED}[Language]        {language}
@@ -150,4 +162,9 @@ def Info(token):
         {Fore.RED}[Country]             {info['Country']}
         ''')
         input("Press Enter To Exit!")
-        main()
+
+
+def getinfo():
+        token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
+        validateToken(token)
+        Info(token)

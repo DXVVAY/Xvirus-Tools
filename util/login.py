@@ -1,13 +1,13 @@
-import requests
-import Xvirus
-
 from time import sleep
+
+import requests
+from colorama import Back, Fore
 from selenium import webdriver
-from colorama import Fore, Back
 
-from util.plugins.common import get_driver, getheaders
+from util.plugins.common import *
 
-def TokenLogin(token):
+
+def TokenLoging(token):
     j = requests.get("https://discord.com/api/v10/users/@me", headers=getheaders(token)).json()
     user = j["username"] + "#" + str(j["discriminator"])
     script = """
@@ -16,17 +16,7 @@ def TokenLogin(token):
         """ % (token)
     type_ = get_driver()
 
-    if type_ == "chromedriver.exe":
-        opts = webdriver.ChromeOptions()
-        opts.add_experimental_option('excludeSwitches', ['enable-logging'])
-        opts.add_experimental_option("detach", True)
-        driver = webdriver.Chrome(options=opts)
-    elif type_ == "operadriver.exe":
-        opts = webdriver.opera.options.ChromeOptions()
-        opts.add_experimental_option('excludeSwitches', ['enable-logging'])
-        opts.add_experimental_option("detach", True)
-        driver = webdriver.Opera(options=opts)
-    elif type_ == "msedgedriver.exe":
+    if  type_ == "msedgedriver.exe":
         opts = webdriver.EdgeOptions()
         opts.add_experimental_option('excludeSwitches', ['enable-logging'])
         opts.add_experimental_option("detach", True)
@@ -37,9 +27,13 @@ def TokenLogin(token):
         print(f"{Fore.YELLOW}Paste this script into the console of a browser:\n\n{Back.RED}{script}\n{Back.RESET}")
         print("Enter anything to continue. . . ", end="")
         input()
-        Xvirus.main()
 
     print(f"{Fore.GREEN}Logging into {Fore.BLUE}{user}")
     driver.get("https://discordapp.com/login")
     driver.execute_script(script)
-    Xvirus.main()
+
+
+def tokenlogin():
+    token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
+    validateToken(token)
+    TokenLoging(token)

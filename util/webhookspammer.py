@@ -1,10 +1,10 @@
-import requests
-import Xvirus
-
 from time import sleep
+
+import requests
 from colorama import Fore
 
-from util.plugins.common import print_slow, proxy
+from util.plugins.common import *
+
 
 def WebhookSpammer(WebHook, Message):
     print_slow("\"ctrl + c\" at anytime to stop\n")
@@ -35,4 +35,30 @@ def WebhookSpammer(WebHook, Message):
     print_slow(f'{Fore.RED}Spammed Webhook Successfully! ')
     print("Enter anything to continue. . . ", end="")
     input()
-    Xvirus.main()
+
+def webhooktool():
+    print(f'''
+    {Fore.RED}[1] Webhook Deleter
+    {Fore.RED}[2] Webhook Spammer    
+                        ''')
+    secondchoice = int(input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Second Choice: {Fore.RED}'))
+    if secondchoice not in [1, 2]:
+        print(f'[{Fore.RED}Error] : Invalid Second Choice')
+        sleep(1)
+        main()
+    if secondchoice == 1:
+        WebHook = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Webhook: {Fore.RED}')
+        validateWebhook(WebHook)
+        try:
+            requests.delete(WebHook)
+            print(f'\n{Fore.GREEN}Webhook Successfully Deleted!\n')
+        except Exception as e:
+            print(f'{Fore.RED}Error: {Fore.WHITE}{e} {Fore.RED}happened while trying to delete the Webhook')
+
+        input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Enter anything to continue. . . {Fore.RED}')
+        main()
+    if secondchoice == 2:
+        WebHook = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Webhook: {Fore.RED}')
+        validateWebhook(WebHook)
+        Message = str(input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Message: {Fore.RED}'))
+        WebhookSpammer(WebHook, Message)
