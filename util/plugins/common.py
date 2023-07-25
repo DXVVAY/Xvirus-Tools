@@ -636,12 +636,7 @@ def notfree():
     print_slow("This feature is not availabe on the free version of Xvirus\n check https://xvirus.xyz to but the premium version!")
     sleep(1.5)
 
-def count_and_redirect():
-    for i in range(1, 6):
-        print(f"\rCounting: {i}", end="")
-        time.sleep(0.5)
-    print()
-    
+def redirect(): 
     redirect = input("Do you want to redirect to https://xvirus.xyz? (y/n): ")
     if redirect.lower() == 'y':
         webbrowser.open("https://xvirus.xyz")
