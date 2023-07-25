@@ -163,7 +163,7 @@ def main():
         update()
 
     elif choice == 'BUY':
-        count_and_redirect()
+        redirect()
         main
         
     elif choice == '!':
