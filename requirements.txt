@@ -7,3 +7,4 @@ pystyle
 sellix
 urllib3
 selenium
+discord
