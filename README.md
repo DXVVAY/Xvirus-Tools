@@ -48,8 +48,9 @@ Finally just run Setup.bat and wait for it to complete.
 
 # Contact
 
-* @dexv
+* @dexvmaster
 
-* @danskespil
+* @morelikethis
 
+* @pernillevermund
 <!-- The machine is now active. Recovery protocol initiated. Please stand by! -->
