@@ -6,8 +6,9 @@ from colorama import Fore
 from util.plugins.common import *
 
 def check_token(token, valid_tokens, invalid_tokens, locked_tokens, lock):
+    headers = {'authorization': token}
     try:
-        response = requests.get('https://discord.com/api/v10/users/@me/library', headers=getheaders())
+        response = requests.get('https://discord.com/api/v10/users/@me/library', headers=headers)
         if response.status_code == 200:
             with lock:
                 valid_tokens.append(token)
