@@ -1,13 +1,18 @@
-import requests
-import os
 import ctypes
+import os
 import threading
 from datetime import datetime
 from pathlib import Path
 
+import requests
+from colorama import Fore
+
+from util.plugins.common import *
+
+
 def send_message(token, channel_id, message):
     headers = {
-        'Authorization': f'Bot {token}',  # Add 'Bot' prefix for bot tokens
+        'Authorization': f'Bot {token}',
         'Content-Type': 'application/json'
     }
     payload = {
@@ -15,13 +20,13 @@ def send_message(token, channel_id, message):
     }
     r = requests.post(f'https://discord.com/api/v9/channels/{channel_id}/messages', headers=headers, json=payload)
     if r.status_code == 200:
-        print(f"Message sent: {message}")
+        print(f" <*> Message sent: {message}")
     else:
-        print(f"Error sending message: {r.status_code} {r.text}")
+        print(f" <!> Error sending message: {r.status_code} {r.text}")
 
 def read_messages(token, channel_id):
     headers = {
-        'Authorization': f'Bot {token}',  # Add 'Bot' prefix for bot tokens
+        'Authorization': f'Bot {token}',
         'Content-Type': 'application/json'
     }
     last_message_id = None
@@ -40,7 +45,7 @@ def read_messages(token, channel_id):
                         print(f"[{formatted_timestamp}] {content}")
                     last_message_id = message['id']
         else:
-            print(f"Error reading messages: {r.status_code} {r.text}")
+            print(f" <!> Error reading messages: {r.status_code} {r.text}")
 
 def format_timestamp(timestamp):
     dt = datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%f%z')
@@ -59,14 +64,14 @@ def send_and_receive_messages(token, channel_id, is_bot=False):
 
 def send_messages(token, channel_id):
     while True:
-        message = input("Enter message: ")
+        message = input(" <~> Enter message: ")
         send_message(token, channel_id, message)
 
 def send_user_messages(token, channel_id):
     while True:
-        message = input("Enter message: ")
+        message = input(" <~> Enter message: ")
         headers = {
-            'Authorization': f'Bearer {token}',  # Use 'Bearer' prefix for user tokens
+            'Authorization': f'Bearer {token}',
             'Content-Type': 'application/json'
         }
         payload = {
@@ -74,18 +79,15 @@ def send_user_messages(token, channel_id):
         }
         r = requests.post(f'https://discord.com/api/v9/channels/{channel_id}/messages', headers=headers, json=payload)
         if r.status_code == 200:
-            print(f"Message sent: {message}")
+            print(f" <*> Message sent: {message}")
         else:
-            print(f"Error sending message: {r.status_code} {r.text}")
+            print(f" <!> Error sending message: {r.status_code} {r.text}")
 
-def main():
-    token = input("Enter token: ")
-    is_bot = input("Is it a bot token? (y/n): ").lower() == "y"
-    channel_id = input("Enter channel id: ")
+def messanger():
+    XTitle("Console Based Discord Client")
+    token = input(f"{Fore.RED} <~> Token: {Fore.BLUE}")
+    is_bot = input(" <~> Is it a bot token? (y/n): ").lower() == "y"
+    channel_id = input(" <~> Enter channel id: ")
     os.system("pause")
-    ctypes.windll.kernel32.SetConsoleTitleW("Console Based Discord Client")
     os.system("cls")
     send_and_receive_messages(token, channel_id, is_bot)
-
-if __name__ == "__main__":
-    main()

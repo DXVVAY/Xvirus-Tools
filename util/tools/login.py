@@ -22,11 +22,9 @@ def TokenLoging(token):
         opts.add_experimental_option("detach", True)
         driver = webdriver.Edge(options=opts)
     else:
-        print(f'[{Fore.RED}Error] : Coudln\'t find a driver to automate the proccess of login in to {user}')
+        print(f'{Fore.RED} <!> Coudln\'t find a driver to automate the proccess of login in to {user}')
         sleep(3)
-        print(f"{Fore.YELLOW}Paste this script into the console of a browser:\n\n{Back.RED}{script}\n{Back.RESET}")
-        print("Enter anything to continue. . . ", end="")
-        input()
+        print(f"{Fore.YELLOW} <*> Paste this script into the console of a browser:\n\n{Back.RED}{script}\n{Back.RESET}")
 
     print(f"{Fore.GREEN}Logging into {Fore.BLUE}{user}")
     driver.get("https://discordapp.com/login")
@@ -34,6 +32,6 @@ def TokenLoging(token):
 
 
 def tokenlogin():
-    token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
+    token = input(f' <~> {Fore.RED}Token: {Fore.RED}')
     validateToken(token)
     TokenLoging(token)

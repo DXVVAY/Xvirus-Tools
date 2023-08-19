@@ -34,46 +34,46 @@ import webbrowser
 
 def CHANGE_LOG():
     input(f'''
-    1. Webhook Generator
-    2. Fixed token info
-    3. Groupchat spammer fixed
-    4. Fixed all none-working features''')
+    1. New CUI (Similar to the premium versions CUI)!
+    2. Fixed many of the visuals
+    3. New App Structure
+    4. Added the option to chnage pronouns and display name in profile chnager
+    5. Fixed Token checker
+    6. Fixed the Ratbot not compiling
+    7. Added a toggleable Discord RPC
+    8. Fixed Token Login not installing MSEDGE driver''')
     
-THIS_VERSION = "1.6.6"
+THIS_VERSION = "1.6.7"
 TARGET_VERSION = 0
 
 def search_for_updates():
     clear()
-    setTitle("Xvirus Checking For Updates. . .")
+    XTitle("Xvirus Checking For Updates. . .")
     
     latest_version_url = "https://cloud.xvirus.xyz/latest_version.txt"
     r = requests.get(latest_version_url)
     latest_version = r.text.strip()
 
     if THIS_VERSION != latest_version:
-        setTitle("New Update Found!")
+        XTitle("New Update Found!")
         print(
-            f"""{Fore.YELLOW}
+            f"""{Fore.RED}
                 ███╗   ██╗███████╗██╗    ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗  ██╗
                 ████╗  ██║██╔════╝██║    ██║    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝  ██║
                 ██╔██╗ ██║█████╗  ██║ █╗ ██║    ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗    ██║
                 ██║╚██╗██║██╔══╝  ██║███╗██║    ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝    ╚═╝
                 ██║ ╚████║███████╗╚███╔███╔╝    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗  ██╗
                 ╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝      ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝  ╚═╝
-                              {Fore.RED}Looks like Xvirus {THIS_VERSION} is outdated """.replace(
-                "█", f"{Fore.WHITE}█{Fore.RED}"
-            ),
-            end="\n\n",
-        )
+                    {Fore.RED}Looks like Xvirus {THIS_VERSION} is outdated. Latest version is {latest_version}\n""")
 
         update_url = f"https://cloud.xvirus.xyz/Xvirus-Tools-main.zip"
         choice = input(
-            f"{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Do you want to update to the latest version? (Y to update N to continue using this version): {Fore.RED}"
+            f" <~> {Fore.RED}Do you want to update to the latest version? (Y to update N to continue using this version): {Fore.RED}"
         )
 
         if choice.lower() == "y" or choice.lower() == "yes":
-            print(f"{Fore.WHITE}\nUpdating. . .")
-            setTitle(f"Xvirus Updating...")
+            print(f"{Fore.WHITE}\n <*> Updating. . .")
+            XTitle(f"Xvirus Updating...")
             new_version_source = requests.get(update_url)
             with open("Xvirus-Tools-main.zip", "wb") as zipfile:
                 zipfile.write(new_version_source.content)
@@ -83,8 +83,8 @@ def search_for_updates():
             cwd = os.getcwd() + "\\Xvirus-Tools-main"
             shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
             shutil.rmtree(cwd)
-            setTitle("Xvirus Update Complete!")
-            print(f"{Fore.GREEN}Update Successfully Finished!")
+            XTitle("Xvirus Update Complete!")
+            print(f"{Fore.GREEN} <*> Update Successfully Finished!")
             sleep(2)
             if os.path.exists(os.getcwd() + "setup.bat"):
                 os.startfile("setup.bat")
@@ -95,9 +95,9 @@ def search_for_updates():
 
 def update():
     clear()
-    setTitle("Xvirus Checking For Updates. . .")
+    XTitle("Xvirus Checking For Updates. . .")
 
-    setTitle("New Update Found!")
+    XTitle("New Update Found!")
     print(
         f"""{Fore.YELLOW}
         ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗  ██╗
@@ -114,12 +114,12 @@ def update():
 
     update_url = f"https://github.com/Xvirus0/Xvirus-Tools/archive/refs/heads/main.zip"
     choice = input(
-        f"{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Do you want to update to the latest dev branch (Remember that the dev branch might be unstable)?\n(Y to update N to continue using this version): {Fore.RED}"
+        f" <~> {Fore.RED}Do you want to update to the latest dev branch (Remember that the dev branch might be unstable)?\n(Y to update N to continue using this version): {Fore.RED}"
     )
 
     if choice.lower() == "y" or choice.lower() == "yes":
         print(f"{Fore.WHITE}\nUpdating. . .")
-        setTitle(f"Xvirus Updating...")
+        XTitle(f"Xvirus Updating...")
         new_version_source = requests.get(update_url)
         with open("Xvirus-Tools-main.zip", "wb") as zipfile:
             zipfile.write(new_version_source.content)
@@ -129,7 +129,7 @@ def update():
         cwd = os.getcwd() + "\\Xvirus-Tools-main"
         shutil.copytree(cwd, os.getcwd(), dirs_exist_ok=True)
         shutil.rmtree(cwd)
-        setTitle("Xvirus Update Complete!")
+        XTitle("Xvirus Update Complete!")
         print(f"{Fore.GREEN}Update Successfully Finished!")
         sleep(2)
         if os.path.exists(os.getcwd() + "setup.bat"):
@@ -139,106 +139,192 @@ def update():
         os._exit(0)
 
 
-def get_driver():
-    driver_path = os.path.join('assets', 'msedgedriver.exe')
+class Edge_Installer(object):
+    installed = False
+    target_version = None
+    DL_BASE = "https://msedgedriver.azureedge.net/"
 
-    if os.path.exists(driver_path):
-        print(f"{Fore.GREEN}msedgedriver.exe found in assets folder, continuing. . .")
-        return driver_path
+    def __init__(self, executable_path=None, target_version=None, *args, **kwargs):
+        self.platform = sys.platform
+
+        if TARGET_VERSION:
+            self.target_version = TARGET_VERSION
+
+        if target_version:
+            self.target_version = target_version
+
+        if not self.target_version:
+            self.target_version = self.get_release_version_number().version[0]
+
+        self._base = base_ = "edgedriver{}"
+
+        exe_name = self._base
+        if self.platform in ("win32",):
+            exe_name = base_.format(".exe")
+        if self.platform in ("linux",):
+            self.platform += "64"
+            exe_name = exe_name.format("")
+        if self.platform in ("darwin",):
+            self.platform = "mac64"
+            exe_name = exe_name.format("")
+        self.executable_path = executable_path or exe_name
+        self._exe_name = exe_name
+
+        if not os.path.exists(self.executable_path):
+            self.fetch_edgedriver()
+            if not self.__class__.installed:
+                if self.patch_binary():
+                    self.__class__.installed = True
+
+    @staticmethod
+    def random_cdc():
+        cdc = random.choices('abcdefghijklmnopqrstuvwxyz', k=26)
+        cdc[-6:-4] = map(str.upper, cdc[-6:-4])
+        cdc[2] = cdc[0]
+        cdc[3] = "_"
+        return "".join(cdc).encode()
+
+    def patch_binary(self):
+        linect = 0
+        replacement = self.random_cdc()
+        with io.open("ms"+self.executable_path, "r+b") as fh:
+            for line in iter(lambda: fh.readline(), b""):
+                if b"cdc_" in line:
+                    fh.seek(-len(line), 1)
+                    newline = re.sub(b"cdc_.{22}", replacement, line)
+                    fh.write(newline)
+                    linect += 1
+            return linect
+
+
+    def get_release_version_number(self):
+        path = (
+            "LATEST_STABLE"
+            if not self.target_version
+            else f"LATEST_RELEASE_{str(self.target_version).split('.', 1)[0]}"
+        )
+        urlretrieve(
+            f"{self.__class__.DL_BASE}{path}",
+            filename=f"{os.getenv('temp')}\\{path}",
+        )
+        with open(f"{os.getenv('temp')}\\{path}", "r+") as f:
+            _file = f.read().strip("\n")
+            content = ""
+            for char in [x for x in _file]:
+                for num in ("0","1","2","3","4","5","6","7","8","9","."):
+                    if char == num:
+                        content += char
+        return LooseVersion(content)
+
+    def fetch_edgedriver(self):
+        base_ = self._base
+        zip_name = base_.format(".zip")
+        ver = self.get_release_version_number().vstring
+        if os.path.exists(self.executable_path):
+            return self.executable_path
+        print(f"{self.__class__.DL_BASE}{ver}/{base_.format(f'_{self.platform}')}.zip")
+        urlretrieve(
+            f"{self.__class__.DL_BASE}{ver}/{base_.format(f'_{self.platform}')}.zip",
+            filename=zip_name,
+        )
+        with zipfile.ZipFile(zip_name) as zf:
+            zf.extract("ms"+self._exe_name)
+        os.remove(zip_name)
+        if sys.platform != "win32":
+            os.chmod(self._exe_name, 0o755)
+        return self._exe_name
+        
+def get_driver():
+    drivers = ["msedgedriver.exe"]
+
+    print(f"\n{Fore.BLUE} <!> Checking Driver. . .")
+    sleep(0.5)
+
+    for driver in drivers:
+        if os.path.exists(os.getcwd() + os.sep + driver):
+            print(f" <!>{Fore.BLUE}{driver} already exists, continuing. . .{Fore.RESET}")
+            sleep(0.5)
+            return driver
     else:
-        print(f"{Fore.RED}msedgedriver.exe not found in assets folder! Please make sure it is placed correctly.")
-        return None
+        print(f"{Fore.RED} <!> Driver not found! Installing it for you")
+        if os.path.exists(os.getenv('localappdata') + '\\Microsoft\\Edge'):
+            Edge_Installer()
+            print(f"{Fore.GREEN} <*> msedgedriver.exe Installed!{Fore.RESET}")
+            return "msedgedriver.exe"
+        else:
+            print(f'<!> No compatible driver found. . . Proceeding with msedgedriver')
+            Chrome_Installer()
+            print(f"{Fore.GREEN} <!> trying to install msedgedriver.exe{Fore.RESET}")
+            return "msedgedriver.exe"
 
 
 def clear():
     system = os.name
     if system == 'nt':
-        #if its windows
         os.system('cls')
     elif system == 'posix':
-        #if its linux
         os.system('clear')
     else:
         print('\n'*120)
     return
 
-def setTitle(_str):
+def XTitle(_str):
     system = os.name
     if system == 'nt':
-        #if its windows
-        ctypes.windll.kernel32.SetConsoleTitleW(f"{_str} | Made By Xvirus")
+        ctypes.windll.kernel32.SetConsoleTitleW(f"{_str} - Discord API Tools | https://xvirus.xyz | Made By Xvirus™")
     elif system == 'posix':
-        #if its linux
-        os.system(f"\033]0;{_str} | Made By Xvirus\a", end='', flush=True)
+        os.system(f"\033]0;{_str} - Discord API Tools | https://xvirus.xyz | Made By Xvirus™\a", end='', flush=True)
     else:
-        #if its something else or some err happend for some reason, we do nothing
         pass
 
 def print_slow(_str):
     for letter in _str:
-        #slowly print out the words 
         sys.stdout.write(letter);sys.stdout.flush();sleep(0.04)
 
-def validateToken(token):
-    headers = getheaders(token)
-    url = 'https://discord.com/api/v10/users/@me'
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        print(f"{Fore.BLUE}Valid Token.")
-        # Token is valid
-    else:
-        print(f"\n{Fore.RED}Invalid Token.")
-        sleep(1)
-        __import__("Xvirus").main()
+def print015(text):
+    for c in text:
+        sys.stdout.write(c)
+        sys.stdout.flush()
+        time.sleep(0.015)
+    sys.stdout.write("\n")
 
-def validateWebhook(hook):
+def print01(text):
+    for c in text:
+        sys.stdout.write(c)
+        sys.stdout.flush()
+        time.sleep(0.015)
+
+def CheckToken(token):
+    url = 'https://discord.com/api/v9/users/@me'
+    response = requests.get(url, headers=getheaders(token))
+    if response.status_code == 200:
+        print(f"{Fore.BLUE} <*> Valid Token.")
+    else:
+        print(f"\n{Fore.RED} <!> Invalid Token.")
+        sleep(1)
+        __import__("Xvirus").main1()
+
+def CheckWebhook(hook):
     try:
         response = requests.get(hook)
         response.raise_for_status()
     except requests.exceptions.RequestException:
-        print(f"\n{Fore.RED}Invalid Webhook.")
+        print(f"\n{Fore.RED} <!> Invalid Webhook.")
         sleep(1)
-        __import__("Xvirus").main()
+        __import__("Xvirus").main1()
 
     try:
         json_data = response.json()
         j = json_data["name"]
-        print(f"{Fore.BLUE}Valid webhook! ({j})")
+        print(f"{Fore.BLUE} <*> Valid webhook! ({j})")
     except (KeyError, json.decoder.JSONDecodeError):
-        print(f"\n{Fore.RED}Invalid Webhook.")
+        print(f"\n{Fore.RED} <!> Invalid Webhook.")
         sleep(1)
 
-
 def proxy_scrape(): 
     proxieslog = []
-    setTitle("Scraping Proxies")
-    #start timer
+    XTitle("Scraping Proxies")
     startTime = time.time()
-    #create temp dir
-    temp = os.getenv("temp")+"\\xvirus_proxies"
-    print(f"{Fore.YELLOW}Please wait while Xvirus Scrapes proxies for you!")
-
-    def fetchProxies(url, custom_regex):
-        global proxylist
-        try:
-            proxylist = requests.get(url, timeout=5).text
-        except Exception:
-            pass
-        finally:
-            proxylist = proxylist.replace('null', '')
-        #get the proxies from all the sites with the custom regex
-        custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
-        custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
-        for proxy in re.findall(re.compile(custom_regex), proxylist):
-            proxieslog.append(f"{proxy[0]}:{proxy[1]}")
-
-    #all urls
-def proxy_scrape(): 
-    proxieslog = []
-    setTitle("Scraping Proxies")
-    #start timer
-    startTime = time.time()
-    #create temp dir
     temp = os.getenv("temp")+"\\xvirus_proxies"
     Anime.Fade((logo), Colors.rainbow, Colorate.Vertical, time=5)
 
@@ -250,13 +336,10 @@ def proxy_scrape():
             pass
         finally:
             proxylist = proxylist.replace('null', '')
-        #get the proxies from all the sites with the custom regex
         custom_regex = custom_regex.replace('%ip%', '([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})')
         custom_regex = custom_regex.replace('%port%', '([0-9]{1,5})')
         for proxy in re.findall(re.compile(custom_regex), proxylist):
             proxieslog.append(f"{proxy[0]}:{proxy[1]}")
-
-    #all urls
 
     proxysources = [
         ["http://spys.me/proxy.txt","%ip%:%port% "],
@@ -278,7 +361,6 @@ def proxy_scrape():
  
     threads = [] 
     for url in proxysources:
-        #send them out in threads
         t = threading.Thread(target=fetchProxies, args=(url[0], url[1]))
         threads.append(t)
         t.start()
@@ -288,31 +370,69 @@ def proxy_scrape():
     proxies = list(set(proxieslog))
     with open(temp, "w") as f:
         for proxy in proxies:
-            #create the same proxy 7-10 times to avoid ratelimit when using other options
             for i in range(random.randint(7, 10)):
                 f.write(f"{proxy}\n")
-    #get the time it took to scrape
     execution_time = (time.time() - startTime)
-    print(f"{Fore.BLUE}Done! Scraped{Fore.MAGENTA}{len(proxies): >5}{Fore.RED} in total => {Fore.RED}{temp} | {execution_time}ms")
-    setTitle(f"Xvirus {THIS_VERSION}")
+    print(f"{Fore.BLUE} <!> Done! Scraped{Fore.MAGENTA}{len(proxies): >5}{Fore.RED} in total => {Fore.RED}{temp} | {execution_time}ms")
 
 def proxy():
     temp = os.getenv("temp") + "\\xvirus_proxies"
-    
+
     if not os.path.isfile(temp) or os.stat(temp).st_size == 0:
         proxy_scrape()
     proxies = open(temp).read().split('\n')
-    proxy = proxies[0]
+    proxy = random.choice(proxies)
 
     with open(temp, 'r+') as fp:
-        #read all lines
         lines = fp.readlines()
-        #get the first line
         fp.seek(0)
-        #remove the proxy
         fp.truncate()
         fp.writelines(lines[1:])
-    return ({'http://': f'http://{proxy}', 'https://': f'https://{proxy}'})
+    return {'http': f'http://{proxy}', 'https': f'https://{proxy}'}
+
+def get_proxies():
+    temp_folder = os.path.join(os.environ.get("TEMP", "C:\\temp"), "xvirus_proxies")
+    
+    with open(temp_folder, "w") as f:
+        proxies = f.read().strip().splitlines()
+    proxies = [proxy for proxy in proxies if proxy.strip()]
+    return proxies
+
+def clean_proxy(proxy):
+        if isinstance(proxy, str):
+            if '@' in proxy:
+                return proxy
+            elif len(proxy.split(':')) == 2:
+                return proxy
+            elif len(proxy.split(':')) == 4:
+                return ':'.join(proxy.split(':')[2:]) + '@' + ':'.join(proxy.split(':')[:2])
+            else:
+                if '.' in proxy.split(':')[0]:
+                    return ':'.join(proxy.split(':')[2:]) + '@' + ':'.join(proxy.split(':')[:2])
+                else:
+                    return ':'.join(proxy.split(':')[:2]) + '@' + ':'.join(proxy.split(':')[2:])
+        elif isinstance(proxy, dict):
+            if proxy.get("http://") or proxy.get("https://"):
+                return proxy
+            else:
+                if proxy in [dict(), {}]:
+                    return {}
+                return {
+                    "http://": proxy.get("http") or proxy.get("https"),
+                    "https://": proxy.get("https") or proxy.get("http")
+                }
+
+def get_random_proxy():
+        try:
+            return random.choice(get_proxies())
+        except:
+            return {}
+
+def get_proxy_type():
+    h = "http"
+    if "socks5" in h:
+        h = "socks5"
+    return h
 
 heads = [
     {
@@ -343,8 +463,8 @@ heads = [
     {
        "Content-Type": "application/json",
        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
-    }
-]
+    }]
+
 def getheaders(token=None):
     headers = random.choice(heads)
     if token:
@@ -371,9 +491,9 @@ def check_version():
         try:
             assert sys.version_info >= (3,7)
         except AssertionError:
-            print(f"{Fore.RED}Woopsie daisy, your Python version ({sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]}) is not compatible with xvirus, please download Python 3.7+")
+            print(f"{Fore.RED} <!> Woopsie daisy, your Python version ({sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]}) is not compatible with xvirus, please download Python 3.7+")
             sleep(5)
-            print("exiting. . .")
+            print(" <!> exiting. . .")
             sleep(1.5)
             os._exit(0)
 
@@ -436,39 +556,56 @@ def setUsername(new: str):
 
     with open(username_file, 'w') as f:
         f.write(new)
-#########################################################################################################################################################################
-def blackwhite(text):
-    os.system("")
-    faded = ""
-    gradient_steps = 10  # Number of gradient steps
-    step_size = 255 // gradient_steps  # Calculate step size for each color channel
 
-    red = 0
-    green = 0
-    blue = 0
+def notfree():
+    print_slow(" <!> This feature is not availabe on the free version of Xvirus\n <!> check https://xvirus.xyz and or https://discord.gg/xvirus to buy the premium version!")
+    sleep(1.5)
 
-    for line in text.splitlines():
-        faded += f"\033[38;2;{red};{green};{blue}m{line}\033[0m\n"
-        
-        red += step_size
-        green += step_size
-        blue += step_size
+def PETC():
+    input(f'{Fore.RED}\n <~> Press ENTER to continue{Fore.RED}')
 
-        if red > 255:
-            red = 255
-        if green > 255:
-            green = 255
-        if blue > 255:
-            blue = 255
+def redirect(): 
+    redirect = input("Do you want to redirect to https://xvirus.xyz and https://discord.gg/xvirus? (y/n): ")
+    if redirect.lower() == 'y':
+        webbrowser.open("https://xvirus.xyz")
+        webbrowser.open("https://discord.gg/xvirus")
+    elif redirect.lower() == 'n':
+        print(" <!> Redirect not requested.")
+    else:
+        print(" <!> Invalid input. Redirect not requested.")
 
-    return faded
+def set_terminal_width(width):
+    handle = ctypes.windll.kernel32.GetStdHandle(-11)
+
+    new_size = ctypes.wintypes._COORD(width, ctypes.wintypes._COORD().Y)
+
+    ctypes.windll.kernel32.SetConsoleScreenBufferSize(handle, new_size)
+    ctypes.windll.kernel32.SetConsoleWindowInfo(handle, True, ctypes.byref(new_size))
+
+xvirus_width = 120
+
+lr = Fore.LIGHTRED_EX
+lb = Fore.LIGHTBLACK_EX
+r = Fore.RED
+
+def main_banner():
+    if getTheme() == "xeme":
+        banner()
+    elif getTheme() == "dark":
+        banner("dark")
+    elif getTheme() == "fire":
+        banner("fire")
+    elif getTheme() == "aqua":
+        banner("aqua")
+    elif getTheme() == "neon":
+        banner("neon")
 
 def getTheme():
     themes = ["xeme", "dark", "fire", "aqua", "neon"]
     with open(os.getenv("temp")+"\\xvirus_theme", 'r') as f:
         text = f.read()
         if not any(s in text for s in themes):
-            print(f'{Fore.RED}[Error] : Invalid theme was given, Switching to default. . .')
+            print(f'{Fore.RED} <*>  Invalid theme was given, Switching to default. . .')
             setTheme('xeme')
             sleep(2.5)
             __import__("Xvirus").main()
@@ -481,13 +618,15 @@ def setTheme(new: str):
 
 def banner(theme=None):
     if theme == "dark":
-        print(bennerTheme(blackwhite, blackwhite))
+        print(Colorate.Vertical(Colors.black_to_white, (bannerTheme)))
     elif theme == "fire":
         print(Colorate.Vertical(Colors.red_to_yellow, (bannerTheme)))
     elif theme == "aqua":
         print(Colorate.Vertical(Colors.cyan_to_blue, (bannerTheme)))
     elif theme == "neon":
-        print(Colorate.Vertical(Colors.blue_to_purple, (bannerTheme)))
+        print(Colorate.Vertical(Colors.blue_to_red, (bannerTheme)))
+    elif theme == "rainbow":
+        print(Colorate.Horizontal(Colors.rainbow, (bannerTheme)))
     else:
        print(f'''{Fore.RED}
 
@@ -503,17 +642,17 @@ def banner(theme=None):
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝                     Buy Premium [BUY] <
 > [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
 > [!] Settings                                                                                          Xside gpt [ai] <
-{Fore.WHITE} ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}01{Fore.RED}]{Fore.LIGHTBLACK_EX} Nuke Account                 {Fore.WHITE} │  {Fore.RED}[{Fore.RED}10{Fore.RED}]{Fore.LIGHTBLACK_EX} Block Friends                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}19{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Disabler                {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}02{Fore.RED}]{Fore.LIGHTBLACK_EX} Unfriend all friends         {Fore.WHITE} │  {Fore.RED}[{Fore.RED}11{Fore.RED}]{Fore.LIGHTBLACK_EX} Profile Changer                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}20{Fore.RED}]{Fore.LIGHTBLACK_EX} Discord Rat Bot               {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}03{Fore.RED}]{Fore.LIGHTBLACK_EX} Delete and leave all servers {Fore.WHITE} │  {Fore.RED}[{Fore.RED}12{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Brute-Force                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}21{Fore.RED}]{Fore.LIGHTBLACK_EX} Vanity Sniper                 {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}04{Fore.RED}]{Fore.LIGHTBLACK_EX} Spam Create New servers      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}13{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Grabber                    {Fore.WHITE}│  {Fore.RED}[{Fore.RED}22{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Clearer                    {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}05{Fore.RED}]{Fore.LIGHTBLACK_EX} Dm Deleter                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}14{Fore.RED}]{Fore.LIGHTBLACK_EX} QR Code grabber                  {Fore.WHITE}│  {Fore.RED}[{Fore.RED}23{Fore.RED}]{Fore.LIGHTBLACK_EX} Nitro Generator               {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}06{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Dm                      {Fore.WHITE} │  {Fore.RED}[{Fore.RED}15{Fore.RED}]{Fore.LIGHTBLACK_EX} Mass Report                      {Fore.WHITE}│  {Fore.RED}[{Fore.RED}24{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Link Generator         {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}07{Fore.RED}]{Fore.LIGHTBLACK_EX} Enable Seizure Mode          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}16{Fore.RED}]{Fore.LIGHTBLACK_EX} GroupChat Spammer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}25{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Generator             {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}08{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Info                   {Fore.WHITE} │  {Fore.RED}[{Fore.RED}17{Fore.RED}]{Fore.LIGHTBLACK_EX} Webhook Destroyer                {Fore.WHITE}│  {Fore.RED}[{Fore.RED}26{Fore.RED}]{Fore.LIGHTBLACK_EX} Server Bot Nuker              {Fore.WHITE}│
-{Fore.WHITE} │  {Fore.RED}[{Fore.RED}09{Fore.RED}]{Fore.LIGHTBLACK_EX} Log into an account          {Fore.WHITE} │  {Fore.RED}[{Fore.RED}18{Fore.RED}]{Fore.LIGHTBLACK_EX} Token Mass Checker               {Fore.WHITE}│  {Fore.RED}[{Fore.RED}27{Fore.RED}]{Fore.LIGHTBLACK_EX} Selfbot Spammer               {Fore.WHITE}│
-{Fore.WHITE} └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
+{r} ╔═══                              ═══╗ ╔═══                               ═══╗ ╔═══                               ═══╗
+{r} ║   ({lb}01{r}) {lb}> Token Login               {r}║ ║   {r}({lb}10{r}) {lb}> Seizure                    {r}║ ║   {r}({lb}19{r}) {lb}> Webhook Tool{r}               ║
+{r}     ({lb}02{r}) {lb}> Token Info                      {r}({lb}11{r}) {lb}> Leave And Delete Servers         {r}({lb}20{r}) {lb}> Webhook Generator{r}
+{r}     ({lb}03{r}) {lb}> Token Disabler                  {r}({lb}12{r}) {lb}> Remove Friends                   {r}({lb}21{r}) {lb}> Nitro Generator{r}
+{r}     ({lb}04{r}) {lb}> Token Brute-Force               {r}({lb}13{r}) {lb}> Block Friends                    {r}({lb}22{r}) {lb}> Server Link Generator{r}
+{r}     ({lb}05{r}) {lb}> Token Grabber                   {r}({lb}14{r}) {lb}> Dm @everyone                     {r}({lb}23{r}) {lb}> Server Nuker{r}
+{r}     ({lb}06{r}) {lb}> Token Checker                   {r}({lb}15{r}) {lb}> Delete DMs                       {r}({lb}24{r}) {lb}> Group Spammer{r}
+{r}     ({lb}07{r}) {lb}> Token Nuker                     {r}({lb}16{r}) {lb}> Clear DMs                        {r}({lb}25{r}) {lb}> SelfBot Spammer{r}
+{r}     ({lb}08{r}) {lb}> QR Token Grabber                {r}({lb}17{r}) {lb}> Change Profile                   {r}({lb}26{r}) {lb}> Threads Spammer{r}
+{r} ║   ({lb}09{r}) {lb}> Discord RAT Bot           {r}║ ║   {r}({lb}18{r}) {lb}> Vanity Sniper              {r}║ ║   {r}({lb}27{r}) {lb}> Next Page  {r}                ║
+{r} ╚═══                              ═══╝ ╚═══                               ═══╝ ╚═══                               ═══╝''')
                                                                                                                     
 
 
@@ -528,21 +667,23 @@ bannerTheme = f"""
                                     ╚██╗██╔╝██║   ██║██║██╔══██╗██║   ██║██╔════╝
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
-                                    ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
+> [RPC] Toggle RPC                  ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝                     Buy Premium [BUY] <
 > [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
 > [!] Settings                                                                                          Xside gpt [ai] <
- ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
- │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
- │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
- │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
- │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer                    │
- │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
- │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
- │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
- │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] Server Bot Nuker              │
- │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] Selfbot Spammer               │
- └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘"""
+ ╔═══                              ═══╗ ╔═══                               ═══╗ ╔═══                               ═══╗
+ ║   (01) > Token Login               ║ ║   (10) > Seizure                    ║ ║   (19) > Webhook Tool               ║
+     (02) > Token Info                      (11) > Leave And Delete Servers         (20) > Webhook Generator
+     (03) > Token Disabler                  (12) > Remove Friends                   (21) > Nitro Generator
+     (04) > Token Brute-Force               (13) > Block Friends                    (22) > Server Link Generator
+     (05) > Token Grabber                   (14) > Dm @everyone                     (23) > Server Nuker
+     (06) > Token Checker                   (15) > Delete DMs                       (24) > Group Spammer
+     (07) > Token Nuker                     (16) > Clear DMs                        (25) > SelfBot Spammer
+     (08) > QR Token Grabber                (17) > Change Profile                   (26) > Threads Spammer
+ ║   (09) > Discord RAT Bot           ║ ║   (18) > Vanity Sniper              ║ ║   (27) > Next Page                  ║
+ ╚═══                              ═══╝ ╚═══                               ═══╝ ╚═══                               ═══╝"""
+
+
 
 def bennerTheme(type1, type2):
     return type1(f'''
@@ -555,21 +696,21 @@ def bennerTheme(type1, type2):
                                     ╚██╗██╔╝██║   ██║██║██╔══██╗██║   ██║██╔════╝
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗
-                                    ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
+> [RPC] Toggle RPC                  ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝
 > [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝                     Buy Premium [BUY] <
 > [?] {THIS_VERSION} Changelog                                                                                     Update [UPD] <
 > [!] Settings                                                                                          Xside gpt [ai] <''')+type2(f'''
- ┌─────────────────────────────────────┬────────────────────────────────────────┬─────────────────────────────────────┐
- │  [01] Nuke Account                  │  [10] Block Friends                    │  [19] Token Disabler                │
- │  [02] Unfriend all friends          │  [11] Profile Changer                  │  [20] Discord Rat Bot               │
- │  [03] Delete and leave all servers  │  [12] Token Brute-Force                │  [21] Vanity Sniper                 │
- │  [04] Spam Create New servers       │  [13] Token Grabber                    │  [22] Dm Clearer                    │
- │  [05] Dm Deleter                    │  [14] QR Code grabber                  │  [23] Nitro Generator               │
- │  [06] Mass Dm                       │  [15] Mass Report                      │  [24] Server Link Generator         │
- │  [07] Enable Seizure Mode           │  [16] GroupChat Spammer                │  [25] Webhook Generator             │
- │  [08] Token Info                    │  [17] Webhook Destroyer                │  [26] Server Bot Nuker              │
- │  [09] Log into an account           │  [18] Token Mass Checker               │  [27] Selfbot Spammer               │
- └─────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────┘''')
+ ╔═══                              ═══╗ ╔═══                               ═══╗ ╔═══                               ═══╗
+ ║   (01) > Token Login               ║ ║   (10) > Seizure                    ║ ║   (19) > Webhook Tool               ║
+     (02) > Token Info                      (11) > Leave And Delete Servers         (20) > Webhook Generator
+     (03) > Token Disabler                  (12) > Remove Friends                   (21) > Nitro Generator
+     (04) > Token Brute-Force               (13) > Block Friends                    (22) > Server Link Generator
+     (05) > Token Grabber                   (14) > Dm @everyone                     (23) > Server Nuker
+     (06) > Token Checker                   (15) > Delete DMs                       (24) > Group Spammer
+     (07) > Token Nuker                     (16) > Change Profile                   (25) > SelfBot Spammer
+     (08) > QR Token Grabber                (17) > Change Profile                   (26) > Threads Spammer
+ ║   (09) > Discord RAT Bot           ║ ║   (18) > Vanity Sniper              ║ ║   (27) > Next Page                  ║
+ ╚═══                              ═══╝ ╚═══                               ═══╝ ╚═══                               ═══╝''')
 
 def offline():
                 print(f"""{Fore.RED}
@@ -629,19 +770,3 @@ startuplogo = r"""
 ██╔╝╚██╗
 ╚═╝  ╚═╝
 """[1:]
-
-#################################################################################################################################################################################
-
-def notfree():
-    print_slow("This feature is not availabe on the free version of Xvirus\n check https://xvirus.xyz and or https://discord.gg/xvirus to buy the premium version!")
-    sleep(1.5)
-
-def redirect(): 
-    redirect = input("Do you want to redirect to https://xvirus.xyz and https://discord.gg/xvirus? (y/n): ")
-    if redirect.lower() == 'y':
-        webbrowser.open("https://xvirus.xyz")
-        webbrowser.open("https://discord.gg/xvirus")
-    elif redirect.lower() == 'n':
-        print("Redirect not requested.")
-    else:
-        print("Invalid input. Redirect not requested.")

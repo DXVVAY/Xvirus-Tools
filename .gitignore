@@ -9,3 +9,11 @@ setup.bat
 /Xvirus-Tools-main
 /output
 /dist
+README.md
+/Xvirus.dist
+/Xvirus.build
+/Xvirus.onefile-build
+Xvirus.exe
+tokens.txt
+Xvirus-Tools.exe
+tokens.txt

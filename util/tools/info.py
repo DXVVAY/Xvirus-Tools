@@ -43,9 +43,8 @@ def get_avatar_url(userID, avatar_id):
 
 def get_payment_info(token):
     payment_info = []
-    headers = getheaders(token)
-    billing_sources_url = 'https://discord.com/api/v10/users/@me/billing/payment-sources'
-    billing_sources = requests.get(billing_sources_url, headers=headers).json()
+    billing_sources_url = 'https://discord.com/api/v9/users/@me/billing/payment-sources'
+    billing_sources = requests.get(billing_sources_url, headers=getheaders(token)).json()
 
     cc_digits = get_cc_digits()
     for source in billing_sources:
@@ -62,7 +61,7 @@ def get_payment_info(token):
             'Country': billing_address.get('country', "")
         }
 
-        if source['type'] == 1:  # Credit Card
+        if source['type'] == 1:
             cc_brand = source['brand']
             cc_first = cc_digits.get(cc_brand)
             cc_last = source['last_4']
@@ -76,7 +75,7 @@ def get_payment_info(token):
                 'CC Number': ''.join(z if (i + 1) % 2 else z + ' ' for i, z in enumerate((cc_first if cc_first else '*') + ('*' * 11) + cc_last)),
                 'CC Exp. Date': ('0' + cc_month if len(cc_month) < 2 else cc_month) + '/' + cc_year[2:4],
             })
-        elif source['type'] == 2:  # PayPal
+        elif source['type'] == 2:
             payment_type = 'PayPal'
             data.update({
                 'Payment Type': payment_type,
@@ -88,7 +87,8 @@ def get_payment_info(token):
     return payment_info
 
 def Info(token):
-    user_info_url = 'https://discord.com/api/v10/users/@me'
+    XTitle("Getting Token Info")
+    user_info_url = 'https://discord.com/api/v9/users/@me'
     user_info = requests.get(user_info_url, headers=getheaders(token)).json()
 
     flags = user_info.get('flags', 0)
@@ -116,7 +116,7 @@ def Info(token):
 
 
     has_nitro = False
-    nitro_subscriptions_url = 'https://discord.com/api/v10/users/@me/billing/subscriptions'
+    nitro_subscriptions_url = 'https://discord.com/api/v9/users/@me/billing/subscriptions'
     nitro_data = requests.get(nitro_subscriptions_url, headers=getheaders(token)).json()
     if nitro_data:
         has_nitro = True
@@ -161,10 +161,10 @@ def Info(token):
         {Fore.RED}[State]               {info['State']}
         {Fore.RED}[Country]             {info['Country']}
         ''')
-        input("Press Enter To Exit!")
+        
 
 
 def getinfo():
-        token = input(f'{Fore.RED}[{Fore.RED}>>>{Fore.RED}] {Fore.RED}Token: {Fore.RED}')
-        validateToken(token)
+        token = input(f'{Fore.RED} <~> Token: {Fore.BLUE}')
+        CheckToken(token)
         Info(token)
