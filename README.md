@@ -46,7 +46,7 @@ cd Xvirus-Tools
 Finally just run Setup.bat and wait for it to complete.
 
 
-# Contact
+# Contact (discord)
 
 * @dexvmaster
 
