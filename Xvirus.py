@@ -247,6 +247,7 @@ if __name__ == "__main__":
     import sys
     XTitle("Xvirus Loading...")
     set_terminal_width(xvirus_width)
+    check_servers()
     check_version()
     search_for_updates()
     get_username()
