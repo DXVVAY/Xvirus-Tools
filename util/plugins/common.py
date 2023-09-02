@@ -43,7 +43,7 @@ def CHANGE_LOG():
     7. Added a toggleable Discord RPC
     8. Fixed Token Login not installing MSEDGE driver''')
     
-THIS_VERSION = "1.6.7"
+THIS_VERSION = "1.6.8"
 TARGET_VERSION = 0
 
 def search_for_updates():
