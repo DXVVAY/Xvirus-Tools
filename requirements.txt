@@ -8,4 +8,6 @@ sellix
 urllib3
 selenium
 discord
-aiohtt
+requests
+keyboard
+pypresence
