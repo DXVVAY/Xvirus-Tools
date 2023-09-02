@@ -302,7 +302,7 @@ def CheckToken(token):
     else:
         print(f"\n{Fore.RED} <!> Invalid Token.")
         sleep(1)
-        __import__("Xvirus").main1()
+        __import__("Xvirus").main()
 
 def CheckWebhook(hook):
     try:
@@ -311,7 +311,7 @@ def CheckWebhook(hook):
     except requests.exceptions.RequestException:
         print(f"\n{Fore.RED} <!> Invalid Webhook.")
         sleep(1)
-        __import__("Xvirus").main1()
+        __import__("Xvirus").main()
 
     try:
         json_data = response.json()
