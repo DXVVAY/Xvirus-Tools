@@ -239,7 +239,7 @@ def main():
         main()
 
     elif choice == '!':
-        setting()
+        settings()
         PETC()
         main()
 
