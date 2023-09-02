@@ -487,6 +487,22 @@ def check_wifi_connection():
             time.sleep(1)
         clear()
 
+def check_servers():
+    domains = ['https://xvirus.xyz', 'https://cloud.xvirus.xyz', 'https://dexv.xvirus.xyz']
+    for domain in domains:
+        try:
+            urllib.request.urlopen(domain)
+            return
+        except urllib.error.URLError:
+            pass
+
+    while True:
+        for i in range(10, 0, -1):
+            print(f"{Fore.RED}Xvirus Servers Are Offline At The Moment, Try Again Later.\n{Fore.RED} Retrying in {Fore.BLUE}{i} {Fore.RED}seconds", end='\r')
+            time.sleep(1)
+            clear()
+        clear()
+
 def check_version():
         try:
             assert sys.version_info >= (3,7)
