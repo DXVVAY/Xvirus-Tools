@@ -27,8 +27,8 @@ My goal is to show how fragile and insecure the Discord API is, and some other c
 
 **NOTE:** This is the free version of Xvirus and wont be updated frequently
 
-**NOTE 2:** We're currently looking for resellers of our [premium](https://xvirus.xyz/) version, if this interests you please join our discord. https://discord.gg/xvirustool
-ㅤ
+**NOTE 2:** We're currently looking for resellers of our [premium](https://xvirus.xyz/) version, if this interests you please join our [discord](https://discord.gg/xvirustool).
+
 ## Disclaimer
 
 |Xvirus was made for Educational purposes|
