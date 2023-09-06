@@ -50,7 +50,7 @@ Finally just run Setup.bat and wait for it to complete.
 
 # Contact (discord)
 
-* @dexvmaster0
+* @dexvmaster00
 
 * @deffnotadminx2
 
