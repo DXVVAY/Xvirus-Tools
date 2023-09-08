@@ -249,7 +249,6 @@ if __name__ == "__main__":
     set_terminal_width(xvirus_width)
     check_servers()
     check_version()
-    search_for_updates()
     get_username()
     proxy_scrape()
     if not os.path.exists(os.getenv("temp") + "\\xvirus_theme"):
