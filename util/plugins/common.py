@@ -489,18 +489,29 @@ def check_wifi_connection():
 
 def check_servers():
     domains = ['https://xvirus.xyz', 'https://cloud.xvirus.xyz', 'https://dexv.xvirus.xyz']
-    for domain in domains:
-        try:
-            urllib.request.urlopen(domain)
-            return
-        except urllib.error.URLError:
-            pass
+    online_count = 0
+    consecutive_failures = 0
 
-    while True:
+    while consecutive_failures < 2:
+        for domain in domains:
+            try:
+                urllib.request.urlopen(domain)
+                online_count += 1
+                if online_count >= 1:
+                    search_for_updates()
+                    return
+            except urllib.error.URLError:
+                consecutive_failures += 1
+
         for i in range(10, 0, -1):
             print(f"{Fore.RED}Xvirus Servers Are Offline At The Moment, Try Again Later.\n{Fore.RED} Retrying in {Fore.BLUE}{i} {Fore.RED}seconds", end='\r')
             time.sleep(1)
             clear()
+        clear()
+
+    if consecutive_failures >= 2:
+        print(f"{Fore.RED}Xvirus Cloud Unavailable Skipping Update Check!")
+        time.sleep(2)
         clear()
 
 def check_version():
