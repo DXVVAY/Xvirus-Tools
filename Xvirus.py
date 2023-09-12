@@ -78,7 +78,7 @@ def main():
     choice = choice.upper()
 
     if choice == "1":
-        print(" <!> This option is unavailable on the exe version")#tokenlogin()
+        tokenlogin()
         PETC()
         main()
 
