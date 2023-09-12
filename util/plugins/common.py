@@ -253,7 +253,7 @@ def get_driver():
             return "msedgedriver.exe"
         else:
             print(f'<!> No compatible driver found. . . Proceeding with msedgedriver')
-            Chrome_Installer()
+            Edge_Installer()
             print(f"{Fore.GREEN} <!> trying to install msedgedriver.exe{Fore.RESET}")
             return "msedgedriver.exe"
 
