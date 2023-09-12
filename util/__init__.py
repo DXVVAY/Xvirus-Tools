@@ -7,7 +7,7 @@ from .tools.dmdeleter import *
 from .tools.friend_blocker import *
 from .tools.groupchat_spammer import *
 from .tools.info import *
-#from .tools.login import *
+from .tools.login import *
 from .tools.massdm import *
 from .tools.message import *
 from .tools.profilechanger import *
