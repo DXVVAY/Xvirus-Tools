@@ -33,5 +33,5 @@ def TokenLoging(token):
 
 def tokenlogin():
     token = input(f' <~> {Fore.RED}Token: {Fore.RED}')
-    validateToken(token)
+    CheckToken(token)
     TokenLoging(token)
