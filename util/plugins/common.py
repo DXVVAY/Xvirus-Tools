@@ -32,25 +32,19 @@ from urllib.request import urlopen, urlretrieve
 import time
 import webbrowser
 
-def CHANGE_LOG():
-    input(f'''
-    1. New CUI (Similar to the premium versions CUI)!
-    2. Fixed many of the visuals
-    3. New App Structure
-    4. Added the option to chnage pronouns and display name in profile chnager
-    5. Fixed Token checker
-    6. Fixed the Ratbot not compiling
-    7. Added a toggleable Discord RPC
-    8. Fixed Token Login not installing MSEDGE driver''')
-    
-THIS_VERSION = "1.6.8"
+THIS_VERSION = "1.6.9"
 TARGET_VERSION = 0
 
+def CHANGE_LOG():
+    input(f'''
+    1. Fixing all domains from xvirus.pro to xvirus.lol
+    2. Fixing proxy making code lag''')
+    
 def search_for_updates():
     clear()
     XTitle("Xvirus Checking For Updates. . .")
     
-    latest_version_url = "https://cloud.xvirus.xyz/latest_version.txt"
+    latest_version_url = "https://cloud.xvirus.lol/latest_version.txt"
     r = requests.get(latest_version_url)
     latest_version = r.text.strip()
 
@@ -66,7 +60,7 @@ def search_for_updates():
                 ╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝      ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝  ╚═╝
                     {Fore.RED}Looks like Xvirus {THIS_VERSION} is outdated. Latest version is {latest_version}\n""")
 
-        update_url = f"https://cloud.xvirus.xyz/Xvirus-Tools-main.zip"
+        update_url = f"https://cloud.xvirus.lol/Xvirus-Tools-main.zip"
         choice = input(
             f" <~> {Fore.RED}Do you want to update to the latest version? (Y to update N to continue using this version): {Fore.RED}"
         )
@@ -91,7 +85,6 @@ def search_for_updates():
             elif os.path.exists(os.getcwd() + "start.bat"):
                 os.startfile("start.bat")
             os._exit(0)
-
 
 def update():
     clear()
@@ -137,7 +130,6 @@ def update():
         elif os.path.exists(os.getcwd() + "start.bat"):
             os.startfile("start.bat")
         os._exit(0)
-
 
 class Edge_Installer(object):
     installed = False
@@ -257,7 +249,6 @@ def get_driver():
             print(f"{Fore.GREEN} <!> trying to install msedgedriver.exe{Fore.RESET}")
             return "msedgedriver.exe"
 
-
 def clear():
     system = os.name
     if system == 'nt':
@@ -271,9 +262,9 @@ def clear():
 def XTitle(_str):
     system = os.name
     if system == 'nt':
-        ctypes.windll.kernel32.SetConsoleTitleW(f"{_str} - Discord API Tools | https://xvirus.xyz | Made By Xvirus™")
+        ctypes.windll.kernel32.SetConsoleTitleW(f"{_str} - Discord API Tools | https://xvirus.lol | Made By Xvirus™")
     elif system == 'posix':
-        os.system(f"\033]0;{_str} - Discord API Tools | https://xvirus.xyz | Made By Xvirus™\a", end='', flush=True)
+        os.system(f"\033]0;{_str} - Discord API Tools | https://xvirus.lol | Made By Xvirus™\a", end='', flush=True)
     else:
         pass
 
@@ -383,56 +374,7 @@ def proxy():
     proxies = open(temp).read().split('\n')
     proxy = random.choice(proxies)
 
-    with open(temp, 'r+') as fp:
-        lines = fp.readlines()
-        fp.seek(0)
-        fp.truncate()
-        fp.writelines(lines[1:])
     return {'http': f'http://{proxy}', 'https': f'https://{proxy}'}
-
-def get_proxies():
-    temp_folder = os.path.join(os.environ.get("TEMP", "C:\\temp"), "xvirus_proxies")
-    
-    with open(temp_folder, "w") as f:
-        proxies = f.read().strip().splitlines()
-    proxies = [proxy for proxy in proxies if proxy.strip()]
-    return proxies
-
-def clean_proxy(proxy):
-        if isinstance(proxy, str):
-            if '@' in proxy:
-                return proxy
-            elif len(proxy.split(':')) == 2:
-                return proxy
-            elif len(proxy.split(':')) == 4:
-                return ':'.join(proxy.split(':')[2:]) + '@' + ':'.join(proxy.split(':')[:2])
-            else:
-                if '.' in proxy.split(':')[0]:
-                    return ':'.join(proxy.split(':')[2:]) + '@' + ':'.join(proxy.split(':')[:2])
-                else:
-                    return ':'.join(proxy.split(':')[:2]) + '@' + ':'.join(proxy.split(':')[2:])
-        elif isinstance(proxy, dict):
-            if proxy.get("http://") or proxy.get("https://"):
-                return proxy
-            else:
-                if proxy in [dict(), {}]:
-                    return {}
-                return {
-                    "http://": proxy.get("http") or proxy.get("https"),
-                    "https://": proxy.get("https") or proxy.get("http")
-                }
-
-def get_random_proxy():
-        try:
-            return random.choice(get_proxies())
-        except:
-            return {}
-
-def get_proxy_type():
-    h = "http"
-    if "socks5" in h:
-        h = "socks5"
-    return h
 
 heads = [
     {
@@ -488,7 +430,7 @@ def check_wifi_connection():
         clear()
 
 def check_servers():
-    domains = ['https://xvirus.xyz', 'https://cloud.xvirus.xyz', 'https://dexv.xvirus.xyz']
+    domains = ['https://xvirus.lol', 'https://cloud.xvirus.lol', 'https://buy.xvirus.lol']
     online_count = 0
     consecutive_failures = 0
 
@@ -529,8 +471,6 @@ def ping(host):
         output = subprocess.check_output(["ping", host]).decode("utf-8")
         print(output)
 
-
-
 def get_username():
     temp_dir = tempfile.gettempdir()
     
@@ -549,7 +489,6 @@ def get_username():
     
     return username
 
-    
 def usernamelogo():
                 print(f"""
 
@@ -574,9 +513,6 @@ def usernamelogo():
                           {Fore.BLUE} ╚═════╝ {Fore.RED}╚═════╝ {Fore.BLUE}╚══════╝{Fore.RED}╚═╝  ╚═╝{Fore.BLUE}╚═╝  ╚══╝{Fore.RED}╚═╝  ╚═╝{Fore.BLUE}╚═╝     ╚═╝{Fore.RED}╚══════╝
                                                                                                  """)
 
-username = get_username()
-
-
 def setUsername(new: str):
     temp_dir = tempfile.gettempdir()
     username_file = os.path.join(temp_dir, 'xvirus_username')
@@ -585,16 +521,16 @@ def setUsername(new: str):
         f.write(new)
 
 def notfree():
-    print_slow(" <!> This feature is not availabe on the free version of Xvirus\n <!> check https://xvirus.xyz and or https://discord.gg/xvirus to buy the premium version!")
+    print_slow(" <!> This feature is not availabe on the free version of Xvirus\n <!> check https://xvirus.lol and or https://discord.gg/xvirus to buy the premium version!")
     sleep(1.5)
 
 def PETC():
     input(f'{Fore.RED}\n <~> Press ENTER to continue{Fore.RED}')
 
 def redirect(): 
-    redirect = input("Do you want to redirect to https://xvirus.xyz and https://discord.gg/xvirus? (y/n): ")
+    redirect = input("Do you want to redirect to https://xvirus.lol and https://discord.gg/xvirus? (y/n): ")
     if redirect.lower() == 'y':
-        webbrowser.open("https://xvirus.xyz")
+        webbrowser.open("https://xvirus.lol")
         webbrowser.open("https://discord.gg/xvirus")
     elif redirect.lower() == 'n':
         print(" <!> Redirect not requested.")
@@ -608,12 +544,6 @@ def set_terminal_width(width):
 
     ctypes.windll.kernel32.SetConsoleScreenBufferSize(handle, new_size)
     ctypes.windll.kernel32.SetConsoleWindowInfo(handle, True, ctypes.byref(new_size))
-
-xvirus_width = 120
-
-lr = Fore.LIGHTRED_EX
-lb = Fore.LIGHTBLACK_EX
-r = Fore.RED
 
 def main_banner():
     if getTheme() == "xeme":
@@ -680,9 +610,6 @@ def banner(theme=None):
 {r}     ({lb}08{r}) {lb}> QR Token Grabber                {r}({lb}17{r}) {lb}> Change Profile                   {r}({lb}26{r}) {lb}> Threads Spammer{r}
 {r} ║   ({lb}09{r}) {lb}> Discord RAT Bot           {r}║ ║   {r}({lb}18{r}) {lb}> Vanity Sniper              {r}║ ║   {r}({lb}27{r}) {lb}> Next Page  {r}                ║
 {r} ╚═══                              ═══╝ ╚═══                               ═══╝ ╚═══                               ═══╝''')
-                                                                                                                    
-
-
 
 bannerTheme = f"""
 
@@ -709,8 +636,6 @@ bannerTheme = f"""
      (08) > QR Token Grabber                (17) > Change Profile                   (26) > Threads Spammer
  ║   (09) > Discord RAT Bot           ║ ║   (18) > Vanity Sniper              ║ ║   (27) > Next Page                  ║
  ╚═══                              ═══╝ ╚═══                               ═══╝ ╚═══                               ═══╝"""
-
-
 
 def bennerTheme(type1, type2):
     return type1(f'''
@@ -761,8 +686,6 @@ def offline():
                               ╚█████╔╝██║     ██║     ███████╗██║██║ ╚███║███████╗  ██╗
                                ╚════╝ ╚═╝     ╚═╝     ╚══════╝╚═╝╚═╝  ╚══╝╚══════╝  ╚═╝{Fore.RED}""")
 
-
-
 logo = r"""
 Please wait while Xvirus Scrapes proxies for you!
 
@@ -788,7 +711,6 @@ Please wait while Xvirus Scrapes proxies for you!
 
 """[1:]
 
-
 startuplogo = r"""
 ██╗  ██╗
 ╚██╗██╔╝
@@ -797,3 +719,9 @@ startuplogo = r"""
 ██╔╝╚██╗
 ╚═╝  ╚═╝
 """[1:]
+
+xvirus_width = 120
+username = get_username()
+lr = Fore.LIGHTRED_EX
+lb = Fore.LIGHTBLACK_EX
+r = Fore.RED

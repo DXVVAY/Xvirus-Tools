@@ -37,7 +37,7 @@ def toggle_rpc():
                 start=start_time,
                 buttons=[
                     {"label": "Discord", "url": "https://discord.gg/xvirus"},
-                    {"label": "Website", "url": "https://xvirus.xyz"}
+                    {"label": "Website", "url": "https://xvirus.lol"}
                 ]
             )
         except:

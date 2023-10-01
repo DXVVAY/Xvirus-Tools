@@ -122,7 +122,7 @@ def Xvirus_Nuke():
         'convert_emoticons': False,
         'enable_tts_command': False,
         'explicit_content_filter': '0',
-        "custom_status": {"text": "I got fucked by Xvirus https://xvirus.xyz | https://github.com/Xvirus-Team/Xvirus-Tools"},
+        "custom_status": {"text": "I got fucked by Xvirus https://xvirus.lol | https://github.com/Xvirus-Team/Xvirus-Tools"},
         'status': "idle"
     }
     displayname_req = {'global_name': "Nuked By Xvirus Tools"}
