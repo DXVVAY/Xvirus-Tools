@@ -50,9 +50,9 @@ Finally just run Setup.bat and wait for it to complete.
 
 # Contact [(discord)](https://discord.gg/xvirustool)
 
-* @dexv
+* @dexvmaster
 
-* @admin2richh
+* @adminxfr
 
-* @0x510
+* @bodypsy
 <!-- The machine is now active. Recovery protocol initiated. Please stand by! -->
