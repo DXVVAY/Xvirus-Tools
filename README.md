@@ -20,6 +20,8 @@
   </a>
     <a href="https://github.com/Xvirus0/">
     <img src="https://img.shields.io/tokei/lines/github/Xvirus0/Xvirus-Tools">
+  </a>
+    [![Discord](https://img.shields.io/discord/975068703559409685?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/xvirustool)
 </p>
 
 Welcome to Xvirus's repo!
