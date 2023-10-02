@@ -1,3 +1,4 @@
+[![Discord](https://img.shields.io/discord/975068703559409685?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/xvirustool)
 ![Show me the code](https://github.com/Xvirus0/Xvirus-Tools/assets/89728480/d7538665-19f2-405d-bb38-d7ccbd7be0fd)
 
 
@@ -20,8 +21,6 @@
   </a>
     <a href="https://github.com/Xvirus0/">
     <img src="https://img.shields.io/tokei/lines/github/Xvirus0/Xvirus-Tools">
-  </a>
-    [![Discord](https://img.shields.io/discord/975068703559409685?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/xvirustool)
 </p>
 
 Welcome to Xvirus's repo!
