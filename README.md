@@ -81,6 +81,13 @@ Once Xvirus is fully installed, you're ready to dive in and have fun exploiting 
 
 Xvirus boasts a user friendly menu that's number based, making it simple to select your desired options. Additionally, it's a MUST to have multiple Discord tokens and optionally proxies (whether residential or not) for enhanced anonymity. With these tools at your disposal, enjoy your journey of raiding and exploiting Discord's API with confidence.
 
+## Disclaimer
+
+|Xvirus was made for Educational purposes|
+|-------------------------------------------------|
+This project was created only for good purposes and personal use.
+By using Xvirus, you agree that you hold responsibility and accountability of any consequences caused by your actions.
+
 ## License
 
 Distributed under the MIT License. See [LICENSE](https://github.com/Xvirus-Team/xvirus-tools/blob/main/LICENSE.md) for more information.
