@@ -1,6 +1,6 @@
 from util import *
 
-def send(token, invite):
+def send(invite, token):
     session = Client.get_session(token)
     result = session.post(f"https://discord.com/api/v9/invites/{invite}", json={"session_id": utility.rand_str(32)})
     if result.status_code == 200:
