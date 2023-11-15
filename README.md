@@ -10,11 +10,9 @@
     Xvirus-Tools is a discord API script that takes advantage of Discords WEAK API
     <br/>
     <br/>
-    <a href="https://github.com/Xvirus-Team/xvirus-tools">View Demo</a>
+    <a href="https://discord.gg/xvirustool">Discord</a>
     .
-    <a href="https://github.com/Xvirus-Team/xvirus-tools/issues">Report Bug</a>
-    .
-    <a href="https://github.com/Xvirus-Team/xvirus-tools/issues">Request Feature</a>
+    <a href="https://xvirus.lol/showcase.mp4">Sowcase</a>
   </p>
 </p>
 
@@ -30,6 +28,9 @@
 <p align="center">
   <a href="https://discord.gg/xvirustool">
     <img alt="Discord" src="https://img.shields.io/discord/1146496916419526727?label=&logo=discord&logoColor=ffffff&color=C50F1f&labelColor=C50F1f">
+  </a>
+  <a href="https://www.codefactor.io/repository/github/xvirus-team/xvirus-tools">
+    <img src="https://www.codefactor.io/repository/github/xvirus-team/xvirus-tools/badge" alt="CodeFactor" />
   </a>
 </p>
 
@@ -81,9 +82,16 @@ Once Xvirus is fully installed, you're ready to dive in and have fun exploiting 
 
 Xvirus boasts a user friendly menu that's number based, making it simple to select your desired options. Additionally, it's a MUST to have multiple Discord tokens and optionally proxies (whether residential or not) for enhanced anonymity. With these tools at your disposal, enjoy your journey of raiding and exploiting Discord's API with confidence.
 
+## Disclaimer
+
+|Xvirus was made for Educational purposes|
+|-------------------------------------------------|
+This project was created only for good purposes and personal use.
+By using Xvirus, you agree that you hold responsibility and accountability of any consequences caused by your actions.
+
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/Xvirus-Team/xvirus-tools/blob/main/LICENSE.md) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/Xvirus-Team/xvirus-tools/blob/main/LICENSE) for more information.
 
 ## Authors
 
