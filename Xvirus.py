@@ -172,7 +172,7 @@ class gui:
                     sleep(1)
 
             except Exception as e:
-                Output("bad").notime(f"{e}")
+                Output("bad").notime(e)
                 input()
 
             gui.main_menu()
