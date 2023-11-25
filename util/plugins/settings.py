@@ -34,28 +34,20 @@ class proxy_setting():
         sleep(1) 
 
 def theme_settings():
-    print(f'''
-        {Fore.RED}[01] RED
-        {Fore.BLUE}[02] BLUE
-        {Fore.GREEN}[03] GREEN
-        {Fore.CYAN}[04] CYAN
-        {Fore.WHITE}[05] WHITE
-        {Fore.YELLOW}[06] YELLOW
-        {Fore.MAGENTA}[07] MAGENTA
-        {Fore.LIGHTRED_EX}[08] LIGHT RED
-        {Fore.LIGHTBLUE_EX}[09] LIGHT BLUE
-        {Fore.LIGHTGREEN_EX}[10] LIGHT GREEN
-        {Fore.LIGHTCYAN_EX}[11] LIGHT CYAN
-        {Fore.LIGHTBLACK_EX}[12] LIGHT BLACK
-        {Fore.LIGHTWHITE_EX}[13] LIGHT WHITE
-    ''')
+    print(
+        f'''
+{Fore.RED}[01] RED           {Fore.BLUE}[02] BLUE         {Fore.GREEN}[03] GREEN        {Fore.CYAN}[04] CYAN
+{Fore.LIGHTWHITE_EX}[05] WHITE         {Fore.YELLOW}[06] YELLOW       {Fore.MAGENTA}[07] MAGENTA      {Fore.LIGHTRED_EX}[08] LIGHT RED
+{Fore.LIGHTBLUE_EX}[09] LIGHT BLUE    {Fore.LIGHTGREEN_EX}[10] LIGHT GREEN {Fore.LIGHTCYAN_EX} [11] LIGHT CYAN   {Fore.LIGHTBLACK_EX}[12] LIGHT BLACK
+    '''
+    )
     choice = utility.ask('Theme').lstrip("0")
     themes = {
         '1': 'RED',
         '2': 'BLUE',
         '3': 'GREEN',
         '4': 'CYAN',
-        '5': 'WHITE',
+        '5': 'LIGHTWHITE_EX',
         '6': 'YELLOW',
         '7': 'MAGENTA',
         '8': 'LIGHTRED_EX',
@@ -63,7 +55,6 @@ def theme_settings():
         '10': 'LIGHTGREEN_EX',
         '11': 'LIGHTCYAN_EX',
         '12': 'LIGHTBLACK_EX',
-        '13': 'LIGHTWHITE_EX',
     }
     selected_theme = themes.get(choice)
     if selected_theme:
