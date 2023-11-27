@@ -74,6 +74,19 @@ Then enter the directory:
 ```shell
 cd Xvirus-Tools
 ```
+
+#### Linux
+Install the dependencies
+```shell
+pip install -r requirements.txt
+```
+
+Run it
+```shell
+python Xvirus.py
+```
+
+#### Windows
 Finally just run Setup.bat and wait for it to complete.
 
 ## Usage
