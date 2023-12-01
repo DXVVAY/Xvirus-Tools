@@ -1,3 +1,6 @@
+# coding: utf-8
+# Copyright (C) 2023 github.com/Xvirus-Team
+
 from util import *
 
 # Fire Code!!!!! but it works so eh TODO make this better since its shit
