@@ -1,3 +1,6 @@
+# coding: utf-8
+# Copyright (C) 2023 github.com/Xvirus-Team
+
 from util import *
 
 def send(channel_id, sounds: list[dict[str, typing.Union[str, int]]], token):
