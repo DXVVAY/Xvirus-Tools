@@ -22,7 +22,7 @@ import os
 
 from util import *
 
-THIS_VERSION = "1.7.0"
+THIS_VERSION = "1.7.1"
 
 class Config:
     def __init__(self):
