@@ -1,3 +1,6 @@
+# coding: utf-8
+# Copyright (C) 2023 github.com/Xvirus-Team
+
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from colorama import Fore
@@ -134,7 +137,7 @@ class Output:
             "info": (Fore.BLUE, "<*>"),
             "bad": (Fore.RED, "<!>"),
             "good": (Fore.GREEN, "<+>"),
-            "dbg": (Fore.MAGENTA, "<DEBUG>"),
+            "dbg": (Fore.MAGENTA, "</>"),
         }
 
     def should_hide(self):
@@ -222,6 +225,7 @@ class Output:
         else:
             Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}({res_text})")
 
+# static headers which might get flagged over the time ong
 headers = {
     'authority': 'discord.com',
     'accept': '*/*',
@@ -242,28 +246,14 @@ headers = {
     'x-super-properties': 'eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiRGlzY29yZCBDbGllbnQiLCJyZWxlYXNlX2NoYW5uZWwiOiJzdGFibGUiLCJjbGllbnRfdmVyc2lvbiI6IjEuMC45MDE2Iiwib3NfdmVyc2lvbiI6IjEwLjAuMTkwNDUiLCJvc19hcmNoIjoieDY0Iiwic3lzdGVtX2xvY2FsZSI6InN2IiwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV09XNjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIGRpc2NvcmQvMS4wLjkwMTYgQ2hyb21lLzEwOC4wLjUzNTkuMjE1IEVsZWN0cm9uLzIyLjMuMTIgU2FmYXJpLzUzNy4zNiIsImJyb3dzZXJfdmVyc2lvbiI6IjIyLjMuMTIiLCJjbGllbnRfYnVpbGRfbnVtYmVyIjoyMTg2MDQsIm5hdGl2ZV9idWlsZF9udW1iZXIiOjM1MjM2LCJjbGllbnRfZXZlbnRfc291cmNlIjpudWxsfQ==',}
 
 class Client:
-    def get_cookies(session):
-        cookies = dict(
-            session.get("https://discord.com").cookies
-        )
-        cookies["__cf_bm"] = (
-            "0duPxpWahXQbsel5Mm.XDFj_eHeCKkMo.T6tkBzbIFU-1679837601-0-"
-            "AbkAwOxGrGl9ZGuOeBGIq4Z+ss0Ob5thYOQuCcKzKPD2xvy4lrAxEuRAF1Kopx5muqAEh2kLBLuED6s8P0iUxfPo+IeQId4AS3ZX76SNC5F59QowBDtRNPCHYLR6+2bBFA=="
-        )
-        cookies["locale"] = "en-US"
-        return cookies
-
     def get_session(token:str):
         session = tls_client.Session(
             client_identifier=f"chrome_{random.randint(110, 116)}",
             random_tls_extension_order = True
         )  
-        cookie = Client.get_cookies(session)
+
         session.headers = headers
         session.headers.update({"Authorization": token})
-        session.headers.update({
-            "cookie": f"__cfruid={cookie['__cfruid']}; __dcfduid={cookie['__dcfduid']}; __sdcfduid={cookie['__sdcfduid']}",
-        })
         
         if config._get("use_proxies"):
             proxy = ProxyManager.clean_proxy(ProxyManager.random_proxy())
@@ -284,6 +274,7 @@ class Client:
             client_identifier=f"chrome_{random.randint(110, 116)}",
             random_tls_extension_order=True
         )   
+
         if config._get("use_proxies"):
             proxy = ProxyManager.clean_proxy(ProxyManager.random_proxy())
             if isinstance(proxy, str):
