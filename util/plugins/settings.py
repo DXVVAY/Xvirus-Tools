@@ -66,7 +66,12 @@ def theme_settings():
         sleep(2)
 
 def settings():
-    utility.make_menu("Theme Changer", "Change Username", "Proxy Settings", "Toggle Debug Mode", f"{Fore.RED}Exit... ")
+    utility.make_menu("Theme Changer", 
+                      "Change Username", 
+                      "Proxy Settings", 
+                      "Toggle Debug Mode", 
+                      f"{Fore.RED}Exit... "
+                     )
     choice = utility.ask('Setting')
     if choice not in ["1", "2", "3", "4", "5"]:
         Output("bad").notime(f'Invalid Setting')
@@ -82,7 +87,10 @@ def settings():
         sleep(1)
 
     elif choice == "3":
-        utility.make_menu("Toggle Proxy Use", "Clear Proxy Cache", "Add own Proxies to Cache")
+        utility.make_menu("Toggle Proxy Use", 
+                          "Clear Proxy Cache", 
+                          "Add own Proxies to Cache"
+                         )
         proxychoice = utility.ask('Choice')
         if proxychoice == '1':
             proxy_setting.toggle_proxy()
