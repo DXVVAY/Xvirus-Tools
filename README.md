@@ -37,7 +37,7 @@
 ## About The Project
 
 <p align="center">
-  <img alt="preview" src="https://s.dexv.lol/xs1A27uTVyEQ/oFIEbaqHpu4e.png">
+  <img alt="preview" src="https://github.com/Xvirus-Team/Xvirus-Tools/assets/89728480/842e977d-f4d3-47c4-b222-b3e58fedf979">
 </p>
 
 Xvirus is a Python based project that boldly exploits Discord's API, wearing the badge of "legal" and "TOS-friendly" or we like to say so. It's a tool designed for those who want to venture into Discord's API while staying undetected and secure, especially when paired with the use of residential proxies.
