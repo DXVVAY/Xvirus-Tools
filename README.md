@@ -10,7 +10,7 @@
     Xvirus-Tools is a discord API script that takes advantage of Discords WEAK API
     <br/>
     <br/>
-    <a href="https://discord.gg/xvirustool">Discord</a>
+    <a href="https://discord.gg/xvirus">Discord</a>
     .
     <a href="https://xvirus.lol/showcase.mp4">Sowcase</a>
   </p>
@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <a href="https://discord.gg/xvirustool">
+  <a href="https://discord.gg/xvirus">
     <img alt="Discord" src="https://img.shields.io/discord/1146496916419526727?label=&logo=discord&logoColor=ffffff&color=C50F1f&labelColor=C50F1f">
   </a>
   <a href="https://www.codefactor.io/repository/github/xvirus-team/xvirus-tools">
