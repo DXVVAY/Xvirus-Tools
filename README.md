@@ -32,6 +32,7 @@
   <a href="https://www.codefactor.io/repository/github/xvirus-team/xvirus-tools">
     <img src="https://www.codefactor.io/repository/github/xvirus-team/xvirus-tools/badge" alt="CodeFactor" />
   </a>
+    <img alt="lines" src="https://sloc.xyz/github/Xvirus-Team/Xvirus-Tools">
 </p>
 
 ## About The Project
