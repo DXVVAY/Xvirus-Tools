@@ -8,7 +8,7 @@ class menus:
         print(f'''
     {Fore.BLUE}[{Fore.RED}Github{Fore.BLUE}] @DXVVAY(DEXV), @Xvirus0, @2l2cgit(AdminX)
     {Fore.BLUE}[{Fore.RED}Twitter{Fore.BLUE}] @dexvisnotgay
-    {Fore.BLUE}[{Fore.RED}Discord{Fore.BLUE}] .gg/xvirustool, @dexv, @adminxfr
+    {Fore.BLUE}[{Fore.RED}Discord{Fore.BLUE}] .gg/xvirus, @dexv0, @admin2rich
         ''')
         Output.PETC()
 
@@ -98,7 +98,7 @@ class gui:
                                      ╚███╔╝ ╚██╗ ██╔╝██║██████╔╝██║   ██║╚█████╗  │{pc_username}\'s PC
                                      ██╔██╗  ╚████╔╝ ██║██╔══██╗██║   ██║ ╚═══██╗ ├─────────────
                                     ██╔╝╚██╗  ╚██╔╝  ██║██║  ██║╚██████╔╝██████╔╝ │Discord link:          
-> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  │.gg/xvirustool
+> [TM] Made by Xvirus™              ╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝  │.gg/xvirus
 > [?] {THIS_VERSION} Changelog                                                                                     Notes [NOTE] <
 > [!] Settings                                                                                     Manage Tokens [TKN] <'''
 
