@@ -1,3 +1,6 @@
+# OUTDATED (FLAGGED)
+# checkout https://discord.gg/nexustool for a good raider that is unflagged and uhq
+
 <br/>
 <p align="center">
   <a href="https://github.com/Xvirus-Team/xvirus-tools">
