@@ -200,30 +200,27 @@ class Output:
     # PLEASE IGNORE THIS IK ITS SHIT WOW
     @staticmethod
     def error_logger(token, res_text, res_status_code):
-        if res_text.startswith('{"captcha_key"'):
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(Captcha)")
-        elif res_text.startswith('{"message": "401: Unauthorized'):
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(Unauthorized)")
-        elif "Cloudflare" in res_text:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(CloudFlare Blocked)")
-        elif "\"code\": 40007" in res_text:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(Token Banned)")
-        elif "\"code\": 40002" in res_text:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(Locked Token)")
-        elif "\"code\": 10006" in res_text:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(Invalid Invite)")
-        elif "\"code\": 10004" in res_text:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(Not In Server)")
-        elif "\"code\": 50013:"  in res_text:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(No Access)")
-        elif "\"code\": 50001:" in res_text:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(No Access)")
-        elif "Unknown Message" in res_text:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(Unknown)")
-        elif "\"code\": 50033:" in res_text:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}(Invlid Recipient)")
-        else:
-            Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}({res_text})")
+        errors = {
+            '{"captcha_key"': "(Captcha)",
+            '{"message": "401: Unauthorized': "(Unauthorized)",
+            'Cloudflare': "(CloudFlare Blocked)",
+            '\"code\": 40007': "(Token Banned)",
+            '\"code\": 40002': "(Locked Token)",
+            '\"code\": 10006': "(Invalid Invite)",
+            '\"code\": 10004': "(Not In Server)",
+            '\"code\": 50013:': "(No Access)",
+            '\"code\": 50001:': "(No Access)",
+            'Unknown Message': "(Unknown)",
+            '\"code\": 50033:': "(Invalid Recipient)"
+        }
+
+        for key, value in errors.items():
+            if key in res_text:
+                Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}{value}")
+                return
+
+        Output("bad", token).log(f"Error -> {token} {Fore.LIGHTBLACK_EX}({res_status_code}) {Fore.RED}({res_text})")
+
 
 # static headers which might get flagged over the time ong
 headers = {
