@@ -97,7 +97,6 @@ By using Xvirus, you agree that you hold responsibility and accountability of an
 
 Distributed under the MIT License. See [LICENSE](https://github.com/Xvirus-Team/xvirus-tools/blob/main/LICENSE) for more information.
 
-## Authors
+## Authors (Only I Dexv worked on xvirus!)
 
 * **DEXV** - *Shit head (retarded)* - [DEXV](https://dexv.lol) - *Fully Maintaining Xvirus*
-* **AdminX** - *Just Another German Retard* - [AdminX](https://adminx.pro) - *Maintaining Xvirus As Side Project*
