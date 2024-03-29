@@ -1,5 +1,5 @@
 # OUTDATED (FLAGGED, wont be worked on)
-# checkout https://discord.gg/nexustool for a good raider that is unflagged and uhq
+# checkout https://discord.gg/xvirustool for a good raider that is unflagged and uhq
 
 <br/>
 <p align="center">
