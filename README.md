@@ -1,5 +1,4 @@
 # OUTDATED (FLAGGED, wont be worked on)
-# checkout https://discord.gg/xvirustool for a good raider that is unflagged and uhq
 
 <br/>
 <p align="center">
@@ -13,7 +12,7 @@
     Xvirus-Tools is a discord API script that takes advantage of Discords WEAK API
     <br/>
     <br/>
-    <a href="https://discord.gg/xvirus">Discord</a>
+    <a href="https://discord.gg/fcaptcha">Discord</a>
     .
     <a href="https://xvirus.lol/showcase.mp4">Sowcase</a>
   </p>
