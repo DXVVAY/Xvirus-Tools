@@ -1,5 +1,11 @@
 # OUTDATED (FLAGGED, wont be worked on)
 
+# SKIDS 
+people are stealing my vanity and selling the source dont trust them 🤷‍♂️
+https://discord.gg/xvirustool <- i am NOT associated with this vanity anymore so dont trust
+![Discord_pgxBhnu2G3](https://github.com/DXVVAY/Xvirus-Tools/assets/89728480/90703783-bd10-428e-8ab7-e4329b3d5731)
+
+ps: THIS IS NOT ME
 <br/>
 <p align="center">
   <a href="https://github.com/Xvirus-Team/xvirus-tools">
